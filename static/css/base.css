@@ -27,7 +27,8 @@
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.05);
     --transition: all 0.3s ease;
-    --border-radius: 8px;
+    --border-radius-outside: 50px;
+    --border-radius-inside: 30px;
     --body-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
@@ -68,4 +69,23 @@
 }
 span.highlight {
     font-weight: 900;
+}
+.card{
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-outside);
+    padding: 29px;
+    /* margin-bottom: 20px; */
+    /* box-shadow: var(--card-shadow); */
+    background-color: var(--background-primary);
+}
+
+.horizontal-card{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.vertical-card{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }

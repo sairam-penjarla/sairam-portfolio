@@ -7,9 +7,9 @@
             <p class="section-subtitle">Check out what I've been working on</p>
         </div>
 
-        <ul class="projects-list staggered-container">
+        <div class="projects-list staggered-container">
             <!-- Project 1: ShabSync -->
-            <li class="project-card horizontal staggered-item">
+            <div class="card horizontal-card">
                 <div class="project-content">
                     <h3 class="project-title">ShabSync</h3>
                     <p class="project-tagline">Real-time Text to Speech converter</p>
@@ -35,10 +35,10 @@
                 <div class="project-media">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/IEW6L0_KpBM?si=YyjtHGimyk3coaH1" title="ShabSync Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-            </li>
+            </div>
             
             <!-- Project 2: AI PPT Maker -->
-            <li class="project-card horizontal staggered-item">
+            <div class="card horizontal-card">
             <div class="project-content">
                     <h3 class="project-title">AI PowerPoint Creator</h3>
                     <p class="project-tagline">Create and Present PPTs using AI</p>
@@ -67,10 +67,10 @@
                         <p>Video demonstration and live application will be available shortly.</p>
                     </div>
                 </div>
-            </li>
+            </div>
             
             <!-- Project 3: L&T Virtual Assistant -->
-            <li class="project-card horizontal staggered-item">
+            <div class="card horizontal-card">
                 <div class="project-content">
                     <h3 class="project-title">L&T Virtual Assistant</h3>
                     <p class="project-tagline">RAG-powered Chatbot for L&T Website</p>
@@ -96,10 +96,10 @@
                 <div class="project-media">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/k1LL1cKoCFI?si=TsHssEwJv8uw80DY" title="Virtual Assistant Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-            </li>
+            </div>
             
             <!-- Project 4: Content Generator -->
-            <li class="project-card horizontal staggered-item">
+            <div class="card horizontal-card">
                 <div class="project-content">
                     <h3 class="project-title">LinkedIn Content Generator</h3>
                     <p class="project-tagline">AI-powered Content Creation & Calendar</p>
@@ -128,8 +128,8 @@
                         <p>Video demonstration and live application will be available shortly.</p>
             </div>
         </div>
-            </li>
-        </ul>
+            </div>
+        </div>
     </div>
   </section>
 
@@ -178,7 +178,7 @@
         toggleThemeButton.style.padding = "5px 10px";
         toggleThemeButton.style.cursor = "pointer";
 
-        const projectCard = document.querySelector(".project-card");
+        const projectCard = document.querySelector(".card");
         if (projectCard && false) {
             // Disabled for now, enable if needed
             projectCard.style.position = "relative";

@@ -1,0 +1,78 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/genai-sections.css') }}" />
+<section class="architectures-section animate-section" id="architectures-section">
+    <div class="container">
+        <div class="architectures-header animate-bottom delay-100">
+            <div class="hero-text animate-left delay-100">
+                <h1 class="hero-headline">Architecting Advanced AI Systems</h1>
+                <p class="hero-description">
+                    I design and build sophisticated AI architectures that scale from prototype to production. With a focus on modularity, maintainability, and performance, my systems integrate seamlessly with existing infrastructure while providing flexibility for future enhancements and extensions.
+                </p>
+            </div>
+        </div>
+        
+        <div class="architectures-gallery animate-right">
+            <div class="gallery-scroll">
+                <div class="gallery-inner">
+                    <!-- Architecture diagrams - will continuously scroll -->
+                    <div class="gallery-item">
+                        <img src="{{ url_for('static', filename='images/genai/logs.png') }}" alt="RAG Architecture" class="gallery-image" onerror="this.src='https://miro.medium.com/v2/resize:fit:1400/1*CbHu9a6T5x6VSu9aHY4f9A.png'; this.onerror=null;">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="{{ url_for('static', filename='images/genai/logs.png') }}" alt="LLM Architecture" class="gallery-image" onerror="this.src='https://cloud.google.com/static/architecture-center/images/architecture-llm.svg'; this.onerror=null;">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="{{ url_for('static', filename='images/genai/logs.png') }}" alt="ML Pipeline" class="gallery-image" onerror="this.src='https://miro.medium.com/v2/resize:fit:1400/1*vEQb9HxL5hUYQwjDlTUjMg.png'; this.onerror=null;">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="{{ url_for('static', filename='images/genai/logs.png') }}" alt="AI System Design" class="gallery-image" onerror="this.src='https://images.prismic.io/encord/b15c95b9-6551-4ae6-b911-ce2c46e3a5f1_Data+%26+ML+Platform+Components.png'; this.onerror=null;">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="{{ url_for('static', filename='images/genai/logs.png') }}" alt="Deployment Architecture" class="gallery-image" onerror="this.src='https://images.contentstack.io/v3/assets/blt300387d93dabf50e/blt21e3cd0c62ea12bc/64911e32925d43150fadb45d/application-architecture.png'; this.onerror=null;">
+                    </div>
+                    <!-- Duplicate images for seamless looping -->
+                    <div class="gallery-item">
+                        <img src="{{ url_for('static', filename='images/genai/logs.png') }}" alt="RAG Architecture" class="gallery-image" onerror="this.src='https://miro.medium.com/v2/resize:fit:1400/1*CbHu9a6T5x6VSu9aHY4f9A.png'; this.onerror=null;">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="{{ url_for('static', filename='images/genai/logs.png') }}" alt="LLM Architecture" class="gallery-image" onerror="this.src='https://cloud.google.com/static/architecture-center/images/architecture-llm.svg'; this.onerror=null;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the total width of all original gallery items (not including duplicates)
+        const galleryInner = document.querySelector('.gallery-inner');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        // Only consider the first 5 items (not the duplicates)
+        const originalItems = Array.from(galleryItems).slice(0, 5);
+        
+        // Calculate total width of original items including margins
+        let totalWidth = 0;
+        originalItems.forEach(item => {
+            const style = window.getComputedStyle(item);
+            const width = parseFloat(style.width);
+            const marginRight = parseFloat(style.marginRight);
+            totalWidth += width + marginRight;
+        });
+        
+        // Update the keyframes animation with the exact width
+        const styleSheet = document.createElement('style');
+        styleSheet.innerHTML = `
+            @keyframes scroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-${totalWidth}px); }
+            }
+        `;
+        document.head.appendChild(styleSheet);
+        
+        // Adjust the animation duration based on content width for consistent speed
+        const speedFactor = 30; // Lower number = faster speed
+        const duration = totalWidth / speedFactor;
+        galleryInner.style.animationDuration = `${duration}s`;
+    });
+</script> 

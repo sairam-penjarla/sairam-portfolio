@@ -2,7 +2,6 @@
 
 /* Base animation properties for all sections */
 .animate-section {
-  opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
@@ -59,7 +58,6 @@
 
 /* Fade in from the bottom */
 .animate-bottom {
-  opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
@@ -85,6 +83,8 @@
 .staggered-item {
   opacity: 0;
   transform: translateY(20px);
+  /* display: flex; */
+  gap: 81px;
 }
 
 .staggered-item.visible {
@@ -148,3 +148,8 @@
     z-index: 1;
     transform: rotate(90deg);
 } 
+.staggered-item h2 {font-size: 20px;}
+
+h3.category-title.staggered-item.visible {
+    font-size: 29px;
+}

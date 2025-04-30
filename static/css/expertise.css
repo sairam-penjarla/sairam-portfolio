@@ -22,7 +22,7 @@
 .expertise-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 10px;
 }
 
 /* Card Link Styling */

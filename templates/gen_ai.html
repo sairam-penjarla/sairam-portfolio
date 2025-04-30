@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Generative AI - Sai Ram Penjarla</title>
+    <title>Sai Ram Penjarla</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/projects-section.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
     {% include 'header.html' %}
-    <div class="container">
-        <!-- Gen AI content will go here -->
-    </div>
+    {% include 'genai_section_1_projects.html' %}
+    {% include 'genai_section_2_logs.html' %}
+    {% include 'genai_section_3_architectures.html' %}
+    {% include 'genai_section_4_prompts.html' %}
+    {% include 'genai_section_5_tutorials.html' %}
+    {% include 'genai_section_6_contributions.html' %}
     {% include 'footer.html' %}
     <script src="{{ url_for('static', filename='js/scroll-animations.js') }}"></script>
 </body>
-</html> 
+</html>

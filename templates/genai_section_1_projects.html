@@ -1,0 +1,594 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/section-animations.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/genai-sections.css') }}" />
+<section class="projects-section animate-section" id="projects-section">
+    <div class="container">
+        <div class="main-heading-container animate-bottom delay-100">
+            <div class="main-heading">Gen AI Projects</div>
+            <div class="main-subheading">Exploring the world of generative AI</div>
+            <div class="heading-accent"></div>
+        </div>
+
+        <!-- Agentic AI Category -->
+        <div class="category-section staggered-container">
+            <div class="category-heading staggered-item">
+                <span class="category-heading-text">Agentic AI</span>
+                <div class="category-heading-line"></div>
+            </div>
+            <ul class="projects-list">
+                <!-- Agentic AI Project 1 -->
+                <li class="card horizontal-card">
+                    <div class="project-content">
+                        <h3 class="project-title">GenAI Presentations</h3>
+                        <p class="project-tagline">AI-Powered Presentation Generator</p>
+                        <p class="project-description">An intelligent system that creates professional presentations from simple prompts, generating content, slides, and visuals automatically.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">GPT-4</span>
+                            <span class="tech-tag">Python-PPTX</span>
+                            <span class="tech-tag">Flask</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="project-link github-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/github.svg') }}" alt="GitHub" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link youtube-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link try-now" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/globe.svg') }}" alt="External Link" class="icon-image" />
+                                <span class="link-text">View Project</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-media">
+                        <div class="coming-soon-placeholder">
+                            <h3>Project Demo</h3>
+                            <p>Agentic AI system for creating professional presentations.</p>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Agentic AI Project 2 -->
+                <li class="card horizontal-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Database Chatbot</h3>
+                        <p class="project-tagline">Conversational Database Interface</p>
+                        <p class="project-description">An AI agent that interprets natural language queries into SQL, allowing users to interact with databases through conversation.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">LangChain</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Natural Language Processing</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="project-link github-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/github.svg') }}" alt="GitHub" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link youtube-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link try-now" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/globe.svg') }}" alt="External Link" class="icon-image" />
+                                <span class="link-text">View Project</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-media">
+                        <div class="coming-soon-placeholder">
+                            <h3>Project Demo</h3>
+                            <p>Conversational interface for database interactions.</p>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Agentic AI Project 3 -->
+                <li class="card horizontal-card">
+                    <div class="project-content">
+                        <h3 class="project-title">ChatGPT Clone</h3>
+                        <p class="project-tagline">Custom LLM Chat Implementation</p>
+                        <p class="project-description">A full-featured chat application mimicking ChatGPT's functionality, built with custom UI and API integration.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">OpenAI API</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">WebSockets</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="project-link github-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/github.svg') }}" alt="GitHub" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link youtube-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link try-now" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/globe.svg') }}" alt="External Link" class="icon-image" />
+                                <span class="link-text">View Project</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-media">
+                        <div class="coming-soon-placeholder">
+                            <h3>Project Demo</h3>
+                            <p>Custom implementation of ChatGPT functionality.</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- LLM Apps Category -->
+        <div class="category-section staggered-container">
+            <div class="category-heading staggered-item">
+                <span class="category-heading-text">LLM Apps</span>
+                <div class="category-heading-line"></div>
+            </div>
+            <ul class="projects-list">
+                <!-- LLM Apps Project 1 -->
+                <li class="card horizontal-card">
+                    <div class="project-content">
+                        <h3 class="project-title">LinkedIn Post Generator</h3>
+                        <p class="project-tagline">AI Content Creation for LinkedIn</p>
+                        <p class="project-description">Generates professional, engaging LinkedIn posts based on user input topics, target audience, and content goals.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">GPT-3.5</span>
+                            <span class="tech-tag">Content Generation</span>
+                            <span class="tech-tag">Web App</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="project-link github-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/github.svg') }}" alt="GitHub" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link youtube-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link try-now" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/globe.svg') }}" alt="External Link" class="icon-image" />
+                                <span class="link-text">View Project</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-media">
+                        <div class="coming-soon-placeholder">
+                            <h3>Project Demo</h3>
+                            <p>AI-powered LinkedIn content creation tool.</p>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- LLM Apps Project 2 -->
+                <li class="card horizontal-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Meeting Notes Generator</h3>
+                        <p class="project-tagline">Transform Transcripts into Structured Notes</p>
+                        <p class="project-description">Processes meeting transcripts to extract key points, action items, and decisions, organizing them into comprehensive meeting notes.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">Transformers</span>
+                            <span class="tech-tag">Document Processing</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="project-link github-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/github.svg') }}" alt="GitHub" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link youtube-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link try-now" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/globe.svg') }}" alt="External Link" class="icon-image" />
+                                <span class="link-text">View Project</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-media">
+                        <div class="coming-soon-placeholder">
+                            <h3>Project Demo</h3>
+                            <p>Automated meeting notes from transcript files.</p>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- LLM Apps Project 3 -->
+                <li class="card horizontal-card">
+                    <div class="project-content">
+                        <h3 class="project-title">RAG Virtual Assistant</h3>
+                        <p class="project-tagline">Retrieval-Augmented Generation Chatbot</p>
+                        <p class="project-description">A virtual assistant that combines retrieval-based and generative approaches to provide accurate, contextual responses from a knowledge base.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">RAG</span>
+                            <span class="tech-tag">Vector Database</span>
+                            <span class="tech-tag">LangChain</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="project-link github-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/github.svg') }}" alt="GitHub" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link youtube-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link try-now" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/globe.svg') }}" alt="External Link" class="icon-image" />
+                                <span class="link-text">View Project</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-media">
+                        <div class="coming-soon-placeholder">
+                            <h3>Project Demo</h3>
+                            <p>Intelligent RAG-based virtual assistant.</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- AI Apps Category -->
+        <div class="category-section staggered-container">
+            <div class="category-heading staggered-item">
+                <span class="category-heading-text">AI Apps</span>
+                <div class="category-heading-line"></div>
+            </div>
+            <ul class="projects-list">
+                <!-- AI Apps Project 1 -->
+                <li class="card horizontal-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Flyer Designer</h3>
+                        <p class="project-tagline">AI-Powered Marketing Material Creation</p>
+                        <p class="project-description">Automatically designs professional marketing flyers from content inputs, utilizing AI for layout, design elements, and visual composition.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Generative Design</span>
+                            <span class="tech-tag">Image Generation</span>
+                            <span class="tech-tag">UI/UX</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="project-link github-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/github.svg') }}" alt="GitHub" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link youtube-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link try-now" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/globe.svg') }}" alt="External Link" class="icon-image" />
+                                <span class="link-text">View Project</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-media">
+                        <div class="coming-soon-placeholder">
+                            <h3>Project Demo</h3>
+                            <p>AI tool for creating marketing flyers.</p>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- AI Apps Project 2 -->
+                <li class="card horizontal-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Text-to-Speech</h3>
+                        <p class="project-tagline">Natural Voice Synthesis Application</p>
+                        <p class="project-description">Converts written text into natural-sounding speech with multiple voice options, language support, and customizable speech parameters.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Speech Synthesis</span>
+                            <span class="tech-tag">Audio Processing</span>
+                            <span class="tech-tag">Web API</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="project-link github-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/github.svg') }}" alt="GitHub" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link youtube-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link try-now" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/globe.svg') }}" alt="External Link" class="icon-image" />
+                                <span class="link-text">View Project</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-media">
+                        <div class="coming-soon-placeholder">
+                            <h3>Project Demo</h3>
+                            <p>Advanced text-to-speech conversion tool.</p>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- AI Apps Project 3 -->
+                <li class="card horizontal-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Face Landmarks Webcam</h3>
+                        <p class="project-tagline">Real-time Facial Feature Detection</p>
+                        <p class="project-description">Uses MediaPipe to detect and track facial landmarks in real-time through a webcam, enabling applications like expression recognition and AR filters.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">MediaPipe</span>
+                            <span class="tech-tag">Computer Vision</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="project-link github-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/github.svg') }}" alt="GitHub" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link youtube-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link try-now" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/globe.svg') }}" alt="External Link" class="icon-image" />
+                                <span class="link-text">View Project</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-media">
+                        <div class="coming-soon-placeholder">
+                            <h3>Project Demo</h3>
+                            <p>Real-time facial feature tracking application.</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Azure Category -->
+        <div class="category-section staggered-container">
+            <div class="category-heading staggered-item">
+                <span class="category-heading-text">Azure AI Projects</span>
+                <div class="category-heading-line"></div>
+            </div>
+            <ul class="projects-list">
+                <!-- Azure Project 1 -->
+                <li class="card horizontal-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Document Insights</h3>
+                        <p class="project-tagline">Intelligent Document Analysis</p>
+                        <p class="project-description">Leverages Azure Document Intelligence to extract, analyze, and organize information from various document types, providing meaningful insights and structured data.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Azure Document Intelligence</span>
+                            <span class="tech-tag">OCR</span>
+                            <span class="tech-tag">Data Extraction</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="project-link github-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/github.svg') }}" alt="GitHub" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link youtube-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link try-now" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/globe.svg') }}" alt="External Link" class="icon-image" />
+                                <span class="link-text">View Project</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-media">
+                        <div class="coming-soon-placeholder">
+                            <h3>Project Demo</h3>
+                            <p>Azure-powered document analysis system.</p>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Azure Project 2 -->
+                <li class="card horizontal-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Face Detection</h3>
+                        <p class="project-tagline">Advanced Facial Recognition System</p>
+                        <p class="project-description">Utilizes Azure Face API to detect, identify, and analyze human faces in images and video streams, with features for emotion recognition and demographics.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Azure Face API</span>
+                            <span class="tech-tag">Computer Vision</span>
+                            <span class="tech-tag">Biometrics</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="project-link github-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/github.svg') }}" alt="GitHub" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link youtube-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link try-now" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/globe.svg') }}" alt="External Link" class="icon-image" />
+                                <span class="link-text">View Project</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-media">
+                        <div class="coming-soon-placeholder">
+                            <h3>Project Demo</h3>
+                            <p>Azure-based facial recognition application.</p>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Azure Project 3 -->
+                <li class="card horizontal-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Speech Lab</h3>
+                        <p class="project-tagline">Voice Recognition & Processing Platform</p>
+                        <p class="project-description">A comprehensive speech processing platform using Azure Speech Service for voice recognition, transcription, translation, and voice synthesis.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Azure Speech Service</span>
+                            <span class="tech-tag">Speech-to-Text</span>
+                            <span class="tech-tag">Language Translation</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="project-link github-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/github.svg') }}" alt="GitHub" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link youtube-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link try-now" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/globe.svg') }}" alt="External Link" class="icon-image" />
+                                <span class="link-text">View Project</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-media">
+                        <div class="coming-soon-placeholder">
+                            <h3>Project Demo</h3>
+                            <p>Azure speech processing laboratory.</p>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Azure Project 4 -->
+                <li class="card horizontal-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Object Detection</h3>
+                        <p class="project-tagline">Real-time Object Recognition</p>
+                        <p class="project-description">Implements Azure Computer Vision for real-time object detection, identification, and tracking in images and video streams.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Azure Computer Vision</span>
+                            <span class="tech-tag">Object Recognition</span>
+                            <span class="tech-tag">Video Analysis</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="project-link github-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/github.svg') }}" alt="GitHub" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link youtube-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link try-now" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/globe.svg') }}" alt="External Link" class="icon-image" />
+                                <span class="link-text">View Project</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-media">
+                        <div class="coming-soon-placeholder">
+                            <h3>Project Demo</h3>
+                            <p>Azure-powered object detection system.</p>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Azure Project 5 -->
+                <li class="card horizontal-card">
+                    <div class="project-content">
+                        <h3 class="project-title">AI Search</h3>
+                        <p class="project-tagline">Intelligent Knowledge Base Search</p>
+                        <p class="project-description">A powerful search platform built on Azure AI Search that provides semantic search capabilities across diverse content types with relevance ranking and filtering.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Azure AI Search</span>
+                            <span class="tech-tag">Semantic Search</span>
+                            <span class="tech-tag">Content Indexing</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="project-link github-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/github.svg') }}" alt="GitHub" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link youtube-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image" />
+                            </a>
+                            <a href="#" class="project-link try-now" target="_blank">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/globe.svg') }}" alt="External Link" class="icon-image" />
+                                <span class="link-text">View Project</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-media">
+                        <div class="coming-soon-placeholder">
+                            <h3>Project Demo</h3>
+                            <p>Azure AI Search implementation.</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<script src="{{ url_for('static', filename='js/section-animations.js') }}"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Set animation delays for each category heading line
+        const categoryHeadingLines = document.querySelectorAll('.category-heading-line');
+        categoryHeadingLines.forEach((line, index) => {
+            line.style.setProperty('--index', index);
+        });
+
+        // Animation for category headings
+        const categoryHeadings = document.querySelectorAll('.category-heading');
+        categoryHeadings.forEach((heading, index) => {
+            heading.classList.add('animate-bottom');
+            heading.style.animationDelay = `${index * 100 + 200}ms`;
+        });
+
+        // Add subtle hover effects to main heading
+        const mainHeading = document.querySelector('.main-heading');
+        if (mainHeading) {
+            mainHeading.addEventListener('mouseover', function() {
+                this.style.transform = 'scale(1.03)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            
+            mainHeading.addEventListener('mouseout', function() {
+                this.style.transform = 'scale(1)';
+            });
+        }
+
+        // Button click handlers
+        const demoButton = document.querySelector(".btn-primary");
+        if (demoButton) {
+            demoButton.addEventListener("click", function (e) {
+                e.preventDefault();
+                // Modal video player could be implemented here
+                alert("Demo video will play here!");
+            });
+        }
+
+        const tryItButton = document.querySelector(".btn-cta");
+        if (tryItButton) {
+            tryItButton.addEventListener("click", function (e) {
+                e.preventDefault();
+                // Redirect to the actual project
+                window.open("https://your-project-url.com", "_blank");
+            });
+        }
+
+        // Optional: Add hover effect to highlight technical terms
+        const highlights = document.querySelectorAll(".highlight");
+        highlights.forEach((highlight) => {
+            highlight.addEventListener("mouseover", function () {
+                this.style.backgroundColor = "#dce6ff";
+            });
+
+            highlight.addEventListener("mouseout", function () {
+                this.style.backgroundColor = "#f0f4ff";
+            });
+        });
+
+        // Optional: Toggle dark/light mode to demonstrate the project's theme functionality
+        const toggleThemeButton = document.createElement("button");
+        toggleThemeButton.textContent = "🌙 Toggle Theme";
+        toggleThemeButton.className = "theme-toggle";
+        toggleThemeButton.style.position = "absolute";
+        toggleThemeButton.style.top = "10px";
+        toggleThemeButton.style.right = "10px";
+        toggleThemeButton.style.padding = "5px 10px";
+        toggleThemeButton.style.cursor = "pointer";
+
+        const projectCard = document.querySelector(".project-card");
+        if (projectCard && false) {
+            // Disabled for now, enable if needed
+            projectCard.style.position = "relative";
+            projectCard.appendChild(toggleThemeButton);
+
+            toggleThemeButton.addEventListener("click", function () {
+                document.body.classList.toggle("dark-mode");
+
+                if (document.body.classList.contains("dark-mode")) {
+                    projectCard.style.backgroundColor = "#222";
+                    projectCard.style.color = "#fff";
+                    document.querySelectorAll(".project-description p").forEach((p) => {
+                        p.style.color = "#ddd";
+                    });
+                } else {
+                    projectCard.style.backgroundColor = "#fff";
+                    projectCard.style.color = "#000";
+                    document.querySelectorAll(".project-description p").forEach((p) => {
+                        p.style.color = "#333";
+                    });
+                }
+            });
+        }
+    });
+</script>
