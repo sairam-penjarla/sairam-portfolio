@@ -1,0 +1,258 @@
+/* Claude-style Categories CSS */
+
+/* Base styles and variables */
+
+  
+  /* Reset and base styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: var(--body-font);
+    color: var(--claude-text-primary);
+    line-height: 1.6;
+    background-color: #FFFFFF;
+    /* padding: 40px 20px; */
+  }
+  
+  /* Section layout */
+  .categories-section {
+    max-width: 1200px;
+    margin: 80px auto;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  
+  .section-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--claude-text-primary);
+  }
+  
+  .section-description {
+    font-size: 1.125rem;
+    color: var(--claude-text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  /* Cards grid */
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 24px;
+  }
+  
+  /* Card styling */
+  .card {
+    background-color: #FFFFFF;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--claude-border);
+    overflow: hidden;
+    position: relative;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  .card-accent {
+    height: 6px;
+    width: 100%;
+  }
+  
+  .python-color { background-color: var(--python-color); }
+  .ml-color { background-color: var(--ml-color); }
+  .dl-color { background-color: var(--dl-color); }
+  .nlp-color { background-color: var(--nlp-color); }
+  .cv-color { background-color: var(--cv-color); }
+  .genai-color { background-color: var(--genai-color); }
+  
+  .card-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .card-icon {
+    background-color: #F8F9FA;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    transition: var(--transition);
+  }
+  
+  .card:hover .card-icon {
+    transform: scale(1.1);
+  }
+  
+  .card-icon img {
+    width: 24px;
+    height: 24px;
+    opacity: 0.8;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--claude-text-primary);
+  }
+  
+  .card-description {
+    font-size: 0.95rem;
+    color: var(--claude-text-secondary);
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+  
+  /* Card stats */
+  .card-stats {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .stat {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--claude-text-secondary);
+  }
+  
+  .stat-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    opacity: 0.7;
+  }
+  
+  /* Card button */
+  .card-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: white;
+    color: var(--claude-purple);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    border: 1px solid var(--claude-purple);
+    transition: var(--transition);
+    text-align: center;
+    margin-top: auto;
+  }
+  
+  .card-button:hover {
+    background-color: var(--claude-purple);
+    color: white;
+  }
+  
+  /* Python card specific button */
+  .python-color + .card-content .card-button {
+    color: var(--python-color);
+    border-color: var(--python-color);
+  }
+  
+  .python-color + .card-content .card-button:hover {
+    background-color: var(--python-color);
+    color: white;
+  }
+  
+  /* ML card specific button */
+  .ml-color + .card-content .card-button {
+    color: var(--ml-color);
+    border-color: var(--ml-color);
+  }
+  
+  .ml-color + .card-content .card-button:hover {
+    background-color: var(--ml-color);
+    color: white;
+  }
+  
+  /* DL card specific button */
+  .dl-color + .card-content .card-button {
+    color: var(--dl-color);
+    border-color: var(--dl-color);
+  }
+  
+  .dl-color + .card-content .card-button:hover {
+    background-color: var(--dl-color);
+    color: white;
+  }
+  
+  /* NLP card specific button */
+  .nlp-color + .card-content .card-button {
+    color: var(--nlp-color);
+    border-color: var(--nlp-color);
+  }
+  
+  .nlp-color + .card-content .card-button:hover {
+    background-color: var(--nlp-color);
+    color: white;
+  }
+  
+  /* CV card specific button */
+  .cv-color + .card-content .card-button {
+    color: var(--cv-color);
+    border-color: var(--cv-color);
+  }
+  
+  .cv-color + .card-content .card-button:hover {
+    background-color: var(--cv-color);
+    color: white;
+  }
+  
+  /* GenAI card specific button */
+  .genai-color + .card-content .card-button {
+    color: var(--genai-color);
+    border-color: var(--genai-color);
+  }
+  
+  .genai-color + .card-content .card-button:hover {
+    background-color: var(--genai-color);
+    color: white;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .cards-container {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+    
+    .section-title {
+      font-size: 1.75rem;
+    }
+    
+    .section-description {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .cards-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .card {
+      max-width: 100%;
+    }
+  }

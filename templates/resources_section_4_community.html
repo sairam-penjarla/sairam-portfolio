@@ -1,0 +1,82 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/section-animations.css') }}" />
+
+<!-- Community Section -->
+<section class="community-section animate-section">
+    <div class="container">
+        <div class="section-header animate-bottom delay-100">
+            <h2 class="section-title">Learn With Our Community</h2>
+            <p class="community-description">
+                Stop struggling alone! We have a small but vibrant data science community and connect with
+                aspirants, collaborators, and friends who share your passion and struggles.
+            </p>
+        </div>
+
+        <div class="members-grid staggered-container">
+            <div class="member-item staggered-item">
+                <div class="member-photo">
+                    <img src="{{ url_for('static', filename='images/community/kavya.jpg') }}" alt="Kavya - Data Engineer">
+                </div>
+                <h3 class="member-name">Kavya</h3>
+                <p class="member-role">(Data Engineer at Datapoem)</p>
+            </div>
+
+            <div class="member-item staggered-item">
+                <div class="member-photo">
+                    <img src="{{ url_for('static', filename='images/community/shyamala.jpg') }}" alt="Shyamala - IGNITC Student">
+                </div>
+                <h3 class="member-name">Shyamala</h3>
+                <p class="member-role">(IGNITC Student)</p>
+            </div>
+
+            <div class="member-item staggered-item">
+                <div class="member-photo">
+                    <img src="{{ url_for('static', filename='images/community/abhiram.jpg') }}" alt="Abhiram - ICBT Student">
+                </div>
+                <h3 class="member-name">Abhiram</h3>
+                <p class="member-role">(ICBT Student)</p>
+            </div>
+
+            <div class="member-item staggered-item">
+                <div class="member-photo">
+                    <img src="{{ url_for('static', filename='images/community/sunita.jpg') }}" alt="Sunitha - DS Aspirant">
+                </div>
+                <h3 class="member-name">Sunitha</h3>
+                <p class="member-role">(DS Aspirant)</p>
+            </div>
+
+            <div class="member-item staggered-item">
+                <div class="member-photo">
+                    <img src="{{ url_for('static', filename='images/community/ankita.jpg') }}" alt="Ankita - Digital Engineer">
+                </div>
+                <h3 class="member-name">Ankita</h3>
+                <p class="member-role">(Digital Engineer at sonata software)</p>
+            </div>
+
+            <div class="member-item staggered-item">
+                <div class="member-photo">
+                    <img src="{{ url_for('static', filename='images/community/anish.jpg') }}" alt="Anish - IGNITC Student">
+                </div>
+                <h3 class="member-name">Anish</h3>
+                <p class="member-role">(IGNITC Student)</p>
+            </div>
+
+            <div class="member-item staggered-item">
+                <div class="member-photo">
+                    <img src="{{ url_for('static', filename='images/community/neelam.jpg') }}" alt="Neelam - DS Aspirant">
+                </div>
+                <h3 class="member-name">Neelam</h3>
+                <p class="member-role">(DS Aspirant)</p>
+            </div>
+        </div>
+
+        <div class="community-cta animate-bottom delay-300">
+            <a href="https://chat.whatsapp.com/FaZxHX7PJa10H17nIVbliL" class="whatsapp-button">
+                <i class="fab fa-whatsapp"></i>
+                <span>Join The Community</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<script src="{{ url_for('static', filename='js/section-animations.js') }}"></script> 

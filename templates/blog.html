@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sai Ram Penjarla</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/blogs_styles.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/markdown_styles.css') }}" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+        {% include 'header.html' %}
+        <div class="page-layout">
+            <aside class="sidebar">
+                <div class="sidebar-menu">
+                    {% for folder in sidebar %}
+                    <div class="folder">
+                        <button class="folder-toggle" data-folder="{{ folder.name }}">
+                            <img src="{{ url_for('static', filename='images/lucidev-icons/chevron-right.svg') }}"
+                                 class="arrow-icon {% if folder.expanded %}rotated{% endif %}"
+                                 alt="arrow" />
+                            {{ folder.name.replace('-', ' ').title() }}
+                        </button>
+                        
+                        <ul class="blog-list {% if not folder.expanded %}collapsed{% endif %}" data-folder="{{ folder.name }}">
+                            {% for blog in folder.blogs %}
+                            <li>
+                                <a href="/projects/{{ folder.name }}/{{ blog.slug }}"
+                                   class="{% if blog.active %}active{% endif %}">
+                                    {{ blog.title }}
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endfor %}
+                </div>
+            </aside>
+            
+    
+            <!-- Blog content -->
+            <main class="main-content">
+                <div class="breadcrumb">
+                    <a href="/projects/{{ category }}">← Back to {{ category.replace('-', ' ').title() }}</a>
+                </div>
+                <div class="blog-content" id="BlogContentPreview"></div>
+            </main>
+    
+            
+        </div>
+    
+        <!-- Highlight.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+        <!-- Additional languages -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/javascript.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/sql.min.js"></script>
+        
+        <!-- Markdown rendering -->
+        <script id="rawMarkdown" type="text/markdown">{{ content }}</script>
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <script>
+            // Configure marked to use highlight.js
+            marked.setOptions({
+                highlight: function(code, lang) {
+                    // Decode HTML entities in code
+                    code = code.replace(/&amp;/g, '&')
+                         .replace(/&lt;/g, '<')
+                         .replace(/&gt;/g, '>')
+                         .replace(/&#34;/g, '"')
+                         .replace(/&#39;/g, "'")
+                         .replace(/&quot;/g, '"');
+                    
+                    if (lang && hljs.getLanguage(lang)) {
+                        return hljs.highlight(code, { language: lang }).value;
+                    }
+                    return hljs.highlightAuto(code).value;
+                },
+                headerIds: false,
+                mangle: false,
+                pedantic: false,
+                gfm: true,
+                breaks: false,
+                sanitize: false, // Prevent sanitization to avoid encoding quotes
+                smartLists: true,
+                smartypants: false // Disable smartypants to prevent quote conversion
+            });
+            
+            const rawMarkdown = document.getElementById('rawMarkdown').textContent;
+            document.getElementById('BlogContentPreview').innerHTML = marked.parse(rawMarkdown);
+            
+            // Apply highlighting to any code blocks that might have been missed
+            // and fix any remaining encoded quotes in code blocks
+            document.querySelectorAll('pre code').forEach((block) => {
+                // Replace encoded quotes with actual quotes
+                block.innerHTML = block.innerHTML
+                    .replace(/&#34;/g, '"')
+                    .replace(/&#39;/g, "'")
+                    .replace(/&quot;/g, '"');
+                hljs.highlightElement(block);
+            });
+            
+            // Additional cleanup script for any remaining encoded quotes
+            window.addEventListener('DOMContentLoaded', (event) => {
+                setTimeout(() => {
+                    document.querySelectorAll('pre code').forEach((block) => {
+                        const cleanedHtml = block.innerHTML
+                            .replace(/&#34;/g, '"')
+                            .replace(/&#39;/g, "'")
+                            .replace(/&quot;/g, '"');
+                        if (cleanedHtml !== block.innerHTML) {
+                            block.innerHTML = cleanedHtml;
+                            hljs.highlightElement(block);
+                        }
+                    });
+                }, 100); // Small delay to ensure DOM is fully processed
+            });
+        </script>
+        <script>
+            document.querySelectorAll('.folder-toggle').forEach(btn => {
+            btn.addEventListener('click', (event) => {
+                console.log('Button clicked');
+                const folder = btn.dataset.folder;
+                const list = document.querySelector(`.blog-list[data-folder="${folder}"]`);
+                console.log('List before:', list.classList.contains('collapsed'));
+                list.classList.toggle('collapsed');
+                console.log('List after:', list.classList.contains('collapsed'));
+                const arrow = btn.querySelector('.arrow-icon');
+                arrow.classList.toggle('rotated');
+            });
+            });
+        </script>
+
+        {% include 'footer.html' %}
+    </body>
+    
+</html>

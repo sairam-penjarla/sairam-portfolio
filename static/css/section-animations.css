@@ -1,0 +1,150 @@
+/* Section Animation Styles */
+
+/* Base animation properties for all sections */
+.animate-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.animate-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animation delays for content within sections */
+.delay-100 {
+  transition-delay: 100ms;
+}
+
+.delay-200 {
+  transition-delay: 200ms;
+}
+
+.delay-300 {
+  transition-delay: 300ms;
+}
+
+.delay-400 {
+  transition-delay: 400ms;
+}
+
+.delay-500 {
+  transition-delay: 500ms;
+}
+
+/* Fade in from the left */
+.animate-left {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.animate-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Fade in from the right */
+.animate-right {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.animate-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Fade in from the bottom */
+.animate-bottom {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.animate-bottom.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade in and scale up */
+.animate-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.animate-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Animation for staggered items in a container */
+.staggered-item {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.staggered-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* On small screens, reduce the animation delay times */
+@media (max-width: 768px) {
+  .delay-100 {
+    transition-delay: 50ms;
+  }
+  
+  .delay-200 {
+    transition-delay: 100ms;
+  }
+  
+  .delay-300 {
+    transition-delay: 150ms;
+  }
+  
+  .delay-400 {
+    transition-delay: 200ms;
+  }
+  
+  .delay-500 {
+    transition-delay: 250ms;
+  }
+}
+
+.divider {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.divider span {
+    font-weight: 700;
+    color: #666;
+    position: relative;
+    z-index: 3;
+}
+
+.divider:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -300%;
+    right: -300%;
+    height: 1px;
+    background-color: #ddd;
+    z-index: 1;
+    transform: rotate(90deg);
+} 

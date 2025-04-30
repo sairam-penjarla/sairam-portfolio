@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/section-animations.css') }}" />
+<section class="security-section animate-section">
+    <div class="section-container">
+        <h2 class="section-title animate-bottom delay-100">Secure, Compliant, and Scalable AI & Data Solutions</h2>
+        
+        <div class="cards-container staggered-container">
+            <!-- Scalable AI & Data Science Card -->
+            <div class="security-card staggered-item">
+                <h3 class="card-title">Scalable AI & Data Science</h3>
+                <p class="card-description">I build reliable AI solutions for healthcare, finance, and on-demand industries—focusing on predictive analytics, NLP, and automation.</p>
+                <img src="/static/images/Business Plan-bro.svg" alt="Data Science Illustration" class="card-image">
+            </div>
+
+            <!-- Global Regulatory Compliance Card -->
+            <div class="security-card staggered-item">
+                <h3 class="card-title">Global Regulatory Compliance</h3>
+                <p class="card-description">My work aligns with GDPR, SOC 2, HIPAA/HITECH, ISO 27001, and the EU AI Act, ensuring ethical AI practices and legal compliance.</p>
+                <div class="compliance-logo-container">
+                    <img src="/static/images/gdpr.png" alt="GDPR" class="compliance-logo">
+                    <img src="/static/images/HIPAA-square-logo.webp" alt="HIPAA" class="compliance-logo">
+                    <img src="/static/images/aicpa-soc-logo-freelogovectors.net_-PNG.png" alt="SOC 2" class="compliance-logo">
+                    <img src="/static/images/iso.webp" alt="ISO 27001" class="compliance-logo">
+                    <img src="/static/images/Feature-EU-AI-Act.png" alt="EU AI Act" class="compliance-logo">
+                </div>
+            </div>
+
+            <!-- Privacy-First Approach Card -->
+            <div class="security-card staggered-item">
+                <h3 class="card-title">Privacy-First Approach</h3>
+                <p class="card-description">Your data stays yours—never accessed or shared. I use AES-256 encryption, PII protection, data masking, and region-specific storage with TLS 1.3 security.</p>
+                <div class="encrypted-demo">
+                    <img src="/static/images/password.png" alt="Security Illustration" class="password-image">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="{{ url_for('static', filename='js/section-animations.js') }}"></script>
+
+    

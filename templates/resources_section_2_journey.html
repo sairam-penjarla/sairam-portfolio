@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/section-animations.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/azure-styles.css') }}" />
+<section class="hero-section journey-section animate-section">
+    <div class="hero-container journey-container">
+        <div class="hero-content animate-left delay-100">
+            <h1 class="hero-title">LET'S<br />BEGIN THE<br />JOURNEY</h1>
+            <p class="hero-description">This Roadmap includes carefully curated list of links & resources, designed to help freshers, to start their data science journey</p>
+            <a href="{{ url_for('static', filename='files/roadmap.pdf') }}" class="btn-minimal" download>Download</a>
+        </div>
+        <div class="hero-image animate-right delay-200">
+            <img src="/static/images/small_transparent.png" alt="Data Science Roadmap Books" />
+        </div>
+    </div>
+</section>
+
+<!-- Playlists Section -->
+<section class="playlists-section animate-section">
+    <div class="container">
+        <h2 class="hero-section-title">Use these playlists to<br /><span class="highlight-text primary-highlight">make yourself job ready in 2025</span></h2>
+        
+        <div class="playlists-container">
+            <!-- Gen AI Section -->
+            <div class="hero-container genai-container">
+                <div class="genai-media animate-left delay-100">
+                    <div class="genai-device-mockup">
+                        <img src="/static/images/genaicrashcourseplaylist1.png" alt="Laptop showing AI course playlist" />
+                    </div>
+                </div>
+                <div class="genai-content animate-right delay-200">
+                    <span class="genai-badge">NEW</span>
+                    <h2 class="genai-title">Kickstart with<br /><span class="highlight-text">Gen AI</span></h2>
+                    <p class="genai-description">Use my crash course playlist to learn Generative AI fundamentals from scratch — no prior experience needed.</p>
+                    <a href="https://youtube.com/playlist?list=PL9wcLF5LwK5Dy1bIM8af-Bh1a0eIeWaJM&si=YKdntrRCLS5cv_vV" class="genai-button">
+                        <span class="button-icon"><img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image"></span>
+                        <span class="button-text">Open Playlist</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-container genai-container azure-container">
+                <div class="genai-media animate-left delay-100">
+                    <div class="genai-device-mockup">
+                        <img src="/static/images/azureplaylisit.png" alt="Laptop showing Azure course playlist" />
+                    </div>
+                </div>
+                <div class="genai-content animate-right delay-200">
+                    <span class="genai-badge">FEATURED</span>
+                    <h2 class="genai-title">Kickstart with<br /><span class="highlight-text primary-highlight">Azure</span></h2>
+                    <p class="genai-description">Kickstart with Azure through this comprehensive playlist and enhance your cloud skills for the job market.</p>
+                    <a href="https://youtube.com/playlist?list=PL9wcLF5LwK5Dl-ism4mhjAYbr9cb365V2&si=GnAg7kesvoF8tyOg" class="genai-button azure-button">
+                        <span class="button-icon"><img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image"></span>
+                        <span class="button-text">Open Playlist</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="{{ url_for('static', filename='js/section-animations.js') }}"></script> 

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Free Courses | Sai Ram Penjarla</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/blogs_styles.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/markdown_styles.css') }}" />
+        <!-- Add highlight.js GitHub Dark theme -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+        {% include 'header.html' %}
+        <div class="page-layout">
+            <aside class="sidebar">
+                <div class="sidebar-search">
+                    <input type="text" id="course-search" placeholder="Search courses..." class="search-input">
+                    <div class="search-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </div>
+                </div>
+                <div class="sidebar-menu">
+                    <!-- Render nested course folders recursively -->
+                    {% macro render_folder(folder, path_prefix='') %}
+                        <div class="folder">
+                            <button class="folder-toggle" data-folder="{{ path_prefix + folder.name }}">
+                                <img src="{{ url_for('static', filename='images/lucidev-icons/chevron-right.svg') }}"
+                                     class="arrow-icon {% if folder.expanded %}rotated{% endif %}"
+                                     alt="arrow" />
+                                {{ folder.name.replace('-', ' ').title() }}
+                            </button>
+                            
+                            <ul class="blog-list {% if not folder.expanded %}collapsed{% endif %}" data-folder="{{ path_prefix + folder.name }}">
+                                <!-- Render course files -->
+                                {% for course in folder.courses %}
+                                <li>
+                                    <a href="/free-courses/{{ path_prefix + folder.name }}/{{ course.slug }}"
+                                       class="{% if course.active %}active{% endif %}">
+                                        {{ course.title }}
+                                    </a>
+                                </li>
+                                {% endfor %}
+                                
+                                <!-- Render subfolders recursively -->
+                                {% for subfolder in folder.subfolders %}
+                                    {{ render_folder(subfolder, path_prefix + folder.name + '/') }}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endmacro %}
+                    
+                    {% for folder in sidebar %}
+                        {{ render_folder(folder) }}
+                    {% endfor %}
+                </div>
+            </aside>
+            
+            <!-- Course content -->
+            <main class="main-content">
+                <div class="breadcrumb">
+                    {% if breadcrumbs %}
+                        {% for crumb in breadcrumbs[:-1] %}
+                            <a href="{{ crumb.url }}">{{ crumb.name.replace('-', ' ').title() }}</a>
+                            <span class="separator">/</span>
+                        {% endfor %}
+                        <span>{{ breadcrumbs[-1].name.replace('-', ' ').title() }}</span>
+                    {% endif %}
+                </div>
+                <div class="blog-content" id="CourseContentPreview"></div>
+            </main>
+        </div>
+    
+        <!-- Add a no results message to the sidebar -->
+        <div id="no-results" class="no-results-message">No courses found matching your search.</div>
+        
+        <!-- Highlight.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+        <!-- Additional languages -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/javascript.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/sql.min.js"></script>
+        
+        <!-- Markdown rendering -->
+        <script id="rawMarkdown" type="text/markdown">{{ content }}</script>
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <script>
+            // Configure marked to use highlight.js
+            marked.setOptions({
+                highlight: function(code, lang) {
+                    // Decode HTML entities in code
+                    code = code.replace(/&amp;/g, '&')
+                         .replace(/&lt;/g, '<')
+                         .replace(/&gt;/g, '>')
+                         .replace(/&#34;/g, '"')
+                         .replace(/&#39;/g, "'")
+                         .replace(/&quot;/g, '"');
+                    
+                    if (lang && hljs.getLanguage(lang)) {
+                        return hljs.highlight(code, { language: lang }).value;
+                    }
+                    return hljs.highlightAuto(code).value;
+                },
+                headerIds: false,
+                mangle: false,
+                pedantic: false,
+                gfm: true,
+                breaks: false,
+                sanitize: false, // Prevent sanitization to avoid encoding quotes
+                smartLists: true,
+                smartypants: false // Disable smartypants to prevent quote conversion
+            });
+            
+            const rawMarkdown = document.getElementById('rawMarkdown').textContent;
+            document.getElementById('CourseContentPreview').innerHTML = marked.parse(rawMarkdown);
+            
+            // Apply highlighting to any code blocks that might have been missed
+            // and fix any remaining encoded quotes in code blocks
+            document.querySelectorAll('pre code').forEach((block) => {
+                // Replace encoded quotes with actual quotes
+                block.innerHTML = block.innerHTML
+                    .replace(/&#34;/g, '"')
+                    .replace(/&#39;/g, "'")
+                    .replace(/&quot;/g, '"');
+                hljs.highlightElement(block);
+            });
+            
+            // Additional cleanup script for any remaining encoded quotes
+            window.addEventListener('DOMContentLoaded', (event) => {
+                setTimeout(() => {
+                    document.querySelectorAll('pre code').forEach((block) => {
+                        const cleanedHtml = block.innerHTML
+                            .replace(/&#34;/g, '"')
+                            .replace(/&#39;/g, "'")
+                            .replace(/&quot;/g, '"');
+                        if (cleanedHtml !== block.innerHTML) {
+                            block.innerHTML = cleanedHtml;
+                            hljs.highlightElement(block);
+                        }
+                    });
+                }, 100); // Small delay to ensure DOM is fully processed
+            });
+            
+            // Course sidebar search functionality
+            document.addEventListener('DOMContentLoaded', function() {
+                const searchInput = document.getElementById('course-search');
+                const noResultsMessage = document.getElementById('no-results');
+                const sidebarMenu = document.querySelector('.sidebar-menu');
+                
+                // Insert the no results message into the sidebar menu
+                sidebarMenu.appendChild(noResultsMessage);
+                
+                if (searchInput) {
+                    searchInput.addEventListener('input', function() {
+                        const searchTerm = this.value.toLowerCase().trim();
+                        const folderToggles = document.querySelectorAll('.folder-toggle');
+                        const courseLinks = document.querySelectorAll('.blog-list a');
+                        let hasResults = false;
+                        
+                        // Reset visibility
+                        folderToggles.forEach(toggle => {
+                            toggle.parentElement.classList.remove('hidden-by-search');
+                        });
+                        
+                        courseLinks.forEach(link => {
+                            link.parentElement.classList.remove('hidden-by-search');
+                        });
+                        
+                        // If search is empty, reset everything and return
+                        if (searchTerm === '') {
+                            noResultsMessage.classList.remove('visible');
+                            // Collapse all sections that weren't previously expanded
+                            document.querySelectorAll('.blog-list:not(.collapsed)').forEach(list => {
+                                if (!list.dataset.wasExpanded) {
+                                    list.classList.add('collapsed');
+                                    list.previousElementSibling.querySelector('.arrow-icon').classList.remove('rotated');
+                                }
+                            });
+                            return;
+                        }
+                        
+                        // Save current expanded state before search
+                        document.querySelectorAll('.blog-list:not(.collapsed)').forEach(list => {
+                            list.dataset.wasExpanded = true;
+                        });
+                        
+                        // Search through course links
+                        courseLinks.forEach(link => {
+                            const courseTitle = link.textContent.toLowerCase();
+                            if (courseTitle.includes(searchTerm)) {
+                                hasResults = true;
+                                
+                                // Expand parent folder(s)
+                                let parentList = link.closest('.blog-list');
+                                while (parentList) {
+                                    parentList.classList.remove('collapsed');
+                                    const folderToggle = parentList.previousElementSibling;
+                                    if (folderToggle && folderToggle.classList.contains('folder-toggle')) {
+                                        folderToggle.querySelector('.arrow-icon').classList.add('rotated');
+                                    }
+                                    parentList = parentList.parentElement.closest('.blog-list');
+                                }
+                            } else {
+                                link.parentElement.classList.add('hidden-by-search');
+                            }
+                        });
+                        
+                        // Hide folders with no visible children
+                        folderToggles.forEach(toggle => {
+                            const folder = toggle.parentElement;
+                            const list = folder.querySelector('.blog-list');
+                            const visibleItems = list.querySelectorAll('li:not(.hidden-by-search)');
+                            
+                            if (visibleItems.length === 0) {
+                                // Check if folder name matches search
+                                const folderName = toggle.textContent.toLowerCase().trim();
+                                if (folderName.includes(searchTerm)) {
+                                    hasResults = true;
+                                    // Show this folder but keep it collapsed if it doesn't have visible children
+                                    folder.classList.remove('hidden-by-search');
+                                } else {
+                                    folder.classList.add('hidden-by-search');
+                                }
+                            } else {
+                                hasResults = true;
+                                folder.classList.remove('hidden-by-search');
+                            }
+                        });
+                        
+                        // Show/hide no results message
+                        if (hasResults) {
+                            noResultsMessage.classList.remove('visible');
+                        } else {
+                            noResultsMessage.classList.add('visible');
+                        }
+                    });
+                    
+                    // Add clear button functionality
+                    searchInput.addEventListener('keydown', function(e) {
+                        if (e.key === 'Escape') {
+                            this.value = '';
+                            // Trigger the input event to reset the search
+                            this.dispatchEvent(new Event('input'));
+                        }
+                    });
+                }
+            });
+        </script>
+        <script>
+            document.querySelectorAll('.folder-toggle').forEach(btn => {
+                btn.addEventListener('click', (event) => {
+                    const folder = btn.dataset.folder;
+                    const list = document.querySelector(`.blog-list[data-folder="${folder}"]`);
+                    list.classList.toggle('collapsed');
+                    const arrow = btn.querySelector('.arrow-icon');
+                    arrow.classList.toggle('rotated');
+                });
+            });
+        </script>
+
+        {% include 'footer.html' %}
+    </body>
+</html> 

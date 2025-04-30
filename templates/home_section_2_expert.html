@@ -1,0 +1,97 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/expertise.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/section-animations.css') }}" />
+
+<section class="expertise-section animate-section">
+    <div class="expertise-container">
+        <h2 class="expertise-title animate-bottom delay-100">Areas of Expertise</h2>
+        
+        <div class="expertise-grid staggered-container">
+            <!-- Computer Vision Card -->
+            <a href="/projects/python" class="expertise-card-link staggered-item">
+                <div class="expertise-card">
+                    <div class="card-header">
+                        <img src="/static/images/icons/code.svg" alt="Computer Vision Icon" class="expertise-logo">
+                        <div class="card-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </div>
+                    </div>
+                    <h3 class="expertise-name">Python</h3>
+                    <p class="expertise-description">Explore python projects that are beginner friendly and covers the important OOPS Concepts</p>
+                </div>
+            </a>
+            <!-- Machine Learning Card -->
+            <a href="/projects/machine-learning" class="expertise-card-link staggered-item">
+                <div class="expertise-card">
+                    <div class="card-header">
+                        <img src="/static/images/chart-icon.svg" alt="Machine Learning Icon" class="expertise-logo">
+                        <div class="card-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </div>
+                    </div>
+                    <h3 class="expertise-name">Machine Learning</h3>
+                    <p class="expertise-description">See how I implemented learning algorithms for predictive modeling and data analysis.</p>
+                </div>
+            </a>
+            
+            <!-- Deep Learning Card -->
+            <a href="/projects/deep-learning" class="expertise-card-link staggered-item">
+                <div class="expertise-card">
+                    <div class="card-header">
+                        <img src="/static/images/brain-icon.svg" alt="Deep Learning Icon" class="expertise-logo">
+                        <div class="card-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </div>
+                    </div>
+                    <h3 class="expertise-name">Deep Learning</h3>
+                    <p class="expertise-description">See how I built neural networks and deep learning models to solve complex problems.</p>
+                </div>
+            </a>
+            <!-- Computer Vision Card -->
+            <a href="/projects/computer-vision" class="expertise-card-link staggered-item">
+                <div class="expertise-card">
+                    <div class="card-header">
+                        <img src="/static/images/camera-icon.svg" alt="Computer Vision Icon" class="expertise-logo">
+                        <div class="card-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </div>
+                </div>
+                <h3 class="expertise-name">Computer Vision</h3>
+                    <p class="expertise-description">See how I leveraged deep learning models to build computer vision solutions for object detection.</p>
+            </div>
+            </a>
+
+            <!-- Generative AI Card -->
+            <a href="https://sairampenjarla.notion.site/187d56a2fc278047b1bbe65ce50bdcbe?v=187d56a2fc2781adb096000ca463fac5&pvs=4" class="expertise-card-link staggered-item">
+                <div class="expertise-card">
+                    <div class="card-header">
+                        <img src="/static/images/brain-icon.svg" alt="Generative AI Icon" class="expertise-logo">
+                        <div class="card-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </div>
+                    </div>
+                    <h3 class="expertise-name">Generative AI</h3>
+                    <p class="expertise-description">See how I built cutting-edge LLMs, AI agents, and RAG systems for autonomous applications.</p>
+                </div>
+            </a>
+
+            <!-- NLP Card -->
+            <a href="/projects/nlp" class="expertise-card-link staggered-item">
+                <div class="expertise-card">
+                    <div class="card-header">
+                        <img src="/static/images/note-icon.svg" alt="NLP Icon" class="expertise-logo">
+                        <div class="card-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </div>
+                </div>
+                <h3 class="expertise-name">NLP</h3>
+                    <p class="expertise-description">See how I developed transformer-based models for text classification and sentiment analysis.</p>
+                </div>
+            </a>
+            
+            
+        </div>
+    </div>
+</section>
+
+<script src="{{ url_for('static', filename='js/section-animations.js') }}"></script>

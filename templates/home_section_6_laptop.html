@@ -1,0 +1,119 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/section-animations.css') }}" />
+<section class="tutorials-section animate-section">
+  <div class="container">
+    <div class="content-wrapper laptop-wrapper-1 animate-section" data-delay="100">
+      <div class="laptop-container animate-left">
+        <img src="/static/images/youtube-laptop.png" alt="Laptop displaying YouTube tutorials" class="laptop-image">
+      </div>
+      <div class="tutorials-info animate-right">
+        <h2 class="tutorials-title">Step-by-Step Tutorials on YouTube</h2>
+        <p class="tutorials-description">
+          Discover detailed tutorials and step-by-step guides on my YouTube channel, perfect for
+          enhancing your skills and learning new concepts in Python and data science.
+        </p>
+        <a href="https://www.youtube.com/@sairampenjarla" class="btn-minimal">
+          <img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image">
+          YouTube</a>
+      </div>
+    </div>
+    <div class="content-wrapper laptop-wrapper-2 animate-section" data-delay="300">
+      <div class="tutorials-info animate-left">
+        <h2 class="tutorials-title">Projects and Tutorial Notebooks on GitHub</h2>
+        <p class="tutorials-description">
+          Visit my GitHub page to find a variety of projects and code samples that showcase practical applications and provide valuable learning resources.
+        </p>
+        <a href="https://github.com/sairam-penjarla" class="btn-minimal">
+          <img src="{{ url_for('static', filename='images/lucidev-icons/github.svg') }}" alt="GitHub" class="icon-image" />
+          GitHub
+        </a>
+      </div>
+      <div class="laptop-container animate-right">
+        <img src="/static/images/github-laptop.png" alt="Laptop displaying YouTube tutorials" class="laptop-image">
+      </div>
+    </div>
+    <div class="content-wrapper laptop-wrapper-2 animate-section" data-delay="500">
+      <div class="laptop-container animate-left">
+        <img src="/static/images/phones.png" alt="phones" class="laptop-image">
+      </div>
+      <div class="tutorials-info animate-right">
+        <h2 class="tutorials-title">Stay Updated and Connected</h2>
+        <p class="tutorials-description">
+          Follow me on Instagram and LinkedIn for regular updates, insightful tips, and professional connections that can help you stay informed and inspired in your data science journey.
+        </p>
+        <a href="https://www.linkedin.com/in/sairam-penjarla-b5041b121/" class="btn-minimal">
+          <img src="{{ url_for('static', filename='images/lucidev-icons/linkedin.svg') }}" alt="YouTube" class="icon-image">
+          LinkedIn
+        </a>
+        <a href="https://www.instagram.com/sairam.ipynb" class="btn-minimal">
+          <img src="{{ url_for('static', filename='images/lucidev-icons/instagram.svg') }}" alt="YouTube" class="icon-image">
+          Instagram
+        </a>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+<script src="{{ url_for('static', filename='js/section-animations.js') }}"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  // Intersection Observer for fade-in and animation effects
+  const observerOptions = {
+    threshold: 0.2,
+    rootMargin: '0px 0px -100px 0px'
+  };
+  
+  const tutorialsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Add animation classes when the section comes into view
+        const laptopContainer = entry.target.querySelector('.laptop-container');
+        const tutorialsInfo = entry.target.querySelector('.tutorials-info');
+        
+        if (laptopContainer) {
+          laptopContainer.style.opacity = '1';
+          laptopContainer.style.transform = 'perspective(1000px) rotateX(5deg) rotateY(-20deg)';
+        }
+        
+        if (tutorialsInfo) {
+          tutorialsInfo.style.opacity = '1';
+          tutorialsInfo.style.transform = 'translateX(0)';
+        }
+        
+        // Once animation is complete, no need to observe anymore
+        tutorialsObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+  
+  
+  // YouTube button click event
+  const youtubeButton = document.querySelector('.youtube-button');
+  if (youtubeButton) {
+    youtubeButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      // Open YouTube channel in a new tab
+      window.open('https://www.youtube.com/yourchannel', '_blank');
+    });
+  }
+  
+  // See All Projects link hover effect
+  const seeAllLink = document.querySelector('.see-all-link');
+  if (seeAllLink) {
+    seeAllLink.addEventListener('mouseenter', function() {
+      const arrow = this.querySelector('.arrow');
+      if (arrow) {
+        arrow.style.transition = 'transform 0.3s ease';
+        arrow.style.transform = 'translateX(5px)';
+      }
+    });
+    
+    seeAllLink.addEventListener('mouseleave', function() {
+      const arrow = this.querySelector('.arrow');
+      if (arrow) {
+        arrow.style.transform = 'translateX(0)';
+      }
+    });
+  }
+});
+</script>

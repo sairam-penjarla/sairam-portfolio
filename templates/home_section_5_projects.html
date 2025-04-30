@@ -1,0 +1,206 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/section-animations.css') }}" />
+<section class="projects-section animate-section" id="projects-section">
+    <div class="container">
+        <div class="projects-header animate-bottom delay-100">
+            <h2 class="section-title">Projects</h2>
+            <p class="section-subtitle">Check out what I've been working on</p>
+        </div>
+
+        <ul class="projects-list staggered-container">
+            <!-- Project 1: ShabSync -->
+            <li class="project-card horizontal staggered-item">
+                <div class="project-content">
+                    <h3 class="project-title">ShabSync</h3>
+                    <p class="project-tagline">Real-time Text to Speech converter</p>
+                    <p class="project-description">ShabSync is a text-to-speech converter web application that transforms written text into natural-sounding speech. The application offers a user-friendly interface with multiple voice options, speed controls, and a history feature to retrieve previous sessions.</p>
+                    <div class="project-technologies">
+                        <span class="tech-tag">Azure AI Speech</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">Azure App Service</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://github.com/sairam-penjarla/ShabSync" class="project-link github-link" target="_blank">
+                            <img src="{{ url_for('static', filename='images/lucidev-icons/github.svg') }}" alt="GitHub" class="icon-image" />
+                        </a>
+                        <a href="https://youtu.be/IEW6L0_KpBM?si=IQuIiKBunrkqZENL" class="project-link youtube-link" target="_blank">
+                            <img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image" />
+                        </a>
+                        <a href="https://shabsync.azurewebsites.net" class="project-link try-now" target="_blank">
+                            <img src="{{ url_for('static', filename='images/lucidev-icons/globe.svg') }}" alt="External Link" class="icon-image" />
+                            <span class="link-text">Try It Now</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-media">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/IEW6L0_KpBM?si=YyjtHGimyk3coaH1" title="ShabSync Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </li>
+            
+            <!-- Project 2: AI PPT Maker -->
+            <li class="project-card horizontal staggered-item">
+            <div class="project-content">
+                    <h3 class="project-title">AI PowerPoint Creator</h3>
+                    <p class="project-tagline">Create and Present PPTs using AI</p>
+                    <p class="project-description">An innovative application that lets users create professional PowerPoint presentations using AI. Simply describe what you want, and the app generates complete presentations with content, design, and formatting. Perfect for professionals, educators, and students looking to save time on presentation creation.</p>
+                    <div class="project-technologies">
+                        <span class="tech-tag">Azure OpenAI</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">Python-PPTX</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="#" class="project-link github-link" target="_blank">
+                            <img src="{{ url_for('static', filename='images/lucidev-icons/github.svg') }}" alt="GitHub" class="icon-image" />
+                        </a>
+                        <a href="#" class="project-link youtube-link" target="_blank">
+                            <img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image" />
+                        </a>
+                        <a href="#" class="project-link try-now" target="_blank">
+                            <img src="{{ url_for('static', filename='images/lucidev-icons/globe.svg') }}" alt="External Link" class="icon-image" />
+                            <span class="link-text">Coming Soon</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-media">
+                    <div class="coming-soon-placeholder">
+                        <h3>Demo Coming Soon</h3>
+                        <p>Video demonstration and live application will be available shortly.</p>
+                    </div>
+                </div>
+            </li>
+            
+            <!-- Project 3: L&T Virtual Assistant -->
+            <li class="project-card horizontal staggered-item">
+                <div class="project-content">
+                    <h3 class="project-title">L&T Virtual Assistant</h3>
+                    <p class="project-tagline">RAG-powered Chatbot for L&T Website</p>
+                    <p class="project-description">A virtual assistant chatbot built for the L&T website using public information. This intelligent assistant leverages Retrieval Augmented Generation (RAG) to provide accurate, context-aware responses to user queries about L&T products, services, and information.</p>
+                    <div class="project-technologies">
+                        <span class="tech-tag">Azure AI Search</span>
+                        <span class="tech-tag">Azure Document Intelligence</span>
+                        <span class="tech-tag">RAG</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="#" class="project-link github-link" target="_blank">
+                            <img src="{{ url_for('static', filename='images/lucidev-icons/github.svg') }}" alt="GitHub" class="icon-image" />
+                        </a>
+                        <a href="#" class="project-link youtube-link" target="_blank">
+                            <img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image" />
+                        </a>
+                        <a href="#" class="project-link try-now" target="_blank">
+                            <img src="{{ url_for('static', filename='images/lucidev-icons/globe.svg') }}" alt="External Link" class="icon-image" />
+                            <span class="link-text">Coming Soon</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-media">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/k1LL1cKoCFI?si=TsHssEwJv8uw80DY" title="Virtual Assistant Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </li>
+            
+            <!-- Project 4: Content Generator -->
+            <li class="project-card horizontal staggered-item">
+                <div class="project-content">
+                    <h3 class="project-title">LinkedIn Content Generator</h3>
+                    <p class="project-tagline">AI-powered Content Creation & Calendar</p>
+                    <p class="project-description">A powerful tool that generates engaging LinkedIn posts and helps manage content calendars. This application uses AI to create professional, attention-grabbing content while providing a comprehensive scheduling system to organize when and what to post, optimizing your LinkedIn presence.</p>
+                    <div class="project-technologies">
+                        <span class="tech-tag">Natural Language Processing</span>
+                        <span class="tech-tag">Content Management</span>
+                        <span class="tech-tag">Social Media API</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="#" class="project-link github-link" target="_blank">
+                            <img src="{{ url_for('static', filename='images/lucidev-icons/github.svg') }}" alt="GitHub" class="icon-image" />
+                        </a>
+                        <a href="#" class="project-link youtube-link" target="_blank">
+                            <img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image" />
+                        </a>
+                        <a href="#" class="project-link try-now" target="_blank">
+                            <img src="{{ url_for('static', filename='images/lucidev-icons/globe.svg') }}" alt="External Link" class="icon-image" />
+                            <span class="link-text">Coming Soon</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-media">
+                    <div class="coming-soon-placeholder">
+                        <h3>Demo Coming Soon</h3>
+                        <p>Video demonstration and live application will be available shortly.</p>
+            </div>
+        </div>
+            </li>
+        </ul>
+    </div>
+  </section>
+
+<script src="{{ url_for('static', filename='js/section-animations.js') }}"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Button click handlers
+        const demoButton = document.querySelector(".btn-primary");
+        if (demoButton) {
+            demoButton.addEventListener("click", function (e) {
+                e.preventDefault();
+                // Modal video player could be implemented here
+                alert("Demo video will play here!");
+            });
+        }
+
+        const tryItButton = document.querySelector(".btn-cta");
+        if (tryItButton) {
+            tryItButton.addEventListener("click", function (e) {
+                e.preventDefault();
+                // Redirect to the actual project
+                window.open("https://your-project-url.com", "_blank");
+            });
+        }
+
+        // Optional: Add hover effect to highlight technical terms
+        const highlights = document.querySelectorAll(".highlight");
+        highlights.forEach((highlight) => {
+            highlight.addEventListener("mouseover", function () {
+                this.style.backgroundColor = "#dce6ff";
+            });
+
+            highlight.addEventListener("mouseout", function () {
+                this.style.backgroundColor = "#f0f4ff";
+            });
+        });
+
+        // Optional: Toggle dark/light mode to demonstrate the project's theme functionality
+        const toggleThemeButton = document.createElement("button");
+        toggleThemeButton.textContent = "🌙 Toggle Theme";
+        toggleThemeButton.className = "theme-toggle";
+        toggleThemeButton.style.position = "absolute";
+        toggleThemeButton.style.top = "10px";
+        toggleThemeButton.style.right = "10px";
+        toggleThemeButton.style.padding = "5px 10px";
+        toggleThemeButton.style.cursor = "pointer";
+
+        const projectCard = document.querySelector(".project-card");
+        if (projectCard && false) {
+            // Disabled for now, enable if needed
+            projectCard.style.position = "relative";
+            projectCard.appendChild(toggleThemeButton);
+
+            toggleThemeButton.addEventListener("click", function () {
+                document.body.classList.toggle("dark-mode");
+
+                if (document.body.classList.contains("dark-mode")) {
+                    projectCard.style.backgroundColor = "#222";
+                    projectCard.style.color = "#fff";
+                    document.querySelectorAll(".project-description p").forEach((p) => {
+                        p.style.color = "#ddd";
+                    });
+                } else {
+                    projectCard.style.backgroundColor = "#fff";
+                    projectCard.style.color = "#000";
+                    document.querySelectorAll(".project-description p").forEach((p) => {
+                        p.style.color = "#333";
+                    });
+                }
+            });
+        }
+    });
+</script>

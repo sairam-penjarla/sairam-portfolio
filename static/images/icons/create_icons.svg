@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <!-- Python icon -->
+  <g id="python" transform="translate(0,0)">
+    <circle cx="50" cy="50" r="40" fill="#3776AB"/>
+    <path d="M50,20 C36.7,20 35,26.7 35,33.5 V43 H65 V46 H25 C18.2,46 12.5,50.3 12.5,60 C12.5,69.7 18.2,80 25,80 H35 V70 C35,61.7 43.7,55 50,55 H65 C72.5,55 75,50.3 75,43 V33.5 C75,26.7 72.5,20 50,20 z M40,30 C42.8,30 45,32.2 45,35 C45,37.8 42.8,40 40,40 C37.2,40 35,37.8 35,35 C35,32.2 37.2,30 40,30 z" fill="white"/>
+    <path d="M50,80 C63.3,80 65,73.3 65,66.5 V57 H35 V54 H75 C81.8,54 87.5,49.7 87.5,40 C87.5,30.3 81.8,20 75,20 H65 V30 C65,38.3 56.3,45 50,45 H35 C27.5,45 25,49.7 25,57 V66.5 C25,73.3 27.5,80 50,80 z M60,70 C57.2,70 55,67.8 55,65 C55,62.2 57.2,60 60,60 C62.8,60 65,62.2 65,65 C65,67.8 62.8,70 60,70 z" fill="white"/>
+  </g>
+  
+  <!-- Machine Learning icon -->
+  <g id="ml" transform="translate(120,0)">
+    <circle cx="50" cy="50" r="40" fill="#FF6600"/>
+    <path d="M30,30 L70,30 L70,70 L30,70 z" fill="none" stroke="white" stroke-width="4"/>
+    <circle cx="40" cy="40" r="5" fill="white"/>
+    <circle cx="60" cy="40" r="5" fill="white"/>
+    <circle cx="40" cy="60" r="5" fill="white"/>
+    <circle cx="60" cy="60" r="5" fill="white"/>
+    <path d="M40,40 L60,60 M40,60 L60,40" stroke="white" stroke-width="2"/>
+  </g>
+  
+  <!-- Deep Learning icon -->
+  <g id="dl" transform="translate(240,0)">
+    <circle cx="50" cy="50" r="40" fill="#6A11CB"/>
+    <path d="M30,25 L70,25 L70,35 L30,35 z" fill="white"/>
+    <path d="M25,45 L75,45 L75,55 L25,55 z" fill="white"/>
+    <path d="M30,65 L70,65 L70,75 L30,75 z" fill="white"/>
+    <circle cx="40" cy="30" r="3" fill="#6A11CB"/>
+    <circle cx="60" cy="30" r="3" fill="#6A11CB"/>
+    <circle cx="35" cy="50" r="3" fill="#6A11CB"/>
+    <circle cx="50" cy="50" r="3" fill="#6A11CB"/>
+    <circle cx="65" cy="50" r="3" fill="#6A11CB"/>
+    <circle cx="40" cy="70" r="3" fill="#6A11CB"/>
+    <circle cx="60" cy="70" r="3" fill="#6A11CB"/>
+    <path d="M40,30 L35,50 M40,30 L50,50 M60,30 L50,50 M60,30 L65,50 M35,50 L40,70 M50,50 L40,70 M50,50 L60,70 M65,50 L60,70" stroke="#6A11CB" stroke-width="1.5"/>
+  </g>
+  
+  <!-- NLP icon -->
+  <g id="nlp" transform="translate(360,0)">
+    <circle cx="50" cy="50" r="40" fill="#11998E"/>
+    <path d="M30,30 Q50,20 70,30 L70,70 Q50,80 30,70 z" fill="none" stroke="white" stroke-width="3"/>
+    <path d="M40,40 L60,40" stroke="white" stroke-width="2"/>
+    <path d="M40,50 L60,50" stroke="white" stroke-width="2"/>
+    <path d="M40,60 L60,60" stroke="white" stroke-width="2"/>
+  </g>
+  
+  <!-- Computer Vision icon -->
+  <g id="cv" transform="translate(480,0)">
+    <circle cx="50" cy="50" r="40" fill="#F43B47"/>
+    <circle cx="50" cy="50" r="15" fill="none" stroke="white" stroke-width="3"/>
+    <circle cx="50" cy="50" r="5" fill="white"/>
+    <path d="M50,25 L50,35 M50,65 L50,75 M25,50 L35,50 M65,50 L75,50" stroke="white" stroke-width="3"/>
+    <path d="M33,33 L40,40 M67,33 L60,40 M33,67 L40,60 M67,67 L60,60" stroke="white" stroke-width="2"/>
+  </g>
+  
+  <!-- Generative AI icon -->
+  <g id="genai" transform="translate(0,120)">
+    <circle cx="50" cy="50" r="40" fill="#833AB4"/>
+    <path d="M30,35 L50,25 L70,35 L70,65 L50,75 L30,65 z" fill="none" stroke="white" stroke-width="3"/>
+    <path d="M50,25 L50,75" stroke="white" stroke-width="2"/>
+    <path d="M30,35 L70,65" stroke="white" stroke-width="2"/>
+    <path d="M70,35 L30,65" stroke="white" stroke-width="2"/>
+    <circle cx="50" cy="25" r="3" fill="white"/>
+    <circle cx="30" cy="35" r="3" fill="white"/>
+    <circle cx="70" cy="35" r="3" fill="white"/>
+    <circle cx="30" cy="65" r="3" fill="white"/>
+    <circle cx="70" cy="65" r="3" fill="white"/>
+    <circle cx="50" cy="75" r="3" fill="white"/>
+    <circle cx="50" cy="50" r="5" fill="white"/>
+  </g>
+</svg> 

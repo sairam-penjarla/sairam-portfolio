@@ -1,0 +1,464 @@
+/* Modern Projects Section Styles */
+.projects-section {
+  padding: 80px 0;
+  background-color: var(--border-color);
+  display: flex;
+  justify-content: center;
+}
+
+.projects-container {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* Header Styling */
+.projects-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Projects List */
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+/* Project Card Styling */
+.project-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Horizontal Card Layout */
+.project-card.horizontal {
+  display: flex;
+  flex-direction: row;
+}
+
+.project-card.horizontal .project-content {
+  width: 50%;
+  /* padding: 9px; */
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card.horizontal .project-media {
+  width: 50%;
+  height: auto;
+  padding-bottom: 0;
+}
+
+/* Project Media */
+.project-media {
+  position: relative;
+  background-color: #f5f5f5;
+  overflow: hidden;
+}
+
+.project-media iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.placeholder-media {
+  background-color: var(--background-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--text-secondary);
+  opacity: 0.7;
+  text-align: center;
+}
+
+.placeholder-content p {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Project Content */
+.project-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 10px 0;
+}
+
+.project-tagline {
+  font-size: 1.1rem;
+  color: var(--text-accent);
+  font-weight: 500;
+  margin: 0 0 16px 0;
+}
+
+.project-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 25px;
+  flex-grow: 1;
+}
+
+/* Technology Tags */
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 25px;
+}
+
+/* Project Technologies - Grid Layout */
+.project-technologies {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, min(80px, max-content));
+  gap: 12px;
+  margin-bottom: 25px;
+  width: 100%;
+  justify-content: start;
+  grid-auto-flow: dense; /* Helps fill in gaps */
+}
+
+.project-technologies .tech-tag {
+  background-color: var(--background-secondary);
+  color: var(--text-secondary);
+  padding: 8px 14px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  width: fit-content;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.project-technologies .tech-tag:hover {
+  background-color: var(--brand-primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.tech-tag {
+  background-color: var(--background-secondary);
+  color: var(--text-secondary);
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Project Links */
+.project-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.project-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  border-radius: 21px;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+  overflow: hidden;
+  padding: 0;
+  min-width: 42px;
+  max-width: 42px;
+  width: 42px;
+}
+
+.project-link .icon-image {
+  width: 18px;
+  height: 18px;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.project-link .link-text {
+  max-width: 0;
+  opacity: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: 500;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  margin-left: 0;
+}
+
+/* Hover effect */
+.project-link:hover {
+  max-width: 200px;
+  width: auto;
+  /* padding-right: 16px; */
+}
+
+.project-link:hover .link-text {
+  max-width: 150px;
+  opacity: 1;
+  margin-left: 8px;
+}
+
+.project-link:hover .icon-image {
+  opacity: 1;
+}
+
+/* Link colors */
+.github-link:hover {
+  background-color: #24292e;
+  color: white;
+}
+
+.github-link:hover .icon-image {
+  filter: brightness(0) invert(1);
+}
+
+.youtube-link:hover {
+  background-color: #ff0000;
+  color: white;
+}
+
+.youtube-link:hover .icon-image {
+  filter: brightness(0) invert(1);
+}
+
+/* Make Try Now button more prominent */
+.try-now {
+  background-color: var(--brand-primary);
+  max-width: none;
+  width: auto;
+  padding: 0 16px;
+  color: white;
+  font-weight: 600;
+}
+
+.try-now .link-text {
+  max-width: 150px;
+  opacity: 1;
+  margin-left: 8px;
+}
+
+.try-now .icon-image {
+  filter: brightness(0) invert(1);
+  opacity: 1;
+}
+
+.try-now:hover {
+  background-color: var(--link-hover);
+  box-shadow: 0 5px 15px rgba(32, 97, 183, 0.3);
+}
+
+.coming-soon:hover {
+  background-color: #6c757d;
+  color: white;
+}
+
+/* CTA Section */
+.projects-cta {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.projects-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+  border-radius: 30px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.projects-view-all:hover {
+  background-color: var(--brand-primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(32, 97, 183, 0.25);
+}
+
+.projects-view-all svg {
+  transition: transform 0.2s ease;
+}
+
+.projects-view-all:hover svg {
+  transform: translateX(3px);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .projects-section {
+    padding: 70px 0;
+  }
+  
+  .projects-title {
+    font-size: 2.2rem;
+  }
+  
+  .project-card.horizontal {
+    flex-direction: column;
+  }
+  
+  .project-card.horizontal .project-content,
+  .project-card.horizontal .project-media {
+    width: 100%;
+  }
+  
+  .project-card.horizontal .project-media {
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  }
+  
+  .project-card.horizontal .project-content {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-section {
+    padding: 60px 0;
+  }
+  
+  .project-content {
+    padding: 25px;
+  }
+  
+  .project-title {
+    font-size: 1.5rem;
+  }
+  
+  .project-tagline {
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+  
+  .project-description {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+  
+  .tech-tag {
+    padding: 5px 12px;
+    font-size: 0.8rem;
+  }
+  
+  .project-link {
+    height: 38px;
+  }
+  
+  .project-link svg {
+    min-width: 38px;
+    height: 38px;
+    padding: 9px;
+  }
+  
+  .link-text {
+    font-size: 0.8rem;
+  }
+  
+  .project-link:hover .link-text {
+    font-size: 0.9rem;
+  }
+  
+  .project-technologies {
+    grid-template-columns: repeat(auto-fill, minmax(70px, max-content));
+    gap: 8px;
+  }
+  
+  .project-technologies .tech-tag {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .projects-section {
+    padding: 50px 0;
+  }
+  
+  .projects-header {
+    margin-bottom: 40px;
+  }
+  
+  .projects-title {
+    font-size: 1.8rem;
+  }
+  
+  .projects-subtitle {
+    font-size: 1rem;
+  }
+  
+  .project-content {
+    padding: 20px;
+  }
+  
+  .project-title {
+    font-size: 1.3rem;
+  }
+  
+  .project-description {
+    font-size: 0.9rem;
+  }
+  
+  .project-links {
+    gap: 8px;
+  }
+  
+  .project-link.try-now {
+    width: 100%;
+    justify-content: center;
+    order: -1;
+    margin-bottom: 5px;
+  }
+} 

@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/section-animations.css') }}" />
+<section class="hero-container animate-section">
+    <div class="hero-content">
+        <div class="hero-text animate-left delay-100">
+            <h2 class="hero-greeting">Hey, I am Sai Ram</h2>
+            <h1 class="hero-headline">I create <span class="highlight">High Quality Solutions</span> to solve real-world challenges</h1>
+            <p class="hero-description">I'm an AI/ML Engineer with expertise in building machine learning models, AI algorithms, and RAG systems to address business challenges. Skilled in NLP, computer vision, web integration, and scalable model deployment. Strong collaborator, mentor, and contributor to engineering best practices.</p>
+        </div>
+        <div class="hero-image-container animate-right delay-300">
+            <img src="/static/images/langing_page_photo.png" alt="Sai Ram" class="hero-image" />
+        </div>
+    </div>
+</section>
+
+<script src="{{ url_for('static', filename='js/section-animations.js') }}"></script>
+<script>
+    // Add subtle parallax effect to decorative elements
+    document.addEventListener("DOMContentLoaded", function () {
+        const decorations = document.querySelectorAll(".decoration");
+
+        // Disable parallax on mobile devices
+        function checkMobile() {
+            if (window.innerWidth <= 768) {
+                document.removeEventListener("mousemove", arguments.callee);
+                decorations.forEach((decoration) => {
+                    decoration.style.transform = "none";
+                });
+            }
+        }
+
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+    });
+</script>

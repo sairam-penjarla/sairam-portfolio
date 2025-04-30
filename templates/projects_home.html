@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science Projects - Sai Ram Penjarla</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/categories-style.css') }}">
+</head>
+<body>
+    {% include 'header.html' %}
+    
+    <!-- Hero Section -->
+    <section class="hero-container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2 class="hero-greeting">Projects Collection</h2>
+                <h1 class="hero-headline">Explore Data Science & AI <span class="highlight">Learning Paths</span></h1>
+                <p class="hero-description">
+                    Discover specialized tracks designed to build your expertise in today's most in-demand 
+                    data science and AI skills. Each path includes hands-on projects to help you master the concepts.
+                </p>
+            </div>
+            <div class="hero-image-container">
+                <img src="/static/images/langing_page_photo.png" alt="Data Science Projects" class="hero-image">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <div class="section-header">
+            <h2 class="section-title">Project Categories</h2>
+            <p class="section-description">Choose a category to explore projects tailored to specific skills and technologies</p>
+        </div>
+        
+        <div class="cards-container">
+            <!-- Python Card -->
+            <div class="card fade-in">
+                <div class="card-accent python-color"></div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <img src="/static/images/lucidev-icons/code.svg" alt="Python icon">
+                    </div>
+                    <h3 class="card-title">Python Programming</h3>
+                    <p class="card-description">Master Python fundamentals and advanced concepts essential for data science, automation, and backend development.</p>
+                    
+                    <a href="/projects/python" class="card-button">Explore</a>
+                </div>
+            </div>
+
+            <!-- Machine Learning Card -->
+            <div class="card fade-in">
+                <div class="card-accent ml-color"></div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <img src="/static/images/lucidev-icons/chart-bar-big.svg" alt="Machine Learning icon">
+                    </div>
+                    <h3 class="card-title">Machine Learning</h3>
+                    <p class="card-description">Learn predictive modeling, regression, classification, and clustering to solve real-world business problems.</p>
+                    
+                    <a href="/projects/machine-learning" class="card-button">Explore</a>
+                </div>
+            </div>
+
+            <!-- Deep Learning Card -->
+            <div class="card fade-in">
+                <div class="card-accent dl-color"></div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <img src="/static/images/lucidev-icons/brain.svg" alt="Deep Learning icon">
+                    </div>
+                    <h3 class="card-title">Deep Learning</h3>
+                    <p class="card-description">Dive into neural networks, CNNs, RNNs, and transformers to create sophisticated AI models and applications.</p>
+                    
+                    <a href="/projects/deep-learning" class="card-button">Explore</a>
+                </div>
+            </div>
+
+            <!-- NLP Card -->
+            <div class="card fade-in">
+                <div class="card-accent nlp-color"></div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <img src="/static/images/lucidev-icons/message-square.svg" alt="NLP icon">
+                    </div>
+                    <h3 class="card-title">Natural Language Processing</h3>
+                    <p class="card-description">Build text analytics systems, chatbots, and language models that understand and generate human language.</p>
+                    
+                    <a href="/projects/nlp" class="card-button">Explore</a>
+                </div>
+            </div>
+
+            <!-- Computer Vision Card -->
+            <div class="card fade-in">
+                <div class="card-accent cv-color"></div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <img src="/static/images/lucidev-icons/eye.svg" alt="Computer Vision icon">
+                    </div>
+                    <h3 class="card-title">Computer Vision</h3>
+                    <p class="card-description">Develop skills in image recognition, object detection, and image generation to create vision-enabled applications.</p>
+                    
+                    <a href="/projects/computer-vision" class="card-button">Explore</a>
+                </div>
+            </div>
+
+            <!-- Generative AI Card -->
+            <div class="card fade-in">
+                <div class="card-accent genai-color"></div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <img src="/static/images/lucidev-icons/layers.svg" alt="Generative AI icon">
+                    </div>
+                    <h3 class="card-title">Generative AI</h3>
+                    <p class="card-description">Explore diffusion models, LLMs, and multimodal AI to create cutting-edge generative applications and tools.</p>
+                    
+                    <a href="/gen-ai" class="card-button">Explore</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    {% include 'footer.html' %}
+    <script src="{{ url_for('static', filename='js/animations.js') }}"></script>
+</body>
+</html>

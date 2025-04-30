@@ -1,0 +1,161 @@
+.content {
+    flex: 1;
+    /* padding: 20px; */
+    text-align: center;
+    width: 100%;
+}
+
+.hero {
+    background-color: var(--background-primary);
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    color: var(--brand-primary);
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.footer {
+    background-color: var(--brand-primary);
+    color: white;
+    padding: 40px 20px;
+    width: 100%;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.footer-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+    cursor: pointer;
+    color: white;
+}
+
+.primary-button {
+    background-color: white;
+    color: var(--brand-primary);
+}
+
+.primary-button:hover {
+    background-color: #f0f0f0;
+}
+
+.secondary-button {
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+}
+
+.secondary-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.footer-section a:hover {
+    opacity: 0.8;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.social-icon:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.social-icon img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+}
+
+@media (max-width: 768px) {
+    .footer-top {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .footer-section {
+        min-width: 100%;
+    }
+
+    .footer-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}  

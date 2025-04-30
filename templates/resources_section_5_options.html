@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/section-animations.css') }}" />
+
+<!-- Learning Paths Options Section -->
+<section class="options-section animate-section">
+    <div class="container">
+        <div class="options-container">
+            <div class="option-col animate-left delay-100">
+                <h2>Don't know the basics to build a project?</h2>
+                <p>Learn from my YouTube channel</p>
+                <a href="https://www.youtube.com/@sairampenjarla" class="option-button">Learn Basics</a>
+            </div>
+            
+            <div class="divider animate-scale delay-200">
+                <span>OR</span>
+            </div>
+            
+            <div class="option-col animate-right delay-100">
+                <h2>Ready to get started?</h2>
+                <p>Explore the project catalog and start building.</p>
+                <a href="/projects/" class="option-button">Project Catalog</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="{{ url_for('static', filename='js/section-animations.js') }}"></script> 

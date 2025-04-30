@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ category.replace('-', ' ').title() }} Projects - Sai Ram Penjarla</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/projects_styles.css') }}" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+        {% include 'header.html' %}
+        <div class="container">
+            <div class="course-header">
+                <h1>{{ category.replace('-', ' ').title() }} <span class="highlight-text">Projects</span></h1>
+                <p class="course-description">Build your skills with hands-on projects</p>
+            </div>
+
+            <div class="course-grid">
+                {% for blog in blogs %}
+                <div class="course-card">
+                    <a href="/projects/{{ category }}/{{ blog.slug }}" class="course-content">
+                        <h3 class="course-title">
+                            <i class="fas fa-chevron-right course-arrow"></i>
+                            {{ blog.title }}
+                        </h3>
+                        {% if blog.subtitle %}
+                        <p class="course-subtitle">{{ blog.subtitle }}</p>
+                        {% endif %}
+                    </a>
+                    <div class="course-icon">
+                        {% if category == 'python' %}
+                            <i class="fab fa-python"></i>
+                        {% elif category == 'machine-learning' %}
+                            <i class="fas fa-brain"></i>
+                        {% elif category == 'deep-learning' %}
+                            <i class="fas fa-network-wired"></i>
+                        {% elif category == 'nlp' %}
+                            <i class="fas fa-comment-dots"></i>
+                        {% elif category == 'computer-vision' %}
+                            <i class="fas fa-eye"></i>
+                        {% elif category == 'gen-ai' %}
+                            <i class="fas fa-robot"></i>
+                        {% else %}
+                            <i class="fas fa-code"></i>
+                        {% endif %}
+                    </div>
+                    <div class="course-tech">
+                        <span class="tech-tag">{{ category }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% include 'footer.html' %}
+    </body>
+</html>

@@ -1,0 +1,80 @@
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+
+    <div class="content">
+        <div class="hero">
+            <h1>Have a project in mind? Let's get to work. 👋📬</h1>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-title">Let's Stay Connected</div>
+                <div class="footer-buttons">
+                    <a href="mailto:psairam9301@gmail.com" class="footer-button btn-minimal">Contact me</a>
+                    <a href="https://youtube.com/playlist?list=PL9wcLF5LwK5Dy1bIM8af-Bh1a0eIeWaJM&si=YKdntrRCLS5cv_vV" class="footer-button btn-minimal">View work</a>
+                </div>
+            </div>
+            
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sai Ram Penjarla</h3>
+                    <div class="follow-text">Follow me on</div>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/sairam.ipynb" class="social-icon">
+                            <img src="/static/images/instagram-footer.png" alt="Instagram">
+                        </a>
+                        <a href="https://www.linkedin.com/in/sairam-penjarla-b5041b121/" class="social-icon">
+                            <img src="/static/images/linkedin-footer.png" alt="LinkedIn">
+                        </a>
+                        <a href="https://github.com/sairam-penjarla" class="social-icon">
+                            <img src="/static/images/github-footer.png" alt="GitHub">
+                        </a>
+                        <a href="http://youtube.com/@sairampenjarla" class="social-icon">
+                            <img src="/static/images/youtube-footer.png" alt="YouTube">
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Sections</h3>
+                    <ul>
+                        <li><a href="/">About me</a></li>
+                        <li><a href="/resources">Roadmap</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Projects</h3>
+                    <ul>
+                        <li><a href="/projects/python">Python</a></li>
+                        <li><a href="/projects/machine-learning">Machine Learning</a></li>
+                        <li><a href="/projects/deep-learning">Deep Learning</a></li>
+                        <li><a href="/projects/computer-vision">Computer Vision</a></li>
+                        <li><a href="/projects/nlp">NLP</a></li>
+                        <li><a href="/gen-ai">Gen AI</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>For Beginners</h3>
+                    <ul>
+                        <li><a href="/free-courses/Python/0%20Basics%20of%20python">Python</a></li>
+                        <li><a href="/free-courses/SQL/1%20basics">SQL</a></li>
+                        <li><a href="/free-courses/Git/introduction">Git</a></li>
+                        <li><a href="/free-courses/Environment/basics">Environment</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="{{ url_for('static', filename='files/roadmap.pdf') }}">Roadmap</a></li>
+                        <li><a href="https://chat.whatsapp.com/IJ3ejZ81bfxDlK0QGe8uc7">Whatsapp group</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>

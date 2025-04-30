@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/section-animations.css') }}" />
+<!-- Divider Section -->
+<section class="hero-section options-section animate-section">
+    <div class="hero-container options-container">
+        <div class="divider-line animate-bottom delay-100"></div>
+        <div class="or-circle animate-scale delay-200">OR</div>
+
+        <div class="option animate-left delay-300">
+            <h3 class="option-title">Don't know the basics to build a project?</h3>
+            <p class="option-description">Learn from my YouTube channel</p>
+            <a href="https://www.youtube.com/c/DATASCIENCESHORTS" class="btn-minimal">Learn Basics</a>
+        </div>
+
+        <div class="option animate-right delay-300">
+            <h3 class="option-title">Ready to get started?</h3>
+            <p class="option-description">Explore the project catalog and start building.</p>
+            <a href="/projects/" class="btn-minimal">Project Catalog</a>
+        </div>
+    </div>
+</section>
+
+<script src="{{ url_for('static', filename='js/section-animations.js') }}"></script> 
