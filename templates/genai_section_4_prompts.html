@@ -1,9 +1,13 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/genai-sections.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/genai-minimal.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/mobile-optimizations.css') }}" />
+
 <section class="prompts-section animate-section" id="prompts-section">
     <div class="container">
         <div class="prompts-header animate-bottom delay-100">
-            <div class="hero-text animate-left delay-100">
-                <h1 class="hero-headline">Expert LLM Prompting Techniques</h1>
+            <div class="hero-text">
+                <h2 class="hero-greeting">Prompt Engineering</h2>
+                <h1 class="hero-headline dm-serif-text-regular">Expert LLM Prompting Techniques</h1>
                 <p class="hero-description">
                     I craft precise, effective prompts that unlock the full potential of large language models. These carefully engineered prompts drive consistent, high-quality outputs across various applications—from content generation to complex reasoning tasks.
                 </p>
@@ -13,11 +17,22 @@
         <div class="prompts-container">
             <!-- Prompt Card 1: RAG Prompt -->
             <div class="prompt-card animate-bottom delay-200">
-                <div class="prompt-title">RAG Context Enrichment Prompt</div>
-                <div class="prompt-description">
-                    This prompt template optimizes retrieval-augmented generation by providing precise instructions on how to use retrieved context.
+                <div class="prompt-card-left">
+                    <div class="prompt-title">RAG Context Enrichment Prompt</div>
+                    <div class="prompt-description">
+                        This prompt template optimizes retrieval-augmented generation by providing precise instructions on how to use retrieved context.
+                    </div>
+                    <div class="prompt-tags">
+                        <span class="prompt-tag">RAG</span>
+                        <span class="prompt-tag">Context-Aware</span>
+                        <span class="prompt-tag">Information Retrieval</span>
+                    </div>
+                    <div class="prompt-metadata">
+                        <span class="prompt-model">Optimized for: GPT-3.5/4, Claude, LLaMA</span>
+                    </div>
                 </div>
-                <div class="prompt-content">You are an AI assistant with access to contextual information. 
+                <div class="prompt-card-right">
+                    <div class="prompt-content">You are an AI assistant with access to contextual information. 
 Your task is to answer the user's question accurately based on the provided context.
 
 Context:
@@ -34,24 +49,27 @@ Instructions:
 6. Format your response for clarity and readability.
 
 Answer:</div>
-                <div class="prompt-tags">
-                    <span class="prompt-tag">RAG</span>
-                    <span class="prompt-tag">Context-Aware</span>
-                    <span class="prompt-tag">Information Retrieval</span>
-                </div>
-                <div class="prompt-metadata">
-                    <span class="prompt-model">Optimized for: GPT-3.5/4, Claude, LLaMA</span>
-                    <span class="prompt-date">Last updated: May 2023</span>
                 </div>
             </div>
             
             <!-- Prompt Card 2: Few-Shot Chain-of-Thought -->
             <div class="prompt-card animate-bottom delay-300">
-                <div class="prompt-title">Few-Shot Chain-of-Thought Reasoning</div>
-                <div class="prompt-description">
-                    This prompt template improves complex reasoning by showing the model examples of step-by-step thinking processes.
+                <div class="prompt-card-left">
+                    <div class="prompt-title">Few-Shot Chain-of-Thought Reasoning</div>
+                    <div class="prompt-description">
+                        This prompt template improves complex reasoning by showing the model examples of step-by-step thinking processes.
+                    </div>
+                    <div class="prompt-tags">
+                        <span class="prompt-tag">Chain-of-Thought</span>
+                        <span class="prompt-tag">Few-Shot Learning</span>
+                        <span class="prompt-tag">Step-by-Step Reasoning</span>
+                    </div>
+                    <div class="prompt-metadata">
+                        <span class="prompt-model">Optimized for: GPT-4, Claude 2</span>
+                    </div>
                 </div>
-                <div class="prompt-content">I'm going to give you a complex reasoning problem. Please solve it step-by-step, showing your thinking process.
+                <div class="prompt-card-right">
+                    <div class="prompt-content">I'm going to give you a complex reasoning problem. Please solve it step-by-step, showing your thinking process.
 
 Example 1:
 Problem: If John has 5 apples and gives 2 to Mary, then buys 3 more and gives half of all his apples to Susan, how many apples does John have left?
@@ -74,24 +92,27 @@ Answer: It will take 2.5 hours.
 Now solve this problem:
 Problem: {problem}
 Reasoning:</div>
-                <div class="prompt-tags">
-                    <span class="prompt-tag">Chain-of-Thought</span>
-                    <span class="prompt-tag">Few-Shot Learning</span>
-                    <span class="prompt-tag">Step-by-Step Reasoning</span>
-                </div>
-                <div class="prompt-metadata">
-                    <span class="prompt-model">Optimized for: GPT-4, Claude 2</span>
-                    <span class="prompt-date">Last updated: August 2023</span>
                 </div>
             </div>
             
             <!-- Prompt Card 3: Code Generation -->
             <div class="prompt-card animate-bottom delay-400">
-                <div class="prompt-title">Structured Code Generation Prompt</div>
-                <div class="prompt-description">
-                    This prompt template ensures high-quality code generation with proper structure, error handling, and documentation.
+                <div class="prompt-card-left">
+                    <div class="prompt-title">Structured Code Generation Prompt</div>
+                    <div class="prompt-description">
+                        This prompt template ensures high-quality code generation with proper structure, error handling, and documentation.
+                    </div>
+                    <div class="prompt-tags">
+                        <span class="prompt-tag">Code Generation</span>
+                        <span class="prompt-tag">Software Engineering</span>
+                        <span class="prompt-tag">Documentation</span>
+                    </div>
+                    <div class="prompt-metadata">
+                        <span class="prompt-model">Optimized for: GPT-4, Codex, Claude</span>
+                    </div>
                 </div>
-                <div class="prompt-content">Generate clean, efficient, and well-documented code based on the requirements below:
+                <div class="prompt-card-right">
+                    <div class="prompt-content">Generate clean, efficient, and well-documented code based on the requirements below:
 
 Task: {task_description}
 
@@ -116,24 +137,18 @@ Your response should include:
 2. The complete code solution
 3. Instructions for how to use/run the code
 4. Any assumptions you made</div>
-                <div class="prompt-tags">
-                    <span class="prompt-tag">Code Generation</span>
-                    <span class="prompt-tag">Software Engineering</span>
-                    <span class="prompt-tag">Documentation</span>
-                </div>
-                <div class="prompt-metadata">
-                    <span class="prompt-model">Optimized for: GPT-4, Codex, Claude</span>
-                    <span class="prompt-date">Last updated: October 2023</span>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Full-width "Show All Prompts" banner outside the container -->
+<!-- All Prompts Banner -->
 <div class="all-prompts-banner">
     <a href="/free-courses/Generative%20AI/prompts/" class="all-prompts-link">
         <span>See All Prompts</span>
         <span class="arrow">→</span>
     </a>
-</div> 
+</div>
+
+<script src="{{ url_for('static', filename='js/section-animations.js') }}"></script> 

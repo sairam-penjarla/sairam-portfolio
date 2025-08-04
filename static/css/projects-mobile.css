@@ -1,0 +1,224 @@
+/* 
+ * Projects Home Mobile Optimizations
+ * This file contains mobile-specific optimizations for the projects home page
+ */
+
+/* Global mobile adjustments */
+@media screen and (max-width: 768px) {
+  body {
+    overflow-x: hidden !important;
+  }
+  
+  /* Fix for any image in the document */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* Fix content padding */
+  .container, section {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Mobile styles for projects home page */
+@media screen and (max-width: 768px) {
+  /* Hero section */
+  .hero-container {
+    padding: 40px 16px !important;
+    margin-top: 20px !important;
+  }
+
+  .hero-content {
+    flex-direction: column !important;
+    gap: 30px !important;
+    padding: 0 !important;
+  }
+
+  .hero-text {
+    width: 100% !important;
+    text-align: center !important;
+    align-items: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    order: 2 !important;
+  }
+
+  .hero-image-container {
+    width: 100% !important;
+    max-width: 300px !important;
+    margin: 0 auto !important;
+    order: 1 !important;
+  }
+
+  .hero-image {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 12px !important;
+    display: block !important;
+  }
+
+  .hero-headline {
+    font-size: 28px !important;
+    line-height: 1.3 !important;
+    margin-bottom: 16px !important;
+    text-align: center !important;
+  }
+
+  .hero-greeting {
+    font-size: 18px !important;
+    margin-bottom: 12px !important;
+    text-align: center !important;
+  }
+
+  .hero-description {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    padding: 0 !important;
+    text-align: center !important;
+    margin-bottom: 20px !important;
+  }
+
+  /* Categories section */
+  .categories-section {
+    margin: 40px auto !important;
+    padding: 0 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .section-header {
+    margin-bottom: 30px !important;
+    padding: 0 10px !important;
+    text-align: center !important;
+  }
+
+  .section-title {
+    font-size: 24px !important;
+    margin-bottom: 10px !important;
+    text-align: center !important;
+  }
+
+  .section-description {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    padding: 0 10px !important;
+    text-align: center !important;
+  }
+
+  .cards-container {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    width: 100% !important;
+  }
+
+  .card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+    transition: transform 0.3s ease !important;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px) !important;
+  }
+
+  .card-content {
+    padding: 20px !important;
+    align-items: center !important;
+  }
+
+  .card-title {
+    font-size: 18px !important;
+    margin-bottom: 10px !important;
+    text-align: center !important;
+  }
+
+  .card-description {
+    font-size: 14px !important;
+    margin-bottom: 16px !important;
+    text-align: center !important;
+  }
+
+  .card-button {
+    width: 100% !important;
+    padding: 12px !important;
+    font-size: 16px !important;
+    text-align: center !important;
+    border-radius: 8px !important;
+  }
+  
+  /* Improve card appearance */
+  .card {
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  }
+  
+  .card-accent {
+    display: block !important;
+    height: 5px !important;
+  }
+  
+  /* Fade-in animations optimization for mobile */
+  .fade-in {
+    animation-duration: 0.5s !important;
+  }
+}
+
+/* Extra small devices */
+@media screen and (max-width: 480px) {
+  .hero-container {
+    padding: 30px 16px !important;
+  }
+  
+  .hero-headline {
+    font-size: 24px !important;
+  }
+
+  .hero-greeting {
+    font-size: 16px !important;
+  }
+
+  .hero-image-container {
+    max-width: 250px !important;
+  }
+  
+  .hero-description {
+    font-size: 15px !important;
+  }
+
+  .section-title {
+    font-size: 22px !important;
+  }
+  
+  .section-description {
+    font-size: 15px !important;
+  }
+
+  .card-icon {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .card-icon img {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  
+  .card-title {
+    font-size: 17px !important;
+  }
+  
+  .card-description {
+    font-size: 14px !important;
+  }
+  
+  .card-button {
+    font-size: 15px !important;
+  }
+} 

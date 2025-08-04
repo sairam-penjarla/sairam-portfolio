@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/categories-style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/projects-mobile.css') }}">
 </head>
 <body>
     {% include 'header.html' %}
@@ -125,5 +126,51 @@
     
     {% include 'footer.html' %}
     <script src="{{ url_for('static', filename='js/animations.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if we're on mobile
+            function isMobile() {
+                return window.innerWidth <= 768;
+            }
+            
+            // Fix layout for mobile devices
+            function fixMobileLayout() {
+                if (isMobile()) {
+                    // Reorder hero elements for mobile
+                    const heroText = document.querySelector('.hero-text');
+                    const heroImageContainer = document.querySelector('.hero-image-container');
+                    const heroContent = document.querySelector('.hero-content');
+                    
+                    if (heroText && heroImageContainer && heroContent) {
+                        heroContent.style.flexDirection = 'column';
+                        heroImageContainer.style.order = '1';
+                        heroText.style.order = '2';
+                        heroText.style.textAlign = 'center';
+                        heroText.style.alignItems = 'center';
+                        heroText.style.width = '100%';
+                        heroImageContainer.style.margin = '0 auto';
+                    }
+                    
+                    // Make cards full width
+                    const cards = document.querySelectorAll('.card');
+                    cards.forEach(card => {
+                        card.style.width = '100%';
+                        card.style.maxWidth = '100%';
+                    });
+                    
+                    // Adjust card buttons
+                    const cardButtons = document.querySelectorAll('.card-button');
+                    cardButtons.forEach(button => {
+                        button.style.width = '100%';
+                        button.style.display = 'block';
+                    });
+                }
+            }
+            
+            // Run initially and on resize
+            fixMobileLayout();
+            window.addEventListener('resize', fixMobileLayout);
+        });
+    </script>
 </body>
 </html>

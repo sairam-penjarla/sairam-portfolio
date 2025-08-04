@@ -1,0 +1,440 @@
+/* Mobile Optimizations CSS
+ * This file contains mobile-specific optimizations for the home sections
+ * These styles only apply to mobile devices and won't affect desktop view
+ */
+
+/* Global Mobile Adjustments */
+@media screen and (max-width: 768px) {
+  /* Increase touch targets for better mobile usability */
+  button, .btn-minimal, a.project-link, .expertise-card-link {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Improve text readability on small screens */
+  p, .project-description, .tutorials-description, .expertise-description, .card-description {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+  }
+  
+  /* Fix section padding for all sections on mobile */
+  section {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  
+  /* Fix container width for better mobile layout */
+  .container, .section-container, .expertise-container, .skills-container {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+  
+  /* Improve spacing for better readability */
+  .section-header {
+    margin-bottom: 30px !important;
+  }
+  
+  /* Fix image responsiveness */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+}
+
+/* Hero Section Optimizations */
+@media screen and (max-width: 768px) {
+  .hero-container {
+    padding: 60px 16px !important;
+  }
+
+  .hero-content {
+    flex-direction: column !important;
+    gap: 30px !important;
+  }
+
+  .hero-text, .hero-image-container {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .hero-headline {
+    font-size: 28px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .hero-greeting {
+    font-size: 18px !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero-container {
+    padding: 40px 16px !important;
+  }
+  
+  .hero-headline {
+    font-size: 24px !important;
+  }
+  
+  .hero-greeting {
+    font-size: 16px !important;
+  }
+  
+  .hero-image {
+    border-radius: 12px !important;
+  }
+}
+
+/* Expertise Section Optimizations */
+@media screen and (max-width: 768px) {
+  .expertise-section {
+    padding: 40px 16px !important;
+  }
+
+  .expertise-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+
+  .expertise-name {
+    font-size: 16px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .section-title .section-text {
+    font-size: 24px !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .expertise-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 100% !important;
+  }
+  
+  .expertise-section {
+    padding: 30px 16px !important;
+  }
+  
+  .section-title .section-text {
+    font-size: 20px !important; 
+  }
+  
+  .section-title::after {
+    margin-left: 10px !important;
+  }
+}
+
+/* Security Section Optimizations */
+@media screen and (max-width: 768px) {
+  .security-section {
+    padding: 40px 16px !important;
+  }
+
+  .cards-container {
+    flex-direction: column !important;
+    gap: 24px !important;
+  }
+
+  .vertical-card {
+    width: 100% !important;
+  }
+
+  .card-title {
+    font-size: 20px !important;
+  }
+
+  .compliance-logo {
+    max-width: 50px !important;
+    height: auto !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .security-section {
+    padding: 30px 16px !important;
+  }
+  
+  .card-title {
+    font-size: 18px !important;
+  }
+  
+  .compliance-logo-container {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  
+  .compliance-logo {
+    max-width: 40px !important;
+    margin: 5px !important;
+  }
+  
+  .vertical-card {
+    padding: 16px !important;
+  }
+}
+
+/* Skills Section Optimizations */
+@media screen and (max-width: 768px) {
+  .skills-section {
+    padding: 40px 16px !important;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .skill-card {
+    padding: 12px 8px !important;
+  }
+
+  .skill-icon {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .skill-card h4 {
+    font-size: 12px !important;
+  }
+
+  .category-header h3 {
+    font-size: 18px !important;
+    padding-left: 20px !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .skills-section {
+    padding: 30px 16px !important;
+  }
+  
+  .category-header h3 {
+    font-size: 16px !important;
+    padding-left: 16px !important;
+  }
+  
+  .category-header h3::before {
+    width: 8px !important;
+    height: 8px !important;
+  }
+  
+  .skills-category {
+    margin-bottom: 30px !important;
+  }
+}
+
+/* Projects Section Optimizations */
+@media screen and (max-width: 768px) {
+  .projects-section {
+    padding: 40px 16px !important;
+  }
+
+  .horizontal-card {
+    flex-direction: column !important;
+    gap: 24px !important;
+  }
+
+  .project-content, .project-media {
+    width: 100% !important;
+    display: block !important;
+  }
+
+  /* Fix for iframes in project cards */
+  .project-media {
+    position: relative !important;
+    padding-bottom: 56.25% !important; /* 16:9 aspect ratio */
+    height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .project-media iframe {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 200px !important;
+    border: none !important;
+    display: block !important;
+  }
+
+  .project-title {
+    font-size: 22px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .project-actions {
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+  }
+
+  .project-technologies {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+
+  .tech-tag {
+    font-size: 12px !important;
+    padding: 4px 8px !important;
+  }
+  
+  /* Fix for coming soon placeholder */
+  .coming-soon-placeholder {
+    min-height: 180px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 20px !important;
+    background-color: #f7f7f7 !important;
+    border-radius: 8px !important;
+    position: relative !important;
+  }
+  
+  .coming-soon-placeholder h3 {
+    font-size: 18px !important;
+    margin-bottom: 10px !important;
+  }
+  
+  .coming-soon-placeholder p {
+    font-size: 14px !important;
+    opacity: 0.7 !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .projects-section {
+    padding: 30px 16px !important;
+  }
+  
+  .project-title {
+    font-size: 20px !important;
+  }
+  
+  .horizontal-card {
+    padding: 16px !important;
+  }
+  
+  .project-actions {
+    justify-content: center !important;
+  }
+  
+  .project-technologies {
+    justify-content: center !important;
+  }
+  
+  .projects-list {
+    gap: 20px !important;
+  }
+}
+
+/* Laptop/Social Section Optimizations */
+@media screen and (max-width: 768px) {
+  .tutorials-section {
+    padding: 40px 16px !important;
+  }
+
+  .content-wrapper {
+    flex-direction: column !important;
+    gap: 30px !important;
+    margin-bottom: 60px !important;
+  }
+
+  .tutorials-info, .laptop-container {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .laptop-image {
+    width: 100% !important;
+    max-width: 350px !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+
+  .tutorials-title {
+    font-size: 22px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .btn-minimal {
+    display: inline-flex !important;
+    justify-content: center !important;
+    margin: 8px !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .tutorials-section {
+    padding: 30px 16px !important;
+  }
+  
+  .tutorials-title {
+    font-size: 20px !important;
+  }
+  
+  .laptop-image {
+    max-width: 280px !important;
+  }
+  
+  .content-wrapper {
+    margin-bottom: 40px !important;
+  }
+  
+  .btn-minimal {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.9rem !important;
+  }
+  
+  .content-wrapper:last-child {
+    margin-bottom: 20px !important;
+  }
+}
+
+/* Remove laptop rotation effect on mobile for better display */
+@media screen and (max-width: 768px) {
+  .laptop-container {
+    transform: none !important;
+  }
+  
+  .laptop-container:hover {
+    transform: none !important;
+  }
+}
+
+/* Improve animation performance on mobile */
+@media screen and (max-width: 768px) {
+  .animate-section, .animate-left, .animate-right, .animate-bottom, .staggered-item {
+    animation-duration: 0.5s !important;
+  }
+  
+  .delay-100 {
+    animation-delay: 0.1s !important;
+  }
+  
+  .delay-300 {
+    animation-delay: 0.2s !important;
+  }
+  
+  .delay-500 {
+    animation-delay: 0.3s !important;
+  }
+}
+
+/* Fix for iframe embeds in projects section */
+@media screen and (max-width: 768px) {
+  iframe {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 200px !important;
+    display: block !important;
+    z-index: 1 !important;
+  }
+} 

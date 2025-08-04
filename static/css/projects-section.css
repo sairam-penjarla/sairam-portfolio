@@ -1,10 +1,9 @@
-/* Modern Projects Section Styles */
 .projects-section {
   padding: 80px 0;
-  /* background-color: var(--border-color); */
   display: flex;
   justify-content: center;
-  max-width: 1200px;
+  max-width: 1000px;
+  flex-direction: column;
 }
 
 .projects-container {
@@ -13,27 +12,40 @@
   margin: 0 auto;
 }
 
-/* Header Styling */
-.projects-header {
+.section-header {
   text-align: center;
   margin-bottom: 60px;
 }
 
 .section-title {
-  font-size: 2.5rem;
+  font-size: var(--primary-heading-font-size);
   font-weight: 700;
   margin-bottom: 16px;
   color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  /* width: 100%; */
+}
+
+.section-title::after {
+  content: "";
+  width: 50%;
+  height: 1px;
+  background-color: var(--primary-highlight-color);
+  margin-left: 16px;
+  display: block;
 }
 
 .section-subtitle {
-  font-size: 1.2rem;
+  font-size: var(--seconday-font-size);
   color: var(--text-secondary);
   max-width: 600px;
-  margin: 0 auto;
+  align-items: flex-start;
+  justify-content: flex-start;
+  display: flex;
 }
 
-/* Projects List */
+
 .projects-list {
   display: flex;
   flex-direction: column;
@@ -155,18 +167,19 @@
 
 /* Project Technologies - Grid Layout */
 .project-technologies {
-  display: grid;
+  /* display: unset; */
   grid-template-columns: repeat(auto-fill, min(80px, max-content));
-  gap: 12px;
-  margin-bottom: 25px;
-  width: 100%;
-  justify-content: start;
-  grid-auto-flow: dense; /* Helps fill in gaps */
+  /* gap: 12px; */
+  /* margin-bottom: 25px; */
+  /* width: 100%; */
+  /* justify-content: start; */
+  /* grid-auto-flow: dense; */
+  /* Helps fill in gaps */
 }
 
 .project-technologies .tech-tag {
-  background-color: var(--background-secondary);
-  color: var(--text-secondary);
+  background-color: var(--primary-background-color);
+  color: var(--text-primary);
   padding: 8px 14px;
   border-radius: 30px;
   font-size: 0.85rem;
@@ -179,9 +192,9 @@
 }
 
 .project-technologies .tech-tag:hover {
-  background-color: var(--brand-primary);
-  color: white;
-  transform: translateY(-2px);
+  /* background-color: var(--primary-highlight-color); */
+  /* color: white; */
+  /* transform: translateY(-2px); */
 }
 
 .tech-tag {
@@ -275,7 +288,7 @@
 
 /* Make Try Now button more prominent */
 .try-now {
-  background-color: var(--brand-primary);
+  background-color: var(--primary-highlight-color);
   max-width: none;
   width: auto;
   padding: 0 16px;
@@ -315,7 +328,7 @@
   align-items: center;
   gap: 8px;
   padding: 12px 24px;
-  background-color: var(--background-primary);
+  background-color: var(--primary-background-color);
   color: var(--text-primary);
   border-radius: 30px;
   font-weight: 500;
@@ -325,7 +338,7 @@
 }
 
 .projects-view-all:hover {
-  background-color: var(--brand-primary);
+  background-color: var(--primary-highlight-color);
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(32, 97, 183, 0.25);
@@ -344,25 +357,26 @@
   .projects-section {
     padding: 70px 0;
   }
-  
+
   .projects-title {
     font-size: 2.2rem;
   }
-  
+
   .project-card.horizontal {
     flex-direction: column;
   }
-  
+
   .project-card.horizontal .project-content,
   .project-card.horizontal .project-media {
     width: 100%;
   }
-  
+
   .project-card.horizontal .project-media {
     height: 0;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    padding-bottom: 56.25%;
+    /* 16:9 aspect ratio */
   }
-  
+
   .project-card.horizontal .project-content {
     padding: 30px;
   }
@@ -372,53 +386,53 @@
   .projects-section {
     padding: 60px 0;
   }
-  
+
   .project-content {
     padding: 25px;
   }
-  
+
   .project-title {
     font-size: 1.5rem;
   }
-  
+
   .project-tagline {
     font-size: 1rem;
     margin-bottom: 15px;
   }
-  
+
   .project-description {
     font-size: 0.95rem;
     margin-bottom: 20px;
   }
-  
+
   .tech-tag {
     padding: 5px 12px;
     font-size: 0.8rem;
   }
-  
+
   .project-link {
     height: 38px;
   }
-  
+
   .project-link svg {
     min-width: 38px;
     height: 38px;
     padding: 9px;
   }
-  
+
   .link-text {
     font-size: 0.8rem;
   }
-  
+
   .project-link:hover .link-text {
     font-size: 0.9rem;
   }
-  
+
   .project-technologies {
     grid-template-columns: repeat(auto-fill, minmax(70px, max-content));
     gap: 8px;
   }
-  
+
   .project-technologies .tech-tag {
     padding: 6px 12px;
     font-size: 0.8rem;
@@ -429,39 +443,39 @@
   .projects-section {
     padding: 20px;
   }
-  
-  .projects-header {
+
+  .section-header {
     margin-bottom: 40px;
   }
-  
+
   .projects-title {
     font-size: 1.8rem;
   }
-  
+
   .projects-subtitle {
     font-size: 1rem;
   }
-  
+
   .project-content {
     padding: 20px;
   }
-  
+
   .project-title {
     font-size: 1.3rem;
   }
-  
+
   .project-description {
     font-size: 0.9rem;
   }
-  
+
   .project-links {
     gap: 8px;
   }
-  
+
   .project-link.try-now {
     width: 100%;
     justify-content: center;
     order: -1;
     margin-bottom: 5px;
   }
-} 
+}

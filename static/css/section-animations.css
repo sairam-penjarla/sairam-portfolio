@@ -85,6 +85,7 @@
   transform: translateY(20px);
   /* display: flex; */
   gap: 81px;
+  border-radius: var(--border-radius-outside);
 }
 
 .staggered-item.visible {

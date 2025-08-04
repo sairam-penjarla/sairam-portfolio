@@ -1,142 +1,243 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
 <link rel="stylesheet" href="{{ url_for('static', filename='css/section-animations.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/mobile-optimizations.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/project-media-fix.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/genai-sections.css') }}" />
 <section class="projects-section animate-section" id="projects-section">
-    <div class="container">
-        <div class="projects-header animate-bottom delay-100">
-            <h2 class="section-title">Projects</h2>
-            <p class="section-subtitle">Check out what I've been working on</p>
+    <div class="section-header animate-bottom delay-100">
+        <div class="section-title">
+            <span class="section-text dm-serif-text-regular">My Projects</span>
         </div>
+    </div>
 
+    <div class="container">
         <div class="projects-list staggered-container">
-            <!-- Project 1: ShabSync -->
-            <div class="card horizontal-card">
+            <!-- Agentic AI Project 1 -->
+            <li class="card horizontal-card">
                 <div class="project-content">
-                    <h3 class="project-title">ShabSync</h3>
-                    <p class="project-tagline">Real-time Text to Speech converter</p>
-                    <p class="project-description">ShabSync is a text-to-speech converter web application that transforms written text into natural-sounding speech. The application offers a user-friendly interface with multiple voice options, speed controls, and a history feature to retrieve previous sessions.</p>
+                    <h3 class="project-title">Multi-Agent GenAI Presentation Builder</h3>
+                    <p class="project-description">
+                        A multi-agent Generative AI system that transforms simple user prompts into professional presentations by coordinating tasks like slide structuring, content generation, visual selection, and formatting. Built using <strong>OpenAI GPT-4</strong>, <strong>LangGraph</strong> for agent orchestration, <strong>LangChain</strong> for tool integration, and <strong>Azure services</strong> for cloud-hosted deployment. The system supports end-to-end automation—from understanding user intent to generating .pptx files.
+                    </p>
                     <div class="project-technologies">
-                        <span class="tech-tag">Azure AI Speech</span>
+                        <span class="tech-tag">OpenAI</span>
+                        <span class="tech-tag">LangGraph</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">Azure AI</span>
+                        <span class="tech-tag">python-pptx</span>
                         <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">Azure App Service</span>
+                        <span class="tech-tag">Generative AI</span>
+                        <span class="tech-tag">Presentation Automation</span>
+                        <span class="tech-tag">Multi-Agent Systems</span>
                     </div>
                     <div class="project-actions">
-                        <a href="https://github.com/sairam-penjarla/ShabSync" class="project-link github-link" target="_blank">
-                            <img src="{{ url_for('static', filename='images/lucidev-icons/github.svg') }}" alt="GitHub" class="icon-image" />
-                        </a>
-                        <a href="https://youtu.be/IEW6L0_KpBM?si=IQuIiKBunrkqZENL" class="project-link youtube-link" target="_blank">
-                            <img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image" />
-                        </a>
-                        <a href="https://shabsync.azurewebsites.net" class="project-link try-now" target="_blank">
-                            <img src="{{ url_for('static', filename='images/lucidev-icons/globe.svg') }}" alt="External Link" class="icon-image" />
-                            <span class="link-text">Try It Now</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="project-media">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/IEW6L0_KpBM?si=YyjtHGimyk3coaH1" title="ShabSync Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-            
-            <!-- Project 2: AI PPT Maker -->
-            <div class="card horizontal-card">
-            <div class="project-content">
-                    <h3 class="project-title">AI PowerPoint Creator</h3>
-                    <p class="project-tagline">Create and Present PPTs using AI</p>
-                    <p class="project-description">An innovative application that lets users create professional PowerPoint presentations using AI. Simply describe what you want, and the app generates complete presentations with content, design, and formatting. Perfect for professionals, educators, and students looking to save time on presentation creation.</p>
-                    <div class="project-technologies">
-                        <span class="tech-tag">Azure OpenAI</span>
-                        <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">Python-PPTX</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="#" class="project-link github-link" target="_blank">
-                            <img src="{{ url_for('static', filename='images/lucidev-icons/github.svg') }}" alt="GitHub" class="icon-image" />
-                        </a>
-                        <a href="#" class="project-link youtube-link" target="_blank">
-                            <img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image" />
-                        </a>
                         <a href="#" class="project-link try-now" target="_blank">
                             <img src="{{ url_for('static', filename='images/lucidev-icons/globe.svg') }}" alt="External Link" class="icon-image" />
-                            <span class="link-text">Coming Soon</span>
+                            <span class="link-text">Commming Soon</span>
                         </a>
                     </div>
                 </div>
                 <div class="project-media">
                     <div class="coming-soon-placeholder">
-                        <h3>Demo Coming Soon</h3>
-                        <p>Video demonstration and live application will be available shortly.</p>
+                        <h3>Project Demo</h3>
+                        <p>Comming Soon</p>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Project 3: L&T Virtual Assistant -->
-            <div class="card horizontal-card">
+            </li>
+
+            <!-- LLM Apps Project 3 -->
+            <li class="card horizontal-card">
                 <div class="project-content">
-                    <h3 class="project-title">L&T Virtual Assistant</h3>
-                    <p class="project-tagline">RAG-powered Chatbot for L&T Website</p>
-                    <p class="project-description">A virtual assistant chatbot built for the L&T website using public information. This intelligent assistant leverages Retrieval Augmented Generation (RAG) to provide accurate, context-aware responses to user queries about L&T products, services, and information.</p>
+                    <h3 class="project-title">Enterprise-Grade Retrieval-Augmented Generation System</h3>
+                    <p class="project-description">
+                        A sophisticated virtual assistant designed for enterprise-grade document and knowledgebase interaction using a multi-step Retrieval-Augmented Generation (RAG) pipeline. The system combines OpenAI GPT-4, LangChain, LangGraph, and Azure Cognitive Search, orchestrating a dynamic network of agents for retrieval, synthesis, and response generation. This assistant goes beyond traditional RAG by integrating custom-built components for intelligent data ingestion, structured chunking, and multi-tiered search. It provides grounded, source-linked answers and is optimized for deep document understanding and precise contextual response.
+                    </p>
                     <div class="project-technologies">
-                        <span class="tech-tag">Azure AI Search</span>
-                        <span class="tech-tag">Azure Document Intelligence</span>
-                        <span class="tech-tag">RAG</span>
+                        <span class="tech-tag">OpenAI</span>
+                        <span class="tech-tag">LangGraph</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">GPT-4</span>
+                        <span class="tech-tag">Azure Cognitive Search</span>
+                        <span class="tech-tag">Vector Search</span>
+                        <span class="tech-tag">Web Scraping</span>
+                        <span class="tech-tag">PDF Parsing</span>
+                        <span class="tech-tag">Document Intelligence</span>
+                        <span class="tech-tag">Form Recognizer</span>
+                        <span class="tech-tag">Custom Chunking</span>
+                        <span class="tech-tag">Multi-Agent RAG</span>
+                        <span class="tech-tag">Enterprise AI</span>
+                        <span class="tech-tag">Knowledge Retrieval</span>
+                        <span class="tech-tag">Source Attribution</span>
                     </div>
                     <div class="project-actions">
-                        <a href="#" class="project-link github-link" target="_blank">
+                        <a href="https://github.com/sairam-penjarla/genai-RAG-virtual-assistant" class="project-link github-link" target="_blank">
                             <img src="{{ url_for('static', filename='images/lucidev-icons/github.svg') }}" alt="GitHub" class="icon-image" />
                         </a>
-                        <a href="#" class="project-link youtube-link" target="_blank">
+                        <a href="https://www.youtube.com/watch?v=k1LL1cKoCFI" class="project-link youtube-link" target="_blank">
                             <img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image" />
                         </a>
-                        <a href="#" class="project-link try-now" target="_blank">
+                        <a href="ragvirtualassistant.azurewebsites.net" class="project-link try-now" target="_blank">
                             <img src="{{ url_for('static', filename='images/lucidev-icons/globe.svg') }}" alt="External Link" class="icon-image" />
-                            <span class="link-text">Coming Soon</span>
+                            <span class="link-text">View Project</span>
                         </a>
                     </div>
                 </div>
                 <div class="project-media">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/k1LL1cKoCFI?si=TsHssEwJv8uw80DY" title="Virtual Assistant Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-            </div>
+            </li>
             
-            <!-- Project 4: Content Generator -->
-            <div class="card horizontal-card">
+            
+            
+            
+            <!-- Agentic AI Project 2 -->
+            <li class="card horizontal-card">
                 <div class="project-content">
-                    <h3 class="project-title">LinkedIn Content Generator</h3>
-                    <p class="project-tagline">AI-powered Content Creation & Calendar</p>
-                    <p class="project-description">A powerful tool that generates engaging LinkedIn posts and helps manage content calendars. This application uses AI to create professional, attention-grabbing content while providing a comprehensive scheduling system to organize when and what to post, optimizing your LinkedIn presence.</p>
+                    <h3 class="project-title">Multi-Agent Conversational SQL Interface</h3>
+                    <p class="project-description">
+                        An intelligent multi-agent system that enables users to interact with relational databases through natural language. This project leverages <strong>OpenAI LLMs</strong> for intent detection and query generation, <strong>LangChain SQL agents</strong> for structured query translation, and <strong>LangGraph</strong> for orchestrating interactions between tools such as SQL executors, error handlers, and data visualizers. Beyond returning raw SQL results, the system uses <strong>Matplotlib</strong> to automatically generate charts (bar, line, pie, etc.) when appropriate, providing a more intuitive and visual understanding of the queried data. The entire solution is hosted on <strong>Azure</strong>, with secure access to <strong>Azure SQL Database</strong>.
+                    </p>
                     <div class="project-technologies">
-                        <span class="tech-tag">Natural Language Processing</span>
-                        <span class="tech-tag">Content Management</span>
-                        <span class="tech-tag">Social Media API</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">LangGraph</span>
+                        <span class="tech-tag">OpenAI</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">Azure SQL</span>
+                        <span class="tech-tag">Matplotlib</span>
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">Conversational AI</span>
+                        <span class="tech-tag">Database Agent</span>
+                        <span class="tech-tag">Data Visualization</span>
+                        <span class="tech-tag">Natural Language Interface</span>
                     </div>
                     <div class="project-actions">
-                        <a href="#" class="project-link github-link" target="_blank">
-                            <img src="{{ url_for('static', filename='images/lucidev-icons/github.svg') }}" alt="GitHub" class="icon-image" />
-                        </a>
-                        <a href="#" class="project-link youtube-link" target="_blank">
-                            <img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image" />
-                        </a>
                         <a href="#" class="project-link try-now" target="_blank">
                             <img src="{{ url_for('static', filename='images/lucidev-icons/globe.svg') }}" alt="External Link" class="icon-image" />
-                            <span class="link-text">Coming Soon</span>
+                            <span class="link-text">View Project</span>
                         </a>
                     </div>
                 </div>
                 <div class="project-media">
                     <div class="coming-soon-placeholder">
-                        <h3>Demo Coming Soon</h3>
-                        <p>Video demonstration and live application will be available shortly.</p>
-            </div>
-        </div>
-            </div>
+                        <h3>Project Demo</h3>
+                        <p>Comming Soon</p>
+                    </div>
+                </div>
+            </li>
+
+            
+            
+            
+            
+            <!-- LinkedIn Post Generator -->
+            <li class="card horizontal-card">
+                <div class="project-content">
+                    <h3 class="project-title">AI-Powered LinkedIn Content Planner & Generator</h3>
+                    <p class="project-description">
+                        A smart content creation and scheduling tool designed to help professionals and marketers craft impactful LinkedIn posts with ease. Built using <strong>OpenAI GPT-3.5</strong>, <strong>LangChain</strong> components, and <strong>Azure OpenAI</strong>, the system generates tailored posts based on user-defined topics, tone, audience, and goals. Beyond content generation, it features a fully interactive <strong>Content Calendar</strong> where users can <strong>schedule</strong>, <strong>edit</strong>, and <strong>attach hooks</strong> to their posts for higher engagement. The platform also includes rewriting and optimization agents that enhance clarity, tone, and reach.
+                    </p>
+                    <div class="project-technologies">
+                        <span class="tech-tag">OpenAI</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">Azure OpenAI</span>
+                        <span class="tech-tag">Content Generation</span>
+                        <span class="tech-tag">LinkedIn Marketing</span>
+                        <span class="tech-tag">Hook Generator</span>
+                        <span class="tech-tag">Content Calendar</span>
+                        <span class="tech-tag">Web App</span>
+                        <span class="tech-tag">Prompt Engineering</span>
+                        <span class="tech-tag">Social Media Automation</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://github.com/sairam-penjarla/genai-linkedin" class="project-link github-link" target="_blank">
+                            <img src="{{ url_for('static', filename='images/lucidev-icons/github.svg') }}" alt="GitHub" class="icon-image" />
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=bmAv1w0vUS8" class="project-link youtube-link" target="_blank">
+                            <img src="{{ url_for('static', filename='images/lucidev-icons/youtube.svg') }}" alt="YouTube" class="icon-image" />
+                        </a>
+                        <a href="linkedin-post-generator.azurewebsites.net" class="project-link try-now" target="_blank">
+                            <img src="{{ url_for('static', filename='images/lucidev-icons/globe.svg') }}" alt="External Link" class="icon-image" />
+                            <span class="link-text">View Project</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-media">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/bmAv1w0vUS8?si=35kY279eBzqOy8Jw" title="ShabSync Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </li>
+            
+            
+            
+            <!-- Agentic AI Project 3 -->
+            <li class="card horizontal-card">
+                <div class="project-content">
+                    <h3 class="project-title">Multimodal, Extensible ChatGPT-Like AI Assistant</h3>
+                    <p class="project-description">
+                        A full-stack, highly extensible LLM-powered chat application that replicates and surpasses the core functionality of ChatGPT. Users can chat with the assistant in real time while uploading images, documents, or custom prompts to get personalized outputs. The system supports advanced capabilities like <strong>code generation</strong>, <strong>content creation</strong>, <strong>web search</strong>, and <strong>image generation</strong>. Built with <strong>OpenAI GPT-4</strong>, orchestrated via <strong>LangGraph</strong> for tool and agent management, and extended through <strong>LangChain</strong> for dynamic prompt engineering, memory handling, and context switching. Real-time updates are enabled using <strong>WebSockets</strong>, and the platform is deployed via <strong>Azure App Services</strong> for scalable access.
+                    </p>
+                    <div class="project-technologies">
+                        <span class="tech-tag">OpenAI</span>
+                        <span class="tech-tag">LangGraph</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">GPT-4</span>
+                        <span class="tech-tag">WebSockets</span>
+                        <span class="tech-tag">Multimodal</span>
+                        <span class="tech-tag">Code Generation</span>
+                        <span class="tech-tag">Content Creation</span>
+                        <span class="tech-tag">Image Generation</span>
+                        <span class="tech-tag">Web Search</span>
+                        <span class="tech-tag">Custom Chatbot</span>
+                        <span class="tech-tag">LLM</span>
+                        <span class="tech-tag">Azure App Services</span>
+                        <span class="tech-tag">Real-Time AI</span>
+                    </div>
+                    <div class="project-actions"><a href="#" class="project-link try-now" target="_blank">
+                            <img src="{{ url_for('static', filename='images/lucidev-icons/globe.svg') }}" alt="External Link" class="icon-image" />
+                            <span class="link-text">Comming Soon</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-media">
+                    <div class="coming-soon-placeholder">
+                        <h3>Project Demo</h3>
+                        <p>Comming Soon</p>
+                    </div>
+                </div>
+            </li>
         </div>
     </div>
-  </section>
+</section>
 
 <script src="{{ url_for('static', filename='js/section-animations.js') }}"></script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
+        // Ensure iframes are properly displayed on mobile
+        const projectMediaContainers = document.querySelectorAll('.project-media');
+        const iframes = document.querySelectorAll('.project-media iframe');
+        
+        function checkIframeVisibility() {
+            projectMediaContainers.forEach(container => {
+                // Make sure container is displayed properly
+                container.style.display = 'block';
+            });
+            
+            iframes.forEach(iframe => {
+                // Ensure iframe is displayed with proper size
+                iframe.style.display = 'block';
+                
+                // Force iframe to redraw
+                iframe.style.opacity = '0.99';
+                setTimeout(() => {
+                    iframe.style.opacity = '1';
+                }, 10);
+            });
+        }
+        
+        // Check immediately and after slight delay to ensure rendering
+        checkIframeVisibility();
+        setTimeout(checkIframeVisibility, 500);
+        
         // Button click handlers
         const demoButton = document.querySelector(".btn-primary");
         if (demoButton) {

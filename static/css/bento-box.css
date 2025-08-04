@@ -1,0 +1,99 @@
+.bento-container{
+    width: 1000px;
+}
+.bento-grid {display: grid;grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));gap: 10px;/* padding: 2rem; */max-width: 1200px;margin: auto;}
+
+.bento-box {background-color: #fff;border-radius: 1.25rem;box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);padding: 1.5rem;display: flex;flex-direction: column;justify-content: space-between;transition: transform 0.3s ease, box-shadow 0.3s ease;cursor: pointer;min-height: 250px;}
+
+.bento-box:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.bento-content {
+display: flex;
+flex-direction: column;
+gap: 1rem;
+}
+
+.bento-icon img {
+width: 20px;
+height: 20px;
+}
+
+.bento-title {
+font-size: 1.25rem;
+font-weight: 600;
+margin: 0;
+}
+
+.bento-description {
+font-size: 0.95rem;
+color: #4a4a4a;
+line-height: 1.5;
+}
+
+.bento-quote {
+font-size: 0.875rem;
+font-style: italic;
+color: #888;
+}
+
+/* Sizes */
+.bento-small {
+grid-row: span 1;
+grid-column: span 1;
+}
+
+.bento-medium {
+grid-row: span 1;
+grid-column: span 2;
+}
+
+.bento-large {grid-row: span 2;grid-column: span 1;}
+
+.bento-highlight {
+background: linear-gradient(135deg, #fef3c7, #fcd34d);
+color: #111827;
+grid-column: span 2;
+border: 2px solid #facc15;
+}
+
+/* Animations */
+.animate-bottom {
+opacity: 0;
+transform: translateY(40px);
+animation: slideUp 0.6s forwards;
+}
+
+@keyframes slideUp {
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+
+/* Delay classes */
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-800 { animation-delay: 0.8s; }
+.delay-900 { animation-delay: 0.9s; }
+.delay-1000 { animation-delay: 1s; }
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+.bento-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.bento-medium,
+.bento-large,
+.bento-highlight {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+}

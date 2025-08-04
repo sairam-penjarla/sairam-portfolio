@@ -1,91 +1,156 @@
 :root {
-    --brand-primary: rgb(32,97,183);
-    --brand-primary-pink: #f44336;
-    --brand-secondary: rgb(240, 244, 255);
-    --text-primary: #323130;
-    --text-secondary: #605e5c;
-    --background-primary: #ffffff;
-    --background-secondary: rgb(241, 247, 255);
-    --background-tertiary: #f3f2f1;
-    --border-color: rgb(241, 247, 255);
-    --link-color: #0078d4;
-    --link-hover: #106ebe;
-    --sidebar-width: 280px;
-    --header-height: 60px;
-    --font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-    --claude-purple: #7e53c6;
-    --claude-purple-light: #f1eefb;
-    --claude-text-primary: #000000;
-    --claude-text-secondary: #5f6368;
-    --claude-border: #e0e0e0;
-    --python-color: #366b99;
-    --ml-color: #ff7043;
-    --dl-color: #6a11cb;
-    --nlp-color: #11998e;
-    --cv-color: #f43b47;
-    --genai-color: #833ab4;
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.05);
-    --transition: all 0.3s ease;
-    --border-radius-outside: 50px;
-    --border-radius-inside: 30px;
-    --body-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --primary-highlight-color: #004f95;
+  --primary-background-color: #ffffff;
+  --primary-heading-font-size: 38px;
+  --secondary-background-color: #ffffff;
+  --seconday-font-size: 24px;
+  --brand-primary-pink: #f44336;
+  --brand-secondary: rgb(240, 244, 255);
+  --text-primary: #323130;
+  --text-secondary: #424242;
+  --background-tertiary: #f3f2f1;
+  --border-color: rgb(241, 247, 255);
+  --link-color: #0078d4;
+  --link-hover: #106ebe;
+  --sidebar-width: 280px;
+  --header-height: 60px;
+  --font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  --claude-purple: #7e53c6;
+  --claude-purple-light: #f1eefb;
+  --claude-text-primary: #000000;
+  --claude-text-secondary: #5f6368;
+  --claude-border: #e0e0e0;
+  --python-color: #366b99;
+  --ml-color: #ff7043;
+  --dl-color: #6a11cb;
+  --nlp-color: #11998e;
+  --cv-color: #f43b47;
+  --genai-color: #833ab4;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --transition: all 0.3s ease;
+  --border-radius-outside: 1.25rem;
+  --border-radius-inside: 16px;
+  --body-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 
 .btn-minimal {
-    display: inline-flex;
-    padding: 0.6rem 1.2rem;
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: #ffffff;
-    background-color: var(--brand-primary);
-    border: 1px solid var(--brand-primary);
-    border-radius: 37px;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    cursor: pointer;
-    align-items: center;
-    gap: 10px;
+  display: inline-flex;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: var(--primary-highlight-color);
+  border: 1px solid var(--brand-primary);
+  border-radius: 37px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  align-items: center;
+  gap: 10px;
 }
 
 .btn-minimal:hover {
-    background-color: var(--link-hover);
-    /* border-color: #999; */
-    color: #ffffff;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  background-color: var(--link-hover);
+  /* border-color: #999; */
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .btn-minimal:active {
-    transform: translateY(0);
-    box-shadow: none;
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 .btn-minimal:focus {
-    outline: none;
-    border-color: #555;
+  outline: none;
+  border-color: #555;
 }
 span.highlight {
-    font-weight: 900;
+  font-weight: 900;
 }
-.card{
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-outside);
-    padding: 29px;
-    /* margin-bottom: 20px; */
-    /* box-shadow: var(--card-shadow); */
-    background-color: var(--background-primary);
+.card {
+  /* border: 1px solid var(--primary-highlight-color); */
+  /* outline: 1px solid var(--primary-highlight-color); */ /* Outer border */
+  outline-offset: 2px; /* Distance between inner and outer border */
+  border-radius: var(--border-radius-outside);
+  padding: 14px;
+  background-color: var(--secondary-background-color);
+  background-color: #f3f3f3;
+  border-radius: var(--border-radius-outside);
+  /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06); */
+  padding: 1.5rem;
 }
 
 .horizontal-card{
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
 .vertical-card{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.dm-serif-text-regular {
+  font-family: "DM Serif Text", serif;
+  font-weight: 100;
+  font-style: oblique;
+  /* margin-top: 100px; */
+}
+
+.dm-serif-text-regular-italic {
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+
+
+
+
+.section-header {
+  text-align: center;
+  /* margin-bottom: 60px; */
+}
+
+.section-title {
+  font-size: var(--primary-heading-font-size);
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+}
+
+.section-title::after {
+  content: "";
+  width: 50%;
+  height: 2px;
+  background-color: var(--primary-highlight-color);
+  margin-left: 16px;
+  display: block;
+  background: linear-gradient(to right, var(--primary-highlight-color) 0%, rgba(32, 97, 183, 0.1) 100%);
+}
+
+.section-subtitle {
+  font-size: var(--seconday-font-size);
+  color: var(--text-secondary);
+  max-width: 600px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  display: flex;
+}
+
+.section-text {
+  max-width: 50%;
+  font-weight: bold;
+  color: var(--text-color);
+  text-align: left;
+}
+.hero-content h1 span {
+    font-family: "DM Serif Text", serif;
 }

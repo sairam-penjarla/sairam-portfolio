@@ -28,7 +28,7 @@
   transform: translateX(-50%);
   width: 60px;
   height: 3px;
-  background: var(--brand-primary);
+  background: var(--primary-highlight-color);
   border-radius: 3px;
 }
 
@@ -68,13 +68,13 @@
 }
 
 .category-header h3 {
-  font-size: 1.6rem;
+  font-size: var(--seconday-font-size);
   font-weight: 700;
-  color: var(--brand-primary);
+  color: var(--text-secondary);
   margin-right: 20px;
   white-space: nowrap;
   position: relative;
-  padding-left: 15px;
+  padding-left: 26px;
 }
 
 .category-header h3::before {
@@ -83,15 +83,15 @@
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 6px;
-  height: 24px;
-  background: var(--brand-primary);
-  border-radius: 3px;
+  width: 10px;
+  height: 10px;
+  background: var(--primary-highlight-color);
+  border-radius: 2rem;
 }
 
 .category-line {
   height: 2px;
-  background: linear-gradient(to right, var(--brand-primary) 0%, rgba(32, 97, 183, 0.1) 100%);
+  background: linear-gradient(to right, var(--primary-highlight-color) 0%, rgba(32, 97, 183, 0.1) 100%);
   flex-grow: 1;
   border-radius: 2px;
 }
@@ -105,7 +105,7 @@
 
 /* Skill Cards */
 .skill-card {
-  background-color: var(--background-primary);
+  background-color: var(--secondary-background-color);
   border-radius: 12px;
   padding: 12px 10px;
   display: flex;
@@ -127,18 +127,18 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--brand-primary), var(--link-hover));
+  background: linear-gradient(90deg, var(--primary-highlight-color), var(--link-hover));
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .skill-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  /* transform: translateY(-8px); */
+  /* box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); */
 }
 
 .skill-card:hover::before {
-  opacity: 1;
+  /* opacity: 1; */
 }
 
 .skill-icon {
@@ -172,7 +172,7 @@
 }
 
 .skill-card:hover h4 {
-  color: var(--brand-primary);
+  color: var(--primary-highlight-color);
 }
 
 /* Skill Proficiency Indicator (Optional) */
@@ -182,14 +182,13 @@
 
 /* Divider */
 .skills-divider {
-  height: 1px;
+  /* height: 1px; */
   background: linear-gradient(to right, rgba(0, 0, 0, 0.01) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.01) 100%);
   margin: 40px 0 60px;
   position: relative;
 }
 
 .skills-divider::after {
-  content: "⚡";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -197,7 +196,7 @@
   background-color: var(--background-primary);
   padding: 0 20px;
   font-size: 1.2rem;
-  color: var(--brand-primary);
+  color: var(--primary-highlight-color);
 }
 
 /* Responsive Design */

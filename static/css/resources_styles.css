@@ -43,7 +43,7 @@ body {
 }
 
 .blue-highlight {
-    background-color: var(--brand-primary);
+    background-color: var(--primary-highlight-color);
     color: white;
     padding: 5px 27px;
     transform: rotate(-2deg);
@@ -58,7 +58,7 @@ body {
     right: 10%;
     width: 300px;
     height: 12px;
-    background-color: var(--brand-primary);
+    background-color: var(--primary-highlight-color);
     border-radius: 6px;
     z-index: 0;
     transform: rotate(-1deg);
@@ -85,7 +85,7 @@ body {
     font-size: 1rem;
     font-weight: 600;
     border-radius: 30px;
-    border: 2px solid var(--brand-primary);
+    border: 2px solid var(--primary-highlight-color);
     text-decoration: none;
     transition: all 0.3s ease;
     position: relative;
@@ -94,23 +94,23 @@ body {
 }
 
 .primary-button {
-    color: var(--brand-primary);
+    color: var(--primary-highlight-color);
     background-color: white;
 }
 
 .primary-button:hover {
     color: white;
-    background-color: var(--brand-primary);
+    background-color: var(--primary-highlight-color);
 }
 
 .secondary-button {
-    color: var(--brand-primary);
+    color: var(--primary-highlight-color);
     background-color: white;
 }
 
 .secondary-button:hover {
     color: white;
-    background-color: var(--brand-primary);
+    background-color: var(--primary-highlight-color);
 }
 
 /* Animation classes */
@@ -201,7 +201,7 @@ body {
 .hero-title {
     font-size: 3rem;
     font-weight: bold;
-    color: var(--brand-primary);
+    color: var(--primary-highlight-color);
     margin-bottom: 20px;
     width: max-content;
     align-items: flex-start;
@@ -211,7 +211,7 @@ body {
 .hero-description {
     font-size: 1rem;
     margin-bottom: 30px;
-    color: var(--brand-primary);
+    color: var(--primary-highlight-color);
 }
 
 .hero-image {
@@ -237,7 +237,7 @@ body {
 }
 
 .btn-primary {
-    background-color: var(--brand-primary);
+    background-color: var(--primary-highlight-color);
     color: white;
 }
 
@@ -291,7 +291,7 @@ body {
     font-size: 1rem;
     margin-bottom: 30px;
     text-align: right;
-    color: var(--brand-primary);
+    color: var(--primary-highlight-color);
 }
 
 @media screen and (max-width: 768px) {
@@ -357,7 +357,7 @@ body {
 }
 
 .portfolio-container {
-    max-width: 1200px;
+    max-width: 1000px;
 }
 
 .portfolio-description {
@@ -365,8 +365,8 @@ body {
     line-height: 1.6;
     color: #666;
     max-width: 700px;
-    margin: 0 auto 50px;
-    text-align: center;
+    /* margin: 0 auto 50px; */
+    text-align: left;
 }
 
 .portfolio-grid {
@@ -461,7 +461,7 @@ body {
 }
 
 .portfolio-cta {
-    margin-top: 60px;
+    /* margin-top: 60px; */
     text-align: center;
     padding: 40px;
     background-color: #f9f9f9;
@@ -589,7 +589,7 @@ body {
 
 .section-title {
     font-size: 2.5rem;
-    color: var(--brand-primary);
+    color: var(--primary-highlight-color);
     margin-bottom: 20px;
     font-weight: bold;
     /* width: max-content; */
@@ -639,7 +639,7 @@ body {
     content: "•";
     position: absolute;
     left: 0;
-    color: var(--brand-primary-pink);
+    color: var(--primary-highlight-color-pink);
     font-size: 1.2rem;
 }
 
@@ -1062,17 +1062,17 @@ body {
 }.landing-container{
     max-width: 800px;
 }.landing-container .secondary-button {
-    color: var(--brand-primary);
+    color: var(--primary-highlight-color);
     /* background-color: white; */
-    border: 2px solid var(--brand-primary);
+    border: 2px solid var(--primary-highlight-color);
 }
 .playlist-section.btn-minimal {
-    background-color: var(--brand-primary-pink);
-    border-color: var(--brand-primary-pink);
+    background-color: var(--primary-highlight-color-pink);
+    border-color: var(--primary-highlight-color-pink);
 }
 
 .portfolio-container .section-title {
-    color: var(--brand-primary-pink);
+    color: var(--primary-highlight-color-pink);
 }
 
 /* Updated Options Section Styles */
@@ -1212,7 +1212,8 @@ body {
     line-height: 1.6;
     color: #666;
     max-width: 800px;
-    margin: 0 auto 50px;
+    /* margin: 0 auto 50px; */
+    text-align: left;
 }
 
 .members-grid {
@@ -1241,7 +1242,7 @@ body {
 
 .member-photo:hover {
     transform: scale(1.05);
-    border-color: var(--brand-primary);
+    border-color: var(--primary-highlight-color);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -1368,7 +1369,7 @@ body {
 .step-number {
     width: 50px;
     height: 50px;
-    background-color: var(--brand-primary);
+    background-color: var(--primary-highlight-color);
     color: white;
     border-radius: 50%;
     display: flex;
@@ -1389,7 +1390,7 @@ body {
 
 .step-icon {
     font-size: 2rem;
-    color: var(--brand-primary);
+    color: var(--primary-highlight-color);
     margin-bottom: 15px;
 }
 
@@ -1411,7 +1412,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background-color: var(--brand-primary);
+    background-color: var(--primary-highlight-color);
     color: white;
     padding: 10px 20px;
     border-radius: 30px;
@@ -1438,7 +1439,7 @@ body {
     align-items: center;
     gap: 8px;
     background-color: rgba(32, 97, 183, 0.1);
-    color: var(--brand-primary);
+    color: var(--primary-highlight-color);
     padding: 8px 15px;
     border-radius: 20px;
     text-decoration: none;
@@ -1447,7 +1448,7 @@ body {
 }
 
 .step-link:hover {
-    background-color: var(--brand-primary);
+    background-color: var(--primary-highlight-color);
     color: white;
 }
 

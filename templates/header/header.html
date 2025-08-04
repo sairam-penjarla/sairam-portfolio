@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+<header class="header">
+    <nav class="nav-container">
+        <a href="/" class="logo">Sai<span>Ram</span></a>
+        <div class="tabs-container">
+            <a href="/" class="tab {% if request.path == '/' %}active{% endif %}">About Me</a>
+            <a href="/resources" class="tab {% if request.path == '/resources' %}active{% endif %}">Resources</a>
+            <a href="/projects" class="tab {% if request.path.startswith('/projects') %}active{% endif %}">Projects</a>
+            <a href="/prompts" class="tab {% if request.path == '/prompts' %}active{% endif %}">Prompts</a>
+            <a href="/cheatsheets" class="tab {% if request.path == '/cheatsheets' %}active{% endif %}">Cheatsheets</a>
+            <a href="/blogs" class="tab {% if request.path == '/blogs' %}active{% endif %}">Blogs</a>
+        </div>
+          
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>

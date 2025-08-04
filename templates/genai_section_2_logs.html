@@ -1,21 +1,27 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/genai-sections.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/genai-minimal.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/mobile-optimizations.css') }}" />
+
 <section class="logs-section animate-section" id="logs-section">
     <div class="container">
         <div class="logs-container">
             <div class="logs-simple">
                 <div class="logs-content">
                     <div class="hero-text animate-left delay-100">
-                        <h1 class="hero-headline">I build systems with Granular, High-Fidelity Logs</h1>
+                        <h2 class="hero-greeting">Advanced Logging</h2>
+                        <h1 class="hero-headline dm-serif-text-regular">I build systems with Granular, High-Fidelity Logs</h1>
                         <p class="hero-description">
                             From session initialization to model loading and document processing, my systems log every critical operation with precision-timestamped entries and rich context. This ensures full traceability, faster debugging, and transparent monitoring in production environments—empowering teams to move fast and with confidence.
                         </p>
                     </div>
                 </div>
                 
-                <div class="logs-media  animate-right ">
-                    <img src="{{ url_for('static', filename='images/genai/logs copy.png') }}" alt="Project Logs Visualization" class="logs-image" onerror="this.src='https://images.unsplash.com/photo-1633613286991-611fe299c4be?q=80&w=1000&auto=format&fit=crop'; this.onerror=null;">
+                <div class="logs-media animate-right delay-200">
+                    <img src="{{ url_for('static', filename='images/genai/logs.png') }}" alt="Project Logs Visualization" class="logs-image" onerror="this.src='https://images.unsplash.com/photo-1633613286991-611fe299c4be?q=80&w=1000&auto=format&fit=crop'; this.onerror=null;">
                 </div>
             </div>
         </div>
     </div>
-</section> 
+</section>
+
+<script src="{{ url_for('static', filename='js/section-animations.js') }}"></script> 

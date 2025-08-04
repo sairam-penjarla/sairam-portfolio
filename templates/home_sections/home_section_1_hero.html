@@ -1,0 +1,81 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/section-animations.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/mobile-optimizations.css') }}" />
+
+
+
+<!-- Hero Section -->
+<section class="hero-container animate-section">
+    <div class="hero-content">
+        <div class="hero-text animate-left delay-100">
+            <h2 class="hero-greeting">Hi, I am Sai Ram</h2>
+            <h1 class="hero-headline dm-serif-text-regular">
+                <span>I</span>
+                <span>solve</span>
+                <span>messy</span>
+                <span>business</span>
+                <span>problems</span>
+                <span>using</span>
+                <span>smarter</span>
+                <span>AI</span>
+                <span>and</span>
+                <span>not</span>
+                <span>just</span>
+                <span>bigger</span>
+                <span>buzzwords.</span>
+            </h1>
+        </div>
+        <div class="hero-image-container animate-right delay-300">
+            <img src="/static/images/langing_page_photo.png" alt="Sai Ram" class="hero-image" />
+        </div>
+    </div>
+</section>
+
+<script src="{{ url_for('static', filename='js/section-animations.js') }}"></script>
+<script>
+    // Add subtle parallax effect to decorative elements
+    document.addEventListener("DOMContentLoaded", function () {
+        const decorations = document.querySelectorAll(".decoration");
+
+        // Disable parallax on mobile devices
+        function checkMobile() {
+            if (window.innerWidth <= 768) {
+                document.removeEventListener("mousemove", arguments.callee);
+                decorations.forEach((decoration) => {
+                    decoration.style.transform = "none";
+                });
+            }
+        }
+
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script>
+   // Animate hero text and image using Anime.js
+    anime.timeline({ easing: 'easeOutExpo' })
+        .add({
+            targets: '.hero-text .hero-greeting',
+            opacity: [0, 1],
+            translateY: [20, 0],
+            duration: 600
+        })
+        .add({
+            targets: '.hero-headline span',
+            opacity: [0, 1],
+            translateY: [20, 0],
+            duration: 800,
+            delay: anime.stagger(80),
+            offset: '-=400'
+        });
+
+    anime({
+        targets: '.hero-image',
+        opacity: [0, 1],
+        translateY: [50, 0],
+        duration: 1000,
+        delay: 800,
+        easing: 'easeOutExpo'
+    });
+</script>

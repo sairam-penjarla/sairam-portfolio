@@ -28,7 +28,7 @@
 }
 
 .logo span {
-    color: var(--brand-primary);
+    color: var(--primary-highlight-color);
 }
 
 .tabs-container {
@@ -53,7 +53,7 @@
 }
 
 .tab.active {
-    color: var(--brand-primary);
+    color: var(--primary-highlight-color);
     /* font-weight: 600; */
 }
 
@@ -64,7 +64,7 @@
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: var(--brand-primary);
+    background-color: var(--primary-highlight-color);
     border-radius: 2px;
 }
 
@@ -97,7 +97,7 @@
 .dropdown-menu {
     display: none;
     position: absolute;
-    background-color: var(--background-primary);
+    background-color: var(--primary-background-color);
     width: 250px;
     left: auto;
     right: auto;
@@ -133,7 +133,7 @@
 }
 
 .dropdown-item.active {
-    background-color: var(--brand-primary);
+    background-color: var(--primary-highlight-color);
     color: white;
 }
 
@@ -150,7 +150,7 @@
         position: absolute;
         top: 70px;
         left: 0;
-        background-color: var(--background-primary);
+        background-color: var(--primary-background-color);
         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
         z-index: 20;
         padding: 10px;

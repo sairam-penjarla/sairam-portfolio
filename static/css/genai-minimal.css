@@ -1,0 +1,389 @@
+/* 
+ * Minimal, Modern GenAI Sections Styling
+ * Clean design inspired by the landing page
+ */
+
+/* Common Styles */
+.minimal-section,
+.logs-section,
+.prompts-section {
+  width: 100%;
+  background-color: var(--primary-background-color);
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Hero Text Styling (Common) */
+.hero-text {
+  margin-bottom: 40px;
+}
+
+.hero-headline {
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  color: var(--primary-highlight-color);
+}
+
+.hero-description,
+.hero-greeting {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #444;
+  opacity: 0.9;
+}
+
+.hero-greeting {
+  margin-bottom: 16px;
+  font-weight: 500;
+  color: var(--primary-highlight-color);
+}
+
+/* Logs Section Specific */
+.logs-simple {
+  display: flex;
+  align-items: center;
+  /* gap: 60px; */
+}
+
+.logs-content {
+  /* flex: 1; */
+}
+
+.logs-media {
+  flex: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.logs-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.logs-media:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Prompts Section Specific */
+.prompts-header {
+  margin-bottom: 40px;
+}
+
+.prompts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.prompt-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  min-height: 500px;
+}
+
+.prompt-card-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.prompt-card-right {
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.prompt-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.prompt-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--primary-highlight-color);
+  font-family: "Inter", sans-serif;
+}
+
+.prompt-description {
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  color: #444;
+  font-family: "Inter", sans-serif;
+}
+
+.prompt-content {
+  background-color: #f8f9fa;
+  padding: 16px;
+  border-radius: 8px;
+  font-family: "Consolas", monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-x: auto;
+  margin-bottom: 16px;
+  color: #333;
+  /* max-height: 200px; */
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.prompt-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.prompt-tag {
+  background-color: var(--primary-background-color);
+  color: var(--primary-highlight-color);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.prompt-metadata {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #666;
+  border-top: 1px solid #eee;
+  padding-top: 12px;
+  margin-top: auto;
+}
+
+/* All Prompts Banner */
+.all-prompts-banner {
+  background-color: var(--primary-highlight-color);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  margin-top: 60px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.all-prompts-link {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-size: 18px;
+  padding: 10px 20px;
+}
+
+.all-prompts-link:hover {
+  opacity: 0.9;
+}
+
+.all-prompts-link .arrow {
+  margin-left: 12px;
+  transition: transform 0.2s ease;
+  font-size: 20px;
+}
+
+.all-prompts-link:hover .arrow {
+  transform: translateX(5px);
+}
+
+/* Animations */
+.animate-left {
+  animation: slideInLeft 0.8s ease forwards;
+  opacity: 0;
+}
+
+.animate-right {
+  animation: slideInRight 0.8s ease forwards;
+  opacity: 0;
+}
+
+.animate-bottom {
+  animation: slideInBottom 0.8s ease forwards;
+  opacity: 0;
+}
+
+.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+}
+
+.delay-400 {
+  animation-delay: 0.4s;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInBottom {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 992px) {
+  .logs-simple {
+    gap: 40px;
+  }
+  
+  .hero-headline {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .minimal-section,
+  .logs-section,
+  .prompts-section {
+    padding: 60px 15px;
+  }
+
+  .logs-simple {
+    flex-direction: column-reverse;
+    gap: 30px;
+  }
+
+  .logs-content, 
+  .logs-media {
+    width: 100%;
+  }
+  
+  .hero-text {
+    text-align: center;
+  }
+
+  .hero-headline {
+    font-size: 28px;
+  }
+  
+  .hero-description {
+    font-size: 16px;
+  }
+  
+  .prompt-card {
+    flex-direction: column;
+    gap: 20px;
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .prompt-card-left,
+  .prompt-card-right {
+    width: 100%;
+  }
+
+  .prompt-metadata {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .logs-media {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .minimal-section,
+  .logs-section,
+  .prompts-section {
+    padding: 40px 10px;
+  }
+  
+  .hero-headline {
+    font-size: 24px;
+  }
+  
+  .hero-description {
+    font-size: 15px;
+  }
+  
+  .prompt-content {
+    padding: 12px;
+    font-size: 13px;
+  }
+  
+  .all-prompts-link {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+  
+  .container {
+    padding: 0 10px;
+  }
+} 

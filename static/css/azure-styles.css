@@ -1,14 +1,14 @@
 /* Azure Journey Styles */
 .azure-container .genai-badge {
-    background-color: var(--brand-primary);
+    background-color: var(--primary-highlight-color);
 }
 
 .primary-highlight {
-    color: var(--brand-primary);
+    color: var(--primary-highlight-color);
 }
 
 .azure-button {
-    background-color: var(--brand-primary);
+    background-color: var(--primary-highlight-color);
     box-shadow: 0 4px 12px rgba(32, 97, 183, 0.2);
 }
 

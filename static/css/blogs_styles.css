@@ -10,7 +10,7 @@ body {
     line-height: 1.5;
     margin: 0;
     padding: 0;
-    background-color: var(--background-primary);
+    background-color: var(--primary-background-color);
 }
 
 /* Layout */
@@ -36,7 +36,7 @@ body {
     font-size: 1.25rem;
     font-weight: 600;
     margin: 0 0 24px 24px;
-    color: var(--brand-primary);
+    color: var(--primary-highlight-color);
 }
 
 .sidebar-menu {
@@ -105,7 +105,7 @@ body {
 }
 
 .blog-list a.active {
-    color: var(--brand-primary);
+    color: var(--primary-highlight-color);
     font-weight: 100;
     background-color: var(--background-tertiary);
 }
@@ -294,14 +294,14 @@ footer {
     border-radius: 6px;
     border: 1px solid var(--border-color);
     font-size: 0.9rem;
-    background-color: var(--background-primary);
+    background-color: var(--primary-background-color);
     color: var(--text-primary);
     transition: all 0.3s ease;
 }
 
 .search-input:focus {
     outline: none;
-    border-color: var(--brand-primary);
+    border-color: var(--primary-highlight-color);
     box-shadow: 0 0 0 2px rgba(32, 97, 183, 0.2);
 }
 

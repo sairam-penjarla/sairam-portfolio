@@ -1,0 +1,66 @@
+/* 
+ * Project Media Fix CSS
+ * Specific fixes for iframes and media elements in project cards
+ */
+
+/* Make sure project media containers are visible */
+.project-media {
+  display: block !important;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Make sure iframes are visible and responsive */
+.project-media iframe {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  border: none;
+}
+
+/* Desktop iframe sizing */
+@media screen and (min-width: 769px) {
+  .project-media iframe {
+    /* height: 315px !important; */
+  }
+}
+
+/* Mobile iframe container with aspect ratio */
+@media screen and (max-width: 768px) {
+  .project-media {
+    position: relative !important;
+    width: 100% !important;
+    height: 0 !important;
+    padding-bottom: 56.25% !important; /* 16:9 aspect ratio */
+    overflow: hidden !important;
+  }
+  
+  .project-media iframe {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 200px !important;
+  }
+  
+  /* Fix for embedded video container */
+  .horizontal-card .project-media {
+    margin-bottom: 20px !important;
+  }
+  
+  /* Fix for Coming Soon placeholder */
+  .coming-soon-placeholder {
+    position: relative !important;
+    height: 100% !important;
+    min-height: 200px !important;
+  }
+}
+
+/* Very small mobile devices */
+@media screen and (max-width: 480px) {
+  .project-media {
+    padding-bottom: 56.25% !important; /* maintain 16:9 aspect ratio */
+  }
+} 

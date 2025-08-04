@@ -1,0 +1,182 @@
+/* 
+ * Journey Section Mobile Optimizations
+ * This file contains mobile-specific optimizations for the resources journey section
+ */
+
+/* Mobile styles for journey section */
+@media screen and (max-width: 768px) {
+  /* Journey container */
+  .journey-section {
+    padding: 40px 16px !important;
+    flex-direction: column !important;
+  }
+
+  .journey-container {
+    flex-direction: column !important;
+    gap: 30px !important;
+    text-align: center !important;
+    padding: 0 !important;
+  }
+
+  .hero-content {
+    max-width: 100% !important;
+    padding-right: 0 !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .hero-title {
+    font-size: 2.5rem !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin-bottom: 16px !important;
+  }
+
+  .hero-description {
+    font-size: 1rem !important;
+    text-align: center !important;
+    margin-bottom: 24px !important;
+  }
+
+  .hero-image {
+    max-width: 80% !important;
+    margin: 0 auto !important;
+  }
+
+  .hero-image img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  .btn-minimal {
+    padding: 12px 20px !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* Playlists section */
+  .playlists-section {
+    padding: 40px 16px !important;
+  }
+
+  .container {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .playlists-container {
+    flex-direction: column !important;
+    gap: 30px !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  .hero-section-title {
+    font-size: 1.8rem !important;
+    margin-bottom: 30px !important;
+    padding: 0 !important;
+  }
+
+  .highlight-text {
+    display: inline !important;
+  }
+  
+  /* GenAI sections */
+  .genai-container {
+    flex-direction: column !important;
+    padding: 20px !important;
+    gap: 24px !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .genai-media {
+    width: 100% !important;
+    order: 1 !important;
+  }
+
+  .genai-content {
+    width: 100% !important;
+    text-align: center !important;
+    align-items: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    order: 2 !important;
+  }
+
+  .genai-device-mockup {
+    width: 100% !important;
+    max-width: 300px !important;
+    margin: 0 auto !important;
+  }
+
+  .genai-device-mockup img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+  }
+
+  .genai-badge {
+    font-size: 0.8rem !important;
+    padding: 4px 12px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .genai-title {
+    font-size: 1.8rem !important;
+    margin-bottom: 16px !important;
+    text-align: center !important;
+  }
+
+  .genai-description {
+    font-size: 1rem !important;
+    margin-bottom: 24px !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+  .genai-button {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 20px !important;
+  }
+
+  .button-icon {
+    margin-right: 8px !important;
+  }
+  
+  /* Fix for the Azure container */
+  .azure-container.genai-container .genai-media {
+    order: 1 !important;
+  }
+  
+  .azure-container.genai-container .genai-content {
+    order: 2 !important;
+  }
+}
+
+/* Extra small devices */
+@media screen and (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem !important;
+  }
+  
+  .hero-section-title {
+    font-size: 1.5rem !important;
+  }
+  
+  .genai-title {
+    font-size: 1.5rem !important;
+  }
+  
+  .genai-device-mockup {
+    max-width: 250px !important;
+  }
+  
+  .genai-description {
+    font-size: 0.9rem !important;
+  }
+  
+  .genai-button {
+    font-size: 0.9rem !important;
+  }
+} 

@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
 <link rel="stylesheet" href="{{ url_for('static', filename='css/section-animations.css') }}" />
 <link rel="stylesheet" href="{{ url_for('static', filename='css/azure-styles.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/journey-mobile.css') }}" />
 <section class="hero-section journey-section animate-section">
     <div class="hero-container journey-container">
         <div class="hero-content animate-left delay-100">
@@ -59,3 +60,49 @@
 </section>
 
 <script src="{{ url_for('static', filename='js/section-animations.js') }}"></script> 
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Check if we're on mobile
+    function isMobile() {
+      return window.innerWidth <= 768;
+    }
+    
+    // Fix layout for mobile devices
+    function fixMobileLayout() {
+      if (isMobile()) {
+        // Fix for containers
+        const containers = document.querySelectorAll('.genai-container');
+        containers.forEach(container => {
+          container.style.display = 'flex';
+          container.style.flexDirection = 'column';
+        });
+        
+        // Fix for images
+        const images = document.querySelectorAll('.genai-device-mockup img');
+        images.forEach(img => {
+          img.style.display = 'block';
+          img.style.maxWidth = '100%';
+          img.style.height = 'auto';
+        });
+        
+        // Fix for media containers
+        const mediaContainers = document.querySelectorAll('.genai-media');
+        mediaContainers.forEach(container => {
+          container.style.width = '100%';
+        });
+        
+        // Fix for content containers
+        const contentContainers = document.querySelectorAll('.genai-content');
+        contentContainers.forEach(container => {
+          container.style.width = '100%';
+          container.style.textAlign = 'center';
+        });
+      }
+    }
+    
+    // Run initially and on resize
+    fixMobileLayout();
+    window.addEventListener('resize', fixMobileLayout);
+  });
+</script> 
