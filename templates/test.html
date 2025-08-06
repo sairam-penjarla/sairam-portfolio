@@ -2,405 +2,460 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dynamic News Page</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js" defer></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    .active-tab {
+      font-weight: 600;
+      color: black;
+      background-color: #f3f4f6;
+    }
     
-    :root {
-      --primary-highlight-color: #007aff;
-      --apple-gray-1: #1d1d1f;
-      --apple-gray-2: #86868b;
-      --apple-gray-3: #f5f5f7;
-      --apple-gray-4: #fbfbfd;
+    .mobile-menu-open {
+      transform: translateX(0);
     }
-
-    * {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+    
+    .mobile-menu-closed {
+      transform: translateX(-100%);
     }
-
-    [x-cloak] { display: none !important; }
-
-    body {
-      background: var(--apple-gray-4);
-      color: var(--apple-gray-1);
-      line-height: 1.47059;
-      font-weight: 400;
-      letter-spacing: -0.022em;
+    .sidebar{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
-
-    /* Header styling */
-    .apple-header {
-      background: rgba(251, 251, 253, 0.8);
-      backdrop-filter: saturate(180%) blur(20px);
-      border-bottom: 0.5px solid rgba(134, 134, 139, 0.2);
-      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    /* Navigation styling */
-    .nav-link {
-      font-size: 17px;
-      font-weight: 400;
-      color: var(--apple-gray-1);
-      text-decoration: none;
-      transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      padding: 8px 16px;
-      border-radius: 12px;
-      position: relative;
-    }
-
-    .nav-link:hover {
-      color: var(--primary-highlight-color);
-      background: rgba(0, 122, 255, 0.04);
-    }
-
-    /* Brand styling */
-    .brand-text {
-      font-size: 21px;
-      font-weight: 600;
-      letter-spacing: -0.03em;
-    }
-
-    /* Dropdown animations */
-    .dropdown-panel {
-      background: rgba(251, 251, 253, 0.92);
-      backdrop-filter: saturate(180%) blur(20px);
-      border-bottom: 0.5px solid rgba(134, 134, 139, 0.2);
-      box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.08), 0 8px 32px 0 rgba(0, 0, 0, 0.04);
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    .dropdown-panel.open {
-      max-height: 500px;
-    }
-
-    .dropdown-section {
-      opacity: 0;
-      transform: translateY(-8px);
-      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    .dropdown-panel.open .dropdown-section {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .dropdown-panel.open .dropdown-section:nth-child(1) { transition-delay: 0.1s; }
-    .dropdown-panel.open .dropdown-section:nth-child(2) { transition-delay: 0.15s; }
-    .dropdown-panel.open .dropdown-section:nth-child(3) { transition-delay: 0.2s; }
-
-    /* Dropdown content styling */
-    .dropdown-category {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--apple-gray-2);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 16px;
-    }
-
-    .dropdown-link {
-      font-size: 17px;
-      font-weight: 400;
-      color: var(--apple-gray-1);
-      text-decoration: none;
-      display: block;
-      padding: 8px 0;
-      transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      border-radius: 6px;
-    }
-
-    .dropdown-link:hover {
-      color: var(--primary-highlight-color);
-      transform: translateX(2px);
-    }
-
-    /* Mobile menu styling */
-    .mobile-overlay {
-      background: rgba(251, 251, 253, 0.98);
-      backdrop-filter: saturate(180%) blur(20px);
-    }
-
-    .mobile-nav-link {
-      font-size: 28px;
-      font-weight: 600;
-      color: var(--apple-gray-1);
-      text-decoration: none;
-      padding: 12px 0;
-      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      border-bottom: 0.5px solid rgba(134, 134, 139, 0.1);
-    }
-
-    .mobile-nav-link:hover {
-      color: var(--primary-highlight-color);
-      transform: translateX(4px);
-    }
-
-    .mobile-back-btn {
-      font-size: 17px;
-      color: var(--primary-highlight-color);
-      background: none;
-      border: none;
-      padding: 8px 0;
-      margin-bottom: 24px;
-      transition: all 0.2s ease;
-    }
-
-    .mobile-back-btn:hover {
-      transform: translateX(-2px);
-    }
-
-    /* Mobile submenu styling */
-    .mobile-category {
-      font-size: 19px;
-      font-weight: 600;
-      color: var(--apple-gray-1);
-      margin-bottom: 12px;
-      margin-top: 32px;
-    }
-
-    .mobile-category:first-child {
-      margin-top: 0;
-    }
-
-    .mobile-sub-link {
-      font-size: 17px;
-      font-weight: 400;
-      color: var(--apple-gray-2);
-      text-decoration: none;
-      display: block;
-      padding: 8px 0;
-      transition: all 0.2s ease;
-    }
-
-    .mobile-sub-link:hover {
-      color: var(--primary-highlight-color);
-      transform: translateX(2px);
-    }
-
-    /* Hamburger animation */
-    .hamburger {
-      background: none;
-      border: none;
-      padding: 8px;
-      border-radius: 8px;
-      transition: all 0.2s ease;
-    }
-
-    .hamburger:hover {
-      background: rgba(0, 122, 255, 0.04);
-    }
-
-    .hamburger svg {
-      transition: all 0.2s ease;
-    }
-
-    /* Close button */
-    .close-btn {
-      background: none;
-      border: none;
-      padding: 8px;
-      border-radius: 50%;
-      transition: all 0.2s ease;
-    }
-
-    .close-btn:hover {
-      background: rgba(134, 134, 139, 0.1);
-      transform: rotate(90deg);
-    }
-
-    /* Main content styling */
-    .main-content {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 48px 24px;
-    }
-
-    .main-title {
-      font-size: 48px;
-      font-weight: 600;
-      line-height: 1.08349;
-      letter-spacing: -0.003em;
-      color: var(--apple-gray-1);
-      margin-bottom: 24px;
-    }
-
-    .main-subtitle {
-      font-size: 21px;
-      font-weight: 400;
-      line-height: 1.381;
-      letter-spacing: 0.011em;
-      color: var(--apple-gray-2);
-    }
-
-    /* Responsive typography */
+    
     @media (max-width: 768px) {
-      .main-title {
-        font-size: 32px;
-        line-height: 1.125;
-      }
-      
-      .main-subtitle {
-        font-size: 19px;
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 50;
+        background: white;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
       }
     }
   </style>
 </head>
-<body x-data="{ openDropdown: null, mobileOpen: false, subMenu: null }">
-  <!-- Header -->
-  <header class="fixed top-0 w-full apple-header z-50" @mouseleave="openDropdown = null">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex justify-center items-center h-16 relative">
-        <!-- Site name -->
-        <a href="/" class="absolute left-6 brand-text">
-          <span class="text-gray-800">Sai</span><span class="text-[color:var(--primary-highlight-color)]">Ram</span>
-        </a>
+<body class="bg-white text-black font-sans">
 
-        <!-- Desktop Nav -->
-        <nav class="hidden md:flex space-x-2">
-          <a href="/" class="nav-link">About Me</a>
-          <a href="/resources" class="nav-link">Resources</a>
-          <a href="/projects" class="nav-link">Projects</a>
-          <a href="/prompts" class="nav-link">Prompts</a>
-          <!-- Cheatsheets Dropdown -->
-          <div class="relative" @mouseenter="openDropdown = 'cheatsheets'" @mouseleave="openDropdown = null">
-            <button class="nav-link">Cheatsheets</button>
-          </div>
-          <a href="/blogs" class="nav-link">Blogs</a>
-        </nav>
+<!-- Mobile Menu Button -->
+<div class="md:hidden fixed top-4 left-4 z-50">
+  <button id="mobileMenuBtn" class="bg-gray-100 hover:bg-gray-200 p-2 rounded-lg shadow-md">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+  </button>
+</div>
 
-        <!-- Mobile Toggle -->
-        <button @click="mobileOpen = true" class="md:hidden absolute right-6 hamburger">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
-        </button>
-      </div>
-    </div>
-  </header>
+<!-- Mobile Overlay -->
+<div id="mobileOverlay" class="md:hidden fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
 
-  <!-- Desktop Dropdown Content -->
-  <div class="fixed top-16 left-0 w-full dropdown-panel z-40 hidden md:block" 
-       :class="{ 'open': openDropdown === 'cheatsheets' }" 
-       @mouseenter="openDropdown = 'cheatsheets'" 
-       @mouseleave="openDropdown = null">
-    <div class="max-w-7xl mx-auto py-16 px-24">
-      <div class="grid grid-cols-3 gap-16">
-        <div class="dropdown-section">
-          <div class="dropdown-category">Environment</div>
-          <div class="space-y-1">
-            <a href="#" class="dropdown-link">Anaconda</a>
-            <a href="#" class="dropdown-link">Virtual Environment</a>
-            <a href="#" class="dropdown-link">Pip Installations</a>
-          </div>
-        </div>
-        <div class="dropdown-section">
-          <div class="dropdown-category">Git & CLI</div>
-          <div class="space-y-1">
-            <a href="#" class="dropdown-link">Git Commands</a>
-            <a href="#" class="dropdown-link">Bash Shortcuts</a>
-            <a href="#" class="dropdown-link">SSH Setup</a>
-          </div>
-        </div>
-        <div class="dropdown-section">
-          <div class="dropdown-category">Python</div>
-          <div class="space-y-1">
-            <a href="#" class="dropdown-link">String Formatting</a>
-            <a href="#" class="dropdown-link">List Comprehensions</a>
-            <a href="#" class="dropdown-link">Decorators</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Mobile Slide Panel -->
-  <div x-show="mobileOpen" x-cloak 
-       x-transition:enter="transition ease-out duration-300"
-       x-transition:enter-start="opacity-0 transform translate-x-full"
-       x-transition:enter-end="opacity-100 transform translate-x-0"
-       x-transition:leave="transition ease-in duration-200"
-       x-transition:leave-start="opacity-100 transform translate-x-0"
-       x-transition:leave-end="opacity-0 transform translate-x-full"
-       class="fixed inset-0 mobile-overlay z-50 p-6 flex flex-col">
-    
-    <div class="flex justify-end mb-8">
-      <button @click="mobileOpen = false" class="close-btn">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+<div class="flex min-h-screen">
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar w-64 md:w-56 px-6 py-8 space-y-3 text-sm font-medium text-gray-600 mobile-menu-closed md:transform-none">
+    <!-- Close button for mobile -->
+    <div class="md:hidden flex justify-end mb-4">
+      <button id="closeSidebarBtn" class="p-2 hover:bg-gray-100 rounded-lg">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
     </div>
+    
+    <button onclick="loadBlogs('prompts')" class="sidebar-btn group hover:bg-gray-100 px-4 py-2 rounded-lg flex justify-between items-center w-full">
+      <span>Latest Prompts</span>
+      <span class="opacity-0 group-hover:opacity-100"><img src="/static/images/lucidev-icons/chevron-right.svg"/></span>
+    </button>
+    <button onclick="loadBlogs('research')" class="sidebar-btn group hover:bg-gray-100 px-4 py-2 rounded-lg flex justify-between items-center w-full">
+      <span>Research</span>
+      <span class="opacity-0 group-hover:opacity-100"><img src="/static/images/lucidev-icons/chevron-right.svg"/></span>
+    </button>
+    <button onclick="loadBlogs('safety')" class="sidebar-btn group hover:bg-gray-100 px-4 py-2 rounded-lg flex justify-between items-center w-full">
+      <span>Safety</span>
+      <span class="opacity-0 group-hover:opacity-100"><img src="/static/images/lucidev-icons/chevron-right.svg"/></span>
+    </button>
+    <button onclick="loadBlogs('business')" class="sidebar-btn group hover:bg-gray-100 px-4 py-2 rounded-lg flex justify-between items-center w-full">
+      <span>For Business</span>
+      <span class="opacity-0 group-hover:opacity-100"><img src="/static/images/lucidev-icons/chevron-right.svg"/></span>
+    </button>
+    <button onclick="loadBlogs('developers')" class="sidebar-btn group hover:bg-gray-100 px-4 py-2 rounded-lg flex justify-between items-center w-full">
+      <span>For Developers</span>
+      <span class="opacity-0 group-hover:opacity-100"><img src="/static/images/lucidev-icons/chevron-right.svg"/></span>
+    </button>
+    <button onclick="loadBlogs('chatgpt')" class="sidebar-btn group hover:bg-gray-100 px-4 py-2 rounded-lg flex justify-between items-center w-full">
+      <span>ChatGPT</span>
+      <span class="opacity-0 group-hover:opacity-100"><img src="/static/images/lucidev-icons/chevron-right.svg"/></span>
+    </button>
+    <button onclick="loadBlogs('sora')" class="sidebar-btn group hover:bg-gray-100 px-4 py-2 rounded-lg flex justify-between items-center w-full">
+      <span>Sora</span>
+      <span class="opacity-0 group-hover:opacity-100">
+        <img src="/static/images/lucidev-icons/chevron-right.svg"/>
+      </span>
+    </button>
+    <button onclick="loadBlogs('stories')" class="sidebar-btn group hover:bg-gray-100 px-4 py-2 rounded-lg flex justify-between items-center w-full">
+      <span>Stories</span>
+      <span class="opacity-0 group-hover:opacity-100"><img src="/static/images/lucidev-icons/chevron-right.svg"/></span>
+    </button>
+    <button onclick="loadBlogs('company')" class="sidebar-btn group hover:bg-gray-100 px-4 py-2 rounded-lg flex justify-between items-center w-full">
+      <span>Company</span>
+      <span class="opacity-0 group-hover:opacity-100"><img src="/static/images/lucidev-icons/chevron-right.svg"/></span>
+    </button>
+    <button onclick="loadBlogs('news')" class="sidebar-btn group hover:bg-gray-100 px-4 py-2 rounded-lg flex justify-between items-center w-full">
+      <span>News</span>
+      <span class="opacity-0 group-hover:opacity-100"><img src="/static/images/lucidev-icons/chevron-right.svg"/></span>
+    </button>
+  </aside>
 
-    <template x-if="!subMenu">
-      <nav class="space-y-1">
-        <a href="/" class="mobile-nav-link block">About Me</a>
-        <a href="/resources" class="mobile-nav-link block">Resources</a>
-        <a href="/projects" class="mobile-nav-link block">Projects</a>
-        <a href="/prompts" class="mobile-nav-link block">Prompts</a>
-        <button @click="subMenu = 'cheatsheets'" class="mobile-nav-link flex justify-between items-center w-full">
-          Cheatsheets 
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-        <a href="/blogs" class="mobile-nav-link block">Blogs</a>
-      </nav>
-    </template>
-
-    <template x-if="subMenu === 'cheatsheets'">
-      <div>
-        <button @click="subMenu = null" class="mobile-back-btn flex items-center">
-          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-          </svg>
-          Back
-        </button>
-        
-        <div class="space-y-6">
-          <div>
-            <h3 class="mobile-category">Environment</h3>
-            <div class="space-y-1">
-              <a href="#" class="mobile-sub-link">Anaconda</a>
-              <a href="#" class="mobile-sub-link">Virtual Environment</a>
-              <a href="#" class="mobile-sub-link">Pip Installations</a>
-            </div>
+  <!-- Main Content -->
+  <main class="flex-1 px-4 md:px-12 py-6 md:py-10 pt-16 md:pt-10">
+    <div id="loadingSpinner" class="hidden text-center py-8">
+      <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+      <p class="text-gray-500 mt-2">Loading blogs...</p>
+    </div>
+    
+    <div id="blogContainer" class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+      <!-- Default content shown here -->
+      <div class="space-y-6">
+        <div class="flex flex-col sm:flex-row gap-4">
+          <img src="https://via.placeholder.com/200x150/eee" class="w-full sm:w-40 h-32 sm:h-40 object-cover rounded-md">
+          <div class="flex-1">
+            <h2 class="font-medium text-lg">Stargate advances with 4.5 GW partnership with Oracle</h2>
+            <p class="text-sm text-gray-500 mt-2">Company · Jul 22, 2025</p>
           </div>
-          
-          <div>
-            <h3 class="mobile-category">Git & CLI</h3>
-            <div class="space-y-1">
-              <a href="#" class="mobile-sub-link">Git Commands</a>
-              <a href="#" class="mobile-sub-link">Bash Shortcuts</a>
-              <a href="#" class="mobile-sub-link">SSH Setup</a>
-            </div>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <img src="https://via.placeholder.com/200x150/3B82F6" class="w-full sm:w-40 h-32 sm:h-40 object-cover rounded-md">
+          <div class="flex-1">
+            <h2 class="font-medium text-lg">Introducing ChatGPT agent</h2>
+            <p class="text-sm text-gray-500 mt-2">Product · Jul 17, 2025</p>
           </div>
-          
-          <div>
-            <h3 class="mobile-category">Python</h3>
-            <div class="space-y-1">
-              <a href="#" class="mobile-sub-link">String Formatting</a>
-              <a href="#" class="mobile-sub-link">List Comprehensions</a>
-              <a href="#" class="mobile-sub-link">Decorators</a>
-            </div>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <img src="https://via.placeholder.com/200x150/0EA5E9" class="w-full sm:w-40 h-32 sm:h-40 object-cover rounded-md">
+          <div class="flex-1">
+            <h2 class="font-medium text-lg">Scaling security with responsible disclosure</h2>
+            <p class="text-sm text-gray-500 mt-2">Security · Jun 9, 2025</p>
           </div>
         </div>
       </div>
-    </template>
-  </div>
-
-  <!-- Spacer -->
-  <div class="h-20"></div>
-  
-  <main class="main-content">
-    <h1 class="main-title">Welcome to My Portfolio</h1>
-    <p class="main-subtitle">This is a placeholder. Add your content here.</p>
+      <div class="space-y-6">
+        <div class="flex flex-col sm:flex-row gap-4">
+          <img src="https://via.placeholder.com/200x150/10B981" class="w-full sm:w-40 h-32 sm:h-40 object-cover rounded-md">
+          <div class="flex-1">
+            <h2 class="font-medium text-lg">Preparing for future AI risks in biology</h2>
+            <p class="text-sm text-gray-500 mt-2">Safety · Jun 18, 2025</p>
+          </div>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <img src="https://via.placeholder.com/200x150/8B5CF6" class="w-full sm:w-40 h-32 sm:h-40 object-cover rounded-md">
+          <div class="flex-1">
+            <h2 class="font-medium text-lg">Bringing the magic of AI to Mattel's iconic brands</h2>
+            <p class="text-sm text-gray-500 mt-2">Company · Jun 12, 2025</p>
+          </div>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <img src="https://via.placeholder.com/200x150/1E40AF" class="w-full sm:w-40 h-32 sm:h-40 object-cover rounded-md">
+          <div class="flex-1">
+            <h2 class="font-medium text-lg">How we're responding to NYT's data demands to protect privacy</h2>
+            <p class="text-sm text-gray-500 mt-2">Security · Jun 5, 2025</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
+</div>
+
+<!-- JavaScript -->
+<script>
+  // Sample JSON data structure - in a real app, these would be separate JSON files
+  const blogData = {
+    prompts: {
+      title: "Trending",
+      blogs: [
+        {
+          title: "Write me a love letter in Shakespearean English",
+          category: "Prompt",
+          date: "Aug 6, 2025",
+          image: "/static/thumbnails/21_thumbnail.jpg",
+          link: "#"
+        },
+        {
+          title: "Generate a startup idea using AI + Blockchain",
+          category: "Prompt",
+          date: "Aug 5, 2025",
+          image: "/static/thumbnails/22_thumbnail.jpg",
+          link: "#"
+        },
+        {
+          title: "Create a Python script for data visualization",
+          category: "Prompt",
+          date: "Aug 4, 2025",
+          image: "/static/thumbnails/23_thumbnail.jpg",
+          link: "#"
+        },
+        {
+          title: "Design a user interface for mobile app",
+          category: "Prompt",
+          date: "Aug 3, 2025",
+          image: "/static/thumbnails/24_thumbnail.jpg",
+          link: "#"
+        }
+      ]
+    },
+    research: {
+      title: "Research",
+      blogs: [
+        {
+          title: "Scaling transformer models to 1 trillion parameters",
+          category: "Research",
+          date: "Jul 30, 2025",
+          image: "/static/thumbnails/25_thumbnail.jpg",
+          link: "#"
+        },
+        {
+          title: "Neural architecture search for efficient models",
+          category: "Research",
+          date: "Jul 28, 2025",
+          image: "/static/thumbnails/26_thumbnail.jpg",
+          link: "#"
+        },
+        {
+          title: "Breakthrough in quantum machine learning",
+          category: "Research",
+          date: "Jul 25, 2025",
+          image: "/static/thumbnails/27_thumbnail.jpg",
+          link: "#"
+        }
+      ]
+    },
+    safety: {
+      title: "🛡️ AI Safety",
+      blogs: [
+        {
+          title: "Preventing hallucinations in high-stakes scenarios",
+          category: "Safety",
+          date: "Jul 25, 2025",
+          image: "https://via.placeholder.com/200x150/F43F5E",
+          link: "#"
+        },
+        {
+          title: "Robust evaluation frameworks for AI systems",
+          category: "Safety",
+          date: "Jul 20, 2025",
+          image: "https://via.placeholder.com/200x150/EF4444",
+          link: "#"
+        }
+      ]
+    },
+    business: {
+      title: "💼 For Business",
+      blogs: [
+        {
+          title: "AI adoption strategies for enterprise",
+          category: "Business",
+          date: "Aug 1, 2025",
+          image: "https://via.placeholder.com/200x150/059669",
+          link: "#"
+        },
+        {
+          title: "ROI measurement in AI implementations",
+          category: "Business",
+          date: "Jul 29, 2025",
+          image: "https://via.placeholder.com/200x150/047857",
+          link: "#"
+        }
+      ]
+    },
+    developers: {
+      title: "👨‍💻 For Developers",
+      blogs: [
+        {
+          title: "Building scalable AI applications with microservices",
+          category: "Development",
+          date: "Aug 2, 2025",
+          image: "https://via.placeholder.com/200x150/7C3AED",
+          link: "#"
+        },
+        {
+          title: "Best practices for ML model deployment",
+          category: "Development",
+          date: "Jul 31, 2025",
+          image: "https://via.placeholder.com/200x150/6D28D9",
+          link: "#"
+        }
+      ]
+    },
+    chatgpt: {
+      title: "💬 ChatGPT",
+      blogs: [
+        {
+          title: "ChatGPT-5 capabilities and improvements",
+          category: "Product",
+          date: "Aug 5, 2025",
+          image: "https://via.placeholder.com/200x150/10B981",
+          link: "#"
+        },
+        {
+          title: "Advanced prompt engineering techniques",
+          category: "Tutorial",
+          date: "Aug 3, 2025",
+          image: "https://via.placeholder.com/200x150/059669",
+          link: "#"
+        }
+      ]
+    },
+    sora: {
+      title: "🎬 Sora",
+      blogs: [
+        {
+          title: "Sora's new video generation capabilities",
+          category: "Product",
+          date: "Jul 28, 2025",
+          image: "https://via.placeholder.com/200x150/DC2626",
+          link: "#"
+        }
+      ]
+    },
+    stories: {
+      title: "📖 Stories",
+      blogs: [
+        {
+          title: "How AI transformed a small business",
+          category: "Story",
+          date: "Aug 4, 2025",
+          image: "https://via.placeholder.com/200x150/F59E0B",
+          link: "#"
+        },
+        {
+          title: "Student uses AI to learn programming",
+          category: "Story",
+          date: "Aug 1, 2025",
+          image: "https://via.placeholder.com/200x150/D97706",
+          link: "#"
+        }
+      ]
+    },
+    company: {
+      title: "🏢 Company",
+      blogs: [
+        {
+          title: "Our commitment to responsible AI development",
+          category: "Company",
+          date: "Jul 26, 2025",
+          image: "https://via.placeholder.com/200x150/0891B2",
+          link: "#"
+        }
+      ]
+    },
+    news: {
+      title: "📰 News",
+      blogs: [
+        {
+          title: "AI regulation updates from global governments",
+          category: "News",
+          date: "Aug 6, 2025",
+          image: "https://via.placeholder.com/200x150/BE185D",
+          link: "#"
+        },
+        {
+          title: "Tech industry AI investment trends",
+          category: "News",
+          date: "Aug 5, 2025",
+          image: "https://via.placeholder.com/200x150/BE123C",
+          link: "#"
+        }
+      ]
+    }
+  };
+
+  // Mobile menu functionality
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const sidebar = document.getElementById('sidebar');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  const closeSidebarBtn = document.getElementById('closeSidebarBtn');
+
+  function openMobileMenu() {
+    sidebar.classList.remove('mobile-menu-closed');
+    sidebar.classList.add('mobile-menu-open');
+    mobileOverlay.classList.remove('hidden');
+  }
+
+  function closeMobileMenu() {
+    sidebar.classList.remove('mobile-menu-open');
+    sidebar.classList.add('mobile-menu-closed');
+    mobileOverlay.classList.add('hidden');
+  }
+
+  mobileMenuBtn.addEventListener('click', openMobileMenu);
+  closeSidebarBtn.addEventListener('click', closeMobileMenu);
+  mobileOverlay.addEventListener('click', closeMobileMenu);
+
+  // Load blogs function
+  function loadBlogs(category) {
+    const blogContainer = document.getElementById('blogContainer');
+    const loadingSpinner = document.getElementById('loadingSpinner');
+    
+    // Remove active class from all buttons
+    document.querySelectorAll('.sidebar-btn').forEach(btn => {
+      btn.classList.remove('active-tab');
+    });
+    
+    // Add active class to clicked button
+    event.target.closest('.sidebar-btn').classList.add('active-tab');
+    
+    // Show loading spinner
+    loadingSpinner.classList.remove('hidden');
+    blogContainer.classList.add('hidden');
+    
+    // Close mobile menu if open
+    if (window.innerWidth < 768) {
+      closeMobileMenu();
+    }
+    
+    // Simulate loading delay
+    setTimeout(() => {
+      loadingSpinner.classList.add('hidden');
+      blogContainer.classList.remove('hidden');
+      
+      const data = blogData[category];
+      if (!data) {
+        blogContainer.innerHTML = '<div class="col-span-full text-center text-gray-500 py-8">No blogs found for this category</div>';
+        return;
+      }
+      
+      let html = `<div class="col-span-full mb-6">
+                    <h1 class="text-2xl md:text-3xl font-bold text-gray-800">${data.title}</h1>
+                  </div>`;
+      
+      data.blogs.forEach(blog => {
+        html += `
+          <div class="space-y-4">
+            <div class="flex flex-col sm:flex-row gap-4 transition-shadow duration-300 p-4 rounded-l">
+              <img src="${blog.image}" class="w-full sm:w-40 h-32 sm:h-40 object-cover rounded-md">
+              <div class="flex-1">
+                <h2 class="font-medium text-lg cursor-pointer">${blog.title}</h2>
+                <p class="text-sm text-gray-500 mt-2">${blog.category} · ${blog.date}</p>
+                <a href="${blog.link}" class="inline-block mt-3 text-blue-600 text-sm font-medium">Read more →</a>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      
+      blogContainer.innerHTML = html;
+    }, 800);
+  }
+
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768) {
+      closeMobileMenu();
+    }
+  });
+</script>
+
 </body>
 </html>

@@ -185,7 +185,7 @@ body {
     align-items: center;
     justify-content: center;
     background-color: #f5f5f5;
-    padding: 50px 20px;
+    padding: 150px 20px;
     /* margin-bottom: 30px; */
     /* width: 1000px; */
 }
@@ -212,6 +212,7 @@ body {
     font-size: 1rem;
     margin-bottom: 30px;
     color: var(--primary-highlight-color);
+    text-align: start;
 }
 
 .hero-image {

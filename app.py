@@ -20,7 +20,7 @@ def test():
 
 @app.route('/resources')
 def resources():
-    return render_template('home_sections/newhome.html') #render_template('resources.html')
+    return render_template('resources/resources.html')
 
 @app.route('/projects')
 def projects():
@@ -28,7 +28,7 @@ def projects():
 
 @app.route('/prompts')
 def prompts():
-    return render_template('home_sections/newhome.html') #render_template('courses.html')
+    return render_template('prompts/prompts.html') #render_template('courses.html')
 
 @app.route('/cheatsheets')
 def cheatsheets():
