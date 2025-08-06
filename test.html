@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Awesome Blog</title>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Marked.js CDN for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="static/css/blog_styles/blog_styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="main-layout">
+            <!-- Blog Content -->
+            <main class="main-content">
+                <article id="blog-content" class="blog-content">
+                    <div class="loading">Loading blog content...</div>
+                </article>
+            </main>
+
+            <!-- Table of Contents -->
+            <aside class="toc-sidebar">
+                <div class="toc-header">Table of Contents</div>
+                <nav>
+                    <ul id="toc-list" class="toc-list">
+                        <div class="loading" style="font-size: 0.875rem; padding: 1rem 0;">Loading TOC...</div>
+                    </ul>
+                </nav>
+            </aside>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Blog content in Markdown format
+            const markdownContent = `# ehllo wrold`;
+
+            const blogContentDiv = document.getElementById('blog-content');
+            const tocList = document.getElementById('toc-list');
+
+            // 1. Parse Markdown and inject into the blog content area
+            const parsedHtml = marked.parse(markdownContent);
+            blogContentDiv.innerHTML = parsedHtml;
+
+            // 2. Dynamically generate Table of Contents
+            const headings = blogContentDiv.querySelectorAll('h2, h3');
+            tocList.innerHTML = ''; // Clear loading message
+
+            let sectionCounter = 0; // To provide a numerical prefix for sections for h2
+
+            headings.forEach(heading => {
+                const text = heading.innerText;
+                const tagName = heading.tagName.toLowerCase(); // h2 or h3
+
+                // Create a slug for the ID (e.g., "how-does-it-work")
+                const id = text.toLowerCase()
+                               .replace(/[^a-z0-9\s-]/g, '') // Remove non-alphanumeric characters
+                               .replace(/\s+/g, '-')       // Replace spaces with hyphens
+                               .replace(/-+/g, '-');      // Replace multiple hyphens with single
+
+                // Assign the generated ID to the heading element
+                heading.id = id;
+
+                // Create TOC list item
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = `#${id}`;
+                link.classList.add('toc-link');
+
+                // Adjust indentation for subheadings (h3)
+                if (tagName === 'h3') {
+                    link.classList.add('sub-heading');
+                }
+
+                // Add content to link
+                if (tagName === 'h2') {
+                    sectionCounter++;
+                    link.textContent = text;
+                } else {
+                    link.textContent = text;
+                }
+
+                listItem.appendChild(link);
+                tocList.appendChild(listItem);
+            });
+
+            // 3. Implement Scroll-Spy functionality
+            const sections = document.querySelectorAll('#blog-content h2, #blog-content h3');
+            const navLinks = document.querySelectorAll('.toc-link');
+
+            const highlightActiveLink = () => {
+                let currentActiveSectionId = '';
+                const scrollY = window.scrollY;
+                const offset = 150;
+
+                // Iterate through sections in reverse order
+                for (let i = sections.length - 1; i >= 0; i--) {
+                    const section = sections[i];
+                    const sectionTop = section.offsetTop;
+
+                    if (scrollY + offset >= sectionTop) {
+                        currentActiveSectionId = section.id;
+                        break;
+                    }
+                }
+
+                // Remove active class from all links and add to the current active one
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === currentActiveSectionId) {
+                        link.classList.add('active');
+                    }
+                });
+            };
+
+            // Initial highlight on page load
+            highlightActiveLink();
+
+            // Highlight on scroll
+            window.addEventListener('scroll', highlightActiveLink);
+        });
+    </script>
+</body>
+</html>
