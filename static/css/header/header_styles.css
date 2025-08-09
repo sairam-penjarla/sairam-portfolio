@@ -3,7 +3,7 @@
 :root {
       --primary-highlight-color: #004f95;
       --apple-gray-1: #1d1d1f;
-      --apple-gray-2: #86868b;
+      --apple-gray-2: #b9b9b9;
       --apple-gray-3: #f5f5f7;
       --apple-gray-4: #fbfbfd;
 }
@@ -124,16 +124,18 @@ body {
 .mobile-overlay {
       background: rgba(251, 251, 253, 0.98);
       backdrop-filter: saturate(180%) blur(20px);
+      z-index: 51;
 }
 
 .mobile-nav-link {
-      font-size: 28px;
-      font-weight: 600;
+      font-size: 27px;
+      font-weight: 200;
       color: var(--apple-gray-1);
       text-decoration: none;
       padding: 12px 0;
       transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       /* border-bottom: 0.5px solid rgba(134, 134, 139, 0.1); */
+      width: 90%;
 }
 
 .mobile-nav-link:hover {
@@ -146,7 +148,7 @@ body {
       /* color: var(--primary-highlight-color); */
       background: none;
       border: none;
-      padding: 8px 0;
+      /* padding: 8px 0; */
       margin-bottom: 24px;
       transition: all 0.2s ease;
 }
@@ -157,8 +159,8 @@ body {
 
 /* Mobile submenu styling */
 .mobile-category {
-      font-size: 19px;
-      font-weight: 600;
+      font-size: 14px;
+      font-weight: 300;
       color: var(--apple-gray-2);
       margin-bottom: 12px;
       margin-top: 32px;
@@ -187,7 +189,7 @@ body {
 .hamburger {
       background: none;
       border: none;
-      padding: 8px;
+      /* padding: 8px; */
       border-radius: 8px;
       transition: all 0.2s ease;
 }
@@ -204,22 +206,16 @@ body {
 .close-btn {
       background: none;
       border: none;
-      padding: 8px;
+      /* padding: 8px; */
       border-radius: 50%;
       transition: all 0.2s ease;
 }
 
 .close-btn:hover {
-      background: rgba(134, 134, 139, 0.1);
-      transform: rotate(90deg);
+      /* background: rgba(134, 134, 139, 0.1); */
+      /* transform: rotate(90deg); */
 }
 
-/* Main content styling */
-.main-content {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 48px 24px;
-}
 
 .main-title {
       font-size: 48px;
@@ -252,4 +248,9 @@ body {
 .close-header-btn-mobile {
       position: absolute;
       right: 24px;
+}
+.header-nav-link-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
 }

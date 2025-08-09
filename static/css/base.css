@@ -75,14 +75,14 @@ span.highlight {
 .card {
   /* border: 1px solid var(--primary-highlight-color); */
   /* outline: 1px solid var(--primary-highlight-color); */ /* Outer border */
-  outline-offset: 2px; /* Distance between inner and outer border */
-  border-radius: var(--border-radius-outside);
-  padding: 14px;
-  background-color: var(--secondary-background-color);
-  background-color: #f3f3f3;
-  border-radius: var(--border-radius-outside);
+  /* outline-offset: 2px; */ /* Distance between inner and outer border */
+  /* border-radius: var(--border-radius-outside); */
+  /* padding: 14px; */
+  /* background-color: var(--secondary-background-color); */
+  /* background-color: #f3f3f3; */
+  /* border-radius: var(--border-radius-outside); */
   /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06); */
-  padding: 1.5rem;
+  /* padding: 1.5rem; */
 }
 
 .horizontal-card{
@@ -97,7 +97,7 @@ span.highlight {
 }
 .dm-serif-text-regular {
   font-family: "DM Serif Text", serif;
-  font-weight: 100;
+  font-weight: 600;
   font-style: oblique;
   /* margin-top: 100px; */
 }

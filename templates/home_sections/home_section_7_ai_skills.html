@@ -1,45 +1,46 @@
 <div class="carousel-container">
-    <div class="carousel-container-header">
-        <div class="section-header">
-            <div class="section-title">
-                <div class="section-text">AI & LLM Engineering</div>
+      <div class="carousel-container-header">
+            <div class="section-header">
+                  <div class="section-title">
+                        <div class="section-text">AI & LLM Engineering</div>
+                  </div>
             </div>
-        </div>
-    </div>
+      </div>
+
       <div class="carousel-wrapper">
             <div class="carousel-track" id="carouselTrack">
                   <div class="carousel-card card-1">
-                        <div class="card-image"></div>
-                        <div class="card-content">
-                              <div class="card-title">Ceramic & Pottery Marketplace</div>
-                        </div>
-                  </div>
-
-                  <div class="carousel-card card-2">
                         <div class="card-image"></div>
                         <div class="card-content">
                               <div class="card-title">Board game club planner</div>
                         </div>
                   </div>
 
-                  <div class="carousel-card card-3">
+                  <div class="carousel-card card-2">
                         <div class="card-image"></div>
                         <div class="card-content">
                               <div class="card-title">Homemade Pizza Cooking Elite Class</div>
                         </div>
                   </div>
 
-                  <div class="carousel-card card-4">
+                  <div class="carousel-card card-3">
                         <div class="card-image"></div>
                         <div class="card-content">
                               <div class="card-title">Personal photo library</div>
                         </div>
                   </div>
 
-                  <div class="carousel-card card-5">
+                  <div class="carousel-card card-4">
                         <div class="card-image"></div>
                         <div class="card-content">
                               <div class="card-title">Employee Feedback Dashboard</div>
+                        </div>
+                  </div>
+
+                  <div class="carousel-card card-5">
+                        <div class="card-image"></div>
+                        <div class="card-content">
+                              <div class="card-title">Ceramic & Pottery Marketplace</div>
                         </div>
                   </div>
             </div>
@@ -47,115 +48,195 @@
 
       <div class="navigation">
             <button class="nav-button" id="prevBtn">
-                  <img src="static/images/lucidev-icons/chevron-left.svg" />
+                  <img src="/static/images/lucidev-icons/chevron-left.svg"/>
             </button>
             <button class="nav-button" id="nextBtn">
-                  <img src="static/images/lucidev-icons/chevron-right.svg" />
+                  <img src="/static/images/lucidev-icons/chevron-right.svg"/>
             </button>
       </div>
-</div>
 
-<script>
-      class Carousel {
-            constructor() {
-                  this.track = document.getElementById("carouselTrack");
-                  this.prevBtn = document.getElementById("prevBtn");
-                  this.nextBtn = document.getElementById("nextBtn");
-                  this.cards = document.querySelectorAll(".carousel-card");
+      <script>
+            class Carousel {
+                  constructor() {
+                        this.track = document.getElementById("carouselTrack");
+                        this.prevBtn = document.getElementById("prevBtn");
+                        this.nextBtn = document.getElementById("nextBtn");
+                        this.startAutoScrollBtn = null;
+                        this.stopAutoScrollBtn = null;
+                        this.cards = document.querySelectorAll(".carousel-card");
 
-                  this.currentIndex = 0;
-                  this.cardWidth = 420; // 300px card + 20px gap
-                  this.visibleCards = this.getVisibleCards();
-                  this.maxIndex = Math.max(0, this.cards.length - this.visibleCards);
+                        this.currentIndex = 0;
+                        this.autoScrollInterval = null;
+                        this.autoScrollDelay = 3000;
+                        this.isAutoScrolling = true;
 
-                  this.init();
-            }
+                        this.init();
+                  }
 
-            getVisibleCards() {
-                  const containerWidth = window.innerWidth;
-                  if (containerWidth < 768) return 1;
-                  if (containerWidth < 1024) return 2;
-                  if (containerWidth < 1400) return 3;
-                  if (containerWidth < 1700) return 4;
-                  return 5;
-            }
+                  getCardWidth() {
+                        const card = this.cards[0];
+                        const cardWidth = card.offsetWidth;
+                        const gap = 20;
+                        return cardWidth + gap;
+                  }
 
-            init() {
-                  this.updateCarousel();
-                  this.bindEvents();
-                  window.addEventListener("resize", () => this.handleResize());
-            }
+                  getVisibleCards() {
+                        const containerWidth = this.track.parentElement.offsetWidth - 40; // Account for padding
+                        const cardWidth = this.getCardWidth();
+                        return Math.floor(containerWidth / cardWidth);
+                  }
 
-            bindEvents() {
-                  this.prevBtn.addEventListener("click", () => this.prev());
-                  this.nextBtn.addEventListener("click", () => this.next());
+                  getMaxIndex() {
+                        const visibleCards = this.getVisibleCards();
+                        return Math.max(0, this.cards.length - visibleCards);
+                  }
 
-                  // Touch/swipe support
-                  let startX = 0;
-                  let currentX = 0;
-                  let isDragging = false;
+                  init() {
+                        this.updateCarousel();
+                        this.bindEvents();
+                        this.startAutoScroll();
+                        window.addEventListener("resize", () => this.handleResize());
+                  }
 
-                  this.track.addEventListener("touchstart", (e) => {
-                        startX = e.touches[0].clientX;
-                        isDragging = true;
-                  });
+                  bindEvents() {
+                        this.prevBtn.addEventListener("click", () => {
+                              this.stopAutoScrollFunc();
+                              this.prev();
+                        });
 
-                  this.track.addEventListener("touchmove", (e) => {
-                        if (!isDragging) return;
-                        currentX = e.touches[0].clientX;
-                        e.preventDefault();
-                  });
+                        this.nextBtn.addEventListener("click", () => {
+                              this.stopAutoScrollFunc();
+                              this.next();
+                        });
 
-                  this.track.addEventListener("touchend", () => {
-                        if (!isDragging) return;
-                        const diff = startX - currentX;
-                        if (Math.abs(diff) > 50) {
-                              if (diff > 0) {
-                                    this.next();
-                              } else {
-                                    this.prev();
+                        this.startAutoScrollBtn?.addEventListener("click", () => this.startAutoScroll());
+                        this.stopAutoScrollBtn?.addEventListener("click", () => this.stopAutoScrollFunc());
+
+                        // Touch/swipe support
+                        let startX = 0;
+                        let currentX = 0;
+                        let isDragging = false;
+
+                        this.track.addEventListener("touchstart", (e) => {
+                              startX = e.touches[0].clientX;
+                              isDragging = true;
+                              this.stopAutoScrollFunc();
+                        });
+
+                        this.track.addEventListener("touchmove", (e) => {
+                              if (!isDragging) return;
+                              currentX = e.touches[0].clientX;
+                              e.preventDefault();
+                        });
+
+                        this.track.addEventListener("touchend", () => {
+                              if (!isDragging) return;
+                              const diff = startX - currentX;
+                              if (Math.abs(diff) > 50) {
+                                    if (diff > 0) {
+                                          this.next();
+                                    } else {
+                                          this.prev();
+                                    }
                               }
+                              isDragging = false;
+                        });
+
+                        // Pause auto-scroll on hover
+                        this.track.addEventListener("mouseenter", () => {
+                              if (this.isAutoScrolling) {
+                                    this.pauseAutoScroll();
+                              }
+                        });
+
+                        this.track.addEventListener("mouseleave", () => {
+                              if (this.isAutoScrolling) {
+                                    this.resumeAutoScroll();
+                              }
+                        });
+                  }
+
+                  prev() {
+                        if (this.currentIndex > 0) {
+                              this.currentIndex--;
+                        } else {
+                              this.currentIndex = this.getMaxIndex();
                         }
-                        isDragging = false;
-                  });
-            }
+                        this.updateCarousel();
+                  }
 
-            prev() {
-                  if (this.currentIndex > 0) {
-                        this.currentIndex--;
+                  next() {
+                        const maxIndex = this.getMaxIndex();
+                        if (this.currentIndex < maxIndex) {
+                              this.currentIndex++;
+                        } else {
+                              this.currentIndex = 0;
+                        }
+                        this.updateCarousel();
+                  }
+
+                  updateCarousel() {
+                        const cardWidth = this.getCardWidth();
+                        const translateX = -this.currentIndex * cardWidth;
+                        this.track.style.transform = `translateX(${translateX}px)`;
+
+                        // Update navigation buttons
+                        const maxIndex = this.getMaxIndex();
+                        this.prevBtn.disabled = false;
+                        this.nextBtn.disabled = false;
+                  }
+
+                  startAutoScroll() {
+                        if (this.autoScrollInterval) {
+                              clearInterval(this.autoScrollInterval);
+                        }
+
+                        this.autoScrollInterval = setInterval(() => {
+                              this.next();
+                        }, this.autoScrollDelay);
+
+                        this.isAutoScrolling = true;
+                        if (this.startAutoScrollBtn) {
+                              this.startAutoScrollBtn.classList.add("active");
+                              this.stopAutoScrollBtn.classList.remove("active");
+                        }
+                  }
+
+                  stopAutoScrollFunc() {
+                        if (this.autoScrollInterval) {
+                              clearInterval(this.autoScrollInterval);
+                              this.autoScrollInterval = null;
+                        }
+
+                        this.isAutoScrolling = false;
+                        if (this.startAutoScrollBtn) {
+                              this.startAutoScrollBtn.classList.remove("active");
+                              this.stopAutoScrollBtn.classList.add("active");
+                        }
+                  }
+
+                  pauseAutoScroll() {
+                        if (this.autoScrollInterval) {
+                              clearInterval(this.autoScrollInterval);
+                              this.autoScrollInterval = null;
+                        }
+                  }
+
+                  resumeAutoScroll() {
+                        if (this.isAutoScrolling && !this.autoScrollInterval) {
+                              this.autoScrollInterval = setInterval(() => {
+                                    this.next();
+                              }, this.autoScrollDelay);
+                        }
+                  }
+
+                  handleResize() {
                         this.updateCarousel();
                   }
             }
 
-            next() {
-                  if (this.currentIndex < this.maxIndex) {
-                        this.currentIndex++;
-                        this.updateCarousel();
-                  }
-            }
-
-            updateCarousel() {
-                  const translateX = -this.currentIndex * this.cardWidth;
-                  this.track.style.transform = `translateX(${translateX}px)`;
-
-                  // Update navigation buttons
-                  this.prevBtn.disabled = this.currentIndex === 0;
-                  this.nextBtn.disabled = this.currentIndex === this.maxIndex;
-            }
-
-            handleResize() {
-                  const newVisibleCards = this.getVisibleCards();
-                  if (newVisibleCards !== this.visibleCards) {
-                        this.visibleCards = newVisibleCards;
-                        this.maxIndex = Math.max(0, this.cards.length - this.visibleCards);
-                        this.currentIndex = Math.min(this.currentIndex, this.maxIndex);
-                        this.updateCarousel();
-                  }
-            }
-      }
-
-      // Initialize carousel when DOM is loaded
-      document.addEventListener("DOMContentLoaded", () => {
-            new Carousel();
-      });
-</script>
+            document.addEventListener("DOMContentLoaded", () => {
+                  new Carousel();
+            });
+      </script>
+</div>

@@ -1,0 +1,218 @@
+<!-- Load marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            padding: 0px;
+        }
+
+        /* Blog layout */
+        .blog-container {
+            display: flex;
+            gap: 2rem;
+            position: relative;
+        }
+
+        .blog-main {
+            flex: 1;
+            min-width: 0;
+            padding: 0px 70px;
+            padding-bottom: 300px;
+        }
+        pre{
+        overflow-x: auto;
+    white-space: pre;
+    max-width: 100%;
+    background-color: #f5f5f5;
+    padding: 30px;
+    border-radius: 16px;
+      }
+
+        .blog-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            width: 100%;
+        }
+
+        .blog-content h1, .blog-content h2, .blog-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 38px;
+        }
+
+        .blog-content p {
+            margin-bottom: 1rem;
+        }
+
+        /* TOC Styles */
+        .blog-toc {
+            width: 250px;
+            border-left: 3px solid var(--apple-gray-3);
+            position: sticky;
+            top: 100px;
+            align-self: flex-start;
+        }
+
+        .blog-toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .blog-toc li {
+            padding: 6px 0;
+        }
+
+        .blog-toc a {
+            text-decoration: none;
+            color: #555;
+            font-size: 0.95rem;
+            display: block;
+            transition: all 0.2s ease;
+            padding-left: 20px;
+            transform: translateX(-3px);
+        }
+
+        .blog-toc a:hover {
+            color: #333;
+        }
+
+        .blog-toc a.active {
+            font-weight: bold;
+            color: black;
+            border-left: 3px solid black;
+        }
+
+        /* Hide TOC in mobile view */
+        @media (max-width: 768px) {
+            .blog-container {
+                flex-direction: column;
+            }
+            .blog-toc {
+                display: none;
+            }
+        }
+
+        /* Demo content styling */
+        #promptBreadcrumbs {
+            margin-bottom: 2rem;
+            color: #666;
+        }
+
+        #promptBreadcrumbs a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+    </style>
+
+    <script>
+        function renderBlogDetails(details) {
+
+            const container = document.createElement("div");
+            container.className = "blog-container";
+
+            // Main content
+            const main = document.createElement("div");
+            main.className = "blog-main";
+            main.innerHTML = `
+                <div class="blog-content">
+                    ${marked.parse(details.blog_content)}
+                </div>
+            `;
+
+            // Create TOC
+            const toc = document.createElement("div");
+            toc.className = "blog-toc";
+            toc.innerHTML = `<ul></ul>`;
+
+            const blogContentDiv = document.createElement("div");
+            blogContentDiv.innerHTML = marked.parse(details.blog_content);
+
+            // Get headings
+            const headings = blogContentDiv.querySelectorAll("h1, h2");
+            const tocList = toc.querySelector("ul");
+
+            headings.forEach((h, i) => {
+                const id = `heading-${i}`;
+                h.id = id;
+
+                const li = document.createElement("li");
+                const a = document.createElement("a");
+                a.href = `#${id}`;
+                a.textContent = h.textContent;
+
+                // Smooth scroll to center of screen
+                a.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    const target = document.getElementById(id);
+                    const targetRect = target.getBoundingClientRect();
+                    const targetTop = targetRect.top + window.pageYOffset;
+                    const windowHeight = window.innerHeight;
+                    const offsetTop = targetTop - (windowHeight / 2) + (targetRect.height / 2);
+                    
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: "smooth"
+                    });
+                });
+
+                li.appendChild(a);
+                tocList.appendChild(li);
+            });
+
+            // Insert headings into real blog content
+            main.querySelector(".blog-content").innerHTML = blogContentDiv.innerHTML;
+
+            // Append main & toc
+            container.appendChild(main);
+            container.appendChild(toc);
+            document.getElementById("content").appendChild(container);
+
+            // Scroll spy (highlight active heading) - FIXED VERSION
+            const tocLinks = toc.querySelectorAll("a");
+            if (tocLinks.length > 0) tocLinks[0].classList.add("active");
+
+            // Function to find the currently active heading
+            function updateActiveHeading() {
+                const headingsInContent = main.querySelectorAll("h1, h2");
+                let activeHeading = null;
+                const scrollTop = window.pageYOffset;
+                const windowHeight = window.innerHeight;
+                const centerOfScreen = scrollTop + (windowHeight / 2);
+
+                // Find the heading closest to the center of the screen
+                let minDistance = Infinity;
+                headingsInContent.forEach((heading) => {
+                    const rect = heading.getBoundingClientRect();
+                    const headingTop = rect.top + scrollTop;
+                    const distance = Math.abs(headingTop - centerOfScreen);
+                    
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        activeHeading = heading;
+                    }
+                });
+
+                // Update active state
+                if (activeHeading) {
+                    tocLinks.forEach((link) => link.classList.remove("active"));
+                    const activeLink = toc.querySelector(`a[href="#${activeHeading.id}"]`);
+                    if (activeLink) activeLink.classList.add("active");
+                }
+            }
+
+            // Use scroll event instead of IntersectionObserver for more responsive updates
+            let scrollTimeout;
+            window.addEventListener('scroll', function() {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(updateActiveHeading, 10);
+            });
+
+            // Initial update
+            updateActiveHeading();
+        }
+        </script>

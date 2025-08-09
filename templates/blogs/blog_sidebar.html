@@ -1,0 +1,333 @@
+<!-- Hamburger button (Mobile Only) -->
+<button class="m-menu-open-btn" onclick="openMobileMenu()">
+    <img class="w-6 h-6" src="/static/images/lucidev-icons/panel-right-close.svg" alt="Menu icon" />
+</button>
+
+<!-- Mobile Sidebar -->
+<div id="mobileSidebar" class="m-sidebar">
+    <div class="m-menu-close" onclick="closeMobileMenu()">
+        <img src="/static/images/lucidev-icons/x.svg" alt="" />
+    </div>
+    <div id="mobileMenu"></div>
+</div>
+
+<!-- Desktop Sidebar -->
+<div id="desktopSidebar" class="d-sidebar">
+    <div id="desktopMenu"></div>
+</div>
+
+<style>
+/* ===================== MOBILE SIDEBAR ===================== */
+.m-sidebar {
+    font-family: sans-serif;
+    background: #fff;
+    height: 100%;
+    padding: 20px;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    overflow-y: auto;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.m-menu-item:hover{
+        color: var(--primary-highlight-color);
+    transform: translateX(4px);
+}
+.m-menu-item {
+    padding: 12px 0;
+    font-size: 20px;
+    font-weight: 400;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 27px;
+    font-weight: 200;
+    color: var(--apple-gray-1);
+    text-decoration: none;
+    padding: 12px 0;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* border-bottom: 0.5px solid rgba(134, 134, 139, 0.1); */
+    width: 90%;
+}
+
+.m-menu-back {
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+.m-menu-item img{
+    height: 2rem;
+    width: 2rem;
+}
+.m-menu-back img{
+    height: 2rem;
+    width: 2rem;
+}
+.m-menu-close img{
+    height: 2rem;
+    width: 2rem;
+}
+.m-menu-close {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+.m-menu-open-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* ===================== DESKTOP SIDEBAR ===================== */
+.d-sidebar {
+    font-family: sans-serif;
+    background: #fff;
+    height: 500;
+    padding: 20px;
+    display: none;
+    border-right: 1px solid #e0e0e0;
+    width: 300px;
+    overflow-y: auto;
+}
+
+.d-menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.d-menu-item {
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s;
+    border-radius: 4px;
+    white-space: normal;   /* allow text to wrap */
+    word-break: break-word; /* break long words if needed */
+}
+
+.d-menu-item:hover {
+    background: #f5f5f5;
+}
+
+.d-chevron {
+    transition: transform 0.2s;
+}
+
+.folder.open > .d-chevron {
+    transform: rotate(90deg);
+}
+
+/* Indentation for nested children */
+.d-menu-list .d-menu-list {
+    padding-left: 20px;
+    /* border-left: 1px dashed #ccc; */
+    margin-top: 5px;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 767px) {
+    .m-menu-open-btn { display: inline-block;
+            display: flex;
+        justify-content: flex-start; }
+    .m-sidebar { display: none; }
+}
+
+@media (min-width: 768px) {
+    .d-sidebar { display: block; }
+    .m-sidebar, .m-menu-open-btn { display: none; }
+}
+/* Chevron icon styling */
+.d-chevron img {
+    transition: transform 0.25s ease;
+}
+
+/* When folder is open, rotate 90 degrees */
+.folder.open > .d-menu-item .d-chevron img {
+    transform: rotate(90deg);
+}
+
+</style>
+<script>
+const sidebarData = {{ sidebar | tojson }};
+const activePath = "{{ initial_path }}";
+
+// Get the chain of paths from root to active file/folder
+function getActiveStack(data, targetPath) {
+    const stack = [];
+
+    function dfs(items, pathSoFar) {
+        for (let item of items) {
+            const currentPath = item.path;
+            if (targetPath === currentPath) {
+                stack.push(currentPath);
+                return true;
+            }
+            if (item.type === "folder" && dfs(item.children, currentPath)) {
+                stack.push(currentPath);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    dfs(data, "");
+    return stack.reverse(); // so level1 → level2 → ...
+}
+
+/* ---------------- MOBILE RENDER ---------------- */
+function renderMobileMenu(containerId, data) {
+    const container = document.getElementById(containerId);
+    let stack = [data];
+    let currentPath = "";
+
+    function draw(items) {
+        container.innerHTML = '';
+
+        if (stack.length > 1) {
+            const back = document.createElement('div');
+            back.className = 'm-menu-back';
+            back.innerHTML = `<img src="/static/images/lucidev-icons/chevron-left.svg" alt="" />`;
+            back.onclick = () => {
+                stack.pop();
+                currentPath = currentPath.split('/').slice(0, -1).join('/');
+                history.pushState({}, "", `/blogs/${currentPath}`);
+                draw(stack[stack.length - 1]);
+            };
+            container.appendChild(back);
+        }
+
+        const sorted = [...items].sort((a,b) => (a.type==='folder') ? -1 : 1);
+        sorted.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'm-menu-item';
+            div.innerHTML = `
+                <span>${item.name}</span>
+                ${item.type === 'folder' ? '<img src="/static/images/lucidev-icons/chevron-right.svg" alt="" />' : ''}
+            `;
+            div.onclick = () => {
+                if (item.type === 'folder') {
+                    stack.push(item.children);
+                    currentPath = item.path;
+                    history.pushState({}, "", `/blogs/${item.path}`);
+                    draw(item.children);
+                } else {
+                    window.location.href = `/blogs/${item.path}`;
+                }
+            };
+            container.appendChild(div);
+        });
+    }
+
+    draw(data);
+}
+
+/* ---------------- DESKTOP RENDER ---------------- */
+function renderDesktopMenu(containerId, data, activePath) {
+    const container = document.getElementById(containerId);
+    const activeStack = activePath ? getActiveStack(data, activePath) : [];
+
+    function buildList(items, activeStack) {
+        const ul = document.createElement('ul');
+        ul.className = 'd-menu-list';
+
+        const sorted = [...items].sort((a,b) => (a.type==='folder') ? -1 : 1);
+        sorted.forEach(item => {
+            const isActive = item.path === activePath;
+            const isOpen = activeStack.includes(item.path);
+
+            const li = document.createElement('li');
+            li.className = `${item.type} ${isOpen ? 'open' : ''} ${isActive ? 'active' : ''}`;
+            
+            // First append the menu item (title & chevron)
+            const div = document.createElement('div');
+            div.className = 'd-menu-item';
+            div.innerHTML = `
+                <span>${item.name}</span>
+                ${item.type === 'folder' ? '<span class="d-chevron"><img src="/static/images/lucidev-icons/chevron-right.svg" alt="" /></span>' : ''}
+            `;
+
+            if (item.type === 'folder') {
+                div.onclick = () => {
+                    li.classList.toggle('open');
+                    let childUl = li.querySelector(':scope > ul');
+                    if (!childUl) {
+                        li.appendChild(buildList(item.children, activeStack));
+                    } else {
+                        childUl.style.display = childUl.style.display === 'none' ? 'block' : 'none';
+                    }
+                };
+
+                // Append the menu item first, then children if open
+                li.appendChild(div);
+                if (isOpen) {
+                    li.appendChild(buildList(item.children, activeStack));
+                }
+            } else {
+                div.onclick = () => {
+                    window.location.href = `/blogs/${item.path}`;
+                };
+                li.appendChild(div);
+            }
+
+            ul.appendChild(li);
+        });
+
+        return ul;
+    }
+
+    container.innerHTML = '';
+    container.appendChild(buildList(data, activeStack));
+}
+
+
+/* ---------------- MENU CONTROL ---------------- */
+function closeMobileMenu() {
+    document.getElementById('mobileSidebar').style.display = 'none';
+}
+
+function openMobileMenu() {
+    document.getElementById('mobileSidebar').style.display = 'block';
+}
+
+renderMobileMenu('mobileMenu', sidebarData);
+renderDesktopMenu('desktopMenu', sidebarData, activePath);
+</script>
+
+<style>
+.d-menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 200;
+}
+.d-menu-list {
+    list-style: none;
+    padding-left: 1rem;
+    margin: 0;
+}
+.folder.open > .d-menu-item .d-chevron img {
+    transform: rotate(90deg);
+    transition: transform 0.2s ease;
+}
+.folder > .d-menu-item .d-chevron img {
+    transition: transform 0.2s ease;
+}
+li.active > .d-menu-item {
+    font-weight: 600;
+    color: var(--primary-highlight-color);
+}
+</style>
