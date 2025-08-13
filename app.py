@@ -91,7 +91,33 @@ def get_blog_file(filename):
         
 @app.route('/projects')
 def projects():
-    return render_template('home_sections/newhome.html') #render_template('gen_ai.html')
+    return render_template('projects/projects.html') #render_template('gen_ai.html')
+
+@app.route("/projects_json")
+def projects_json():
+    try:
+        with open("projects.json", "r") as f:
+            projects = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        return jsonify({"error": str(e)}), 500
+
+    tech_stack_set = set()
+    platform_set = set()
+    domain_set = set()
+
+    for proj in projects:
+        tech_stack_set.update(proj.get("tech", []))
+        if proj.get("platform"):
+            platform_set.add(proj["platform"])
+        if proj.get("domain"):
+            domain_set.add(proj["domain"])
+
+    return jsonify({
+        "projects": projects,
+        "tech_stack": sorted(tech_stack_set),
+        "platforms": sorted(platform_set),
+        "domains": sorted(domain_set)
+    })
 
 @app.route('/prompts', defaults={'subsection': None, 'blog_slug': None})
 @app.route('/prompts/<subsection>', defaults={'blog_slug': None})
@@ -247,5 +273,71 @@ def get_cheatsheet_file(filename):
     else:
         abort(404)
 
+
+
+
+
+@app.route('/courses', defaults={'path': ''})
+@app.route('/courses/', defaults={'path': ''})
+@app.route('/courses/<path:path>')
+def courses(path):
+    def get_folder_structure(root_dir, rel_path=""):
+        structure = []
+        for item in sorted(os.listdir(root_dir)):
+            if item == '.DS_Store':
+                continue
+            path_full = os.path.join(root_dir, item)
+            rel_item_path = os.path.join(rel_path, item)
+            if os.path.isdir(path_full):
+                structure.append({
+                    "type": "folder",
+                    "name": item,
+                    "path": rel_item_path,
+                    "children": get_folder_structure(path_full, rel_item_path)
+                })
+            else:
+                structure.append({
+                    "type": "file",
+                    "name": item,
+                    "path": rel_item_path
+                })
+        return structure
+
+    courses_dir = os.path.join(app.root_path, "courses")
+    sidebar_structure = get_folder_structure(courses_dir)
+
+    # Absolute safe path
+    target_path = os.path.abspath(os.path.join(courses_dir, path))
+    if not target_path.startswith(courses_dir):
+        abort(403)  # Prevent directory traversal
+
+    file_content = None
+    if os.path.isfile(target_path):
+        with open(target_path, 'r', encoding='utf-8') as f:
+            file_content = f.read()
+
+    return render_template(
+        'courses/courses.html',
+        sidebar=sidebar_structure,
+        page_prefix = "courses",
+        initial_path=path,
+        file_content=file_content
+    )
+
+
+@app.route('/courses/<path:filename>')
+def get_courses_file(filename):
+    courses_dir = os.path.join(app.root_path, "courses")
+    file_path = os.path.abspath(os.path.join(courses_dir, filename))
+
+    if not file_path.startswith(courses_dir):
+        abort(403)
+
+    if os.path.isfile(file_path):
+        with open(file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+        return jsonify({"content": content})
+    else:
+        abort(404)
 if __name__ == '__main__':
     app.run(debug=True)

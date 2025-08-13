@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Project 1",
+    "description": "Description for project 1. This is a data science project.",
+    "image": "https://img.freepik.com/premium-vector/soft-pastel-gradient-background-with-gentle-transitions_1304147-271914.jpg?semt=ais_hybrid&w=740&q=80",
+    "tech": ["Python", "Pandas", "NumPy", "Scikit-learn"],
+    "platform": "Azure",
+    "domain": "Machine Learning",
+    "demo": true
+  },
+  {
+    "title": "Project 2",
+    "description": "Description for project 2. Another example project.",
+    "image": "https://img.freepik.com/premium-vector/soft-pastel-gradient-background-with-gentle-transitions_1304147-271914.jpg?semt=ais_hybrid&w=740&q=80",
+    "tech": ["Python", "TensorFlow", "Keras", "Matplotlib"],
+    "platform": "Databricks",
+    "domain": "Deep Learning",
+    "demo": false
+  }
+]

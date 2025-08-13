@@ -10,7 +10,8 @@
             <link rel="stylesheet" href="{{ url_for('static', filename='css/markdown_styles.css') }}" />
             <link rel="stylesheet" href="{{ url_for('static', filename='css/new_base.css') }}" />
       </head>
-      <body x-data="{ 
+      <body
+            x-data="{ 
         openDropdown: null, 
         mobileOpen: false, 
         subMenu: null,
@@ -46,149 +47,197 @@
                     { text: 'Intermediate', url: '/cheatsheets/Python/Intermediate.md' },
                     { text: 'Advanced', url: '/cheatsheets/Python/Advanced.md' }
                 ]
+            },
+            courses: {
+                'Basics': [
+                    { text: 'SQL', url: '/' },
+                    { text: 'Python', url: '/' },
+                    { text: 'Git', url: '/' }
+                ],
+                'Data Science': [
+                    { text: 'Python', url: '/' },
+                    { text: 'Machine Learning', url: '/' },
+                    { text: 'Deep Learning', url: '/' }
+                ],
+                'AI': [
+                    { text: 'LLM', url: '/' },
+                    { text: 'RAG', url: '/' },
+                    { text: 'Agents', url: '/' }
+                ]
             }
         },
         activeDropdown: null
     }"
-    >
-    
-        <!-- Fixed Header -->
-        <header class="fixed top-0 w-full apple-header z-50" @mouseleave="openDropdown = null">
-            <div class="max-w-7xl mx-auto">
-                <div class="flex justify-center items-center h-16 relative">
-                    <a href="/" class="absolute left-6 brand-text"> <span class="text-gray-800">Sai</span><span class="text-[color:var(--primary-highlight-color)]">Ram</span> </a>
+      >
+            <!-- Fixed Header -->
+            <header class="fixed top-0 w-full apple-header z-50" @mouseleave="openDropdown = null">
+                  <div class="max-w-7xl mx-auto">
+                        <div class="flex justify-center items-center h-16 relative">
+                              <a href="/" class="absolute left-6 brand-text"> <span class="text-gray-800">Sai</span><span class="text-[color:var(--primary-highlight-color)]">Ram</span> </a>
 
-                    <!-- Desktop Navigation -->
-                    <nav class="hidden md:flex space-x-2">
-                        <a href="/" class="nav-link">About Me</a>
-                        <a href="/resources" class="nav-link">Resources</a>
-                        <a href="/projects" class="nav-link">Projects</a>
-                        <div class="header-nav-link-btn relative" @mouseenter="openDropdown = 'prompts'; activeDropdown = 'prompts'" @mouseleave="openDropdown = null">
-                            <a href="/prompts" class="nav-link">Prompts</a>
+                              <!-- Desktop Navigation -->
+                              <nav class="hidden md:flex space-x-2">
+                                    <a href="/" class="nav-link">About Me</a>
+                                    <a href="/resources" class="nav-link">Resources</a>
+                                    <a href="/projects" class="nav-link">Projects</a>
+                                    <div class="header-nav-link-btn relative" @mouseenter="openDropdown = 'prompts'; activeDropdown = 'prompts'" @mouseleave="openDropdown = null">
+                                          <a href="/prompts" class="nav-link">Prompts</a>
+                                    </div>
+                                    <div class="header-nav-link-btn relative" @mouseenter="openDropdown = 'cheatsheets'; activeDropdown = 'cheatsheets'" @mouseleave="openDropdown = null">
+                                          <a href="/cheatsheets" class="nav-link">Cheatsheets</a>
+                                    </div>
+                                    <div class="header-nav-link-btn relative" @mouseenter="openDropdown = 'courses'; activeDropdown = 'courses'" @mouseleave="openDropdown = null">
+                                          <a href="/courses" class="nav-link">Courses</a>
+                                    </div>
+                                    <a href="/blogs" class="nav-link">Blogs</a>
+                              </nav>
+
+                              <!-- Hamburger Button for Mobile -->
+                              <button @click="mobileOpen = true" class="md:hidden absolute right-6 hamburger">
+                                    <img src="/static/images/lucidev-icons/menu.svg" alt="Menu" class="w-6 h-6" />
+                              </button>
                         </div>
-                        <div class="header-nav-link-btn relative" @mouseenter="openDropdown = 'cheatsheets'; activeDropdown = 'cheatsheets'" @mouseleave="openDropdown = null">
-                            <a href="/cheatsheets" class="nav-link">Cheatsheets</a>
+                  </div>
+            </header>
+
+            <!-- Desktop Dropdown Panel -->
+            <div class="fixed top-16 left-0 w-full dropdown-panel z-40 hidden md:block" :class="{ 'open': openDropdown !== null }" @mouseenter="openDropdown = activeDropdown" @mouseleave="openDropdown = null">
+                  <div class="max-w-7xl mx-auto py-16 px-24">
+                        <div class="grid grid-cols-3 gap-16" x-if="activeDropdown">
+                              <template x-for="(links, category) in dropdownContent[activeDropdown]" :key="category">
+                                    <div class="dropdown-section">
+                                          <div class="dropdown-category" x-text="category"></div>
+                                          <div class="space-y-1">
+                                                <template x-for="link in links" :key="link.text">
+                                                      <a :href="link.url" class="dropdown-link" x-text="link.text"></a>
+                                                </template>
+                                          </div>
+                                    </div>
+                              </template>
                         </div>
-                        <a href="/blogs" class="nav-link">Blogs</a>
-                    </nav>
-
-                    <!-- Hamburger Button for Mobile -->
-                    <button @click="mobileOpen = true" class="md:hidden absolute right-6 hamburger">
-                        <img src="/static/images/lucidev-icons/menu.svg" alt="Menu" class="w-6 h-6" />
-                    </button>
-                </div>
-            </div>
-        </header>
-
-        <!-- Desktop Dropdown Panel -->
-        <div 
-            class="fixed top-16 left-0 w-full dropdown-panel z-40 hidden md:block" 
-            :class="{ 'open': openDropdown !== null }" 
-            @mouseenter="openDropdown = activeDropdown" 
-            @mouseleave="openDropdown = null"
-        >
-            <div class="max-w-7xl mx-auto py-16 px-24">
-                <div class="grid grid-cols-3 gap-16" x-if="activeDropdown">
-                    <template x-for="(links, category) in dropdownContent[activeDropdown]" :key="category">
-                        <div class="dropdown-section">
-                            <div class="dropdown-category" x-text="category"></div>
-                            <div class="space-y-1">
-                                <template x-for="link in links" :key="link.text">
-                                    <a :href="link.url" class="dropdown-link" x-text="link.text"></a>
-                                </template>
-                            </div>
-                        </div>
-                    </template>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Overlay Menu -->
-        <div x-show="mobileOpen" x-cloak x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform translate-x-full" class="fixed inset-0 mobile-overlay z-50 p-6 flex flex-col">
-            <div class="close-header-btn-mobile flex justify-end mb-8">
-                <button @click="mobileOpen = false" class="close-btn">
-                    <img src="/static/images/lucidev-icons/x.svg" alt="Close menu" class="w-6 h-6" />
-                </button>
+                  </div>
             </div>
 
-            <!-- Main mobile navigation -->
-            <template x-if="!subMenu">
-                <nav class="space-y-1">
-                    <a href="/" @click="mobileOpen = false" class="mobile-nav-link block">About Me</a>
-                    <a href="/resources" @click="mobileOpen = false" class="mobile-nav-link block">Resources</a>
-                    <a href="/" @click="mobileOpen = false" class="mobile-nav-link block">Projects</a>
-                    <button @click="subMenu = 'prompts'" class="mobile-nav-link flex justify-between items-center w-full">
-                        Prompts
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                        </svg>
-                    </button>
-                    <button @click="subMenu = 'cheatsheets'" class="mobile-nav-link flex justify-between items-center w-full">
-                        Cheatsheets
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                        </svg>
-                    </button>
-                    <a href="/blogs" @click="mobileOpen = false" class="mobile-nav-link block">Blogs</a>
-                </nav>
-            </template>
+            <!-- Mobile Overlay Menu -->
+            <div x-show="mobileOpen" x-cloak x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform translate-x-full" class="fixed inset-0 mobile-overlay z-50 p-6 flex flex-col">
+                  <div class="close-header-btn-mobile flex justify-end mb-8">
+                        <button @click="mobileOpen = false" class="close-btn">
+                              <img src="/static/images/lucidev-icons/x.svg" alt="Close menu" class="w-6 h-6" />
+                        </button>
+                  </div>
 
-            <!-- Cheatsheets sub-menu for mobile -->
-            <template x-if="subMenu === 'cheatsheets'">
-                <div>
-                    <button @click="subMenu = null" class="mobile-back-btn flex items-center">
-                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                        </svg>
-                    </button>
+                  <!-- Main mobile navigation -->
+                  <template x-if="!subMenu">
+                        <nav class="space-y-1">
+                              <a href="/" @click="mobileOpen = false" class="mobile-nav-link block">About Me</a>
+                              <a href="/resources" @click="mobileOpen = false" class="mobile-nav-link block">Resources</a>
+                              <a href="/projects" @click="mobileOpen = false" class="mobile-nav-link block">Projects</a>
+                              <button @click="subMenu = 'prompts'" class="mobile-nav-link flex justify-between items-center w-full">
+                                    Prompts
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
+                              </button>
+                              <button @click="subMenu = 'cheatsheets'" class="mobile-nav-link flex justify-between items-center w-full">
+                                    Cheatsheets
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
+                              </button>
+                              <button @click="subMenu = 'courses'" class="mobile-nav-link flex justify-between items-center w-full">
+                                    Courses
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
+                              </button>
+                              <a href="/blogs" @click="mobileOpen = false" class="mobile-nav-link block">Blogs</a>
+                        </nav>
+                  </template>
 
-                    <h3 class="text-2xl font-bold mb-4 mt-8">
-                        <a href="/cheatsheets" style="text-decoration: none;">Cheatsheets</a>
-                    </h3>
+                  <!-- Cheatsheets sub-menu for mobile -->
+                  <template x-if="subMenu === 'cheatsheets'">
+                        <div>
+                              <button @click="subMenu = null" class="mobile-back-btn flex items-center">
+                                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                                    </svg>
+                              </button>
 
-                    <div class="space-y-6">
-                        <template x-for="(links, category) in dropdownContent.cheatsheets" :key="category">
-                            <div>
-                                <h3 class="mobile-category" x-text="category"></h3>
-                                <div class="space-y-1">
-                                    <template x-for="link in links" :key="link.text">
-                                        <a :href="link.url" @click="mobileOpen = false" class="mobile-sub-link" x-text="link.text"></a>
+                              <h3 class="text-2xl font-bold mb-4 mt-8">
+                                    <a href="/cheatsheets" style="text-decoration: none">Cheatsheets</a>
+                              </h3>
+
+                              <div class="space-y-6">
+                                    <template x-for="(links, category) in dropdownContent.cheatsheets" :key="category">
+                                          <div>
+                                                <h3 class="mobile-category" x-text="category"></h3>
+                                                <div class="space-y-1">
+                                                      <template x-for="link in links" :key="link.text">
+                                                            <a :href="link.url" @click="mobileOpen = false" class="mobile-sub-link" x-text="link.text"></a>
+                                                      </template>
+                                                </div>
+                                          </div>
                                     </template>
-                                </div>
-                            </div>
-                        </template>
-                    </div>
-                </div>
-            </template>
+                              </div>
+                        </div>
+                  </template>
 
-            <!-- Prompts sub-menu for mobile -->
-            <template x-if="subMenu === 'prompts'">
-                <div>
-                    <button @click="subMenu = null" class="mobile-back-btn flex items-center">
-                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                        </svg>
-                        Back
-                    </button>
+                  <!-- Prompts sub-menu for mobile -->
+                  <template x-if="subMenu === 'prompts'">
+                        <div>
+                              <button @click="subMenu = null" class="mobile-back-btn flex items-center">
+                                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                                    </svg>
+                                    Back
+                              </button>
 
-                    <h3 class="text-2xl font-bold mb-4 mt-8">
-                        <a href="/prompts" style="text-decoration: none;">Prompts</a>
-                  </h3>
+                              <h3 class="text-2xl font-bold mb-4 mt-8">
+                                    <a href="/prompts" style="text-decoration: none">Prompts</a>
+                              </h3>
 
-                    <div class="space-y-6">
-                        <template x-for="(links, category) in dropdownContent.prompts" :key="category">
-                            <div>
-                                <h3 class="mobile-category" x-text="category"></h3>
-                                <div class="space-y-1">
-                                    <template x-for="link in links" :key="link.text">
-                                        <a :href="link.url" @click="mobileOpen = false" class="mobile-sub-link" x-text="link.text"></a>
+                              <div class="space-y-6">
+                                    <template x-for="(links, category) in dropdownContent.prompts" :key="category">
+                                          <div>
+                                                <h3 class="mobile-category" x-text="category"></h3>
+                                                <div class="space-y-1">
+                                                      <template x-for="link in links" :key="link.text">
+                                                            <a :href="link.url" @click="mobileOpen = false" class="mobile-sub-link" x-text="link.text"></a>
+                                                      </template>
+                                                </div>
+                                          </div>
                                     </template>
-                                </div>
-                            </div>
-                        </template>
-                    </div>
-                </div>
-            </template>
-        </div>
+                              </div>
+                        </div>
+                  </template>
+                  <!-- Courses sub-menu for mobile -->
+                  <template x-if="subMenu === 'courses'">
+                        <div>
+                              <button @click="subMenu = null" class="mobile-back-btn flex items-center">
+                                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                                    </svg>
+                                    Back
+                              </button>
+
+                              <h3 class="text-2xl font-bold mb-4 mt-8">
+                                    <a href="/courses" style="text-decoration: none">Courses</a>
+                              </h3>
+
+                              <div class="space-y-6">
+                                    <template x-for="(links, category) in dropdownContent.courses" :key="category">
+                                          <div>
+                                                <h3 class="mobile-category" x-text="category"></h3>
+                                                <div class="space-y-1">
+                                                      <template x-for="link in links" :key="link.text">
+                                                            <a :href="link.url" @click="mobileOpen = false" class="mobile-sub-link" x-text="link.text"></a>
+                                                      </template>
+                                                </div>
+                                          </div>
+                                    </template>
+                              </div>
+                        </div>
+                  </template>
+            </div>
       </body>
 </html>

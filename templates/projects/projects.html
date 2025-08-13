@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Dashboard</title>
+</head>
+<body>
+  <!-- Fixed Header -->
+  {% include 'header/new_header.html' %}
+
+  <div class="PROJECTcontainer">
+    <!-- PROJECTSidebar (desktop) -->
+    <aside class="PROJECTSidebar">
+      <div class="PROJECTSidebar-content">
+        <h2>Filters</h2>
+        
+        <div class="filter-section">
+          <h3>Platform</h3>
+          <div class="filter-options">
+            <div class="filter-option">
+              <input type="checkbox" value="Azure" name="platform" id="platform-azure">
+              <label for="platform-azure">Azure</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" value="Databricks" name="platform" id="platform-databricks">
+              <label for="platform-databricks">Databricks</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" value="Platform Independent" name="platform" id="platform-independent">
+              <label for="platform-independent">Platform Independent</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <h3>Tech Stack</h3>
+          <div id="tech-stack-list" class="filter-options"></div>
+        </div>
+
+        <div class="filter-section">
+          <h3>Domain</h3>
+          <div class="filter-options">
+            <div class="filter-option">
+              <input type="checkbox" value="Machine Learning" name="domain" id="domain-ml">
+              <label for="domain-ml">Machine Learning</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" value="Deep Learning" name="domain" id="domain-dl">
+              <label for="domain-dl">Deep Learning</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" value="Computer Vision" name="domain" id="domain-cv">
+              <label for="domain-cv">Computer Vision</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" value="NLP" name="domain" id="domain-nlp">
+              <label for="domain-nlp">NLP</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" value="Gen AI" name="domain" id="domain-genai">
+              <label for="domain-genai">Gen AI</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="PROJECTSidebar-footer">
+        <button id="clear-filters" class="clear-btn">Clear All</button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="PROJECTmain-content">
+      <div id="PROJECTCards-container" class="PROJECTCards-grid"></div>
+    </main>
+  </div>
+
+  <!-- Mobile Filter Button -->
+  <button id="filter-toggle" class="filter-toggle">
+    <img src="/static/images/lucidev-icons/funnel.svg" alt="Close menu" class="w-6 h-6" />
+  </button>
+
+  <!-- Mobile Overlay -->
+  <div id="PROJECTmobile-overlay" class="PROJECTmobile-overlay">
+    <div class="PROJECTmobile-overlay-header">
+      <h2>Filters</h2>
+      <button id="close-overlay" class="close-btn">
+            <img src="/static/images/lucidev-icons/x.svg" alt="Close menu" class="w-6 h-6" />
+      </button>
+    </div>
+    <div class="PROJECTmobile-overlay-content">
+      <div class="filter-section">
+        <h3>Platform</h3>
+        <div class="filter-options">
+          <div class="filter-option">
+            <input type="checkbox" value="Azure" name="platform-mobile" id="platform-azure-mobile">
+            <label for="platform-azure-mobile">Azure</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" value="Databricks" name="platform-mobile" id="platform-databricks-mobile">
+            <label for="platform-databricks-mobile">Databricks</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" value="Platform Independent" name="platform-mobile" id="platform-independent-mobile">
+            <label for="platform-independent-mobile">Platform Independent</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <h3>Tech Stack</h3>
+        <div id="tech-stack-list-mobile" class="filter-options"></div>
+      </div>
+
+      <div class="filter-section">
+        <h3>Domain</h3>
+        <div class="filter-options">
+          <div class="filter-option">
+            <input type="checkbox" value="Machine Learning" name="domain-mobile" id="domain-ml-mobile">
+            <label for="domain-ml-mobile">Machine Learning</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" value="Deep Learning" name="domain-mobile" id="domain-dl-mobile">
+            <label for="domain-dl-mobile">Deep Learning</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" value="Computer Vision" name="domain-mobile" id="domain-cv-mobile">
+            <label for="domain-cv-mobile">Computer Vision</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" value="NLP" name="domain-mobile" id="domain-nlp-mobile">
+            <label for="domain-nlp-mobile">NLP</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" value="Gen AI" name="domain-mobile" id="domain-genai-mobile">
+            <label for="domain-genai-mobile">Gen AI</label>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 24px;">
+        <button id="clear-filters-mobile" class="clear-btn">Clear All</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const defaultImage = "https://img.freepik.com/premium-vector/soft-pastel-gradient-background-with-gentle-transitions_1304147-271914.jpg?w=740&q=80";
+    const techStack = ["Python", "TensorFlow", "PyTorch", "Scikit-learn", "Azure ML", "HuggingFace Transformers", "Pandas", "NumPy"];
+    
+    // Generate projects
+    const projects = Array.from({length: 20}, (_, i) => ({
+      title: `Project ${i+1}`,
+      description: `Description for project ${i+1}. This is a placeholder description for a data science project that demonstrates various capabilities.`,
+      image: defaultImage,
+      tech: techStack.sort(() => 0.5 - Math.random()).slice(0, Math.floor(Math.random() * 5) + 2),
+      platform: ["Azure", "Databricks", "Platform Independent"][i % 3],
+      domain: ["Machine Learning", "Deep Learning", "Computer Vision", "NLP", "Gen AI"][i % 5],
+      demo: Math.random() > 0.5
+    }));
+
+    // Populate tech stack filters for both desktop and mobile
+    function populateTechStacks() {
+      const desktopContainer = document.getElementById('tech-stack-list');
+      const mobileContainer = document.getElementById('tech-stack-list-mobile');
+      
+      techStack.forEach((stack, index) => {
+        // Desktop
+        const desktopOption = document.createElement('div');
+        desktopOption.className = 'filter-option';
+        desktopOption.innerHTML = `
+          <input type="checkbox" value="${stack}" name="skill" id="skill-${index}">
+          <label for="skill-${index}">${stack}</label>
+        `;
+        desktopContainer.appendChild(desktopOption);
+
+        // Mobile
+        const mobileOption = document.createElement('div');
+        mobileOption.className = 'filter-option';
+        mobileOption.innerHTML = `
+          <input type="checkbox" value="${stack}" name="skill-mobile" id="skill-${index}-mobile">
+          <label for="skill-${index}-mobile">${stack}</label>
+        `;
+        mobileContainer.appendChild(mobileOption);
+      });
+    }
+
+    // Render project PROJECTCards
+    function renderPROJECTCards(data) {
+      const container = document.getElementById('PROJECTCards-container');
+      container.innerHTML = '';
+      
+      data.forEach(project => {
+        const techTags = project.tech.slice(0, 4).map(t => 
+          `<span class="tech-tag">${t}</span>`
+        ).join('');
+        
+        const demoButton = project.demo ? 
+          `<button class="demo-btn">View Demo</button>` : '';
+        
+        const PROJECTCard = document.createElement('div');
+        PROJECTCard.className = 'PROJECTCard';
+        PROJECTCard.innerHTML = `
+          <img src="${project.image}" alt="${project.title}">
+          <div class="PROJECTCard-content">
+            <h3 class="PROJECTCard-title">${project.title}</h3>
+            <p class="PROJECTCard-description">${project.description}</p>
+            <p class="PROJECTCard-meta"><strong>Platform:</strong> ${project.platform} | <strong>Domain:</strong> ${project.domain}</p>
+            <div class="tech-tags">${techTags}</div>
+            ${demoButton}
+          </div>
+        `;
+        container.appendChild(PROJECTCard);
+      });
+    }
+
+    // Get selected filters from both desktop and mobile
+    function getSelectedFilters() {
+      const platforms = [
+        ...Array.from(document.querySelectorAll('input[name="platform"]:checked')),
+        ...Array.from(document.querySelectorAll('input[name="platform-mobile"]:checked'))
+      ].map(el => el.value);
+      
+      const domains = [
+        ...Array.from(document.querySelectorAll('input[name="domain"]:checked')),
+        ...Array.from(document.querySelectorAll('input[name="domain-mobile"]:checked'))
+      ].map(el => el.value);
+      
+      const skills = [
+        ...Array.from(document.querySelectorAll('input[name="skill"]:checked')),
+        ...Array.from(document.querySelectorAll('input[name="skill-mobile"]:checked'))
+      ].map(el => el.value);
+      
+      return { platforms, domains, skills };
+    }
+
+    // Filter projects based on selected filters
+    function filterProjects() {
+      const { platforms, domains, skills } = getSelectedFilters();
+      let filtered = projects;
+      
+      if (platforms.length) {
+        filtered = filtered.filter(p => platforms.includes(p.platform));
+      }
+      if (domains.length) {
+        filtered = filtered.filter(p => domains.includes(p.domain));
+      }
+      if (skills.length) {
+        filtered = filtered.filter(p => skills.every(s => p.tech.includes(s)));
+      }
+      
+      renderPROJECTCards(filtered);
+    }
+
+    // Sync filters between desktop and mobile
+    function syncFilters(sourceInput) {
+      const name = sourceInput.name;
+      const value = sourceInput.value;
+      const isChecked = sourceInput.checked;
+      
+      let targetName;
+      if (name.includes('-mobile')) {
+        targetName = name.replace('-mobile', '');
+      } else {
+        targetName = name + '-mobile';
+      }
+      
+      const targetInput = document.querySelector(`input[name="${targetName}"][value="${value}"]`);
+      if (targetInput) {
+        targetInput.checked = isChecked;
+      }
+    }
+
+    // Clear all filters
+    function clearAllFilters() {
+      document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+      });
+      renderPROJECTCards(projects);
+    }
+
+    // Initialize the app
+    function init() {
+      populateTechStacks();
+      renderPROJECTCards(projects);
+      
+      // Add event listeners for all filter inputs
+      document.addEventListener('change', (e) => {
+        if (e.target.type === 'checkbox') {
+          syncFilters(e.target);
+          filterProjects();
+        }
+      });
+      
+      // Clear filters buttons
+      document.getElementById('clear-filters').addEventListener('click', clearAllFilters);
+      document.getElementById('clear-filters-mobile').addEventListener('click', clearAllFilters);
+      
+      // Mobile overlay controls
+      document.getElementById('filter-toggle').addEventListener('click', () => {
+        document.getElementById('PROJECTmobile-overlay').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+      
+      document.getElementById('close-overlay').addEventListener('click', () => {
+        document.getElementById('PROJECTmobile-overlay').style.display = 'none';
+        document.body.style.overflow = 'auto';
+      });
+    }
+
+    // Start the app when DOM is loaded
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
