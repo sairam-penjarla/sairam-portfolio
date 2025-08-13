@@ -7,6 +7,8 @@
             <script src="https://cdn.tailwindcss.com"></script>
             <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js" defer></script>
             <link rel="stylesheet" href="{{ url_for('static', filename='css/header/header_styles.css') }}" />
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/markdown_styles.css') }}" />
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/new_base.css') }}" />
       </head>
       <body x-data="{ 
         openDropdown: null, 
@@ -14,42 +16,42 @@
         subMenu: null,
         dropdownContent: {
             prompts: {
-                'Image Generation': [
-                    { text: 'Food Photography', url: '/prompts/image-generation/food-photography' },
-                    { text: 'Interior Designing', url: '/prompts/image-generation/interior-designing' },
-                    { text: 'Warrior Bus', url: '/prompts/image-generation/warrior-bus' }
-                ],
-                'Novel Writing': [
-                    { text: 'Horror Story', url: '/prompts/novel-writing/horror-story' },
-                    { text: 'Character Design', url: '/prompts/novel-writing/character-design' }
+                'Tutorials': [
+                    { text: 'Chain Of Thought Prompting', url: '/prompts/Tutorials/Chain%20of%20Thought%20Prompting' },
+                    { text: 'Agent Orchestration', url: '/prompts/Tutorials/Agent%20Orchestration' }
                 ],
                 'Personas': [
-                    { text: 'Monday', url: '/prompts/personas/monday' },
-                    { text: 'Sunny', url: '/prompts/personas/sunny' }
+                    { text: 'Monday', url: '/prompts/Personas/Monday' },
+                    { text: 'Sunny', url: '/prompts/Personas/Sunny' }
+                ],
+                'Image Generation': [
+                    { text: 'Food Photography', url: '/prompts/Image%20Generation/Culinary%20Masterpieces' },
+                    { text: 'Furniture', url: '/prompts/Image%20Generation/Bespoke%20Furniture%20Photography' },
+                    { text: 'Macro Photography', url: '/prompts/Image%20Generation/Movie%20Scene%20Macro%20Photography' }
                 ]
             },
             cheatsheets: {
                 'Environment': [
-                    { text: 'Anaconda', url: '#' },
-                    { text: 'Virtual Environment', url: '#' },
-                    { text: 'Pip Installations', url: '#' }
+                    { text: 'Anaconda', url: '/cheatsheets/Environments/Anaconda.md' },
+                    { text: 'Virtual Environment', url: '/cheatsheets/Environments/Virtual%20Environment.md' },
+                    { text: 'PIP', url: '/cheatsheets/Environments/PIP.md' }
                 ],
                 'Git & CLI': [
-                    { text: 'Git Commands', url: '#' },
-                    { text: 'Bash Shortcuts', url: '#' },
-                    { text: 'SSH Setup', url: '#' }
+                    { text: 'Git', url: '/cheatsheets/Git%20&%20Cli/Git.md' },
+                    { text: 'CLI', url: '/cheatsheets/Git%20&%20Cli/Cli.md' },
+                    { text: 'SSH', url: '/cheatsheets/Git%20&%20Cli/SSH.md' }
                 ],
                 'Python': [
-                    { text: 'String Formatting', url: '#' },
-                    { text: 'List Comprehensions', url: '#' },
-                    { text: 'Decorators', url: '#' }
+                    { text: 'Basic', url: '/cheatsheets/Python/Basic.md' },
+                    { text: 'Intermediate', url: '/cheatsheets/Python/Intermediate.md' },
+                    { text: 'Advanced', url: '/cheatsheets/Python/Advanced.md' }
                 ]
             }
         },
         activeDropdown: null
     }"
     >
-
+    
         <!-- Fixed Header -->
         <header class="fixed top-0 w-full apple-header z-50" @mouseleave="openDropdown = null">
             <div class="max-w-7xl mx-auto">
@@ -112,9 +114,9 @@
             <!-- Main mobile navigation -->
             <template x-if="!subMenu">
                 <nav class="space-y-1">
-                    <a href="#about-me" @click="mobileOpen = false" class="mobile-nav-link block">About Me</a>
-                    <a href="#resources" @click="mobileOpen = false" class="mobile-nav-link block">Resources</a>
-                    <a href="#projects" @click="mobileOpen = false" class="mobile-nav-link block">Projects</a>
+                    <a href="/" @click="mobileOpen = false" class="mobile-nav-link block">About Me</a>
+                    <a href="/resources" @click="mobileOpen = false" class="mobile-nav-link block">Resources</a>
+                    <a href="/" @click="mobileOpen = false" class="mobile-nav-link block">Projects</a>
                     <button @click="subMenu = 'prompts'" class="mobile-nav-link flex justify-between items-center w-full">
                         Prompts
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">

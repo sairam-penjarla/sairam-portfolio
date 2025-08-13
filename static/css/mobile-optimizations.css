@@ -3,43 +3,6 @@
  * These styles only apply to mobile devices and won't affect desktop view
  */
 
-/* Global Mobile Adjustments */
-@media screen and (max-width: 768px) {
-  /* Increase touch targets for better mobile usability */
-  button, .btn-minimal, a.project-link, .expertise-card-link {
-    min-height: 44px;
-    min-width: 44px;
-  }
-
-  /* Improve text readability on small screens */
-  p, .project-description, .tutorials-description, .expertise-description, .card-description {
-    font-size: 16px !important;
-    line-height: 1.6 !important;
-  }
-  
-  /* Fix section padding for all sections on mobile */
-  section {
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-  }
-  
-  /* Fix container width for better mobile layout */
-  .container, .section-container, .expertise-container, .skills-container {
-    width: 100% !important;
-    padding: 0 !important;
-  }
-  
-  /* Improve spacing for better readability */
-  .section-header {
-    margin-bottom: 30px !important;
-  }
-  
-  /* Fix image responsiveness */
-  img {
-    max-width: 100% !important;
-    height: auto !important;
-  }
-}
 
 /* Hero Section Optimizations */
 @media screen and (max-width: 768px) {
@@ -106,24 +69,6 @@
   }
 }
 
-@media screen and (max-width: 480px) {
-  .expertise-grid {
-    grid-template-columns: 1fr !important;
-    max-width: 100% !important;
-  }
-  
-  .expertise-section {
-    padding: 30px 16px !important;
-  }
-  
-  .section-title .section-text {
-    font-size: 20px !important; 
-  }
-  
-  .section-title::after {
-    margin-left: 10px !important;
-  }
-}
 
 /* Security Section Optimizations */
 @media screen and (max-width: 768px) {
@@ -156,7 +101,7 @@
   }
   
   .card-title {
-    font-size: 18px !important;
+    font-size: 35px !important;
   }
   
   .compliance-logo-container {
@@ -438,3 +383,25 @@
     z-index: 1 !important;
   }
 } 
+
+@media screen and (max-width: 480px) {
+  .expertise-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 100% !important;
+  }
+  
+  .expertise-section {
+    padding: 30px 16px !important;
+  }
+  
+  .section-title .section-text {
+    font-size: 50px !important;
+  }
+  .section-title::after {
+    display: none;
+  }
+  .section-title::after {
+    margin-left: 10px !important;
+    display: none;
+  }
+}

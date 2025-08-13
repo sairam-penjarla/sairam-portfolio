@@ -3,7 +3,7 @@
       <head>
             <meta charset="UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <title>{% if blog_details %}{{ blog_details.blog_meta[0].title }} - Cheatsheet{% else %}Cheatsheet{% endif %}</title>
+            <title>{% if blog_details %}{{ blog_details.blog_meta[0].title }} - Blog{% else %}Cheatsheet{% endif %}</title>
             <!-- Google Fonts - Inter -->
             <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
             <!-- Marked.js CDN for Markdown parsing -->
@@ -22,6 +22,5 @@
                   </div>
                   {% include 'blogs/blog_content.html' %}
             </div>
-            {% include 'footer.html' %}
       </body>
 </html>

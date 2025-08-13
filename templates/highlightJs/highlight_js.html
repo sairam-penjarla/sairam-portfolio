@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+
+<!-- Highlight.js Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<script>
+      document.querySelectorAll("pre code").forEach((block) => {
+            // Highlight code
+            hljs.highlightElement(block);
+
+            const pre = block.parentElement;
+
+            // Create wrapper and header
+            const wrapper = document.createElement("div");
+            wrapper.className = "pre-wrapper";
+
+            const header = document.createElement("div");
+            header.className = "pre-wrap-header";
+
+            const button = document.createElement("button");
+            button.className = "copy-btn";
+            button.innerHTML = `<img src="/static/images/lucidev-icons/copy.svg" />
+        <span>Copy</span>
+    `;
+
+            header.appendChild(button);
+
+            // Insert wrapper into DOM
+            pre.parentNode.insertBefore(wrapper, pre);
+            wrapper.appendChild(header);
+            wrapper.appendChild(pre);
+
+            // Copy functionality
+            button.addEventListener("click", () => {
+                  navigator.clipboard.writeText(block.innerText).then(() => {
+                        const span = button.querySelector("span");
+                        span.textContent = "Copied";
+                        setTimeout(() => {
+                              span.textContent = "Copy";
+                        }, 2000);
+                  });
+            });
+      });
+</script>

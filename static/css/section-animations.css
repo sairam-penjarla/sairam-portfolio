@@ -135,20 +135,9 @@
     font-weight: 700;
     color: #666;
     position: relative;
-    z-index: 3;
+    z-index: 30000000000;
 }
 
-.divider:before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: -300%;
-    right: -300%;
-    height: 1px;
-    background-color: #ddd;
-    z-index: 1;
-    transform: rotate(90deg);
-} 
 .staggered-item h2 {font-size: 20px;}
 
 h3.category-title.staggered-item.visible {

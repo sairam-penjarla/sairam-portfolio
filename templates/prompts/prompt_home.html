@@ -1,331 +1,168 @@
-<style>
-  /* Layout & type to match the screenshot */
-  :root {
-    --container-w: 1200px;
-    --gap: 32px;
-    --card-radius: 10px;
-    --title-color: #0b0b0b;
-    --meta-color: #6b6b6b;
-  }
-  html,
-  body {
-    height: 100%;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
-    background: #fff;
-    color: var(--title-color);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  .wrap {
-    max-width: var(--container-w);
-    padding: 0 32px;
-    box-sizing: border-box;
-  }
-
-  .prompt-section-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 28px;
-    gap: 50px;
-  }
-
-  .prompt-section-header .heading {
-    line-height: 1.1;
-    font-weight: 200;
-    margin: 0;
-    font-size: xx-large;
-  }
-
-  .view-all {
-    font-size: 14px;
-    color: var(--title-color);
-    text-decoration: none;
-    font-weight: 500;
-    white-space: nowrap;
-  }
-
-  .view-all:hover,
-  .view-all:focus {
-    text-decoration: underline;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--gap);
-    align-items: start;
-    margin-bottom: 100px;
-  }
-
-  .card {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.3s ease;
-  }
-  .card:hover,
-  .card:focus {
-    transform: translateY(-5px);
-  }
-
-  .thumb {
-    width: 100%;
-    height: 420px; /* big visual like the screenshot */
-    border-radius: var(--card-radius);
-    object-fit: cover;
-    display: block;
-    box-shadow: none;
-    overflow: hidden;
-    background: #eee; /* placeholder bg */
-    transition: filter 0.3s ease;
-  }
-  .card:hover .thumb,
-  .card:focus .thumb {
-    filter: brightness(0.9);
-  }
-
-  .card-content {
-    margin-top: 18px;
-  }
-
-  .post-title {
-    font-size: 1.25rem;
-    line-height: 1.25;
-    margin: 0 0 12px 0;
-    font-weight: 200;
-    color: var(--apple-gray-1);
-  }
-
-  .meta {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    font-size: 14px;
-    color: var(--meta-color);
-    flex-wrap: wrap;
-  }
-
-  .meta .section-name {
-    font-weight: 600;
-    color: var(--apple-gray-2);
-    margin-right: 6px;
-  }
-
-  /* Responsive adjustments */
-  @media (max-width: 980px) {
-    .grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 640px) {
-    .grid {
-      grid-template-columns: 1fr;
-    }
-    .thumb {
-      height: 300px;
-    }
-    .wrap {
-      padding: 0 43px
-    }
-    .prompt-section-header {
-        margin-bottom: 100px;
-        font-size: 40px;
-    }
-  }
-
-  @media (max-width: 400px) {
-    .prompt-section-header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-    }
-    .view-all {
-      font-size: 13px;
-    }
-  }
-  .prompt-main-content{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-        margin-top: 40px;
-  }
-  @media (max-width: 768px) {
-  .prompt-breadcrumbs {
-    display: none;
-  }
-}
-
-</style>
-
 <script>
-  const allSectionNames = {{ all_section_names | tojson | safe }};
-  const allBlogsOfParticularSection = {{ all_blogs_of_particular_section | tojson | safe }};
-  const latestBlogsPerSection = {{ latest_blogs_per_section | tojson | safe }};
-  const blogDetails = {{ blog_details | tojson | safe }};
+      const allSectionNames = {{ all_section_names | tojson | safe }};
+      const allBlogsOfParticularSection = {{ all_blogs_of_particular_section | tojson | safe }};
+      const latestBlogsPerSection = {{ latest_blogs_per_section | tojson | safe }};
+      const blogDetails = {{ blog_details | tojson | safe }};
 
-  // console.log("allSectionNames:", allSectionNames);
-  // console.log("allBlogsOfParticularSection:", allBlogsOfParticularSection);
-  // console.log("Latest Blogs Per Section:", latestBlogsPerSection);
-  // console.log("Blog Details:", blogDetails);
+      // console.log("allSectionNames:", allSectionNames);
+      // console.log("allBlogsOfParticularSection:", allBlogsOfParticularSection);
+      // console.log("Latest Blogs Per Section:", latestBlogsPerSection);
+      // console.log("Blog Details:", blogDetails);
 
-  const container = document.getElementById("content");
+      const container = document.getElementById("content");
 
-  function encodeForURL(str) {
-    return encodeURIComponent(str);
-  }
+      function encodeForURL(str) {
+        return encodeURIComponent(str);
+      }
 
-  // Creates a single blog card element
-  function createBlogCard(sectionName, post) {
-    const a = document.createElement("a");
-    a.className = "card";
-    a.href = `/prompts/${encodeForURL(sectionName)}/${encodeForURL(post.slug || post.title)}`;
+      // Creates a single blog card element
+      function createBlogCard(sectionName, post) {
+        const a = document.createElement("a");
+        // a.className = "card";
+        a.href = `/prompts/${encodeForURL(sectionName)}/${encodeForURL(post.title)}`;
 
-    const img = document.createElement("img");
-    img.className = "thumb";
-    img.alt = post.title;
-    img.src = post.thumbnail || "";
+        const img = document.createElement("img");
+        img.className = "thumb";
+        img.alt = post.title;
+        img.src = post.thumbnail || "";
 
-    const content = document.createElement("div");
-    content.className = "card-content";
+        const content = document.createElement("div");
+        content.className = "prompt-card-content";
 
-    const title = document.createElement("h3");
-    title.className = "post-title";
-    title.textContent = post.title;
+        const title = document.createElement("h3");
+        title.className = "post-title";
+        title.textContent = post.title;
 
-    const meta = document.createElement("div");
-    meta.className = "meta";
+        const meta = document.createElement("div");
+        meta.className = "meta";
 
-    const sectionLabel = document.createElement("div");
-    sectionLabel.className = "section-name";
-    sectionLabel.textContent = post.createdAt || sectionName;
+        const sectionLabel = document.createElement("div");
+        sectionLabel.className = "section-name";
+        sectionLabel.textContent = post.createdAt || sectionName;
 
-    const date = document.createElement("div");
-    date.className = "date";
-    date.textContent = post.date || "";
+        const date = document.createElement("div");
+        date.className = "date";
+        date.textContent = post.date || "";
 
-    meta.appendChild(sectionLabel);
-    meta.appendChild(date);
+        meta.appendChild(sectionLabel);
+        meta.appendChild(date);
 
-    content.appendChild(title);
-    content.appendChild(meta);
+        content.appendChild(title);
+        content.appendChild(meta);
 
-    a.appendChild(img);
-    a.appendChild(content);
+        a.appendChild(img);
+        a.appendChild(content);
 
-    return a;
-  }
+        return a;
+      }
 
-  // Renders a section heading + grid of posts
-  function renderSection(sectionName, posts, showViewAll = true) {
-    if (!posts || posts.length === 0) return;
+      // Renders a section heading + grid of posts
+      function renderSection(sectionName, posts, showViewAll = true) {
+        console.log(`Rendering section: ${sectionName}`, posts);
+        if (!posts || posts.length === 0) return;
 
-    const header = document.createElement("div");
-    header.className = "prompt-section-header";
+        const header = document.createElement("div");
+        header.className = "prompt-section-header";
 
-    const titleDiv = document.createElement("div");
-    titleDiv.className = "heading";
-    titleDiv.textContent = sectionName;
-    header.appendChild(titleDiv);
+        const titleDiv = document.createElement("div");
+        titleDiv.className = "heading";
+        titleDiv.textContent = sectionName;
+        header.appendChild(titleDiv);
 
 
-    if (showViewAll) {
-      const viewAll = document.createElement("a");
-      viewAll.className = "view-all";
-      viewAll.href = `/prompts/${encodeForURL(sectionName)}`;
-      viewAll.textContent = "View all";
-      header.appendChild(viewAll);
-    }
+        if (showViewAll) {
+          const viewAll = document.createElement("a");
+          viewAll.className = "view-all";
+          viewAll.href = `/prompts/${encodeForURL(sectionName)}`;
+          viewAll.textContent = "View all";
+          header.appendChild(viewAll);
+        }
+        
+        container.appendChild(header);
 
-    container.appendChild(header);
+        const grid = document.createElement("div");
+        grid.className = "grid";
 
-    const grid = document.createElement("div");
-    grid.className = "grid";
+        posts.forEach(post => {
+          grid.appendChild(createBlogCard(sectionName, post));
+        });
 
-    posts.forEach(post => {
-      grid.appendChild(createBlogCard(sectionName, post));
-    });
+        container.appendChild(grid);
+      }
 
-    container.appendChild(grid);
-  }
+      // Main logic
+      if (blogDetails) {
+        // Show full blog
+        renderBreadcrumbs(blogDetails);
+        renderBlogDetails(blogDetails)
+      }
+      else if (allBlogsOfParticularSection && allBlogsOfParticularSection.length > 0) {
+        // Render all blogs in a section (no View All button)
+        console.log("Rendering all blogs for section:", allBlogsOfParticularSection[0].slug);
+        renderSection(allBlogsOfParticularSection[0].slug || "Section", allBlogsOfParticularSection, false);
+      }
+      else if (latestBlogsPerSection && Object.keys(latestBlogsPerSection).length > 0) {
+        // Render top 3 blogs per section (with View All)
+        for (const [sectionName, posts] of Object.entries(latestBlogsPerSection)) {
+          renderSection(sectionName, posts.slice(0, 3), true);
+        }
+      }
+      function renderBreadcrumbs(details) {
+        const breadcrumbDiv = document.getElementById("promptBreadcrumbs");
 
-  // Main logic
-  if (blogDetails) {
-    // Show full blog
-    renderBreadcrumbs(blogDetails);
-    renderBlogDetails(blogDetails)
-  } 
-  else if (allBlogsOfParticularSection && allBlogsOfParticularSection.length > 0) {
-    // Render all blogs in a section (no View All button)
-    renderSection(allSectionNames[0] || "Section", allBlogsOfParticularSection, false);
-  } 
-  else if (latestBlogsPerSection && Object.keys(latestBlogsPerSection).length > 0) {
-    // Render top 3 blogs per section (with View All)
-    for (const [sectionName, posts] of Object.entries(latestBlogsPerSection)) {
-      renderSection(sectionName, posts.slice(0, 3), true);
-    }
-  }
-  function renderBreadcrumbs(details) {
-    const breadcrumbDiv = document.getElementById("promptBreadcrumbs");
+        // Clear existing
+        breadcrumbDiv.innerHTML = "";
 
-    // Clear existing
-    breadcrumbDiv.innerHTML = "";
+        // Skip if no details or in mobile view
+        if (!details || window.innerWidth <= 768) {
+          return;
+        }
 
-    // Skip if no details or in mobile view
-    if (!details || window.innerWidth <= 768) {
-      return;
-    }
+        // Helper to create a breadcrumb link
+        function createCrumb(label, href = null) {
+          const crumb = document.createElement(href ? "a" : "span");
+          crumb.textContent = label;
+          crumb.className = "breadcrumb-item";
+          if (href) crumb.href = href;
+          return crumb;
+        }
 
-    // Helper to create a breadcrumb link
-    function createCrumb(label, href = null) {
-      const crumb = document.createElement(href ? "a" : "span");
-      crumb.textContent = label;
-      crumb.className = "breadcrumb-item";
-      if (href) crumb.href = href;
-      return crumb;
-    }
+        // Add base "Prompts" link
+        breadcrumbDiv.appendChild(createCrumb("Prompts", "/prompts"));
 
-    // Add base "Prompts" link
-    breadcrumbDiv.appendChild(createCrumb("Prompts", "/prompts"));
+        // Add separator and subsection link
+        if (details.subsection) {
+          breadcrumbDiv.appendChild(document.createTextNode(" › "));
+          breadcrumbDiv.appendChild(
+            createCrumb(details.subsection, `/prompts/${encodeURIComponent(details.subsection)}`)
+          );
+        }
 
-    // Add separator and subsection link
-    if (details.subsection) {
-      breadcrumbDiv.appendChild(document.createTextNode(" › "));
-      breadcrumbDiv.appendChild(
-        createCrumb(details.subsection, `/prompts/${encodeURIComponent(details.subsection)}`)
-      );
-    }
+        // Add separator and blog title (no link)
+        if (details.blog_slug) {
+          breadcrumbDiv.appendChild(document.createTextNode(" › "));
+          breadcrumbDiv.appendChild(createCrumb(details.blog_slug));
+        }
+      }
 
-    // Add separator and blog title (no link)
-    if (details.blog_slug) {
-      breadcrumbDiv.appendChild(document.createTextNode(" › "));
-      breadcrumbDiv.appendChild(createCrumb(details.blog_slug));
-    }
-  }
-
-  // Example usage with blogDetails from Flask
-  document.addEventListener("DOMContentLoaded", () => {
-    renderBreadcrumbs(blogDetails);
-  });
+      // Example usage with blogDetails from Flask
+      document.addEventListener("DOMContentLoaded", () => {
+        renderBreadcrumbs(blogDetails);
+      });
 </script>
 
 <style>
-  .prompt-breadcrumbs {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 10px;
-    padding: 10px 30px;
-    
-  }
-  .prompt-breadcrumbs a {
-    color: #0073e6;
-    text-decoration: none;
-  }
-  .prompt-breadcrumbs a:hover {
-    text-decoration: underline;
-  }
+      .prompt-breadcrumbs {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+            padding: 10px 30px;
+      }
+      .prompt-breadcrumbs a {
+            color: #0073e6;
+            text-decoration: none;
+      }
+      .prompt-breadcrumbs a:hover {
+            text-decoration: underline;
+      }
 </style>

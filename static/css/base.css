@@ -94,6 +94,7 @@ span.highlight {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  background-color: white;
 }
 .dm-serif-text-regular {
   font-family: "DM Serif Text", serif;
@@ -134,6 +135,7 @@ span.highlight {
   margin-left: 16px;
   display: block;
   background: linear-gradient(to right, var(--primary-highlight-color) 0%, rgba(32, 97, 183, 0.1) 100%);
+  /* display: none; */
 }
 
 .section-subtitle {
