@@ -18,9 +18,12 @@
         // Main content
         const main = document.createElement("div");
         main.className = "blog-main prompt-main-content";
+        
+        // Parse markdown first
+        const parsedContent = marked.parse(fileContent);
         main.innerHTML = `
             <div class="blog-content message">
-                ${marked.parse(fileContent)}
+                ${parsedContent}
             </div>
         `;
 
@@ -29,129 +32,131 @@
         toc.className = "blog-toc";
         toc.innerHTML = `<ul></ul>`;
 
-        const blogContentDiv = document.createElement("div");
-        blogContentDiv.innerHTML = marked.parse(fileContent);
+        // Append main & toc first so elements are in DOM
+        container.appendChild(main);
+        container.appendChild(toc);
+        document.getElementById("content").appendChild(container);
 
-        // Get headings
-        const headings = blogContentDiv.querySelectorAll("h1, h2");
+        // Now work with elements that are in the DOM
+        const blogContent = main.querySelector(".blog-content");
+        const headings = blogContent.querySelectorAll("h1, h2");
         const tocList = toc.querySelector("ul");
 
-        headings.forEach((h, i) => {
+        // Add IDs to headings and create TOC links
+        headings.forEach((heading, i) => {
             const id = `heading-${i}`;
-            h.id = id;
+            heading.id = id;
 
             const li = document.createElement("li");
             const a = document.createElement("a");
             a.href = `#${id}`;
-            a.textContent = h.textContent;
+            a.textContent = heading.textContent;
 
-            // Smooth scroll to center of screen
+            // Simple direct scroll approach
             a.addEventListener("click", function (e) {
                 e.preventDefault();
-                const target = document.getElementById(id);
-                const targetRect = target.getBoundingClientRect();
-                const targetTop = targetRect.top + window.pageYOffset;
-                const windowHeight = window.innerHeight;
-                const offsetTop = targetTop - windowHeight / 2 + targetRect.height / 2;
-
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: "smooth",
-                });
+                
+                // Remove hash from URL to prevent browser default behavior
+                history.replaceState(null, null, ' ');
+                
+                // Direct element focus and scroll
+                const targetHeading = document.getElementById(id);
+                if (targetHeading) {
+                    // Try multiple scroll approaches simultaneously
+                    
+                    // Approach 1: Direct element scroll into view
+                    targetHeading.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                    
+                    // Approach 2: Scroll window directly to element position
+                    setTimeout(() => {
+                        const rect = targetHeading.getBoundingClientRect();
+                        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                        const targetPosition = rect.top + scrollTop - 100; // 100px offset from top
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }, 50);
+                    
+                    // Approach 3: Try scrolling any parent containers
+                    let parent = targetHeading.parentElement;
+                    while (parent && parent !== document.body) {
+                        if (parent.scrollHeight > parent.clientHeight) {
+                            const parentRect = parent.getBoundingClientRect();
+                            const targetRect = targetHeading.getBoundingClientRect();
+                            const relativePosition = targetRect.top - parentRect.top + parent.scrollTop;
+                            
+                            parent.scrollTo({
+                                top: relativePosition - 50,
+                                behavior: 'smooth'
+                            });
+                            break;
+                        }
+                        parent = parent.parentElement;
+                    }
+                }
             });
 
             li.appendChild(a);
             tocList.appendChild(li);
         });
 
-        // Insert headings into real blog content
-        main.querySelector(".blog-content").innerHTML = blogContentDiv.innerHTML;
-
-        // Append main & toc
-        container.appendChild(main);
-        container.appendChild(toc);
-        document.getElementById("content").appendChild(container);
-
-        // Scroll spy (highlight active heading) - MODIFIED TO USE .prompt-main-content
+        // Scroll spy functionality
         const tocLinks = toc.querySelectorAll("a");
         if (tocLinks.length > 0) tocLinks[0].classList.add("active");
 
-        const promptMain = document.querySelector('.prompt-main-content');
-        const headingsInContent = promptMain.querySelectorAll("h1, h2");
-        
-        // Function to find the currently active heading within .prompt-main-content
+        // Function to update active heading based on scroll position
         function updateActiveHeading() {
-            if (!promptMain) return;
-            const scrollContainerTop = promptMain.getBoundingClientRect().top;
-            
             let activeHeading = null;
-            
-            for (let i = 0; i < headingsInContent.length; i++) {
-                const heading = headingsInContent[i];
-                const headingTop = heading.getBoundingClientRect().top - scrollContainerTop;
+            const scrollPos = window.scrollY + 200; // Offset for better detection
+
+            headings.forEach((heading) => {
+                const rect = heading.getBoundingClientRect();
+                const absoluteTop = rect.top + window.scrollY;
                 
-                // If the heading is within the top half of the viewport
-                if (headingTop <= window.innerHeight / 2) {
+                if (absoluteTop <= scrollPos) {
                     activeHeading = heading;
-                } else {
-                    // Since headings are in order, we can stop once we pass the current one
-                    break;
                 }
-            }
+            });
 
-            // If no heading is in the top half, highlight the first one
-            if (!activeHeading && headingsInContent.length > 0) {
-                activeHeading = headingsInContent[0];
-            }
-
-            // Update active state
+            // Update active state in TOC
             tocLinks.forEach(link => link.classList.remove("active"));
             if (activeHeading) {
                 const activeLink = toc.querySelector(`a[href="#${activeHeading.id}"]`);
                 if (activeLink) {
                     activeLink.classList.add("active");
-                    // Optional: scroll the TOC to keep the active link in view
-                    activeLink.scrollIntoView({
-                        behavior: 'smooth', 
-                        block: 'nearest'
-                    });
                 }
             }
         }
-        
-        // Use scroll event for more responsive updates
+
+        // Listen for scroll events
         let scrollTimeout;
-        promptMain.addEventListener("scroll", function () {
+        window.addEventListener("scroll", function () {
             clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(updateActiveHeading, 10);
+            scrollTimeout = setTimeout(updateActiveHeading, 50);
         });
-        
-        // Use IntersectionObserver for more efficient updates
-        const observerOptions = {
-            root: promptMain,
-            rootMargin: '0px 0px -50% 0px', // Trigger when heading passes the middle of the container
-            threshold: 0
-        };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.id;
-                    tocLinks.forEach(link => link.classList.remove('active'));
-                    const activeLink = toc.querySelector(`a[href="#${id}"]`);
-                    if (activeLink) {
-                        activeLink.classList.add('active');
-                    }
-                }
+        // Also try listening to the prompt-main-content container
+        const promptMain = document.querySelector('.prompt-main-content');
+        if (promptMain) {
+            promptMain.addEventListener("scroll", function () {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(updateActiveHeading, 50);
             });
-        }, observerOptions);
-
-        headingsInContent.forEach(heading => {
-            observer.observe(heading);
-        });
+        }
 
         // Initial update
         updateActiveHeading();
+        
+        // Debug info
+        console.log('TOC Setup Complete');
+        console.log('Found headings:', headings.length);
+        console.log('Prompt main element:', promptMain);
+        console.log('Window scroll available:', window.scrollY !== undefined);
     }
 </script>
 {% include 'highlightJs/highlight_js.html' %}

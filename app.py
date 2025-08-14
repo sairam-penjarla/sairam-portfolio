@@ -93,31 +93,42 @@ def get_blog_file(filename):
 def projects():
     return render_template('projects/projects.html') #render_template('gen_ai.html')
 
-@app.route("/projects_json")
-def projects_json():
+
+
+@app.route('/projects_json', methods=['GET'])
+def get_projects():
+    """
+    API endpoint to fetch all projects
+    Returns JSON array of project objects
+    """
     try:
-        with open("projects.json", "r") as f:
-            projects = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError) as e:
-        return jsonify({"error": str(e)}), 500
+        # Here you would typically fetch from your database
+        # For now, returning sample data
+        projects = get_projects_from_database()  # Replace with your data source
+        
+        return jsonify(projects), 200
+    except Exception as e:
+        return jsonify({
+            'error': 'Failed to fetch projects',
+            'message': str(e)
+        }), 500
+    
+def get_projects_from_database(file_path="projects.json"):
+    """
+    Reads projects data from a JSON file instead of hardcoding it.
+    :param file_path: Path to the JSON file containing project data.
+    :return: List of project dictionaries.
+    """
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"Projects JSON file not found at: {file_path}")
 
-    tech_stack_set = set()
-    platform_set = set()
-    domain_set = set()
+    with open(file_path, "r", encoding="utf-8") as file:
+        try:
+            projects = json.load(file)
+        except json.JSONDecodeError as e:
+            raise ValueError(f"Error decoding JSON file: {e}")
 
-    for proj in projects:
-        tech_stack_set.update(proj.get("tech", []))
-        if proj.get("platform"):
-            platform_set.add(proj["platform"])
-        if proj.get("domain"):
-            domain_set.add(proj["domain"])
-
-    return jsonify({
-        "projects": projects,
-        "tech_stack": sorted(tech_stack_set),
-        "platforms": sorted(platform_set),
-        "domains": sorted(domain_set)
-    })
+    return projects
 
 @app.route('/prompts', defaults={'subsection': None, 'blog_slug': None})
 @app.route('/prompts/<subsection>', defaults={'blog_slug': None})

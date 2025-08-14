@@ -17,50 +17,22 @@
         
         <div class="filter-section">
           <h3>Platform</h3>
-          <div class="filter-options">
-            <div class="filter-option">
-              <input type="checkbox" value="Azure" name="platform" id="platform-azure">
-              <label for="platform-azure">Azure</label>
-            </div>
-            <div class="filter-option">
-              <input type="checkbox" value="Databricks" name="platform" id="platform-databricks">
-              <label for="platform-databricks">Databricks</label>
-            </div>
-            <div class="filter-option">
-              <input type="checkbox" value="Platform Independent" name="platform" id="platform-independent">
-              <label for="platform-independent">Platform Independent</label>
-            </div>
+          <div id="platform-list" class="filter-options">
+            <!-- Platform filters will be dynamically populated -->
           </div>
         </div>
 
         <div class="filter-section">
           <h3>Tech Stack</h3>
-          <div id="tech-stack-list" class="filter-options"></div>
+          <div id="tech-stack-list" class="filter-options">
+            <!-- Tech stack filters will be dynamically populated -->
+          </div>
         </div>
 
         <div class="filter-section">
           <h3>Domain</h3>
-          <div class="filter-options">
-            <div class="filter-option">
-              <input type="checkbox" value="Machine Learning" name="domain" id="domain-ml">
-              <label for="domain-ml">Machine Learning</label>
-            </div>
-            <div class="filter-option">
-              <input type="checkbox" value="Deep Learning" name="domain" id="domain-dl">
-              <label for="domain-dl">Deep Learning</label>
-            </div>
-            <div class="filter-option">
-              <input type="checkbox" value="Computer Vision" name="domain" id="domain-cv">
-              <label for="domain-cv">Computer Vision</label>
-            </div>
-            <div class="filter-option">
-              <input type="checkbox" value="NLP" name="domain" id="domain-nlp">
-              <label for="domain-nlp">NLP</label>
-            </div>
-            <div class="filter-option">
-              <input type="checkbox" value="Gen AI" name="domain" id="domain-genai">
-              <label for="domain-genai">Gen AI</label>
-            </div>
+          <div id="domain-list" class="filter-options">
+            <!-- Domain filters will be dynamically populated -->
           </div>
         </div>
       </div>
@@ -72,6 +44,7 @@
 
     <!-- Main Content -->
     <main class="PROJECTmain-content">
+      <div id="loading" style="text-align: center; padding: 20px;">Loading projects...</div>
       <div id="PROJECTCards-container" class="PROJECTCards-grid"></div>
     </main>
   </div>
@@ -92,50 +65,22 @@
     <div class="PROJECTmobile-overlay-content">
       <div class="filter-section">
         <h3>Platform</h3>
-        <div class="filter-options">
-          <div class="filter-option">
-            <input type="checkbox" value="Azure" name="platform-mobile" id="platform-azure-mobile">
-            <label for="platform-azure-mobile">Azure</label>
-          </div>
-          <div class="filter-option">
-            <input type="checkbox" value="Databricks" name="platform-mobile" id="platform-databricks-mobile">
-            <label for="platform-databricks-mobile">Databricks</label>
-          </div>
-          <div class="filter-option">
-            <input type="checkbox" value="Platform Independent" name="platform-mobile" id="platform-independent-mobile">
-            <label for="platform-independent-mobile">Platform Independent</label>
-          </div>
+        <div id="platform-list-mobile" class="filter-options">
+          <!-- Platform filters will be dynamically populated -->
         </div>
       </div>
 
       <div class="filter-section">
         <h3>Tech Stack</h3>
-        <div id="tech-stack-list-mobile" class="filter-options"></div>
+        <div id="tech-stack-list-mobile" class="filter-options">
+          <!-- Tech stack filters will be dynamically populated -->
+        </div>
       </div>
 
       <div class="filter-section">
         <h3>Domain</h3>
-        <div class="filter-options">
-          <div class="filter-option">
-            <input type="checkbox" value="Machine Learning" name="domain-mobile" id="domain-ml-mobile">
-            <label for="domain-ml-mobile">Machine Learning</label>
-          </div>
-          <div class="filter-option">
-            <input type="checkbox" value="Deep Learning" name="domain-mobile" id="domain-dl-mobile">
-            <label for="domain-dl-mobile">Deep Learning</label>
-          </div>
-          <div class="filter-option">
-            <input type="checkbox" value="Computer Vision" name="domain-mobile" id="domain-cv-mobile">
-            <label for="domain-cv-mobile">Computer Vision</label>
-          </div>
-          <div class="filter-option">
-            <input type="checkbox" value="NLP" name="domain-mobile" id="domain-nlp-mobile">
-            <label for="domain-nlp-mobile">NLP</label>
-          </div>
-          <div class="filter-option">
-            <input type="checkbox" value="Gen AI" name="domain-mobile" id="domain-genai-mobile">
-            <label for="domain-genai-mobile">Gen AI</label>
-          </div>
+        <div id="domain-list-mobile" class="filter-options">
+          <!-- Domain filters will be dynamically populated -->
         </div>
       </div>
 
@@ -147,31 +92,104 @@
 
   <script>
     const defaultImage = "https://img.freepik.com/premium-vector/soft-pastel-gradient-background-with-gentle-transitions_1304147-271914.jpg?w=740&q=80";
-    const techStack = ["Python", "TensorFlow", "PyTorch", "Scikit-learn", "Azure ML", "HuggingFace Transformers", "Pandas", "NumPy"];
-    
-    // Generate projects
-    const projects = Array.from({length: 20}, (_, i) => ({
-      title: `Project ${i+1}`,
-      description: `Description for project ${i+1}. This is a placeholder description for a data science project that demonstrates various capabilities.`,
-      image: defaultImage,
-      tech: techStack.sort(() => 0.5 - Math.random()).slice(0, Math.floor(Math.random() * 5) + 2),
-      platform: ["Azure", "Databricks", "Platform Independent"][i % 3],
-      domain: ["Machine Learning", "Deep Learning", "Computer Vision", "NLP", "Gen AI"][i % 5],
-      demo: Math.random() > 0.5
-    }));
+    let projects = [];
+    let allTechStacks = [];
+    let allDomains = [];
+    let allPlatforms = [];
 
-    // Populate tech stack filters for both desktop and mobile
-    function populateTechStacks() {
-      const desktopContainer = document.getElementById('tech-stack-list');
-      const mobileContainer = document.getElementById('tech-stack-list-mobile');
+    // Fetch projects from Flask route
+    async function fetchProjects() {
+      try {
+        const response = await fetch('/projects_json');
+        const data = await response.json();
+        projects = data;
+        
+        // Extract unique values for filters
+        extractFilterOptions();
+        
+        // Populate filter UI
+        populateFilters();
+        
+        // Render all projects initially
+        renderPROJECTCards(projects);
+        
+        // Hide loading indicator
+        document.getElementById('loading').style.display = 'none';
+      } catch (error) {
+        console.error('Error fetching projects:', error);
+        document.getElementById('loading').innerHTML = 'Error loading projects. Please try again.';
+      }
+    }
+
+    // Extract unique filter options from projects
+    function extractFilterOptions() {
+      const techStackSet = new Set();
+      const domainSet = new Set();
+      const platformSet = new Set();
+
+      projects.forEach(project => {
+        // Tech stacks
+        if (project.tech_stack) {
+          if (Array.isArray(project.tech_stack)) {
+            project.tech_stack.forEach(tech => techStackSet.add(tech));
+          } else {
+            techStackSet.add(project.tech_stack);
+          }
+        }
+
+        // Domains
+        if (project.domain) {
+          if (Array.isArray(project.domain)) {
+            project.domain.forEach(domain => domainSet.add(domain));
+          } else {
+            domainSet.add(project.domain);
+          }
+        }
+
+        // Platforms
+        if (project.platform) {
+          if (Array.isArray(project.platform)) {
+            project.platform.forEach(platform => platformSet.add(platform));
+          } else {
+            platformSet.add(project.platform);
+          }
+        }
+      });
+
+      allTechStacks = Array.from(techStackSet).sort();
+      allDomains = Array.from(domainSet).sort();
+      allPlatforms = Array.from(platformSet).sort();
+    }
+
+    // Populate filter UI for both desktop and mobile
+    function populateFilters() {
+      // Populate platforms
+      populateFilterSection('platform', allPlatforms);
       
-      techStack.forEach((stack, index) => {
+      // Populate tech stacks
+      populateFilterSection('tech-stack', allTechStacks);
+      
+      // Populate domains
+      populateFilterSection('domain', allDomains);
+    }
+
+    function populateFilterSection(filterType, options) {
+      const desktopContainer = document.getElementById(`${filterType}-list`);
+      const mobileContainer = document.getElementById(`${filterType}-list-mobile`);
+      
+      // Clear existing content
+      desktopContainer.innerHTML = '';
+      mobileContainer.innerHTML = '';
+      
+      options.forEach((option, index) => {
+        const sanitizedId = `${filterType}-${index}`;
+        
         // Desktop
         const desktopOption = document.createElement('div');
         desktopOption.className = 'filter-option';
         desktopOption.innerHTML = `
-          <input type="checkbox" value="${stack}" name="skill" id="skill-${index}">
-          <label for="skill-${index}">${stack}</label>
+          <input type="checkbox" value="${option}" name="${filterType}" id="${sanitizedId}">
+          <label for="${sanitizedId}">${option}</label>
         `;
         desktopContainer.appendChild(desktopOption);
 
@@ -179,8 +197,8 @@
         const mobileOption = document.createElement('div');
         mobileOption.className = 'filter-option';
         mobileOption.innerHTML = `
-          <input type="checkbox" value="${stack}" name="skill-mobile" id="skill-${index}-mobile">
-          <label for="skill-${index}-mobile">${stack}</label>
+          <input type="checkbox" value="${option}" name="${filterType}-mobile" id="${sanitizedId}-mobile">
+          <label for="${sanitizedId}-mobile">${option}</label>
         `;
         mobileContainer.appendChild(mobileOption);
       });
@@ -191,13 +209,29 @@
       const container = document.getElementById('PROJECTCards-container');
       container.innerHTML = '';
       
+      if (data.length === 0) {
+        container.innerHTML = '<div style="text-align: center; padding: 40px; color: #666;">No projects match the selected filters.</div>';
+        return;
+      }
+      
       data.forEach(project => {
-        const techTags = project.tech.slice(0, 4).map(t => 
+        // Handle tech stack (can be array or string)
+        let techArray = [];
+        if (project.tech_stack) {
+          techArray = Array.isArray(project.tech_stack) ? project.tech_stack : [project.tech_stack];
+        }
+        
+        const techTags = techArray.slice(0, 4).map(t => 
           `<span class="tech-tag">${t}</span>`
         ).join('');
         
-        const demoButton = project.demo ? 
-          `<button class="demo-btn">View Demo</button>` : '';
+        // Handle demo button
+        const demoButton = (project.demo || project.has_demo) ? 
+          `<button class="demo-btn"${project.demo_url ? ` onclick="window.open('${project.demo_url}', '_blank')"` : ''}>View Demo</button>` : '';
+        
+        // Handle platform and domain (can be arrays or strings)
+        const platformText = Array.isArray(project.platform) ? project.platform.join(', ') : (project.platform || 'N/A');
+        const domainText = Array.isArray(project.domain) ? project.domain.join(', ') : (project.domain || 'N/A');
         
         const PROJECTCard = document.createElement('div');
         PROJECTCard.className = 'PROJECTCard';
@@ -206,7 +240,7 @@
           <div class="PROJECTCard-content">
             <h3 class="PROJECTCard-title">${project.title}</h3>
             <p class="PROJECTCard-description">${project.description}</p>
-            <p class="PROJECTCard-meta"><strong>Platform:</strong> ${project.platform} | <strong>Domain:</strong> ${project.domain}</p>
+            <p class="PROJECTCard-meta"><strong>Platform:</strong> ${platformText} | <strong>Domain:</strong> ${domainText}</p>
             <div class="tech-tags">${techTags}</div>
             ${demoButton}
           </div>
@@ -227,27 +261,38 @@
         ...Array.from(document.querySelectorAll('input[name="domain-mobile"]:checked'))
       ].map(el => el.value);
       
-      const skills = [
-        ...Array.from(document.querySelectorAll('input[name="skill"]:checked')),
-        ...Array.from(document.querySelectorAll('input[name="skill-mobile"]:checked'))
+      const techStacks = [
+        ...Array.from(document.querySelectorAll('input[name="tech-stack"]:checked')),
+        ...Array.from(document.querySelectorAll('input[name="tech-stack-mobile"]:checked'))
       ].map(el => el.value);
       
-      return { platforms, domains, skills };
+      return { platforms, domains, techStacks };
     }
 
     // Filter projects based on selected filters
     function filterProjects() {
-      const { platforms, domains, skills } = getSelectedFilters();
+      const { platforms, domains, techStacks } = getSelectedFilters();
       let filtered = projects;
       
       if (platforms.length) {
-        filtered = filtered.filter(p => platforms.includes(p.platform));
+        filtered = filtered.filter(p => {
+          const projectPlatforms = Array.isArray(p.platform) ? p.platform : [p.platform];
+          return platforms.some(platform => projectPlatforms.includes(platform));
+        });
       }
+      
       if (domains.length) {
-        filtered = filtered.filter(p => domains.includes(p.domain));
+        filtered = filtered.filter(p => {
+          const projectDomains = Array.isArray(p.domain) ? p.domain : [p.domain];
+          return domains.some(domain => projectDomains.includes(domain));
+        });
       }
-      if (skills.length) {
-        filtered = filtered.filter(p => skills.every(s => p.tech.includes(s)));
+      
+      if (techStacks.length) {
+        filtered = filtered.filter(p => {
+          const projectTechStacks = Array.isArray(p.tech_stack) ? p.tech_stack : [p.tech_stack];
+          return techStacks.some(tech => projectTechStacks.includes(tech));
+        });
       }
       
       renderPROJECTCards(filtered);
@@ -282,10 +327,10 @@
 
     // Initialize the app
     function init() {
-      populateTechStacks();
-      renderPROJECTCards(projects);
+      // Fetch projects and initialize everything
+      fetchProjects();
       
-      // Add event listeners for all filter inputs
+      // Add event listeners for filter changes
       document.addEventListener('change', (e) => {
         if (e.target.type === 'checkbox') {
           syncFilters(e.target);

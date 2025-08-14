@@ -1,20 +1,55 @@
 [
-  {
-    "title": "Project 1",
-    "description": "Description for project 1. This is a data science project.",
-    "image": "https://img.freepik.com/premium-vector/soft-pastel-gradient-background-with-gentle-transitions_1304147-271914.jpg?semt=ais_hybrid&w=740&q=80",
-    "tech": ["Python", "Pandas", "NumPy", "Scikit-learn"],
-    "platform": "Azure",
-    "domain": "Machine Learning",
-    "demo": true
-  },
-  {
-    "title": "Project 2",
-    "description": "Description for project 2. Another example project.",
-    "image": "https://img.freepik.com/premium-vector/soft-pastel-gradient-background-with-gentle-transitions_1304147-271914.jpg?semt=ais_hybrid&w=740&q=80",
-    "tech": ["Python", "TensorFlow", "Keras", "Matplotlib"],
-    "platform": "Databricks",
-    "domain": "Deep Learning",
-    "demo": false
-  }
+      {
+            "id": 1,
+            "title": "Customer Churn Prediction",
+            "description": "ML model to predict customer churn using historical data and behavioral patterns.",
+            "image": "https://example.com/project1.jpg",
+            "tech_stack": ["Python", "Scikit-learn", "Pandas", "Azure ML"],
+            "platform": ["Azure", "Platform Independent"],
+            "domain": ["Machine Learning", "Data Analytics"],
+            "demo": true,
+            "demo_url": "https://demo1.example.com"
+      },
+      {
+            "id": 2,
+            "title": "Image Classification System",
+            "description": "Deep learning model for automated image classification using convolutional neural networks.",
+            "image": "https://example.com/project2.jpg",
+            "tech_stack": ["Python", "TensorFlow", "OpenCV", "Keras"],
+            "platform": "Platform Independent",
+            "domain": ["Deep Learning", "Computer Vision"],
+            "demo": false
+      },
+      {
+            "id": 3,
+            "title": "Sentiment Analysis Tool",
+            "description": "NLP application for analyzing sentiment in social media posts and customer reviews.",
+            "image": "https://example.com/project3.jpg",
+            "tech_stack": ["Python", "NLTK", "HuggingFace Transformers", "Streamlit"],
+            "platform": "Databricks",
+            "domain": "NLP",
+            "demo": true,
+            "demo_url": "https://demo3.example.com"
+      },
+      {
+            "id": 4,
+            "title": "Recommendation Engine",
+            "description": "Collaborative filtering system for product recommendations in e-commerce platforms.",
+            "image": "https://example.com/project4.jpg",
+            "tech_stack": ["Python", "PyTorch", "NumPy", "Apache Spark"],
+            "platform": ["Azure", "Databricks"],
+            "domain": ["Machine Learning", "Data Science"],
+            "demo": true
+      },
+      {
+            "id": 5,
+            "title": "Chatbot with GPT Integration",
+            "description": "Intelligent chatbot leveraging GPT models for natural language understanding and generation.",
+            "image": "https://example.com/project5.jpg",
+            "tech_stack": ["Python", "OpenAI API", "LangChain", "FastAPI"],
+            "platform": "Platform Independent",
+            "domain": ["Gen AI", "NLP"],
+            "demo": true,
+            "demo_url": "https://demo5.example.com"
+      }
 ]
