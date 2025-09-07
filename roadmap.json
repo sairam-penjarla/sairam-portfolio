@@ -1,0 +1,97 @@
+
+ {
+    "topLevel": [
+      {
+        "id": "python",
+        "title": "Python",
+        "description": "Explore Python projects that are beginner-friendly and cover important OOPS concepts.",
+        "subCards": [
+          {
+            "id": "py-01",
+            "title": "Web Scraper",
+            "description": "Scraper using requests + BeautifulSoup for data extraction.",
+            "urls": [
+              { "title": "GitHub Repository", "href": "https://github.com/example/web-scraper" },
+              { "title": "Live Demo", "href": "https://example.com/web-scraper-demo" },
+              { "title": "Documentation", "href": "https://example.com/docs" }
+            ]
+          },
+          {
+            "id": "py-02",
+            "title": "CLI Tool",
+            "description": "A terminal-based productivity tool with rich features.",
+            "urls": [
+              { "title": "GitHub Repository", "href": "https://github.com/example/cli" },
+              { "title": "PyPI Package", "href": "https://pypi.org/project/example-cli" }
+            ]
+          },
+          {
+            "id": "py-03",
+            "title": "REST API",
+            "description": "FastAPI-based REST service with authentication.",
+            "urls": [
+              { "title": "Source Code", "href": "https://github.com/example/rest-api" },
+              { "title": "API Docs", "href": "https://example.com/api/docs" }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ml",
+        "title": "Machine Learning",
+        "description": "Modeling & analysis examples with real-world datasets.",
+        "subCards": [
+          {
+            "id": "ml-01",
+            "title": "Sentiment Analysis",
+            "description": "NLP model for analyzing text sentiment using transformers.",
+            "urls": [
+              { "title": "Jupyter Notebook", "href": "https://github.com/example/sentiment-analysis" },
+              { "title": "Model on HuggingFace", "href": "https://huggingface.co/example/sentiment" }
+            ]
+          },
+          {
+            "id": "ml-02",
+            "title": "Image Classifier",
+            "description": "CNN model for image classification with PyTorch.",
+            "urls": [
+              { "title": "Training Code", "href": "https://github.com/example/image-classifier" },
+              { "title": "Pre-trained Model", "href": "https://example.com/models" }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cv",
+        "title": "Computer Vision",
+        "description": "Vision projects and notebooks for image processing tasks.",
+        "subCards": [
+          {
+            "id": "cv-01",
+            "title": "Object Detection",
+            "description": "YOLO-based object detection system.",
+            "urls": [
+              { "title": "Implementation", "href": "https://github.com/example/object-detection" },
+              { "title": "Dataset", "href": "https://example.com/dataset" }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "nlp",
+        "title": "NLP",
+        "description": "Transformer-based models and natural language processing tasks.",
+        "subCards": [
+          {
+            "id": "nlp-01",
+            "title": "Text Summarizer",
+            "description": "Automatic text summarization using BERT.",
+            "urls": [
+              { "title": "Code Repository", "href": "https://github.com/example/text-summarizer" },
+              { "title": "Web Interface", "href": "https://example.com/summarize" }
+            ]
+          }
+        ]
+      }
+    ]
+  }

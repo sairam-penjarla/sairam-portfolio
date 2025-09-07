@@ -18,7 +18,7 @@
       // Creates a single blog card element
       function createBlogCard(sectionName, post) {
         const a = document.createElement("a");
-        // a.className = "card";
+        a.className = "prompt-choose-card";
         a.href = `/prompts/${encodeForURL(sectionName)}/${encodeForURL(post.title)}`;
 
         const img = document.createElement("img");

@@ -1,0 +1,301 @@
+<div class="RDMAPTABTWO-bg-slate-50 RDMAPTABTWO-min-h-screen RDMAPTABTWO-font-sans RDMAPTABTWO-antialiased">
+  <div id="app" class="RDMAPTABTWO-max-w-7xl RDMAPTABTWO-mx-auto RDMAPTABTWO-px-4 RDMAPTABTWO-py-6">
+    <!-- Header with breadcrumbs -->
+    <header class="RDMAPTABTWO-mb-8">
+      <div class="RDMAPTABTWO-glass-effect RDMAPTABTWO-rounded-2xl RDMAPTABTWO-p-4 RDMAPTABTWO-border RDMAPTABTWO-border-gray-100">
+        <nav aria-label="Breadcrumb" id="breadcrumbs" class="RDMAPTABTWO-flex RDMAPTABTWO-items-center RDMAPTABTWO-gap-2 RDMAPTABTWO-text-sm"></nav>
+      </div>
+    </header>
+    <!-- Three-panel layout -->
+    <main class="RDMAPTABTWO-grid RDMAPTABTWO-grid-cols-1 RDMAPTABTWO-lg\:grid-cols-3 RDMAPTABTWO-gap-6 RDMAPTABTWO-min-h-\[70vh\]">
+      <!-- Panel 1: Top Level Categories -->
+      <section id="topView" class="RDMAPTABTWO-bg-white RDMAPTABTWO-rounded-3xl RDMAPTABTWO-border RDMAPTABTWO-border-gray-100 RDMAPTABTWO-p-6 RDMAPTABTWO-shadow-sm">
+        <div class="RDMAPTABTWO-mb-6">
+          <h2 class="RDMAPTABTWO-text-xl RDMAPTABTWO-font-semibold RDMAPTABTWO-text-gray-900">Topics</h2>
+          <p class="RDMAPTABTWO-text-sm RDMAPTABTWO-text-gray-500 RDMAPTABTWO-mt-1">Select a Topic to explore</p>
+        </div>
+        <div id="topContent" class="RDMAPTABTWO-space-y-3 RDMAPTABTWO-custom-scroll RDMAPTABTWO-max-h-\[60vh\] RDMAPTABTWO-overflow-y-auto RDMAPTABTWO-pr-2"></div>
+      </section>
+      <!-- Panel 2: Sub Categories -->
+      <section id="subView" class="RDMAPTABTWO-bg-white RDMAPTABTWO-rounded-3xl RDMAPTABTWO-border RDMAPTABTWO-border-gray-100 RDMAPTABTWO-p-6 RDMAPTABTWO-shadow-sm">
+        <div class="RDMAPTABTWO-mb-6">
+          <h2 class="RDMAPTABTWO-text-xl RDMAPTABTWO-font-semibold RDMAPTABTWO-text-gray-900">Sub Topic</h2>
+          <p class="RDMAPTABTWO-text-sm RDMAPTABTWO-text-gray-500 RDMAPTABTWO-mt-1" id="subDescription">Choose a topic first</p>
+        </div>
+        <div id="subContent" class="RDMAPTABTWO-space-y-3 RDMAPTABTWO-custom-scroll RDMAPTABTWO-max-h-\[60vh\] RDMAPTABTWO-overflow-y-auto RDMAPTABTWO-pr-2">
+          <div class="RDMAPTABTWO-text-center RDMAPTABTWO-py-12">
+            <div class="RDMAPTABTWO-w-16 RDMAPTABTWO-h-16 RDMAPTABTWO-mx-auto RDMAPTABTWO-mb-4 RDMAPTABTWO-bg-gray-100 RDMAPTABTWO-rounded-full RDMAPTABTWO-flex RDMAPTABTWO-items-center RDMAPTABTWO-justify-center">
+              <svg class="RDMAPTABTWO-w-8 RDMAPTABTWO-h-8 RDMAPTABTWO-text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
+              </svg>
+            </div>
+            <p class="RDMAPTABTWO-text-gray-500 RDMAPTABTWO-text-sm">Select a topic to view sub topics</p>
+          </div>
+        </div>
+      </section>
+      <!-- Panel 3: URLs/Links -->
+      <section id="urlView" class="RDMAPTABTWO-bg-white RDMAPTABTWO-rounded-3xl RDMAPTABTWO-border RDMAPTABTWO-border-gray-100 RDMAPTABTWO-p-6 RDMAPTABTWO-shadow-sm">
+        <div class="RDMAPTABTWO-mb-6">
+          <h2 class="RDMAPTABTWO-text-xl RDMAPTABTWO-font-semibold RDMAPTABTWO-text-gray-900">Resources</h2>
+          <p class="RDMAPTABTWO-text-sm RDMAPTABTWO-text-gray-500 RDMAPTABTWO-mt-1" id="urlDescription">Choose a sub topic first</p>
+        </div>
+        <div id="urlContent" class="RDMAPTABTWO-space-y-3 RDMAPTABTWO-custom-scroll RDMAPTABTWO-max-h-\[60vh\] RDMAPTABTWO-overflow-y-auto RDMAPTABTWO-pr-2">
+          <div class="RDMAPTABTWO-text-center RDMAPTABTWO-py-12">
+            <div class="RDMAPTABTWO-w-16 RDMAPTABTWO-h-16 RDMAPTABTWO-mx-auto RDMAPTABTWO-mb-4 RDMAPTABTWO-bg-gray-100 RDMAPTABTWO-rounded-full RDMAPTABTWO-flex RDMAPTABTWO-items-center RDMAPTABTWO-justify-center">
+              <svg class="RDMAPTABTWO-w-8 RDMAPTABTWO-h-8 RDMAPTABTWO-text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+              </svg>
+            </div>
+            <p class="RDMAPTABTWO-text-gray-500 RDMAPTABTWO-text-sm">Select a sub topic to view resources</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script>
+
+let DATA = [];
+
+async function fetchProjects() {
+    const response = await fetch('/roadmap_json');
+    DATA = await response.json();
+    console.log(DATA);
+
+    // State management
+    const state = {
+        selectedTop: null,
+        selectedSub: null,
+        isAnimating: false,
+    };
+
+    // DOM elements
+    const topContent = document.getElementById("topContent");
+    const subContent = document.getElementById("subContent");
+    const urlContent = document.getElementById("urlContent");
+    const subDescription = document.getElementById("subDescription");
+    const urlDescription = document.getElementById("urlDescription");
+    const breadcrumbs = document.getElementById("breadcrumbs");
+
+    // Initialize the app
+    function init() {
+        renderTopLevel();
+        updateBreadcrumbs();
+        attachKeyboardHandlers();
+    }
+
+    function renderTopLevel() {
+        topContent.innerHTML = "";
+        console.log(DATA)
+        DATA.topLevel.forEach((item) => {
+            const card = createTopCard(item);
+            topContent.appendChild(card);
+        });
+    }
+
+    function createTopCard(item) {
+        const card = document.createElement("div");
+        card.className = `group relative bg-gradient-to-br from-gray-50 to-white rounded-2xl p-4 border border-gray-200 cursor-pointer card-hover ${state.selectedTop === item.id ? "ring-2 ring-gray-900 bg-gray-50" : ""}`;
+        card.setAttribute("role", "button");
+        card.setAttribute("tabindex", "0");
+        card.innerHTML = `
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-2">
+                        <h3 class="font-semibold text-gray-900 group-hover:text-black transition-colors">${item.title}</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">${item.description}</p>
+                </div>
+                <div class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </div>
+            </div>
+        `;
+        card.addEventListener("click", () => selectTopCategory(item));
+        card.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                selectTopCategory(item);
+            }
+        });
+        return card;
+    }
+
+    function selectTopCategory(item) {
+        state.selectedTop = item.id;
+        state.selectedSub = null;
+        renderTopLevel();
+        renderSubLevel(item);
+        clearUrlView();
+        updateBreadcrumbs();
+    }
+
+    function renderSubLevel(topItem) {
+        subDescription.textContent = `Projects in ${topItem.title}`;
+        subContent.innerHTML = createLoadingSkeleton(3);
+        setTimeout(() => {
+            subContent.innerHTML = "";
+            topItem.subCards.forEach((sub, index) => {
+                setTimeout(() => {
+                    subContent.appendChild(createSubCard(sub, topItem));
+                }, index * 100);
+            });
+        }, 200);
+    }
+
+    function createSubCard(sub, topItem) {
+        const card = document.createElement("div");
+        card.className = `group relative bg-gradient-to-r from-white to-gray-50 rounded-xl p-4 border border-gray-200 cursor-pointer card-hover ${state.selectedSub === sub.id ? "ring-2 ring-gray-900 bg-gray-50" : ""}`;
+        card.setAttribute("role", "button");
+        card.setAttribute("tabindex", "0");
+        card.innerHTML = `
+            <div class="flex items-start gap-3">
+                <div class="flex-1 min-w-0">
+                    <h4 class="font-medium text-gray-900 group-hover:text-black transition-colors mb-1">${sub.title}</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">${sub.description}</p>
+                </div>
+                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </div>
+            </div>
+        `;
+        card.addEventListener("click", () => selectSubCategory(sub, topItem));
+        card.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                selectSubCategory(sub, topItem);
+            }
+        });
+        return card;
+    }
+
+    function selectSubCategory(sub, topItem) {
+        state.selectedSub = sub.id;
+        renderSubLevel(topItem);
+        renderUrlView(sub, topItem);
+        updateBreadcrumbs();
+    }
+
+    function renderUrlView(sub) {
+        urlDescription.textContent = `Resources for ${sub.title}`;
+        urlContent.innerHTML = createLoadingSkeleton(2);
+        setTimeout(() => {
+            urlContent.innerHTML = "";
+            if (!sub.urls || sub.urls.length === 0) {
+                urlContent.innerHTML = `<div class="text-center py-8"><p class="text-gray-500 text-sm">No resources available</p></div>`;
+                return;
+            }
+            sub.urls.forEach((url, index) => {
+                setTimeout(() => urlContent.appendChild(createUrlLink(url)), index * 100);
+            });
+        }, 200);
+    }
+
+    function createUrlLink(url) {
+        const link = document.createElement("a");
+        link.className = `group flex items-center gap-3 p-3 rounded-xl border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-200 card-hover`;
+        link.href = url.href;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.innerHTML = `
+            <div class="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+                </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+                <div class="font-medium text-gray-900 group-hover:text-black transition-colors">${url.title}</div>
+                <div class="text-xs text-gray-500 truncate mt-1">${new URL(url.href).hostname}</div>
+            </div>
+            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
+            </div>
+        `;
+        return link;
+    }
+
+    function clearUrlView() {
+        urlDescription.textContent = "Choose a project first";
+        urlContent.innerHTML = `<div class="text-center py-12"><p class="text-gray-500 text-sm">Select a project to view resources</p></div>`;
+    }
+
+    function createLoadingSkeleton(count) {
+        let skeleton = "";
+        for (let i = 0; i < count; i++) {
+            skeleton += `<div class="p-4 rounded-xl border border-gray-200"><div class="animate-pulse"><div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div><div class="h-3 bg-gray-200 rounded w-1/2"></div></div></div>`;
+        }
+        return skeleton;
+    }
+
+    function updateBreadcrumbs() {
+        breadcrumbs.innerHTML = "";
+        const home = createBreadcrumbButton("All Categories", () => {
+            state.selectedTop = null;
+            state.selectedSub = null;
+            renderTopLevel();
+            clearSubView();
+            clearUrlView();
+            updateBreadcrumbs();
+        });
+        breadcrumbs.appendChild(home);
+
+        if (state.selectedTop) {
+            breadcrumbs.appendChild(document.createTextNode(" › "));
+            const topObj = DATA.topLevel.find((t) => t.id === state.selectedTop);
+            breadcrumbs.appendChild(createBreadcrumbButton(topObj.title, () => {
+                state.selectedSub = null;
+                clearUrlView();
+                updateBreadcrumbs();
+            }));
+
+            if (state.selectedSub) {
+                breadcrumbs.appendChild(document.createTextNode(" › "));
+                const subObj = topObj.subCards.find((s) => s.id === state.selectedSub);
+                const subSpan = document.createElement("span");
+                subSpan.textContent = subObj.title;
+                breadcrumbs.appendChild(subSpan);
+            }
+        }
+    }
+
+    function createBreadcrumbButton(text, onClick) {
+        const btn = document.createElement("button");
+        btn.className = "text-gray-700 hover:text-gray-900 font-medium hover:underline transition-colors";
+        btn.textContent = text;
+        btn.addEventListener("click", onClick);
+        return btn;
+    }
+
+    function clearSubView() {
+        subDescription.textContent = "Choose a category first";
+        subContent.innerHTML = `<div class="text-center py-12"><p class="text-gray-500 text-sm">Select a category to view projects</p></div>`;
+    }
+
+    function attachKeyboardHandlers() {
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                if (state.selectedSub) {
+                    state.selectedSub = null;
+                    clearUrlView();
+                    updateBreadcrumbs();
+                } else if (state.selectedTop) {
+                    state.selectedTop = null;
+                    clearSubView();
+                    clearUrlView();
+                    renderTopLevel();
+                    updateBreadcrumbs();
+                }
+            }
+        });
+    }
+
+    init();
+}
+fetchProjects();
+  </script>
+</div>

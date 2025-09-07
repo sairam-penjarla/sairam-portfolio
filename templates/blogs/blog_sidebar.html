@@ -99,53 +99,64 @@ function renderDesktopMenu(containerId, data, activePath) {
     const activeStack = activePath ? getActiveStack(data, activePath) : [];
 
     function buildList(items, activeStack) {
-        const ul = document.createElement('ul');
-        ul.className = 'd-menu-list';
+    const ul = document.createElement('ul');
+    ul.className = 'd-menu-list';
 
-        const sorted = [...items].sort((a,b) => (a.type==='folder') ? -1 : 1);
-        sorted.forEach(item => {
-            const isActive = item.path === activePath;
-            const isOpen = activeStack.includes(item.path);
+    const sorted = [...items].sort((a, b) => (a.type === 'folder' ? -1 : 1));
+    sorted.forEach(item => {
+        const isActive = item.path === activePath;
+        const isOpen = activeStack.includes(item.path);
 
-            const li = document.createElement('li');
-            li.className = `${item.type} ${isOpen ? 'open' : ''} ${isActive ? 'active' : ''}`;
-            
-            // First append the menu item (title & chevron)
-            const div = document.createElement('div');
-            div.className = 'd-menu-item';
-            div.innerHTML = `
+        const li = document.createElement('li');
+        li.className = `${item.type} ${isOpen ? 'open' : ''} ${isActive ? 'active' : ''}`;
+
+        // build inner content differently for folder vs file
+        let innerHTML = '';
+        if (item.type === 'folder') {
+            li.classList.add('d-folder'); // ✅ special folder class
+            innerHTML = `
                 <span>${item.name.replace('.md', '')}</span>
-                ${item.type === 'folder' ? '<span class="d-chevron"><img src="/static/images/lucidev-icons/chevron-right.svg" alt="" /></span>' : ''}
+                <span class="d-chevron">
+                    <img src="/static/images/lucidev-icons/chevron-right.svg" alt="" />
+                </span>
             `;
+        } else {
+            li.classList.add('d-doc'); // ✅ special doc class
+            innerHTML = `<span>${item.name.replace('.md', '')}</span>`;
+        }
 
-            if (item.type === 'folder') {
-                div.onclick = () => {
-                    li.classList.toggle('open');
-                    let childUl = li.querySelector(':scope > ul');
-                    if (!childUl) {
-                        li.appendChild(buildList(item.children, activeStack));
-                    } else {
-                        childUl.style.display = childUl.style.display === 'none' ? 'block' : 'none';
-                    }
-                };
+        const div = document.createElement('div');
+        div.className = 'd-menu-item';
+        div.innerHTML = innerHTML;
 
-                // Append the menu item first, then children if open
-                li.appendChild(div);
-                if (isOpen) {
+        if (item.type === 'folder') {
+            div.onclick = () => {
+                li.classList.toggle('open');
+                let childUl = li.querySelector(':scope > ul');
+                if (!childUl) {
                     li.appendChild(buildList(item.children, activeStack));
+                } else {
+                    childUl.style.display = childUl.style.display === 'none' ? 'block' : 'none';
                 }
-            } else {
-                div.onclick = () => {
-                    window.location.href = `/${PagePrefix}/${item.path}`;
-                };
-                li.appendChild(div);
+            };
+
+            li.appendChild(div);
+            if (isOpen) {
+                li.appendChild(buildList(item.children, activeStack));
             }
+        } else {
+            div.onclick = () => {
+                window.location.href = `/${PagePrefix}/${item.path}`;
+            };
+            li.appendChild(div);
+        }
 
-            ul.appendChild(li);
-        });
+        ul.appendChild(li);
+    });
 
-        return ul;
-    }
+    return ul;
+}
+
 
     container.innerHTML = '';
     container.appendChild(buildList(data, activeStack));

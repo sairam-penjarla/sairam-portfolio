@@ -115,28 +115,18 @@ span.highlight {
 
 .section-header {
   text-align: center;
-  /* margin-bottom: 60px; */
+  margin-bottom: 0px;
 }
 
 .section-title {
   font-size: var(--primary-heading-font-size);
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-bottom: 0px;
   color: var(--text-primary);
   display: flex;
   align-items: center;
 }
 
-.section-title::after {
-  content: "";
-  width: 50%;
-  height: 2px;
-  background-color: var(--primary-highlight-color);
-  margin-left: 16px;
-  display: block;
-  background: linear-gradient(to right, var(--primary-highlight-color) 0%, rgba(32, 97, 183, 0.1) 100%);
-  /* display: none; */
-}
 
 .section-subtitle {
   font-size: var(--seconday-font-size);
@@ -155,4 +145,7 @@ span.highlight {
 }
 .hero-content h1 span {
     font-family: "DM Serif Text", serif;
+}
+.grey-section-container{
+  background-color: #f3f4f6;
 }

@@ -13,13 +13,30 @@ app = Flask(__name__)
 def home():
     return render_template('home_sections/newhome.html')
 
+@app.route('/roadmap')
+def roadmap():
+    return render_template('roadmap/roadmap.html')
+
 @app.route('/test')
 def test():
     return render_template('test.html')
 
-# @app.route('/newhome')
-# def newhome():
-#     return render_template('newhome.html')
+@app.route('/roadmap_json')
+def roadmap_json():
+    try:
+        with open("roadmap.json", "r", encoding="utf-8") as file:
+            try:
+                roadmap = json.load(file)
+                print(roadmap)
+                return jsonify(roadmap), 200
+            except json.JSONDecodeError as e:
+                raise ValueError(f"Error decoding JSON file: {e}")
+    except Exception as e:
+        return jsonify({
+            'error': 'Failed to fetch projects',
+            'message': str(e)
+        }), 500
+    
 
 @app.route('/resources')
 def resources():

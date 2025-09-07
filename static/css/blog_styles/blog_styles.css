@@ -168,8 +168,26 @@ article#blog-content {
       margin-bottom: 500px;
 }
 .main-content{
-      margin-top: 64px;
+      margin-top: 48px;
       display: flex;
       height: calc(100vh - 64px);
       overflow: hidden;
+}
+.d-menu-item span {
+  display: inline-block;       /* or block, depending on layout */
+  max-width: 300px;            /* set a width constraint */
+  white-space: nowrap;         /* prevent wrapping */
+  overflow: hidden;            /* hide overflowed text */
+  text-overflow: ellipsis;     /* show ... */
+  vertical-align: middle;      /* keeps alignment nice */
+}
+.d-doc .d-menu-item {
+    background-color: white;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 6px 6px;
+    margin-bottom: 0px;
+}
+.d-doc .d-menu-item img{
+      height: 20px;
 }

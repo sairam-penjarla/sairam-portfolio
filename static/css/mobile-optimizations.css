@@ -8,6 +8,7 @@
 @media screen and (max-width: 768px) {
   .hero-container {
     padding: 60px 16px !important;
+    margin-top: 3rem;
   }
 
   .hero-content {
@@ -122,7 +123,7 @@
 /* Skills Section Optimizations */
 @media screen and (max-width: 768px) {
   .skills-section {
-    padding: 40px 16px !important;
+    padding: 100px 30px !important;
   }
 
   .skills-grid {
@@ -156,6 +157,7 @@
   
   .skills-section {
     padding: 30px 16px !important;
+    transform: translateY(-3px);
   }
   
   .category-header h3 {
@@ -282,7 +284,7 @@
 /* Laptop/Social Section Optimizations */
 @media screen and (max-width: 768px) {
   .tutorials-section {
-    padding: 40px 16px !important;
+    padding: 30px;
   }
 
   .content-wrapper {
@@ -395,7 +397,10 @@
   }
   
   .section-title .section-text {
-    font-size: 50px !important;
+    font-size: 29px !important;
+    margin-bottom: 0px;
+    width: 100%;
+    max-width: none;
   }
   .section-title::after {
     display: none;
@@ -404,4 +409,35 @@
     margin-left: 10px !important;
     display: none;
   }
+  .section-title{
+    width: 100%;
+  }
+  .row{
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+.cs-skill-block-1 {
+      background-color: #2e6ca3;
+      flex: 0 0 50%;
+}
+.cs-skill-block-2 {
+      background-color: #2e6ca3;
+      flex: 0 0 50%;
+}
+.cs-skill-block-3 {
+      background-color: #2e6ca3;
+      flex: 0 0 50%;
+}
+.cs-skill-block-4 {
+      background-color: #2e6ca3;
+      flex: 0 0 50%;
+}
+.cs-skill-block-5 {
+      background-color: #2e6ca3;
+      flex: 0 0 50%;
+}
+.cs-skill-block-6 {
+      background-color: #2e6ca3;
+      flex: 0 0 50%;
+}
 }

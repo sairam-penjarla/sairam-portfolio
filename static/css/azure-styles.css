@@ -9,7 +9,7 @@
 
 .azure-button {
     background-color: var(--primary-highlight-color);
-    box-shadow: 0 4px 12px rgba(32, 97, 183, 0.2);
+    /* box-shadow: 0 4px 12px rgba(32, 97, 183, 0.2); */
 }
 
 .azure-button:hover {
@@ -20,7 +20,7 @@
 /* Playlists Section Styles */
 .playlists-section {
     padding: 60px 0;
-    background-color: #fafafa;
+    background-color: #f3f4f6;
     display: flex;
 }
 
@@ -36,13 +36,17 @@
     /* max-width: 600px; */
     margin: 0 auto;
     display: flex;
+    justify-content: center;
+    gap: 30px;
+    height: min-content;
 }
 
 .playlists-container .hero-container {
     /* margin-bottom: 40px; */
-    /* background-color: #fff; */
-    border-radius: 16px;
+    background-color: #fff;
+    border-radius: 28px;
     /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); */
+    height: min-content;
 }
 
 .playlists-container .hero-container:last-child {

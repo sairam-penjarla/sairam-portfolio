@@ -1,0 +1,278 @@
+<div class="RDMAPMBLContainer" id="RDMAPMBLApp">
+        <!-- Categories Panel -->
+        <div id="RDMAPMBLCategoriesPanel" class="RDMAPMBLPanel RDMAPMBLSlideCenter">
+            <header class="RDMAPMBLHeader">
+            </header>
+            <div class="RDMAPMBLContent">
+                <div id="RDMAPMBLCategoriesContent"></div>
+            </div>
+        </div>
+        
+        <!-- Projects Panel -->
+        <div id="RDMAPMBLProjectsPanel" class="RDMAPMBLPanel RDMAPMBLSlideRight">
+            <header class="RDMAPMBLHeader">
+                <button id="RDMAPMBLBackToCategories" class="RDMAPMBLBackButton">
+                    <span><img src="/static/images/lucidev-icons/chevron-left.svg" alt="Close menu" class="w-6 h-6" /></span>
+                </button>
+            </header>
+            <div class="RDMAPMBLContent">
+                <div id="RDMAPMBLProjectsContent">
+                    <h2 id="RDMAPMBLProjectsTitle">Projects</h2>
+                <p id="RDMAPMBLProjectsDescription">Select a project to explore</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Resources Panel -->
+        <div id="RDMAPMBLResourcesPanel" class="RDMAPMBLPanel RDMAPMBLSlideRight">
+            <header class="RDMAPMBLHeader">
+                <button id="RDMAPMBLBackToProjects" class="RDMAPMBLBackButton">
+                    <span><img src="/static/images/lucidev-icons/chevron-left.svg" alt="Close menu" class="w-6 h-6" /></span>
+                </button>
+            </header>
+            <div class="RDMAPMBLContent">
+                <div id="RDMAPMBLResourcesContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const RDMAPMBLSAMPLE_DATA = {
+            topLevel: [
+                {
+                    id: "frontend",
+                    title: "Frontend Development",
+                    description: "Master modern web interfaces with React, Vue, and cutting-edge CSS techniques",
+                    subCards: [
+                        {
+                            id: "react-basics",
+                            title: "React Fundamentals",
+                            description: "Learn the core concepts of React including components, state, and props",
+                            urls: [
+                                { title: "React Official Documentation", href: "https://react.dev" },
+                                { title: "React Tutorial for Beginners", href: "https://reactjs.org/tutorial" },
+                                { title: "Modern React Course", href: "https://scrimba.com/learn/learnreact" }
+                            ]
+                        },
+                        {
+                            id: "css-advanced",
+                            title: "Advanced CSS",
+                            description: "Master CSS Grid, Flexbox, animations and modern layout techniques",
+                            urls: [
+                                { title: "CSS Grid Complete Guide", href: "https://css-tricks.com/snippets/css/complete-guide-grid/" },
+                                { title: "Flexbox Froggy Game", href: "https://flexboxfroggy.com/" }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: "backend",
+                    title: "Backend Development",
+                    description: "Build robust server-side applications with Node.js, Python, and databases",
+                    subCards: [
+                        {
+                            id: "nodejs",
+                            title: "Node.js & Express",
+                            description: "Create powerful web servers and APIs using JavaScript",
+                            urls: [
+                                { title: "Node.js Official Docs", href: "https://nodejs.org/docs" },
+                                { title: "Express.js Guide", href: "https://expressjs.com/guide" }
+                            ]
+                        },
+                        {
+                            id: "databases",
+                            title: "Database Design",
+                            description: "Learn SQL, NoSQL, and database optimization techniques",
+                            urls: [
+                                { title: "SQL Tutorial", href: "https://www.w3schools.com/sql/" },
+                                { title: "MongoDB University", href: "https://university.mongodb.com/" }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: "mobile",
+                    title: "Mobile Development",
+                    description: "Build native and cross-platform mobile apps for iOS and Android",
+                    subCards: [
+                        {
+                            id: "react-native",
+                            title: "React Native",
+                            description: "Build native mobile apps using React and JavaScript",
+                            urls: [
+                                { title: "React Native Docs", href: "https://reactnative.dev/docs/getting-started" },
+                                { title: "Expo Documentation", href: "https://docs.expo.dev/" }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+
+        let RDMAPMBLDATA = RDMAPMBLSAMPLE_DATA;
+        
+        const RDMAPMBLState = {
+            currentPanel: 'categories',
+            selectedCategory: null,
+            selectedProject: null
+        };
+
+        // DOM elements
+        const RDMAPMBLCategoriesPanel = document.getElementById('RDMAPMBLCategoriesPanel');
+        const RDMAPMBLProjectsPanel = document.getElementById('RDMAPMBLProjectsPanel');
+        const RDMAPMBLResourcesPanel = document.getElementById('RDMAPMBLResourcesPanel');
+        
+        const RDMAPMBLCategoriesContent = document.getElementById('RDMAPMBLCategoriesContent');
+        const RDMAPMBLProjectsContent = document.getElementById('RDMAPMBLProjectsContent');
+        const RDMAPMBLResourcesContent = document.getElementById('RDMAPMBLResourcesContent');
+        
+        const RDMAPMBLProjectsTitle = document.getElementById('RDMAPMBLProjectsTitle');
+        const RDMAPMBLProjectsDescription = document.getElementById('RDMAPMBLProjectsDescription');
+        const RDMAPMBLResourcesTitle = document.getElementById('RDMAPMBLResourcesTitle');
+        const RDMAPMBLResourcesDescription = document.getElementById('RDMAPMBLResourcesDescription');
+        
+        const RDMAPMBLBackToCategories = document.getElementById('RDMAPMBLBackToCategories');
+        const RDMAPMBLBackToProjects = document.getElementById('RDMAPMBLBackToProjects');
+
+        function RDMAPMBLInit() {
+            RDMAPMBLRenderCategories();
+            RDMAPMBLAttachEventListeners();
+            RDMAPMBLShowPanel('categories');
+        }
+
+        function RDMAPMBLRenderCategories() {
+            RDMAPMBLCategoriesContent.innerHTML = '';
+            RDMAPMBLDATA.topLevel.forEach(category => {
+                const RDMAPMBLCard = RDMAPMBLCreateCategoryCard(category);
+                RDMAPMBLCategoriesContent.appendChild(RDMAPMBLCard);
+            });
+        }
+
+        function RDMAPMBLCreateCategoryCard(category) {
+            const RDMAPMBLCard = document.createElement('div');
+            RDMAPMBLCard.className = 'RDMAPMBLCard';
+            RDMAPMBLCard.innerHTML = `
+                <h3>${category.title}</h3>
+                <img src="/static/images/lucidev-icons/chevron-right.svg" alt="Close menu" class="w-6 h-6" />
+            `;
+            RDMAPMBLCard.addEventListener('click', () => RDMAPMBLSelectCategory(category));
+            return RDMAPMBLCard;
+        }
+
+        function RDMAPMBLSelectCategory(category) {
+            console.log(category)
+            RDMAPMBLState.selectedCategory = category;
+            RDMAPMBLRenderProjects(category);
+            RDMAPMBLShowPanel('projects');
+        }
+
+        function RDMAPMBLRenderProjects(category) {
+            RDMAPMBLProjectsTitle.textContent = category.title;
+            RDMAPMBLProjectsDescription.textContent = `${category.subCards.length} project${category.subCards.length !== 1 ? 's' : ''} available`;
+            
+            RDMAPMBLProjectsContent.innerHTML = '';
+            category.subCards.forEach(project => {
+                const RDMAPMBLCard = RDMAPMBLCreateProjectCard(project);
+                RDMAPMBLProjectsContent.appendChild(RDMAPMBLCard);
+            });
+        }
+
+        function RDMAPMBLCreateProjectCard(project) {
+            const RDMAPMBLCard = document.createElement('div');
+            RDMAPMBLCard.className = 'RDMAPMBLCard';
+            RDMAPMBLCard.innerHTML = `
+                <h3>${project.title}</h3>
+                <img src="/static/images/lucidev-icons/chevron-right.svg" alt="Close menu" class="w-6 h-6" />
+            `;
+            RDMAPMBLCard.addEventListener('click', () => RDMAPMBLSelectProject(project));
+            return RDMAPMBLCard;
+        }
+
+        function RDMAPMBLSelectProject(project) {
+            RDMAPMBLState.selectedProject = project;
+            RDMAPMBLRenderResources(project);
+            RDMAPMBLShowPanel('resources');
+        }
+
+        function RDMAPMBLRenderResources(project) {
+            
+            
+            RDMAPMBLResourcesContent.innerHTML = '';
+            
+            if (!project.urls || project.urls.length === 0) {
+                RDMAPMBLResourcesContent.innerHTML = '<p>No resources available for this project yet.</p>';
+                return;
+            }
+            
+            project.urls.forEach(resource => {
+                const RDMAPMBLCard = RDMAPMBLCreateResourceCard(resource);
+                RDMAPMBLResourcesContent.appendChild(RDMAPMBLCard);
+            });
+        }
+
+        function RDMAPMBLCreateResourceCard(resource) {
+            const RDMAPMBLCard = document.createElement('a');
+            RDMAPMBLCard.href = resource.href;
+            RDMAPMBLCard.target = '_blank';
+            RDMAPMBLCard.rel = 'noopener noreferrer';
+            RDMAPMBLCard.className = 'RDMAPMBLResourceCard';
+            
+            const RDMAPMBLDomain = new URL(resource.href).hostname.replace('www.', '');
+            
+            RDMAPMBLCard.innerHTML = `
+                <div class="RDMAPMBLResourceCardLink">
+                    <img src="/static/images/lucidev-icons/link.svg" alt="Close menu" class="w-6 h-6" />
+                    <h3>${resource.title}</h3>
+                </div>
+            `;
+            return RDMAPMBLCard;
+        }
+
+        function RDMAPMBLShowPanel(panelName) {
+            RDMAPMBLCategoriesPanel.className = RDMAPMBLCategoriesPanel.className.replace(/RDMAPMBLSlide\w+/, '');
+            RDMAPMBLProjectsPanel.className = RDMAPMBLProjectsPanel.className.replace(/RDMAPMBLSlide\w+/, '');
+            RDMAPMBLResourcesPanel.className = RDMAPMBLResourcesPanel.className.replace(/RDMAPMBLSlide\w+/, '');
+            
+            switch(panelName) {
+                case 'categories':
+                    RDMAPMBLCategoriesPanel.classList.add('RDMAPMBLSlideCenter');
+                    RDMAPMBLProjectsPanel.classList.add('RDMAPMBLSlideRight');
+                    RDMAPMBLResourcesPanel.classList.add('RDMAPMBLSlideRight');
+                    break;
+                case 'projects':
+                    RDMAPMBLCategoriesPanel.classList.add('RDMAPMBLSlideLeft');
+                    RDMAPMBLProjectsPanel.classList.add('RDMAPMBLSlideCenter');
+                    RDMAPMBLResourcesPanel.classList.add('RDMAPMBLSlideRight');
+                    break;
+                case 'resources':
+                    RDMAPMBLCategoriesPanel.classList.add('RDMAPMBLSlideLeft');
+                    RDMAPMBLProjectsPanel.classList.add('RDMAPMBLSlideLeft');
+                    RDMAPMBLResourcesPanel.classList.add('RDMAPMBLSlideCenter');
+                    break;
+            }
+            
+            RDMAPMBLState.currentPanel = panelName;
+        }
+
+        function RDMAPMBLAttachEventListeners() {
+            RDMAPMBLBackToCategories.addEventListener('click', () => {
+                RDMAPMBLShowPanel('categories');
+            });
+            
+            RDMAPMBLBackToProjects.addEventListener('click', () => {
+                RDMAPMBLShowPanel('projects');
+            });
+            
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    if (RDMAPMBLState.currentPanel === 'resources') {
+                        RDMAPMBLShowPanel('projects');
+                    } else if (RDMAPMBLState.currentPanel === 'projects') {
+                        RDMAPMBLShowPanel('categories');
+                    }
+                }
+            });
+        }
+
+        RDMAPMBLInit();
+    </script>

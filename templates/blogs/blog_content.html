@@ -9,8 +9,22 @@
 
     if (fileContent) {
         renderBlogDetails(fileContent);
+    } else {
+        showPlaceholder();
     }
-    
+
+    function showPlaceholder() {
+        const container = document.createElement("div");
+        container.className = "placeholder-container";
+        container.innerHTML = `
+            <div class="no-content">
+                <p style="text-align:center;">Select a page from sidebar</p>
+                <img src="/static/images/placeholder.svg" alt="No content available" style="max-width:400px; margin: 2rem auto; display:block;" />
+            </div>
+        `;
+        document.getElementById("content").appendChild(container);
+    }
+
     function renderBlogDetails(fileContent) {
         const container = document.createElement("div");
         container.className = "blog-container";

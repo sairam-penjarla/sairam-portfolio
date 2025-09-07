@@ -1,0 +1,26 @@
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Loader -->
+<div id="Mobloading" class="flex items-center justify-center w-[800px] h-[450px] bg-gray-200 border border-gray-300">
+  <div class="flex items-center space-x-3">
+    <div class="w-10 h-10 border-4 border-gray-300 border-t-gray-700 rounded-full animate-spin"></div>
+    <span class="text-gray-700 text-lg font-medium">Loading...</span>
+  </div>
+</div>
+
+<!-- Iframe -->
+<iframe 
+  id="mobmyIframe" 
+  class="hidden border-none" 
+  width="100%" 
+  height="800px" 
+  src="https://whimsical.com/embed/VdtLsfXXcyVLWunGd5rNeX"
+  onload="showmobIframe()">
+</iframe>
+
+<script>
+  function showmobIframe() {
+    document.getElementById('Mobloading').classList.add('hidden');
+    document.getElementById('mobmyIframe').classList.remove('hidden');
+  }
+</script>

@@ -6,9 +6,12 @@
             <title>Portfolio</title>
             <script src="https://cdn.tailwindcss.com"></script>
             <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js" defer></script>
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/section-animations.css') }}" />
             <link rel="stylesheet" href="{{ url_for('static', filename='css/header/header_styles.css') }}" />
             <link rel="stylesheet" href="{{ url_for('static', filename='css/markdown_styles.css') }}" />
             <link rel="stylesheet" href="{{ url_for('static', filename='css/new_base.css') }}" />
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile-optimizations.css') }}" />
       </head>
       <body
             x-data="{ 
@@ -50,19 +53,19 @@
             },
             courses: {
                 'Basics': [
-                    { text: 'SQL', url: '/' },
-                    { text: 'Python', url: '/' },
-                    { text: 'Git', url: '/' }
+                        { text: 'SQL', url: '/courses/Basics/SQL/0%20introduction.md' },
+                        { text: 'Python', url: '/courses/Basics/Python/0%20Basics%20of%20python.md' },
+                        { text: 'Git', url: '/courses/Basics/Git/introduction.md' }
                 ],
                 'Data Science': [
-                    { text: 'Python', url: '/' },
-                    { text: 'Machine Learning', url: '/' },
-                    { text: 'Deep Learning', url: '/' }
+                        { text: 'Machine Learning', url: '/courses/Data%20Science/Machine%20Learning/Module%201.md' },
+                        { text: 'Deep Learning', url: '/courses/Data%20Science/Deep%20Learning/CNN.md' },
+                        { text: 'Computer Vision', url: '/courses/Data%20Science/Computer%20Vision/opencv.md' }
                 ],
                 'AI': [
-                    { text: 'LLM', url: '/' },
-                    { text: 'RAG', url: '/' },
-                    { text: 'Agents', url: '/' }
+                        { text: 'AI Workflows', url: '/courses/Generative%20AI/AI%20Basics/0.%20Getting%20Your%20OpenAI%20Key%20in%20Azure%20AI%20Foundry.md' },
+                        { text: 'RAG', url: '/courses/Generative%20AI/RAG/1.%20Basics%20of%20RAG:%20Retrieval-Augmented%20Generation.md' },
+                        { text: 'Agents', url: '/courses/Generative%20AI/Agentic%20AI/0.%20Theoretic%20Basics%20of%20Agentic%20AI.md' }
                 ]
             }
         },
@@ -70,16 +73,20 @@
     }"
       >
             <!-- Fixed Header -->
-            <header class="fixed top-0 w-full apple-header z-50" @mouseleave="openDropdown = null">
+            <header class="fixed top-0 w-full apple-header z-50" @mouseleave="openDropdown = null" :class="mobileOpen ? 'bg-white backdrop-filter-none' : ''">
                   <div class="max-w-7xl mx-auto">
-                        <div class="flex justify-center items-center h-16 relative">
-                              <a href="/" class="absolute left-6 brand-text"> <span class="text-gray-800">Sai</span><span class="text-[color:var(--primary-highlight-color)]">Ram</span> </a>
+                        <div class="flex justify-center items-center h-12 relative">
+                              <a href="/" class="absolute left-6 brand-text transition-opacity duration-300" :class="{ 'opacity-0': mobileOpen, 'opacity-100': !mobileOpen }">
+                                    <span class="text-gray-800">Sai</span>
+                                    <span class="text-[color:var(--primary-highlight-color)]">Ram</span>
+                              </a>
 
                               <!-- Desktop Navigation -->
                               <nav class="hidden md:flex space-x-2">
                                     <a href="/" class="nav-link">About Me</a>
-                                    <a href="/resources" class="nav-link">Resources</a>
                                     <a href="/projects" class="nav-link">Projects</a>
+                                    <a href="/resources" class="nav-link">Resources</a>
+                                    <a href="/roadmap" class="nav-link">Roadmap</a>
                                     <div class="header-nav-link-btn relative" @mouseenter="openDropdown = 'prompts'; activeDropdown = 'prompts'" @mouseleave="openDropdown = null">
                                           <a href="/prompts" class="nav-link">Prompts</a>
                                     </div>
@@ -93,7 +100,7 @@
                               </nav>
 
                               <!-- Hamburger Button for Mobile -->
-                              <button @click="mobileOpen = true" class="md:hidden absolute right-6 hamburger">
+                              <button @click="mobileOpen = true" class="md:hidden absolute right-0 hamburger">
                                     <img src="/static/images/lucidev-icons/menu.svg" alt="Menu" class="w-6 h-6" />
                               </button>
                         </div>
@@ -101,7 +108,7 @@
             </header>
 
             <!-- Desktop Dropdown Panel -->
-            <div class="fixed top-16 left-0 w-full dropdown-panel z-40 hidden md:block" :class="{ 'open': openDropdown !== null }" @mouseenter="openDropdown = activeDropdown" @mouseleave="openDropdown = null">
+            <div class="fixed top-12 left-0 w-full dropdown-panel z-40 hidden md:block" :class="{ 'open': openDropdown !== null }" @mouseenter="openDropdown = activeDropdown" @mouseleave="openDropdown = null">
                   <div class="max-w-7xl mx-auto py-16 px-24">
                         <div class="grid grid-cols-3 gap-16" x-if="activeDropdown">
                               <template x-for="(links, category) in dropdownContent[activeDropdown]" :key="category">
@@ -119,8 +126,16 @@
             </div>
 
             <!-- Mobile Overlay Menu -->
-            <div x-show="mobileOpen" x-cloak x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform translate-x-full" class="fixed inset-0 mobile-overlay z-50 p-6 flex flex-col">
-                  <div class="close-header-btn-mobile flex justify-end mb-8">
+            <div 
+            x-show="mobileOpen" 
+            x-cloak x-transition:enter="transition ease-out duration-[300ms]" 
+            x-transition:enter-start="-translate-y-full" 
+            x-transition:enter-end="translate-y-0" 
+            x-transition:leave="transition ease-in duration-[200ms]" 
+            x-transition:leave-start="translate-y-0" 
+            x-transition:leave-end="-translate-y-full" 
+            class="fixed inset-x-0 mobile-overlay z-50 p-6 flex flex-col">
+                  <div class="close-header-btn-mobile flex justify-end">
                         <button @click="mobileOpen = false" class="close-btn">
                               <img src="/static/images/lucidev-icons/x.svg" alt="Close menu" class="w-6 h-6" />
                         </button>
@@ -129,42 +144,55 @@
                   <!-- Main mobile navigation -->
                   <template x-if="!subMenu">
                         <nav class="space-y-1">
-                              <a href="/" @click="mobileOpen = false" class="mobile-nav-link block">About Me</a>
-                              <a href="/resources" @click="mobileOpen = false" class="mobile-nav-link block">Resources</a>
-                              <a href="/projects" @click="mobileOpen = false" class="mobile-nav-link block">Projects</a>
-                              <button @click="subMenu = 'prompts'" class="mobile-nav-link flex justify-between items-center w-full">
-                                    Prompts
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                    </svg>
-                              </button>
-                              <button @click="subMenu = 'cheatsheets'" class="mobile-nav-link flex justify-between items-center w-full">
-                                    Cheatsheets
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                    </svg>
-                              </button>
-                              <button @click="subMenu = 'courses'" class="mobile-nav-link flex justify-between items-center w-full">
-                                    Courses
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                    </svg>
-                              </button>
-                              <a href="/blogs" @click="mobileOpen = false" class="mobile-nav-link block">Blogs</a>
+                              <template
+  x-for="(item, index) in [
+    {label: 'About Me', href: '/'},
+    {label: 'Projects', href: '/projects'},
+    {label: 'Resources', href: '/resources'},
+    {label: 'Roadmap', href: '/roadmap'},
+    {label: 'Prompts', href: '/prompts'},
+    {label: 'Cheatsheets', href: '/cheatsheets'},
+    {label: 'Courses', href: '/courses'},
+    {label: 'Blogs', href: '/blogs'}
+  ]"
+  :key="item.label"
+>
+  <div>
+    <a
+      x-show="mobileOpen"
+      x-transition:enter="transition ease-in duration-10"
+      x-transition:enter-start="opacity-0 -translate-y-8"
+      x-transition:enter-end="opacity-100 translate-y-0"
+      :href="item.href || '#'"
+      @click="item.href ? mobileOpen = false : subMenu = item.submenu"
+      class="mobile-nav-link flex justify-between items-center"
+      :style="`transition-delay: ${index * 70}ms`"
+    >
+      <span x-text="item.label"></span>
+
+      <!-- Chevron only for submenu items -->
+      <template x-if="item.submenu">
+        <img src="/static/images/lucidev-icons/chevron-right.svg"/>
+      </template>
+    </a>
+  </div>
+</template>
+
                         </nav>
                   </template>
 
                   <!-- Cheatsheets sub-menu for mobile -->
                   <template x-if="subMenu === 'cheatsheets'">
                         <div>
-                              <button @click="subMenu = null" class="mobile-back-btn flex items-center">
+                              <button @click="subMenu = null" class="mobile-back-btn flex items-center pt-[3px] pr-[40px] pb-[3px] pl-[40px]">
                                     <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                                           <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                                     </svg>
+                                    Back
                               </button>
 
-                              <h3 class="text-2xl font-bold mb-4 mt-8">
-                                    <a href="/cheatsheets" style="text-decoration: none">Cheatsheets</a>
+                              <h3 class="font-normal text-[17px] mb-4 mt-8 pt-[3px] pr-[48px] pb-[3px] pl-[48px]">
+                                    <a href="/courses" style="text-decoration: none">All Courses</a>
                               </h3>
 
                               <div class="space-y-6">
@@ -185,15 +213,15 @@
                   <!-- Prompts sub-menu for mobile -->
                   <template x-if="subMenu === 'prompts'">
                         <div>
-                              <button @click="subMenu = null" class="mobile-back-btn flex items-center">
+                              <button @click="subMenu = null" class="mobile-back-btn flex items-center  pt-[3px] pr-[40px] pb-[3px] pl-[40px]">
                                     <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                                           <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                                     </svg>
                                     Back
                               </button>
 
-                              <h3 class="text-2xl font-bold mb-4 mt-8">
-                                    <a href="/prompts" style="text-decoration: none">Prompts</a>
+                              <h3 class="font-normal text-[17px] mb-4 mt-8 pt-[3px] pr-[48px] pb-[3px] pl-[48px]">
+                                    <a href="/prompts" style="text-decoration: none">All Prompts</a>
                               </h3>
 
                               <div class="space-y-6">
@@ -213,15 +241,15 @@
                   <!-- Courses sub-menu for mobile -->
                   <template x-if="subMenu === 'courses'">
                         <div>
-                              <button @click="subMenu = null" class="mobile-back-btn flex items-center">
+                              <button @click="subMenu = null" class="mobile-back-btn flex items-center  pt-[3px] pr-[40px] pb-[3px] pl-[40px]">
                                     <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                                           <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                                     </svg>
                                     Back
                               </button>
 
-                              <h3 class="text-2xl font-bold mb-4 mt-8">
-                                    <a href="/courses" style="text-decoration: none">Courses</a>
+                              <h3 class="font-normal text-[17px] mb-4 mt-8 pt-[3px] pr-[48px] pb-[3px] pl-[48px]">
+                                    <a href="/courses" style="text-decoration: none">All Courses</a>
                               </h3>
 
                               <div class="space-y-6">

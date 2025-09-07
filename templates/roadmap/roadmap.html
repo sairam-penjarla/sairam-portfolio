@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+      <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Roadmap</title>
+      </head>
+      <body id="RDMAP-body">
+            {% include 'header/new_header.html' %}
+            <!-- Tabs at top -->
+            <div id="RDMAP-tabs-container">
+                  <button class="RDMAP-tab active" onclick="showTab('RDMAP-tab1')">Roadmap</button>
+                  <button class="RDMAP-tab" onclick="showTab('RDMAP-tab2')">Resources</button>
+            </div>
+
+            <!-- Content sections -->
+            <div id="RDMAP-tab1" class="RDMAP-tab-content">
+                  <div class="RDMAP-desktop-only">{% include 'roadmap/roadmap-tab-1-desktop.html' %}</div>
+                  <div class="RDMAP-mobile-only">{% include 'roadmap/roadmap-tab-1-mobile.html' %}</div>
+            </div>
+
+            <div id="RDMAP-tab2" class="RDMAP-tab-content">
+                  <div class="RDMAP-desktop-only">{% include 'roadmap/roadmap-tab-2-desktop.html' %}</div>
+                  <div class="RDMAP-mobile-only">{% include 'roadmap/roadmap-tab-2-mobile.html' %}</div>
+            </div>
+
+            <script>
+function showTab(tabId, buttonElement) {
+    // Hide all tab contents
+    const tabs = document.querySelectorAll(".RDMAP-tab-content");
+    tabs.forEach((tab) => {
+        tab.style.display = "none";
+        tab.classList.remove("active");
+    });
+
+    // Remove 'active' class from all tab buttons
+    const tabButtons = document.querySelectorAll(".RDMAP-tab");
+    tabButtons.forEach((btn) => btn.classList.remove("active"));
+
+    // Show the selected tab content
+    const tabToShow = document.getElementById(tabId);
+    if (tabToShow) {
+        tabToShow.style.display = "flex";
+        tabToShow.classList.add("active");
+    }
+
+    // Add 'active' class to the clicked tab button
+    if (buttonElement) {
+        buttonElement.classList.add("active");
+    }
+}
+
+// Add click handlers to tabs dynamically (optional)
+const tabButtons = document.querySelectorAll(".RDMAP-tab");
+tabButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        const tabId = btn.getAttribute("onclick").match(/'(.+)'/)[1];
+        showTab(tabId, btn);
+    });
+});
+
+// Show Tab 1 by default
+showTab("RDMAP-tab1", document.querySelector(".RDMAP-tab"));
+</script>
+
+      </body>
+</html>

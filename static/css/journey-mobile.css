@@ -83,19 +83,23 @@
   /* GenAI sections */
   .genai-container {
     flex-direction: column !important;
-    padding: 20px !important;
-    gap: 24px !important;
-    width: 100% !important;
-    margin: 0 !important;
+    padding: 12px !important;
+    /* gap: 24px !important; */
+    width: min-content;
+    /* margin: 0 !important; */
+    height: min-content;
+    justify-content: flex-start;
+    min-height: fit-content;
   }
 
   .genai-media {
-    width: 100% !important;
+    width: min-content;
     order: 1 !important;
+    min-width: 300px;
   }
 
   .genai-content {
-    width: 100% !important;
+    width: min-content;
     text-align: center !important;
     align-items: center !important;
     display: flex !important;
@@ -158,6 +162,7 @@
 @media screen and (max-width: 480px) {
   .hero-title {
     font-size: 2rem !important;
+    text-align: left;
   }
   
   .hero-section-title {
@@ -169,7 +174,7 @@
   }
   
   .genai-device-mockup {
-    max-width: 250px !important;
+    /* max-width: 250px !important; */
   }
   
   .genai-description {
