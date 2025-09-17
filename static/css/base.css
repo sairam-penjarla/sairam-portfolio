@@ -1,39 +1,3 @@
-:root {
-  --primary-highlight-color: #004f95;
-  --primary-background-color: #ffffff;
-  --primary-heading-font-size: 38px;
-  --secondary-background-color: #ffffff;
-  --seconday-font-size: 24px;
-  --brand-primary-pink: #f44336;
-  --brand-secondary: rgb(240, 244, 255);
-  --text-primary: #323130;
-  --text-secondary: #424242;
-  --background-tertiary: #f3f2f1;
-  --border-color: rgb(241, 247, 255);
-  --link-color: #0078d4;
-  --link-hover: #106ebe;
-  --sidebar-width: 280px;
-  --header-height: 60px;
-  --font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-  --claude-purple: #7e53c6;
-  --claude-purple-light: #f1eefb;
-  --claude-text-primary: #000000;
-  --claude-text-secondary: #5f6368;
-  --claude-border: #e0e0e0;
-  --python-color: #366b99;
-  --ml-color: #ff7043;
-  --dl-color: #6a11cb;
-  --nlp-color: #11998e;
-  --cv-color: #f43b47;
-  --genai-color: #833ab4;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.05);
-  --transition: all 0.3s ease;
-  --border-radius-outside: 1.25rem;
-  --border-radius-inside: 16px;
-  --body-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
 
 
 .btn-minimal {

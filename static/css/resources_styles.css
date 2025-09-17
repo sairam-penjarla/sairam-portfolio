@@ -971,7 +971,7 @@ body {
 
 .genai-device-mockup {
     position: relative;
-    border-radius: 18px;
+    border-radius: var(--inner-border-radius);
     overflow: hidden;
     /* box-shadow: 0 20px 40px rgba(0,0,0,0.1); */
     transition: transform 0.5s ease;
@@ -1028,11 +1028,13 @@ body {
     background-color: #f44336;
     color: white;
     padding: 8px 14px;
-    border-radius: 30px;
+    border-radius: var(--inner-border-radius);
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
     /* box-shadow: 0 4px 12px rgba(244, 67, 54, 0.2); */
+    /* align-self: flex-end; */
+    /* justify-self: flex-end; */
 }
 
 .genai-button:hover {
@@ -1449,11 +1451,11 @@ body {
     background-color: var(--primary-highlight-color);
     color: white;
     padding: 10px 20px;
-    border-radius: 30px;
+    border-radius: var(--inner-border-radius);
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(32, 97, 183, 0.2);
+    /* box-shadow: 0 4px 12px rgba(32, 97, 183, 0.2); */
     /* bottom: 0px; */
 }
 
@@ -1476,7 +1478,7 @@ body {
     background-color: rgba(32, 97, 183, 0.1);
     color: var(--primary-highlight-color);
     padding: 8px 15px;
-    border-radius: 20px;
+    border-radius: var(--inner-border-radius);
     text-decoration: none;
     font-weight: 500;
     transition: all 0.3s ease;
@@ -1589,7 +1591,7 @@ body {
     
     .pathway-step {
         flex-direction: column;
-        padding: 25px 20px;
+        padding: var(--border-radius-padding);
     }
     
     .step-number {

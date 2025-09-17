@@ -44,7 +44,7 @@
 .playlists-container .hero-container {
     /* margin-bottom: 40px; */
     background-color: #fff;
-    border-radius: 28px;
+    border-radius: var(--outer-border-radius);
     /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); */
     height: min-content;
 }

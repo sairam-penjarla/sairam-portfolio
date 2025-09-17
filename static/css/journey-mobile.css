@@ -83,7 +83,7 @@
   /* GenAI sections */
   .genai-container {
     flex-direction: column !important;
-    padding: 12px !important;
+    padding: var(--border-radius-padding);
     /* gap: 24px !important; */
     width: min-content;
     /* margin: 0 !important; */

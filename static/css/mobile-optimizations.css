@@ -7,7 +7,7 @@
 /* Hero Section Optimizations */
 @media screen and (max-width: 768px) {
   .hero-container {
-    padding: 60px 16px !important;
+    padding: var(--border-radius-padding);
     margin-top: 3rem;
   }
 
@@ -33,7 +33,7 @@
 
 @media screen and (max-width: 480px) {
   .hero-container {
-    padding: 40px 16px !important;
+    padding: var(--border-radius-padding);
   }
   
   .hero-headline {
@@ -440,4 +440,78 @@
       background-color: #2e6ca3;
       flex: 0 0 50%;
 }
+  .button-wrapper{
+    flex-direction: column;
+}.timeline-button{
+    width: 100%;
+}
+.PROJECTmobile-overlay {
+  display: none;
+}
+  .grid {
+            grid-template-columns: 1fr;
+            padding: 0px;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+      }
+      .prompt-choose-card{
+            /* width: 960px; */
+      }
+      .thumb {
+            height: 300px;
+      }
+      .wrap {
+            padding: 20px;
+            margin: 0px;
+      }
+      .prompt-section-header {
+            /* margin-bottom: 40px; */
+            font-size: 40px;
+            /* padding: 0px; */
+            /* background-color: #ffffff; */
+      }
+  .prompt-section-header {
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+            /* padding-top: 40px; */
+      }
+      .prompt-choose-card{
+            
+      }
+      .view-all {
+            font-size: 13px;
+      }
+      .hero-content {
+            flex-direction: column;
+      }
+
+      .hero-text {
+            order: 2;
+            max-width: 100%;
+      }
+
+      .hero-image-container {
+            order: 1;
+            max-width: 100%;
+            margin-bottom: 30px;
+      }
+
+      .hero-headline {
+            font-size: 32px;
+      }
+
+      .hero-greeting {
+            font-size: 22px;
+      }
+
+      .hero-description {
+            font-size: 16px;
+      }
+      .carousel-container{
+            padding-right: 0px;
+      }
 }

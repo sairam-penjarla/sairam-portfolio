@@ -129,12 +129,14 @@ def get_projects():
             'error': 'Failed to fetch projects',
             'message': str(e)
         }), 500
-    
-def get_projects_from_database(file_path="projects.json"):
+
+def get_projects_from_database(file_path="projects/projects.json"):
     """
-    Reads projects data from a JSON file instead of hardcoding it.
+    Reads projects data from a JSON file and enriches each project with details from corresponding .md files.
+    The JSON should contain a 'md_file' key with the path to the markdown file for each project.
+    
     :param file_path: Path to the JSON file containing project data.
-    :return: List of project dictionaries.
+    :return: List of project dictionaries with 'details' key containing markdown content.
     """
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"Projects JSON file not found at: {file_path}")
@@ -144,6 +146,22 @@ def get_projects_from_database(file_path="projects.json"):
             projects = json.load(file)
         except json.JSONDecodeError as e:
             raise ValueError(f"Error decoding JSON file: {e}")
+
+    # Read markdown files for each project
+    for project in projects:
+        md_file_path = project.get('md_file')
+        
+        if md_file_path and os.path.exists(md_file_path):
+            try:
+                with open(md_file_path, "r", encoding="utf-8") as md_file:
+                    project['details'] = md_file.read()
+            except Exception as e:
+                print(f"Warning: Error reading markdown file {md_file_path}: {e}")
+                project['details'] = ""
+        else:
+            project['details'] = ""
+            if md_file_path:
+                print(f"Warning: Markdown file not found: {md_file_path}")
 
     return projects
 
