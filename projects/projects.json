@@ -16,397 +16,435 @@
       "GPT"
     ],
     "demo_url": "https://demo.example.com/data-cleaning",
-    "md_file": "projects/data_cleaning_+_enrichment_agent.md"
+    "md_file": "projects/data_cleaning_enrichment_agent.md"
   },
+{
+  "id": 2,
+  "title": "Financial Analyst Agent",
+  "description": "An AI-powered assistant that processes financial documents and generates concise investment summaries to aid decision-making.",
+  "domain": "Artificial Intelligence",
+  "platform": "Web / Cloud-based",
+  "demo": true,
+  "image": "/static/project_images/img_2.jpg",
+  "tech_stack": [
+    "Python",
+    "Pandas",
+    "OpenAI GPT-4",
+    "Anthropic Claude",
+    "Azure OpenAI Service",
+    "Natural Language Processing",
+    "Document Parsing"
+  ],
+  "demo_url": "https://demo.example.com/financial-analyst-agent",
+  "md_file": "projects/financial_analyst_agent.md"
+}
+,
   {
-    "id": 2,
-    "title": "Financial Analyst Agent",
-    "description": "Parsed financial docs → generated investment memos.",
-    "domain": "Artificial Intelligence",
-    "platform": "Platform Independent",
-    "demo": true,
-    "image": "/static/project_images/img_2.jpg",
-    "tech_stack": [
-      "Python",
-      "Pandas",
-      "OpenAI Agents",
-      "Azure OpenAI",
-      "GPT-4",
-      "Claude"
-    ],
-    "demo_url": "https://demo.example.com/data-cleaning",
-    "md_file": "projects/financial_analyst_agent.md"
-  },
+  "id": 3,
+  "title": "Multi-Agent Sales Assistant",
+  "description": "An AI-powered platform that streamlines sales workflows by automating research, drafting outreach emails, and summarizing calls, improving efficiency for sales teams.",
+  "domain": "Artificial Intelligence / Sales Automation",
+  "platform": "Copilot Studio",
+  "demo": true,
+  "image": "/static/project_images/img_3.jpg",
+  "tech_stack": [
+    "Python",
+    "Pandas",
+    "LangChain",
+    "OpenAI GPT-4",
+    "Claude AI",
+    "Mistral AI",
+    "ML Studio",
+    "AI Foundry"
+  ],
+  "demo_url": "https://demo.example.com/multi-agent-sales-assistant",
+  "md_file": "projects/multi_agent_sales_assistant.md"
+}
+,
   {
-    "id": 3,
-    "title": "Multi-Agent Sales Assistant",
-    "description": "Lead research, outreach drafting, and call summarization.",
-    "domain": "Artificial Intelligence",
-    "platform": "Copilot Studio",
-    "demo": true,
-    "image": "/static/project_images/img_3.jpg",
-    "tech_stack": [
-      "Python",
-      "Pandas",
-      "OpenAI Agents",
-      "ML Studio",
-      "AI Foundry",
-      "GPT-4",
-      "Claude",
-      "Mistral"
-    ],
-    "demo_url": "https://demo.example.com/data-cleaning",
-    "md_file": "projects/multi-agent_sales_assistant.md"
-  },
+  "id": 4,
+  "title": "AI Whiteboard Reader",
+  "description": "Transforms handwritten meeting notes and whiteboard sketches into structured tasks and action items.",
+  "domain": "Artificial Intelligence / Productivity Tools",
+  "platform": "Web and Desktop",
+  "demo": true,
+  "image": "/static/project_images/img_4.jpg",
+  "tech_stack": [
+    "Python",
+    "OpenAI GPT-4",
+    "LangChain / Llama",
+    "Pandas",
+    "Azure AI Search",
+    "OCR Libraries (Tesseract / Azure Cognitive Services)",
+    "Streamlit / Flask"
+  ],
+  "demo_url": "https://demo.example.com/ai-whiteboard-reader",
+  "md_file": "projects/ai_whiteboard_reader.md"
+}
+,
   {
-    "id": 4,
-    "title": "AI Whiteboard Reader",
-    "description": "Converted meeting scribbles into structured tasks.",
-    "domain": "Artificial Intelligence",
-    "platform": "Platform Independent",
-    "demo": true,
-    "image": "/static/project_images/img_4.jpg",
-    "tech_stack": [
-      "Python",
-      "Pandas",
-      "OpenAI Agents",
-      "ML Studio",
-      "Azure AI Search",
-      "GPT-4",
-      "Llama"
-    ],
-    "demo_url": "https://demo.example.com/data-cleaning",
-    "md_file": "projects/ai_whiteboard_reader.md"
-  },
+  "id": 5,
+  "title": "AI Code Reviewer Assistant",
+  "description": "Web-based AI tool for context-aware code review, providing suggestions on code quality, readability, and maintainability.",
+  "domain": "Artificial Intelligence",
+  "platform": "Web / Azure DevOps",
+  "demo": true,
+  "image": "/static/project_images/img_5.jpg",
+  "tech_stack": [
+    "Python",
+    "Pandas",
+    "OpenAI GPT-4",
+    "Claude",
+    "Huggingface"
+  ],
+  "demo_url": "https://demo.example.com/ai-code-reviewer",
+  "md_file": "projects/ai_code_reviewer_assistant.md"
+}
+,
   {
-    "id": 5,
-    "title": "AI Code Reviewer Agent",
-    "description": "Automated PR review for bugs, security issues, and best practices.",
-    "domain": "Artificial Intelligence",
-    "platform": "Platform Independent",
-    "demo": true,
-    "image": "/static/project_images/img_5.jpg",
-    "tech_stack": [
-      "Python",
-      "Pandas",
-      "OpenAI Agents",
-      "GPT-4",
-      "Claude",
-      "Huggingface"
-    ],
-    "demo_url": "https://demo.example.com/data-cleaning",
-    "md_file": "projects/ai_code_reviewer_agent.md"
-  },
+  "id": 6,
+  "title": "Video Action Recognition",
+  "description": "A computer vision project that monitors workplace safety by detecting potentially unsafe behaviors in video feeds, providing real-time alerts to reduce accidents.",
+  "domain": "Computer Vision",
+  "platform": "Cross-Platform (Web/Desktop)",
+  "demo": true,
+  "image": "/static/project_images/img_6.jpg",
+  "tech_stack": [
+    "Python",
+    "OpenCV",
+    "PyTorch",
+    "TensorFlow",
+    "Keras",
+    "Weights & Biases"
+  ],
+  "demo_url": "https://demo.example.com/video-action-recognition",
+  "md_file": "projects/video_action_recognition.md"
+}
+,
   {
-    "id": 6,
-    "title": "Video Action Recognition",
-    "description": "Workplace safety monitoring by detecting unsafe behaviors.",
-    "domain": "Computer Vision",
-    "platform": "Platform Independent",
-    "demo": true,
-    "image": "/static/project_images/img_6.jpg",
-    "tech_stack": [
-      "Python",
-      "OpenCV",
-      "PyTorch",
-      "TensorFlow",
-      "Keras",
-      "Weights & Bias"
-    ],
-    "demo_url": "https://demo.example.com/data-cleaning",
-    "md_file": "projects/video_action_recognition.md"
-  },
+  "id": 7,
+  "title": "Domain-Specific Q&A Knowledge Base",
+  "description": "An AI-powered knowledge base for quickly retrieving answers from domain-specific documents, such as HR policies and compliance guidelines.",
+  "domain": "Artificial Intelligence",
+  "platform": "Azure Cloud",
+  "demo": true,
+  "image": "/static/project_images/img_7.jpg",
+  "tech_stack": [
+    "Python",
+    "OpenAI Agents",
+    "Azure OpenAI",
+    "Azure Cognitive Search",
+    "ChromaDB",
+    "GPT-4"
+  ],
+  "demo_url": "https://demo.example.com/domain-qa",
+  "md_file": "projects/domain_specific_q_a_knowledge_base.md"
+}
+,
   {
-    "id": 7,
-    "title": "Domain-specific Q&A Knowledge Base",
-    "description": "E.g., HR policies, compliance docs.",
-    "domain": "Artificial Intelligence",
-    "platform": "Azure",
-    "demo": true,
-    "image": "/static/project_images/img_7.jpg",
-    "tech_stack": [
-      "Python",
-      "OpenAI Agents",
-      "Azure OpenAI",
-      "Azure AI Search",
-      "ChromaDB",
-      "GPT-4"
-    ],
-    "demo_url": "https://demo.example.com/data-cleaning",
-    "md_file": "projects/domain-specific_q&a_knowledge_base.md"
-  },
+  "id": 8,
+  "title": "Automated Meeting Notes & Action Items Extractor",
+  "description": "Generates concise meeting summaries and extracts structured action items from conversations, making team follow-ups easier and faster.",
+  "domain": "Artificial Intelligence / Natural Language Processing",
+  "platform": "Web-based AI Tool",
+  "demo": true,
+  "image": "/static/project_images/img_8.jpg",
+  "tech_stack": [
+    "Python",
+    "OpenAI GPT-4",
+    "Anthropic Claude",
+    "spaCy",
+    "NLTK",
+    "LangChain",
+    "Streamlit"
+  ],
+  "demo_url": "https://demo.example.com/meeting-notes-extractor",
+  "md_file": "projects/automated_meeting_notes_and_action_items_extractor.md"
+}
+,
   {
-    "id": 8,
-    "title": "Automated Meeting Notes + Action Items Extractor",
-    "description": "Meeting summaries + structured tasks.",
-    "domain": "Artificial Intelligence",
-    "platform": "Copilot Studio",
-    "demo": true,
-    "image": "/static/project_images/img_8.jpg",
-    "tech_stack": [
-      "Python",
-      "OpenAI Agents",
-      "ML Studio",
-      "AI Foundry",
-      "GPT-4",
-      "Claude",
-      "spaCy",
-      "NLTK"
-    ],
-    "demo_url": "https://demo.example.com/data-cleaning",
-    "md_file": "projects/automated_meeting_notes_+_action_items_extractor.md"
-  },
+  "id": 9,
+  "title": "Natural Language to SQL Report Generator",
+  "description": "Convert natural language queries into SQL and generate interactive business intelligence reports seamlessly.",
+  "domain": "Artificial Intelligence / Data Analytics",
+  "platform": "Databricks",
+  "demo": true,
+  "image": "/static/project_images/img_9.jpg",
+  "tech_stack": [
+    "Python",
+    "Databricks Notebooks",
+    "Databricks MLflow",
+    "Databricks Unity Catalog",
+    "Databricks Model Registry",
+    "SQL Server",
+    "GPT-4 API",
+    "spaCy",
+    "NLTK",
+    "pandas",
+    "Plotly / Dash"
+  ],
+  "demo_url": "https://demo.example.com/nlp-sql-report",
+    "md_file": "projects/nlp_to_sql_report_generator.md"
+}
+,
   {
-    "id": 9,
-    "title": "NLP → SQL → Report Generator",
-    "description": "Natural language queries → BI reports.",
-    "domain": "Artificial Intelligence",
-    "platform": "Databricks",
-    "demo": true,
-    "image": "/static/project_images/img_9.jpg",
-    "tech_stack": [
-      "Python",
-      "Databricks MLflow",
-      "Databricks Unity Catalog",
-      "Databricks Model Registry",
-      "Databricks Notebooks",
-      "SQL Server",
-      "GPT-4",
-      "spaCy",
-      "NLTK"
-    ],
-    "demo_url": "https://demo.example.com/data-cleaning",
-    "md_file": "projects/nlp_\u2192_sql_\u2192_report_generator.md"
-  },
+  "id": 10,
+  "title": "Invoice & Receipt Data Extractor",
+  "description": "Automates extraction of structured data from scanned invoices and receipts, enabling analytics dashboards and reporting.",
+  "domain": "Artificial Intelligence",
+  "platform": "Azure Cloud",
+  "demo": true,
+  "image": "/static/project_images/img_10.jpg",
+  "tech_stack": [
+    "Python",
+    "OpenCV",
+    "TensorFlow",
+    "Keras",
+    "Azure Document Intelligence",
+    "spaCy",
+    "NLTK",
+    "Pandas",
+    "Plotly"
+  ],
+  "demo_url": "https://demo.example.com/data-cleaning",
+  "md_file": "projects/ocr_nlp_hybrid.md"
+}
+,
   {
-    "id": 10,
-    "title": "OCR + NLP Hybrid",
-    "description": "Scanned invoices/receipts → structured data dashboards.",
-    "domain": "Artificial Intelligence",
-    "platform": "Azure",
-    "demo": true,
-    "image": "/static/project_images/img_10.jpg",
-    "tech_stack": [
-      "Python",
-      "OpenCV",
-      "TensorFlow",
-      "Keras",
-      "Azure OpenAI",
-      "Document Intelligence",
-      "spaCy",
-      "NLTK"
-    ],
-    "demo_url": "https://demo.example.com/data-cleaning",
-    "md_file": "projects/ocr_+_nlp_hybrid.md"
-  },
+  "id": 11,
+  "title": "License Plate Recognition with Context",
+  "description": "Automates toll and parking billing by detecting and recognizing license plates, with contextual vehicle information for improved accuracy.",
+  "domain": "Computer Vision",
+  "platform": "Cross-Platform",
+  "demo": true,
+  "image": "/static/project_images/img_11.jpg",
+  "tech_stack": [
+    "Python",
+    "OpenCV",
+    "TensorFlow",
+    "PyTorch",
+    "Weights & Biases"
+  ],
+  "demo_url": "https://demo.example.com/license-plate-recognition",
+  "md_file": "projects/license_plate_recognition_with_context.md"
+}
+,
   {
-    "id": 11,
-    "title": "License Plate Recognition with Context",
-    "description": "Automated toll and parking billing.",
-    "domain": "Computer Vision",
-    "platform": "Platform Independent",
-    "demo": true,
-    "image": "/static/project_images/img_11.jpg",
-    "tech_stack": [
-      "Python",
-      "OpenCV",
-      "TensorFlow",
-      "PyTorch",
-      "Weights & Bias"
-    ],
-    "demo_url": "https://demo.example.com/data-cleaning",
-    "md_file": "projects/license_plate_recognition_with_context.md"
-  },
+  "id": 12,
+  "title": "Quality Control System",
+  "description": "An AI-powered system for detecting defects in manufacturing pipelines, helping improve product quality and reduce manual inspection efforts.",
+  "domain": "Computer Vision",
+  "platform": "Azure",
+  "demo": true,
+  "image": "/static/project_images/img_12.jpg",
+  "tech_stack": [
+    "Python",
+    "OpenCV",
+    "PyTorch",
+    "TensorFlow",
+    "Azure Cognitive Services",
+    "Azure ML Studio"
+  ],
+  "demo_url": "https://demo.example.com/quality-control",
+  "md_file": "projects/quality_control_system.md"
+}
+,
   {
-    "id": 12,
-    "title": "Quality Control System",
-    "description": "Defect detection in manufacturing pipelines.",
-    "domain": "Computer Vision",
-    "platform": "Azure",
-    "demo": true,
-    "image": "/static/project_images/img_12.jpg",
-    "tech_stack": [
-      "Python",
-      "OpenCV",
-      "PyTorch",
-      "TensorFlow",
-      "Azure OpenAI",
-      "ML Studio"
-    ],
-    "demo_url": "https://demo.example.com/data-cleaning",
-    "md_file": "projects/quality_control_system.md"
-  },
+  "id": 13,
+  "title": "Medical Image Analysis",
+  "description": "Automated detection and classification of tumors from MRI and CT scans using deep learning techniques, providing radiologists with decision support.",
+  "domain": "Deep Learning",
+  "platform": "Azure",
+  "demo": true,
+  "image": "/static/project_images/img_13.jpg",
+  "tech_stack": [
+    "Python",
+    "TensorFlow",
+    "Keras",
+    "PyTorch",
+    "Azure Machine Learning",
+    "ML Studio",
+    "Weights & Biases",
+    "OpenCV",
+    "scikit-learn"
+  ],
+  "demo_url": "https://demo.example.com/medical-image-analysis",
+  "md_file": "projects/medical_image_analysis.md"
+}
+,
   {
-    "id": 13,
-    "title": "Medical Image Analysis",
-    "description": "Tumor detection and classification from MRI/CT scans.",
-    "domain": "Deep Learning",
-    "platform": "Azure",
-    "demo": true,
-    "image": "/static/project_images/img_13.jpg",
-    "tech_stack": [
-      "Python",
-      "TensorFlow",
-      "Keras",
-      "PyTorch",
-      "Azure OpenAI",
-      "ML Studio",
-      "Weights & Bias"
-    ],
-    "demo_url": "https://demo.example.com/data-cleaning",
-    "md_file": "projects/medical_image_analysis.md"
-  },
+  "id": 14,
+  "title": "Retail Shelf Monitoring",
+  "description": "Automated monitoring of retail shelves to detect stockouts, misplaced items, and inventory compliance using computer vision.",
+  "domain": "Computer Vision",
+  "platform": "Azure",
+  "demo": true,
+  "image": "/static/project_images/img_14.jpg",
+  "tech_stack": [
+    "Python",
+    "OpenCV",
+    "PyTorch",
+    "TensorFlow",
+    "Azure Computer Vision",
+    "Azure ML Studio",
+    "Weights & Biases"
+  ],
+  "demo_url": "https://demo.example.com/retail-shelf-monitoring",
+  "md_file": "projects/retail_shelf_monitoring.md"
+}
+,
   {
-    "id": 14,
-    "title": "Retail Shelf Monitoring",
-    "description": "Tracked stockouts and misplaced items in stores.",
-    "domain": "Computer Vision",
-    "platform": "Azure",
-    "demo": true,
-    "image": "/static/project_images/img_14.jpg",
-    "tech_stack": [
-      "Python",
-      "OpenCV",
-      "PyTorch",
-      "TensorFlow",
-      "Azure OpenAI",
-      "ML Studio",
-      "Weights & Bias"
-    ],
-    "demo_url": "https://demo.example.com/data-cleaning",
-    "md_file": "projects/retail_shelf_monitoring.md"
-  },
+  "id": 15,
+  "title": "Handwritten Form Reader",
+  "description": "An AI-powered system that digitizes handwritten forms by extracting structured data using OCR and deep learning models.",
+  "domain": "Deep Learning / Computer Vision",
+  "platform": "Cross-Platform (Web/Desktop)",
+  "demo": true,
+  "image": "/static/project_images/img_15.jpg",
+  "tech_stack": [
+    "Python",
+    "TensorFlow",
+    "Keras",
+    "OpenCV",
+    "Tesseract OCR",
+    "Document Intelligence",
+    "Weights & Biases"
+  ],
+  "demo_url": "https://demo.example.com/handwritten-form-reader",
+  "md_file": "projects/handwritten_form_reader.md"
+}
+,
+ {
+  "id": 16,
+  "title": "Satellite Image Analysis",
+  "description": "Analyzed satellite imagery to monitor crop health, detect deforestation, and track environmental changes using deep learning techniques.",
+  "domain": "Deep Learning / Computer Vision",
+  "platform": "Azure Cloud",
+  "demo": true,
+  "image": "/static/project_images/img_16.jpg",
+  "tech_stack": [
+    "Python",
+    "TensorFlow",
+    "Keras",
+    "PyTorch",
+    "OpenCV",
+    "Azure Cognitive Services",
+    "Weights & Biases"
+  ],
+  "demo_url": "https://demo.example.com/satellite-analysis",
+  "md_file": "projects/satellite_image_analysis.md"
+}
+,
   {
-    "id": 15,
-    "title": "Handwritten Form Reader",
-    "description": "OCR + DL to digitize government/bank forms.",
-    "domain": "Deep Learning",
-    "platform": "Platform Independent",
-    "demo": true,
-    "image": "/static/project_images/img_15.jpg",
-    "tech_stack": [
-      "Python",
-      "TensorFlow",
-      "Keras",
-      "PyTorch",
-      "OpenCV",
-      "Document Intelligence",
-      "Weights & Bias"
-    ],
-    "demo_url": "https://demo.example.com/data-cleaning",
-    "md_file": "projects/handwritten_form_reader.md"
-  },
+  "id": 17,
+  "title": "Healthcare Readmission Prediction",
+  "description": "A machine learning solution to identify patients at high risk of hospital readmission, enabling proactive care and improved patient outcomes.",
+  "domain": "Machine Learning",
+  "platform": "Platform Independent",
+  "demo": true,
+  "image": "/static/project_images/img_17.jpg",
+  "tech_stack": [
+    "Python",
+    "Scikit-learn",
+    "XGBoost",
+    "TensorFlow",
+    "Keras",
+    "Weights & Biases",
+    "Pandas",
+    "NumPy",
+    "Matplotlib",
+    "Seaborn"
+  ],
+  "demo_url": "https://demo.example.com/healthcare-readmission",
+  "md_file": "projects/healthcare_readmission_prediction.md"
+}
+,
   {
-    "id": 16,
-    "title": "Satellite Image Analysis",
-    "description": "Monitored crop health and deforestation patterns.",
-    "domain": "Deep Learning",
-    "platform": "Azure",
-    "demo": true,
-    "image": "/static/project_images/img_16.jpg",
-    "tech_stack": [
-      "Python",
-      "TensorFlow",
-      "Keras",
-      "PyTorch",
-      "Azure OpenAI",
-      "Weights & Bias"
-    ],
-    "demo_url": "https://demo.example.com/data-cleaning",
-    "md_file": "projects/satellite_image_analysis.md"
-  },
+  "id": 18,
+  "title": "Predictive Maintenance for Industrial Equipment",
+  "description": "A machine learning solution for detecting anomalies in IoT sensor data to predict equipment failures, reduce downtime, and optimize maintenance schedules.",
+  "domain": "Machine Learning / IoT Analytics",
+  "platform": "Cross-platform",
+  "demo": true,
+  "image": "/static/project_images/img_18.jpg",
+  "tech_stack": [
+    "Python",
+    "Pandas",
+    "NumPy",
+    "Scikit-learn",
+    "PyTorch",
+    "TensorFlow",
+    "Weights & Biases",
+    "Matplotlib / Seaborn"
+  ],
+  "demo_url": "https://demo.example.com/predictive-maintenance",
+  "md_file": "projects/predictive_maintenance.md"
+}
+,
   {
-    "id": 17,
-    "title": "Healthcare Readmission Prediction",
-    "description": "Flagged patients at high risk of readmission.",
-    "domain": "Machine Learning",
-    "platform": "Platform Independent",
-    "demo": true,
-    "image": "/static/project_images/img_17.jpg",
-    "tech_stack": [
-      "Python",
-      "Scikit-learn",
-      "XGBoost",
-      "TensorFlow",
-      "Keras",
-      "Weights & Bias"
-    ],
-    "demo_url": "https://demo.example.com/data-cleaning",
-    "md_file": "projects/healthcare_readmission_prediction.md"
-  },
+  "id": 19,
+  "title": "Customer Segmentation & Lifetime Value Prediction",
+  "description": "A machine learning solution to segment customers and predict their lifetime value, enabling targeted marketing strategies and improved retention.",
+  "domain": "Machine Learning",
+  "platform": "Platform Independent",
+  "demo": true,
+  "image": "/static/project_images/img_19.jpg",
+  "tech_stack": [
+    "Python",
+    "Pandas",
+    "NumPy",
+    "Scikit-learn",
+    "Keras",
+    "TensorFlow",
+    "Matplotlib",
+    "Seaborn",
+    "Weights & Biases"
+  ],
+  "demo_url": "https://demo.example.com/customer-segmentation",
+  "md_file": "projects/customer_segmentation_lifetime_value_prediction.md"
+}
+,
   {
-    "id": 18,
-    "title": "Predictive Maintenance",
-    "description": "Anomaly detection on IoT sensor data for cost savings.",
-    "domain": "Machine Learning",
-    "platform": "Platform Independent",
-    "demo": true,
-    "image": "/static/project_images/img_18.jpg",
-    "tech_stack": [
-      "Python",
-      "Scikit-learn",
-      "PyTorch",
-      "TensorFlow",
-      "Weights & Bias"
-    ],
-    "demo_url": "https://demo.example.com/data-cleaning",
-    "md_file": "projects/predictive_maintenance.md"
-  },
+  "id": 20,
+  "title": "Dynamic Pricing Engine",
+  "description": "A machine learning-based engine that predicts optimal product pricing by analyzing seasonality, demand trends, and historical sales data.",
+  "domain": "Machine Learning / Data Science",
+  "platform": "Databricks",
+  "demo": true,
+  "image": "/static/project_images/img_20.jpg",
+  "tech_stack": [
+    "Python",
+    "Databricks MLflow",
+    "Databricks Delta Lake",
+    "Databricks Model Registry",
+    "Scikit-learn",
+    "Keras",
+    "Weights & Biases"
+  ],
+  "demo_url": "https://demo.example.com/dynamic-pricing",
+  "md_file": "projects/dynamic_pricing_engine.md"
+}
+,
   {
-    "id": 19,
-    "title": "Customer Segmentation & Lifetime Value Prediction",
-    "description": "Marketing-driven segmentation for better targeting.",
-    "domain": "Machine Learning",
-    "platform": "Platform Independent",
-    "demo": true,
-    "image": "/static/project_images/img_19.jpg",
-    "tech_stack": [
-      "Python",
-      "Scikit-learn",
-      "Keras",
-      "TensorFlow",
-      "Weights & Bias"
-    ],
-    "demo_url": "https://demo.example.com/data-cleaning",
-    "md_file": "projects/customer_segmentation_&_lifetime_value_prediction.md"
-  },
-  {
-    "id": 20,
-    "title": "Dynamic Pricing Engine",
-    "description": "Optimized product pricing using seasonality and demand.",
-    "domain": "Machine Learning",
-    "platform": "Databricks",
-    "demo": true,
-    "image": "/static/project_images/img_20.jpg",
-    "tech_stack": [
-      "Python",
-      "Databricks MLflow",
-      "Databricks Delta Lake",
-      "Databricks Model Registry",
-      "Scikit-learn",
-      "Keras",
-      "Weights & Bias"
-    ],
-    "demo_url": "https://demo.example.com/data-cleaning",
-    "md_file": "projects/dynamic_pricing_engine.md"
-  },
-  {
-    "id": 21,
-    "title": "Credit Risk Scoring System",
-    "description": "Predicted loan defaults with explainable ML.",
-    "domain": "Machine Learning",
-    "platform": "Databricks",
-    "demo": true,
-    "image": "/static/project_images/img_21.jpg",
-    "tech_stack": [
-      "Python",
-      "Databricks MLflow",
-      "Databricks Model Registry",
-      "Databricks Delta Lake",
-      "Scikit-learn",
-      "Weights & Bias"
-    ],
-    "demo_url": "https://demo.example.com/data-cleaning",
-    "md_file": "projects/credit_risk_scoring_system.md"
-  }
+  "id": 21,
+  "title": "Credit Risk Scoring System",
+  "description": "Developed a machine learning system to predict loan default risk with explainable insights for better financial decision-making.",
+  "domain": "Machine Learning / Financial Analytics",
+  "platform": "Databricks",
+  "demo": true,
+  "image": "/static/project_images/img_21.jpg",
+  "tech_stack": [
+    "Python",
+    "Scikit-learn",
+    "Databricks MLflow",
+    "Databricks Model Registry",
+    "Databricks Delta Lake",
+    "Weights & Biases",
+    "Pandas",
+    "SHAP (Explainable AI)"
+  ],
+  "demo_url": "https://demo.example.com/credit-risk",
+  "md_file": "projects/credit_risk_scoring_system.md"
+}
+
 ]

@@ -1,67 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-      <head>
-            <meta charset="UTF-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <title>Roadmap</title>
-      </head>
-      <body id="RDMAP-body">
-            {% include 'header/new_header.html' %}
-            <!-- Tabs at top -->
-            <div id="RDMAP-tabs-container">
-                  <button class="RDMAP-tab active" onclick="showTab('RDMAP-tab1')">Roadmap</button>
-                  <button class="RDMAP-tab" onclick="showTab('RDMAP-tab2')">Resources</button>
-            </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apple Watch UI</title>
+</head>
+<body>
+{% include 'header/new_header.html' %}
+  <!-- Core Fundamentals -->
+  <div class="RDMAPV1-text-center RDMAPV1-py-12 RDMAPV1-section-wrapper RDMAPV1-mt-12">
+    <h2 class="RDMAPV1-text-5xl RDMAPV1-font-extrabold RDMAPV1-text-black">Core Fundamentals</h2>
+  </div>
 
-            <!-- Content sections -->
-            <div id="RDMAP-tab1" class="RDMAP-tab-content">
-                  <div class="RDMAP-desktop-only">{% include 'roadmap/roadmap-tab-1-desktop.html' %}</div>
-                  <div class="RDMAP-mobile-only">{% include 'roadmap/roadmap-tab-1-mobile.html' %}</div>
-            </div>
+  <div id="core-fundamentals" class="RDMAPV1-section-wrapper"></div>
 
-            <div id="RDMAP-tab2" class="RDMAP-tab-content">
-                  <div class="RDMAP-desktop-only">{% include 'roadmap/roadmap-tab-2-desktop.html' %}</div>
-                  <div class="RDMAP-mobile-only">{% include 'roadmap/roadmap-tab-2-mobile.html' %}</div>
-            </div>
+  <!-- Data Science Fundamentals -->
+  <div class="RDMAPV1-text-center RDMAPV1-py-12 RDMAPV1-section-wrapper">
+    <h2 class="RDMAPV1-text-5xl RDMAPV1-font-extrabold RDMAPV1-text-black">Data Science Fundamentals</h2>
+  </div>
 
-            <script>
-function showTab(tabId, buttonElement) {
-    // Hide all tab contents
-    const tabs = document.querySelectorAll(".RDMAP-tab-content");
-    tabs.forEach((tab) => {
-        tab.style.display = "none";
-        tab.classList.remove("active");
+  <div id="other-topics" class="RDMAPV1-section-wrapper"></div>
+
+  <!-- Roadmap -->
+  <div class="RDMAPV1-text-center RDMAPV1-py-12 RDMAPV1-section-wrapper">
+    <h2 class="RDMAPV1-text-5xl RDMAPV1-font-extrabold RDMAPV1-text-black">Roadmap</h2>
+    
+    <!-- Mobile fullscreen button - only visible on small screens -->
+    <div class="RDMAPV1-flscrnbtn RDMAPV1-mobile-only RDMAPV1-mb-4 RDMAPV1-flex RDMAPV1-justify-center">
+      <button 
+        id="fullscreen-btn" 
+        class="RDMAPV1-button RDMAPV1-px-6 RDMAPV1-py-3 RDMAPV1-rounded-full RDMAPV1-text-lg RDMAPV1-font-medium"
+        onclick="openFullscreen()">
+        View Full Screen
+      </button>
+    </div>
+    
+    <iframe 
+      id="myIframe" 
+      class="RDMAPV1-border-none RDMAPV1-w-full RDMAPV1-h-400" 
+      src="https://whimsical.com/embed/VdtLsfXXcyVLWunGd5rNeX"
+      onload="showIframe()">
+    </iframe>
+  </div>
+
+  <!-- Fullscreen overlay -->
+  <div id="fullscreen-overlay" class="RDMAPV1-fullscreen-overlay">
+    <div class="RDMAPV1-fullscreen-header">
+      <h3 class="RDMAPV1-text-lg RDMAPV1-font-medium">Data Science Roadmap</h3>
+      <button class="RDMAPV1-close-btn" onclick="closeFullscreen()">
+        ×
+      </button>
+    </div>
+    <iframe 
+      id="fullscreen-iframe" 
+      class="RDMAPV1-fullscreen-iframe"
+      src="https://whimsical.com/embed/VdtLsfXXcyVLWunGd5rNeX">
+    </iframe>
+  </div>
+
+  <script>
+    const sections = [
+      {id: 1, gradient: 'RDMAPV1-gradient-1', title: 'Python', intro: 'Unlock endless possibilities', description: 'Python is a versatile programming language widely used in data science for data analysis, scripting, and automation. It offers a rich ecosystem of libraries like NumPy, Pandas, and Matplotlib, making it ideal for beginners and professionals aiming to manipulate data, build models, and implement algorithms efficiently.', url: 'https://example.com/python'},
+      {id: 2, gradient: 'RDMAPV1-gradient-2', title: 'NumPy', intro: 'Master numerical power', description: 'NumPy is the foundation for numerical computing in Python. It provides fast, efficient array operations, linear algebra routines, and mathematical functions. Learning NumPy helps in handling large datasets, performing computations, and preparing data for machine learning models.', url: 'https://example.com/numpy'},
+      {id: 3, gradient: 'RDMAPV1-gradient-3', title: 'Pandas', intro: 'Transform data effortlessly', description: 'Pandas simplifies data manipulation and analysis with its powerful DataFrame structure. It allows filtering, grouping, and transforming data, making it essential for cleaning, organizing, and exploring datasets before applying statistical methods or machine learning algorithms.', url: 'https://example.com/pandas'},
+      {id: 4, gradient: 'RDMAPV1-gradient-4', title: 'Matplotlib', intro: 'Visualize insights clearly', description: 'Matplotlib is a visualization library for Python that helps create plots, charts, and graphs. It is crucial for understanding data patterns, trends, and distributions, enabling effective storytelling and insights from data analysis.', url: 'https://example.com/matplotlib'},
+      {id: 5, gradient: 'RDMAPV1-gradient-5', title: 'Git', intro: 'Collaborate like a pro', description: 'Git is a version control system that tracks changes in code, allowing collaboration, backup, and experimentation without losing progress. Data scientists use Git to manage projects, share code, and maintain reproducibility in workflows.', url: 'https://example.com/git'},
+      {id: 6, gradient: 'RDMAPV1-gradient-6', title: 'SQL', intro: 'Unlock database insights', description: 'SQL (Structured Query Language) is used to query, manage, and manipulate relational databases. Proficiency in SQL is crucial for extracting and analyzing data efficiently, making it a fundamental skill for data-driven decision-making.', url: 'https://example.com/sql'},
+      {id: 7, gradient: 'RDMAPV1-gradient-7', title: 'Competitive Programming', intro: 'Sharpen problem-solving', description: 'Competitive programming hones problem-solving and algorithmic thinking skills. It enhances logic, efficiency, and coding proficiency, helping data scientists tackle complex data challenges and optimize algorithms effectively.', url: 'https://example.com/competitive-programming'},
+      {id: 8, gradient: 'RDMAPV1-gradient-8', title: 'Basic Statistics', intro: 'Understand data deeply', description: 'Statistics forms the foundation of data science, providing tools to summarize, interpret, and draw conclusions from data. Concepts like mean, median, variance, probability, and distributions are essential for understanding patterns, trends, and uncertainty in datasets.', url: 'https://example.com/statistics'},
+      {id: 9, gradient: 'RDMAPV1-gradient-9', title: 'Data Modelling', intro: 'Build meaningful structures', description: 'Data modelling involves creating representations of data relationships using structured schemas or predictive models. It enables analysis, decision-making, and machine learning by transforming raw data into actionable insights and building models to predict outcomes.', url: 'https://example.com/data-modelling'},
+      {id: 10, gradient: 'RDMAPV1-gradient-10', title: 'Data Preprocessing', intro: 'Prepare like a pro', description: 'Data preprocessing prepares raw data for analysis or modeling. It includes handling missing values, normalization, encoding, and feature engineering. Effective preprocessing improves model accuracy, reduces errors, and ensures reliable predictions in data science workflows.', url: 'https://example.com/data-preprocessing'},
+      {id: 11, gradient: 'RDMAPV1-gradient-11', title: 'Machine Learning', intro: 'Make data predict', description: 'Machine Learning enables systems to learn from data and make predictions or decisions without explicit programming. It includes supervised, unsupervised, and reinforcement learning, forming the core of predictive analytics and intelligent applications in data science.', url: 'https://example.com/machine-learning'},
+      {id: 12, gradient: 'RDMAPV1-gradient-12', title: 'Deep Learning', intro: 'Solve complex problems', description: 'Deep Learning uses neural networks to model complex patterns in large datasets. It powers advanced AI applications like image recognition, NLP, and speech processing. Understanding deep learning is crucial for tackling unstructured data challenges in modern data science.', url: 'https://example.com/deep-learning'},
+      {id: 13, gradient: 'RDMAPV1-gradient-13', title: 'Computer Vision', intro: 'See and understand', description: 'Computer Vision allows machines to interpret visual information from images or videos. It involves tasks like object detection, image classification, and segmentation, enabling applications such as facial recognition, autonomous vehicles, and medical imaging analysis.', url: 'https://example.com/computer-vision'},
+      {id: 14, gradient: 'RDMAPV1-gradient-14', title: 'Natural Language Processing (NLP)', intro: 'Communicate with machines', description: 'NLP focuses on enabling machines to understand, interpret, and generate human language. It includes sentiment analysis, text classification, and language translation, making it critical for chatbots, recommendation systems, and AI communication tools.', url: 'https://example.com/nlp'},
+      {id: 15, gradient: 'RDMAPV1-gradient-15', title: 'Generative AI', intro: 'Create the future', description: 'Generative AI creates new content such as text, images, or audio using models trained on existing data. It includes techniques like GANs and large language models, empowering data scientists to develop innovative AI-driven solutions and creative applications.', url: 'https://example.com/generative-ai'}
+    ];
+
+    const coreContainer = document.getElementById('core-fundamentals');
+    const otherContainer = document.getElementById('other-topics');
+
+    sections.forEach((sec, index) => {
+      const sectionDiv = document.createElement('div');
+      const reverseClass = index % 2 === 1 ? ' RDMAPV1-reverse' : '';
+      sectionDiv.className = `RDMAPV1-section${reverseClass}`;
+      sectionDiv.innerHTML = `
+        <div class="RDMAPV1-section-number">
+          <span class="RDMAPV1-text-huge RDMAPV1-font-extrabold ${sec.gradient}">${sec.id}</span>
+        </div>
+        <div class="RDMAPV1-section-content">
+          <p class="RDMAPV1-font-medium RDMAPV1-mb-3 RDMAPV1-text-lg RDMAPV1-text-black">${sec.intro}</p>
+          <h1 class="RDMAPV1-text-4xl RDMAPV1-font-extrabold RDMAPV1-leading-tight RDMAPV1-mb-5 ${sec.gradient}">${sec.title}</h1>
+          <p class="RDMAPV1-text-xl RDMAPV1-leading-relaxed RDMAPV1-max-w-xl RDMAPV1-mx-auto RDMAPV1-mb-6 RDMAPV1-text-black">${sec.description}</p>
+          <a href="${sec.url}" class="RDMAPV1-button RDMAPV1-rounded-full RDMAPV1-px-6 RDMAPV1-py-3 RDMAPV1-text-lg RDMAPV1-inline-block">View resources</a>
+        </div>
+      `;
+
+      if(sec.id <= 7) {
+        coreContainer.appendChild(sectionDiv);
+      } else {
+        otherContainer.appendChild(sectionDiv);
+      }
     });
 
-    // Remove 'active' class from all tab buttons
-    const tabButtons = document.querySelectorAll(".RDMAP-tab");
-    tabButtons.forEach((btn) => btn.classList.remove("active"));
-
-    // Show the selected tab content
-    const tabToShow = document.getElementById(tabId);
-    if (tabToShow) {
-        tabToShow.style.display = "flex";
-        tabToShow.classList.add("active");
+    // Fullscreen functionality
+    function openFullscreen() {
+      const overlay = document.getElementById('fullscreen-overlay');
+      overlay.classList.add('RDMAPV1-active');
+      document.body.style.overflow = 'hidden';
     }
 
-    // Add 'active' class to the clicked tab button
-    if (buttonElement) {
-        buttonElement.classList.add("active");
+    function closeFullscreen() {
+      const overlay = document.getElementById('fullscreen-overlay');
+      overlay.classList.remove('RDMAPV1-active');
+      document.body.style.overflow = 'auto';
     }
-}
 
-// Add click handlers to tabs dynamically (optional)
-const tabButtons = document.querySelectorAll(".RDMAP-tab");
-tabButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-        const tabId = btn.getAttribute("onclick").match(/'(.+)'/)[1];
-        showTab(tabId, btn);
+    // Close fullscreen on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeFullscreen();
+      }
     });
-});
 
-// Show Tab 1 by default
-showTab("RDMAP-tab1", document.querySelector(".RDMAP-tab"));
-</script>
+    // Existing showIframe function (if needed)
+    function showIframe() {
+      // Your existing iframe load logic here
+    }
+  </script>
 
-      </body>
+</body>
 </html>

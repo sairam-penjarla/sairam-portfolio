@@ -236,6 +236,7 @@
 
                               const PROJECTCard = document.createElement("div");
                               PROJECTCard.className = "PROJECTCard";
+                              PROJECTCard.classList.add("mobile-PROJECTCard");
                               PROJECTCard.innerHTML = `
       <img src="${project.image}" alt="${project.title}" class="project-image">
       <div class="PROJECTCard-content">
@@ -285,11 +286,12 @@
                         card.style.left = "0";
                         card.style.width = "-webkit-fill-available";
                         card.style.height = "-webkit-fill-available";
-                        card.style.margin = "50px";
+                        card.style.margin = "0px";
                         card.style.zIndex = "9999";
                         card.style.backgroundColor = "white";
                         card.style.overflow = "auto";
                         card.style.boxSizing = "border-box";
+                        card.style.borderRadius = "0px";
 
                         // Hide the original image
                         const originalImage = card.querySelector(".project-image");
@@ -333,6 +335,7 @@
                         card.style.backgroundColor = "";
                         card.style.overflow = "";
                         card.style.boxSizing = "";
+                        card.style.borderRadius = "var(--outer-border-radius)";
 
                         // Show the original image
                         const originalImage = card.querySelector(".project-image");
