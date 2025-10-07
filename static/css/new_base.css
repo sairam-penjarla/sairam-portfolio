@@ -24,11 +24,13 @@ body {
       flex-direction: column;
       font-family: Arial, sans-serif;
       background: #f8f9fa;
-      min-height: 100vh;
+      /* min-height: 100vh; */
       line-height: 1.6;
       padding: 0;
       overflow-x: hidden;
       position: relative;
+      height: -webkit-fill-available;
+      max-width: -webkit-fill-available;
 }
 
 .section-title {
@@ -5394,7 +5396,7 @@ aside#sidebar .close-button {
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      background: #3b82f6;
+      background: var(--primary-highlight-color);
       color: white;
       border: none;
       display: none;
@@ -5464,11 +5466,7 @@ aside#sidebar .close-button {
             gap: 16px;
       }
 
-      .PROJECTmain-content {
-            padding: 16px;
-            margin-top: 64px;
-            height: 100%;
-      }
+      
       .PROJECTcontainer {
             margin-top: 0px;
       }

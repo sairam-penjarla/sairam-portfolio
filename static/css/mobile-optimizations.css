@@ -497,6 +497,9 @@
       }
       .tutorials-section {
             padding: 30px;
+            max-width: 310px;
+            overflow: hidden;
+            align-self: center;
       }
 
       .content-wrapper {
@@ -673,4 +676,14 @@
       .RDMAPV1-text-huge {
             font-size: 250px;
       }
+      .PROJECTmain-content {
+            padding: 30px;
+            /* margin-top: 48px; */
+            height: 100%;
+      }
+      .PROJECTcontainer {
+      display: flex;
+      height: calc(100vh - 0px);
+      margin-top: 49px;
+}
 }
