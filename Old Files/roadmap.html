@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modular Dashboard UI</title>
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar for the sidebar (only active on desktop view) */
+        @media (min-width: 1024px) {
+            #sidebar::-webkit-scrollbar {
+                width: 6px;
+            }
+            #sidebar::-webkit-scrollbar-thumb {
+                background-color: #057d61; /* Darker variant of the primary color */
+                border-radius: 3px;
+            }
+            #sidebar::-webkit-scrollbar-track {
+                background-color: #06987120;
+            }
+        }
+    </style>
+    <script>
+        // Custom Tailwind configuration to use the requested color (#069871)
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#069871', // Your specified color
+                        'primary-dark': '#057d61',
+                        'primary-light': '#36a88b',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+
+        // JavaScript for Tab Switching
+        function switchTab(tabId, button) {
+            // Hide all tab content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            // Show the selected tab content
+            document.getElementById(tabId).classList.remove('hidden');
+
+            // Deactivate all tab buttons
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('border-primary', 'text-primary', 'font-semibold');
+                btn.classList.add('border-transparent', 'text-gray-500', 'hover:text-primary-light');
+            });
+
+            // Activate the clicked button
+            button.classList.add('border-primary', 'text-primary', 'font-semibold');
+            button.classList.remove('border-transparent', 'text-gray-500', 'hover:text-primary-light');
+
+            // NOTE: Removed toggleSidebar() call here.
+            // Tab switching in the main content area should NOT close the sidebar.
+        }
+
+        // JavaScript for Sidebar Toggling (Mobile View Only)
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            // Toggle the translation class to show/hide the menu
+            sidebar.classList.toggle('-translate-x-full');
+            
+            // Toggle body overflow to prevent background scrolling when menu is open
+            document.body.classList.toggle('overflow-hidden');
+        }
+        
+        // Initial setup on load
+        window.onload = () => {
+            // Automatically select the first tab
+            const initialButton = document.querySelector('.tab-button');
+            if (initialButton) {
+                switchTab('tab-overview', initialButton);
+            }
+        };
+    </script>
+</head>
+<!-- 
+    Body class set to allow scroll on mobile (min-h-screen) but fixed height on desktop (lg:h-screen lg:overflow-hidden)
+-->
+<body class="bg-gray-50 font-sans flex flex-col lg:flex-row min-h-screen lg:h-screen">
+
+    <!-- 1. Sidebar -->
+    <!-- 
+        Mobile: fixed inset-0 z-50 w-full h-full, hidden by default (-translate-x-full). 
+        Desktop (lg:): static, w-64, permanently visible (transform-none).
+    -->
+    <aside id="sidebar" class="fixed inset-0 z-50 w-full bg-white transform -translate-x-full transition-transform duration-300 lg:static lg:w-64 lg:transform-none lg:border-r lg:overflow-y-auto shadow-xl">
+        
+        <!-- Sidebar Header (visible on mobile only, acts as the closing area) -->
+        <div class="px-4 py-3 border-b border-gray-200 flex justify-between items-center lg:hidden">
+            <h3 class="text-lg font-bold text-primary-dark">Navigation Modules</h3>
+            <button onclick="toggleSidebar()" class="p-2 text-gray-700 hover:text-primary rounded-full">
+                <!-- Close Icon (X) -->
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+
+        <!-- Sidebar Navigation Content -->
+        <nav class="space-y-2 p-4">
+            <!-- Module 1 -->
+            <div>
+                <div class="w-full px-4 py-2 text-left text-lg font-medium text-gray-700 rounded-lg">
+                    Module A: Introduction
+                </div>
+                <div id="module-a-topics" class="pl-4 space-y-1 mt-1">
+                    <!-- Link Clicks close the menu on mobile -->
+                    <a href="#" onclick="if (window.innerWidth < 1024) toggleSidebar()" class="block px-4 py-1.5 text-sm text-gray-600 hover:text-primary-dark hover:bg-primary-light/10 rounded-md transition duration-150">Topic 1: Setup</a>
+                    <a href="#" onclick="if (window.innerWidth < 1024) toggleSidebar()" class="block px-4 py-1.5 text-sm text-gray-600 hover:text-primary-dark hover:bg-primary-light/10 rounded-md transition duration-150">Topic 2: Basics</a>
+                    <a href="#" onclick="if (window.innerWidth < 1024) toggleSidebar()" class="block px-4 py-1.5 text-sm text-primary font-medium bg-primary/10 rounded-md transition duration-150">Topic 3: Current Focus</a>
+                </div>
+            </div>
+
+            <!-- Module 2 -->
+            <div>
+                <div class="w-full px-4 py-2 text-left text-lg font-medium text-gray-700 rounded-lg">
+                    Module B: Core Concepts
+                </div>
+                <div id="module-b-topics" class="pl-4 space-y-1 mt-1">
+                    <a href="#" onclick="if (window.innerWidth < 1024) toggleSidebar()" class="block px-4 py-1.5 text-sm text-gray-600 hover:text-primary-dark hover:bg-primary-light/10 rounded-md transition duration-150">Topic 1: Data Flow</a>
+                    <a href="#" onclick="if (window.innerWidth < 1024) toggleSidebar()" class="block px-4 py-1.5 text-sm text-gray-600 hover:text-primary-dark hover:bg-primary-light/10 rounded-md transition duration-150">Topic 2: Architecture</a>
+                </div>
+            </div>
+            
+            <!-- Module 3 -->
+            <div>
+                <a href="#" onclick="if (window.innerWidth < 1024) toggleSidebar()" class="w-full flex items-center px-4 py-2 text-left text-lg font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition duration-150">
+                    Module C: Summary
+                </a>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- 2. Main Content Area -->
+    <main class="flex-1 lg:overflow-y-auto p-4 sm:p-8 lg:p-12 w-full">
+        
+        <header class="mb-8 flex justify-between items-center">
+            <hgroup>
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-800">
+                    Dashboard & Report View
+                </h2>
+                <p class="text-gray-500 mt-1">Focusing on Topic 3: Current Focus</p>
+            </hgroup>
+            
+            <!-- Mobile Menu Button (Hamburger) - visible only on small screens -->
+            <button onclick="toggleSidebar()" class="lg:hidden p-2 text-gray-700 hover:text-primary rounded-lg border border-gray-200 shadow-sm transition duration-150">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </header>
+
+        <!-- Tab Navigation -->
+        <div class="border-b border-gray-200 mb-6">
+            <nav class="flex space-x-2 sm:space-x-4 -mb-px">
+                <button id="tab-btn-overview" onclick="switchTab('tab-overview', this)" class="tab-button py-3 px-3 sm:px-4 text-xs sm:text-sm font-medium border-b-2 transition duration-200">
+                    Overview Report
+                </button>
+                <button id="tab-btn-details" onclick="switchTab('tab-details', this)" class="tab-button py-3 px-3 sm:px-4 text-xs sm:text-sm font-medium border-b-2 transition duration-200">
+                    Configuration Details
+                </button>
+            </nav>
+        </div>
+
+        <!-- Tab Content 1: Overview Report - Empty -->
+        <div id="tab-overview" class="tab-content">
+            <div class="p-6">
+                <p class="text-gray-500 italic">This tab is currently empty as requested.</p>
+            </div>
+        </div>
+
+        <!-- Tab Content 2: Configuration Details - Empty -->
+        <div id="tab-details" class="tab-content hidden">
+            <div class="p-6">
+                <p class="text-gray-500 italic">This tab is currently empty as requested.</p>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>

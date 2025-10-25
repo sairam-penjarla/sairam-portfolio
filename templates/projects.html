@@ -1,56 +1,250 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>{{ category.replace('-', ' ').title() }} Projects - Sai Ram Penjarla</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/projects_styles.css') }}" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-    </head>
-    <body>
-        {% include 'header.html' %}
-        <div class="container">
-            <div class="course-header">
-                <h1>{{ category.replace('-', ' ').title() }} <span class="highlight-text">Projects</span></h1>
-                <p class="course-description">Build your skills with hands-on projects</p>
-            </div>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects with Fullscreen Docs Popup</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    #article-body p, 
+    #article-body ul, 
+    #article-body ol, 
+    #article-body blockquote,
+    #article-body h2,
+    #article-body h3 {
+      margin-top: 1.5rem;
+      margin-bottom: 0; 
+      line-height: 1.75;
+    }
 
-            <div class="course-grid">
-                {% for blog in blogs %}
-                <div class="course-card">
-                    <a href="/projects/{{ category }}/{{ blog.slug }}" class="course-content">
-                        <h3 class="course-title">
-                            <i class="fas fa-chevron-right course-arrow"></i>
-                            {{ blog.title }}
-                        </h3>
-                        {% if blog.subtitle %}
-                        <p class="course-subtitle">{{ blog.subtitle }}</p>
-                        {% endif %}
-                    </a>
-                    <div class="course-icon">
-                        {% if category == 'python' %}
-                            <i class="fab fa-python"></i>
-                        {% elif category == 'machine-learning' %}
-                            <i class="fas fa-brain"></i>
-                        {% elif category == 'deep-learning' %}
-                            <i class="fas fa-network-wired"></i>
-                        {% elif category == 'nlp' %}
-                            <i class="fas fa-comment-dots"></i>
-                        {% elif category == 'computer-vision' %}
-                            <i class="fas fa-eye"></i>
-                        {% elif category == 'gen-ai' %}
-                            <i class="fas fa-robot"></i>
-                        {% else %}
-                            <i class="fas fa-code"></i>
-                        {% endif %}
-                    </div>
-                    <div class="course-tech">
-                        <span class="tech-tag">{{ category }}</span>
-                    </div>
-                </div>
-                {% endfor %}
+    #article-body h2 {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: #1f2937;
+      margin-top: 3rem;
+    }
+    
+    #article-body > *:first-child {
+      margin-top: 0;
+    }
+
+    #article-body ul {
+      list-style-type: disc;
+      margin-left: 2rem;
+      padding-left: 0.5rem;
+    }
+    
+    #article-body li {
+      margin-bottom: 0.5rem;
+    }
+
+    #article-body hr {
+      border-top: 1px solid #e5e7eb;
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    #article-body h1 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 1rem;
+    }
+
+    #article-body h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #374151;
+      margin-top: 2rem;
+    }
+
+    #article-body strong {
+      font-weight: 600;
+      color: #111827;
+    }
+
+    #article-body code {
+      background-color: #f3f4f6;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-size: 0.875rem;
+    }
+
+    #article-body pre {
+      background-color: #f9fafb;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+      margin-top: 1.5rem;
+    }
+  </style>
+</head>
+<body class="bg-[#fafafa] text-gray-900">
+    {% include 'common/header.html' %}
+  <main class="max-w-6xl mx-auto px-4 py-12">
+    <h3 class="text-5xl md:text-9xl font-bold leading-snug text-gray-900 mb-8 mt-6 md:mt-10 text-primary italic" style="font-family: serif">Projects</h3>
+
+    <!-- Filters -->
+    <div class="flex flex-col gap-6 mb-8">
+      <div>
+        <h3 class="text-sm font-semibold text-gray-700 mb-2">Filter by Domain</h3>
+        <div id="domainButtons" class="flex flex-wrap gap-2 mb-2"></div>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-gray-700 mb-2">Filter by Platform</h3>
+        <div id="platformButtons" class="flex flex-wrap gap-2"></div>
+      </div>
+    </div>
+
+    <div id="projectsContainer" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+  </main>
+
+  <!-- Fullscreen Popup Modal -->
+  <div id="docModal" class="fixed hidden inset-0 bg-white z-50 overflow-auto">
+    <div class="bg-white w-full max-w-3xl mx-auto px-8 py-12 relative">
+      <!-- Close Button -->
+      <button id="closeModal" class="fixed top-6 right-6 text-gray-400 hover:text-gray-600 p-2 rounded-lg hover:bg-gray-100 transition-all duration-200 z-50">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path d="M18 6 6 18"></path>
+          <path d="M6 6 18 18"></path>
+        </svg>
+      </button>
+
+      <!-- Modal Content -->
+      <div class="w-full">
+        <!-- Image -->
+        <div class="relative w-full h-72 mb-8 rounded-xl overflow-hidden shadow-sm">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <h2 id="modalTitle" class="p-8 text-white text-5xl font-semibold italic" style="font-family: serif"></h2>
             </div>
+            <img id="modalImage" src="" alt="Project Image" class="w-full h-full object-cover">
         </div>
-        {% include 'footer.html' %}
-    </body>
+
+        <!-- Tech Stack Tags -->
+        <div id="techStack" class="flex flex-wrap gap-2 mb-8"></div>
+
+        <!-- Article Body (Markdown Content) -->
+        <div id="article-body" class="text-gray-700"></div>
+      </div>
+    </div>
+  </div>
+  {% include 'common/footer.html' %}
+
+  <script>
+    const projects = {{ projects | safe }};
+
+    const markdownDocs = {{ markdown_projects | safe }};
+
+    function renderProjects(data) {
+      const container = document.getElementById('projectsContainer');
+      container.innerHTML = data.map(project => `<div class="bg-white rounded-2xl overflow-hidden shadow-card border border-gray-100 transition-shadow duration-300 hover:shadow-lg flex flex-col">
+    <div class="aspect-[16/10] w-full relative overflow-hidden bg-gray-200">
+        <img src="${project.image}" alt="${project.title}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105" onerror="this.onerror=null;this.src='https://placehold.co/400x250/a0a0a0/ffffff?text=Image+Load+Error';">
+    </div>
+    <div class="p-6 flex flex-col flex-grow">
+        <h2 class="text-3xl font-medium mb-4">${project.title}</h2>
+        <p class="text-sm text-gray-600 mb-4 leading-relaxed">${project.description}</p>
+        <div class="flex items-center gap-2 text-xs mb-4">
+          <span class="px-2 py-1 bg-gray-100 border border-gray-200 rounded-md text-gray-700">${project.domain}</span>
+          <span class="px-2 py-1 bg-gray-100 border border-gray-200 rounded-md text-gray-700">${project.platform}</span>
+        </div>
+        <div class="mb-4">
+          <h4 class="text-xs font-medium mb-2 text-gray-700">Tech Stack</h4>
+          <div class="flex flex-wrap gap-2">
+            ${project.tech_stack.map(tech => `<span class='px-2 py-1 text-[11px] bg-gray-50 border border-gray-200 rounded-md text-gray-700'>${tech}</span>`).join('')}
+          </div>
+        </div>
+        <div class="mt-auto flex items-center justify-between gap-2 pt-3 border-t border-gray-100">
+          ${project.demo_url ? `<a href="${project.demo_url}" target="_blank" class="px-3 py-2 bg-black text-white text-xs rounded-md hover:bg-gray-800 transition-colors">View Demo</a>` : `<button class="px-3 py-2 bg-gray-200 text-gray-500 text-xs rounded-md cursor-not-allowed">No Demo</button>`}
+          <button onclick="openMarkdown('${project.md_file}', '${project.image}', '${project.title}')" class="px-3 py-2 border border-gray-300 text-gray-700 text-xs rounded-md hover:bg-gray-50 transition-colors">Read Docs</button>
+        </div>
+    </div>
+</div>`).join('');
+    }
+
+    function openMarkdown(mdKey, img, title) {
+      modal.classList.remove('hidden');
+      const content = markdownDocs[mdKey] || 'No content available.';
+      document.getElementById('modalImage').src = img;
+      document.getElementById('modalTitle').textContent = title;
+      const articleBody = document.getElementById('article-body');
+      articleBody.innerHTML = marked.parse(content);
+    }
+
+    document.getElementById('closeModal').addEventListener('click', () => {
+      document.getElementById('docModal').classList.add('hidden');
+    });
+    
+    // Initialize
+    const modal = document.getElementById('docModal');
+    const closeBtn = document.getElementById('closeModal');
+    closeBtn.addEventListener('click', () => {
+      modal.classList.add('hidden');
+    });
+
+    // --- Filter code ---
+    let activeDomain = null;
+    let activePlatform = null;
+
+    function generateFilterButtons() {
+      const domainContainer = document.getElementById('domainButtons');
+      const platformContainer = document.getElementById('platformButtons');
+
+      const allDomainBtn = document.createElement('button');
+      allDomainBtn.className = 'filter-button px-6 py-1 text-base font-medium rounded-full bg-black text-white border-[1.5px] border-black cursor-pointer';
+      allDomainBtn.innerText = 'All';
+      allDomainBtn.addEventListener('click', () => { activeDomain = null; updateButtonStates('domain', allDomainBtn); applyFilters(); });
+      domainContainer.appendChild(allDomainBtn);
+
+      const domains = [...new Set(projects.map(p => p.domain))];
+      domains.forEach(domain => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-button px-6 py-1 text-base font-medium rounded-full whitespace-nowrap transition-all duration-200 ease-in-out cursor-pointer bg-white text-gray-900 border-[1.5px] border-[#a0a0a0] hover:border-[#6b7280] hover:shadow-sm';
+        btn.innerText = domain;
+        btn.dataset.value = domain;
+        btn.addEventListener('click', () => toggleFilter('domain', domain, btn));
+        domainContainer.appendChild(btn);
+      });
+
+      const allPlatformBtn = document.createElement('button');
+      allPlatformBtn.className = 'filter-button px-6 py-1 text-base font-medium rounded-full bg-black text-white border-[1.5px] border-black cursor-pointer';
+      allPlatformBtn.innerText = 'All';
+      allPlatformBtn.addEventListener('click', () => { activePlatform = null; updateButtonStates('platform', allPlatformBtn); applyFilters(); });
+      platformContainer.appendChild(allPlatformBtn);
+
+      const platforms = [...new Set(projects.map(p => p.platform))];
+      platforms.forEach(platform => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-button px-6 py-1 text-base font-medium rounded-full whitespace-nowrap transition-all duration-200 ease-in-out cursor-pointer bg-white text-gray-900 border-[1.5px] border-[#a0a0a0] hover:border-[#6b7280] hover:shadow-sm';
+        btn.innerText = platform;
+        btn.dataset.value = platform;
+        btn.addEventListener('click', () => toggleFilter('platform', platform, btn));
+        platformContainer.appendChild(btn);
+      });
+    }
+
+    function updateButtonStates(type, activeBtn) {
+      const btns = type === 'domain' ? document.querySelectorAll('#domainButtons .filter-button') : document.querySelectorAll('#platformButtons .filter-button');
+      btns.forEach(b => b.classList.remove('bg-black','text-white'));
+      activeBtn.classList.add('bg-black','text-white');
+    }
+
+    function toggleFilter(type, value, btn) {
+      if(type === 'domain') { activeDomain = value; updateButtonStates('domain', btn); }
+      if(type === 'platform') { activePlatform = value; updateButtonStates('platform', btn); }
+      applyFilters();
+    }
+
+    function applyFilters() {
+      let filtered = projects;
+      if(activeDomain && activePlatform) filtered = projects.filter(p => p.domain === activeDomain && p.platform === activePlatform);
+      else if(activeDomain || activePlatform) filtered = projects.filter(p => p.domain === activeDomain || p.platform === activePlatform);
+      renderProjects(filtered);
+    }
+
+    renderProjects(projects);
+    generateFilterButtons();
+  </script>
+</body>
 </html>

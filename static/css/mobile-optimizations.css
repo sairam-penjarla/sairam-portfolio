@@ -112,15 +112,6 @@
       .PROJECTmobile-overlay {
             display: none;
       }
-      .grid {
-            grid-template-columns: 1fr;
-            padding: 0px;
-            justify-content: center;
-            align-items: center;
-            display: flex;
-            flex-direction: column;
-            background-color: #ffffff;
-      }
       .prompt-choose-card {
             /* width: 960px; */
       }
@@ -685,5 +676,8 @@
       display: flex;
       height: calc(100vh - 0px);
       margin-top: 49px;
+}
+.TESTIMONIAL-carousel{
+      width: 314px;
 }
 }

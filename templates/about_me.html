@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+      <head>
+            <meta charset="UTF-8" />
+            <title>Sai Ram Penjarla</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <script src="https://cdn.tailwindcss.com"></script>
+            <style>
+                  :root {
+                        --brand-primary: #2267af;
+                        --brand-secondary: #1a5390;
+                        --brand-tertiary: #0d4373;
+                        --bg-primary: #ffffff;
+                        --bg-secondary: #f4f6f8;
+                  }
+                  * {
+                        -webkit-font-smoothing: antialiased;
+                        -moz-osx-font-smoothing: grayscale;
+                  }
+                  /* Custom utility to simplify the main heading color */
+                  .text-primary-blue {
+                        color: var(--brand-primary);
+                  }
+                  /* Ensure SVGs inherit the color of their parent anchor tag for hover effects */
+                  .social-icon svg {
+                        stroke: currentColor;
+                  }
+                  .shadow-premium {
+                        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 0 1px rgba(0, 0, 0, 0.04);
+                  }
+                  .shadow-card {
+                        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04), 0 0 1px rgba(0, 0, 0, 0.02);
+                  }
+                  .shadow-button {
+                        box-shadow: 0 1px 3px rgba(34, 103, 175, 0.12), 0 1px 2px rgba(34, 103, 175, 0.08);
+                  }
+                  .btn-primary {
+                        background: linear-gradient(135deg, #2267af 0%, #1a5390 100%);
+                        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+                  }
+                  .btn-primary:hover {
+                        background: linear-gradient(135deg, #1a5390 0%, #0d4373 100%);
+                        transform: translateY(-1px);
+                        box-shadow: 0 4px 12px rgba(34, 103, 175, 0.2), 0 2px 4px rgba(34, 103, 175, 0.12);
+                  }
+                  .btn-primary:active {
+                        transform: translateY(0);
+                  }
+                  .btn-secondary {
+                        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+                  }
+                  .btn-secondary:hover {
+                        transform: translateY(-1px);
+                        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+                  }
+                  .btn-secondary:active {
+                        transform: translateY(0);
+                  }
+                  .card-hover {
+                        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                  }
+                  .card-hover:hover {
+                        transform: translateY(-4px);
+                        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+                  }
+                  .gradient-line {
+                        background: linear-gradient(90deg, #2267af 0%, rgba(34, 103, 175, 0.4) 70%, rgba(34, 103, 175, 0) 100%);
+                  }
+                  .tag-pill {
+                        transition: all 0.2s ease;
+                  }
+                  .tag-pill:hover {
+                        background-color: #e5f0fa;
+                        color: #1a5390;
+                  }
+            </style>
+      </head>
+      <body>
+            {% include 'common/header.html' %}
+            <!-- HERO SECTION -->
+            <section class="w-full py-12 md:py-20 lg:py-24 mt-12">
+                  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <!-- Main Content Container: Reverse column on small screens (image first, then text), row on medium screens and up -->
+                        <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-10 lg:gap-16">
+                              <!-- TEXT & ACTION BLOCK (Left/Top) -->
+                              <div class="flex-1 w-full text-center md:text-left rounded-xl p-4 md:p-0">
+                                    <!-- Greeting and Main Headline -->
+                                    <p class="text-3xl sm:text-15xl lg:text-4xl font-black leading-tight mb-6 md:mb-8 headline-serif text-gray-800" style="font-family: serif">Hi, I am Sai Ram</p>
+                                    <h1 class="text-3xl sm:text-5xl lg:text-4xl font-black italic leading-tight mb-6 md:mb-8 text-primary-blue" style="font-family: serif">I solve messy business problems using smarter AI and not just bigger buzzwords.</h1>
+                                    <!-- Social Media Quick Buttons (using SVGs) -->
+                                    <div class="flex justify-center md:justify-start space-x-4 mb-8 md:mb-10">
+                                          <!-- LinkedIn -->
+                                          <a href="https://www.linkedin.com/in/sairam-penjarla-b5041b121/" target="_blank" class="social-icon text-primary-blue hover:text-blue-700 transition duration-300 p-3 rounded-full shadow-md">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin-icon lucide-linkedin">
+                                                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                                      <rect width="4" height="12" x="2" y="9" />
+                                                      <circle cx="4" cy="4" r="2" />
+                                                </svg>
+                                          </a>
+                                          <!-- YouTube -->
+                                          <a href="http://youtube.com/@sairampenjarla" target="_blank" class="social-icon text-primary-blue hover:text-red-600 transition duration-300 p-3 rounded-full shadow-md">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube-icon lucide-youtube">
+                                                      <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
+                                                      <path d="m10 15 5-3-5-3z" />
+                                                </svg>
+                                          </a>
+                                          <!-- GitHub -->
+                                          <a href="https://github.com/sairam-penjarla" target="_blank" class="social-icon text-primary-blue hover:text-gray-800 transition duration-300 p-3 rounded-full shadow-md">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github-icon lucide-github">
+                                                      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                                                      <path d="M9 18c-4.51 2-5-2-7-2" />
+                                                </svg>
+                                          </a>
+                                          <!-- Instagram -->
+                                          <a href="https://www.instagram.com/sairam.ipynb" target="_blank" class="social-icon text-primary-blue hover:text-pink-600 transition duration-300 p-3 rounded-full shadow-md">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram-icon lucide-instagram">
+                                                      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                                                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                                      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                                                </svg>
+                                          </a>
+                                    </div>
+                                    <!-- Quick Metrics Grid -->
+                                    <div class="flex justify-center md:justify-start flex-wrap gap-8">
+                                          <!-- Metric 1: Projects -->
+                                          <div class="flex w-max flex-col items-center md:items-start p-3">
+                                                <p class="text-3xl font-extrabold text-primary-blue">30+</p>
+                                                <p class="text-sm font-medium text-gray-600">Projects</p>
+                                          </div>
+                                          <!-- Metric 2: Stakeholders -->
+                                          <div class="flex w-max flex-col items-center md:items-start p-3">
+                                                <p class="text-3xl font-extrabold text-primary-blue">20+</p>
+                                                <p class="text-sm font-medium text-gray-600">Stakeholders</p>
+                                          </div>
+                                          <!-- Metric 3: Users (Visible on all screen sizes now for better information flow) -->
+                                          <div class="flex w-max flex-col items-center md:items-start p-3">
+                                                <p class="text-3xl font-extrabold text-primary-blue">100+</p>
+                                                <p class="text-sm font-medium text-gray-600">Impacted Users</p>
+                                          </div>
+                                    </div>
+                              </div>
+                              <!-- IMAGE BLOCK (Right/Bottom) -->
+                              <!-- The image block is now designed to take up less width on smaller screens and a fluid max width on larger screens -->
+                              <div class="flex-1 flex justify-center md:justify-end w-full max-w-lg md:max-w-xl">
+                                    <img src="https://iamsairamsa.blob.core.windows.net/static/images/webpage/langing_page_photo.webp" alt="Sai Ram Penjarla - AI Solutions Expert" onerror="this.onerror=null; this.src='https://placehold.co/400x400/2267af/ffffff?text=Sai+Ram'" class="w-full h-auto object-cover transition duration-500" draggable="false" />
+                              </div>
+                        </div>
+                  </div>
+            </section>
+            <!-- project Section -->
+            <section class="rounded-[40px] w-full bg-white border-b border-gray-100 py-[80px]">
+                  <div class="w-full mb-16">
+                        <div class="w-full max-w-[1200px] mx-auto flex items-center justify-start">
+                              <h2 class="text-3xl sm:text-[40px] font-black italic text-gray-900 leading-none mr-4 sm:mr-6" style="font-family: serif">The Smartest Thing I've Built (So Far)</h2>
+                              <div class="hidden sm:block h-[3.5px] w-full max-w-[60%] bg-gradient-to-r from-[#2267af] to-[#2267af]/0 rounded-full"></div>
+                        </div>
+                  </div>
+                  <div class="w-full max-w-[1200px] mx-auto sm:px-6">
+                        <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+                              <div class="w-full lg:w-[52%] order-2 lg:order-1">
+                                    <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-50 rounded-full mb-6">
+                                          <div class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                                          <span class="text-xs font-medium text-blue-700 tracking-wide uppercase">Featured Project</span>
+                                    </div>
+                                    <h2 class="text-[20px] sm:text-20px] lg:text-[36px] font-semibold text-gray-900 mb-4 leading-[1.2] tracking-tight">AI-Powered ChatGPT Clone with Advanced Agent Orchestration</h2>
+                                    <p class="text-[10px] sm:text-[15px] text-gray-600 mb-6 leading-[1.7] font-normal">This isn't just another chatbot—it's a productivity platform. Save and reuse prompts, organize sessions into projects, generate images and videos, send emails, search across Microsoft apps, build charts, and analyze files.</p>
+                                    <p class="text-[10px] sm:text-[15px] text-gray-600 mb-8 leading-[1.7] font-normal">Powered by OpenAI Agents SDK, multiple specialized agents work together seamlessly, handing off tasks automatically. Think of it as ChatGPT supercharged with collaboration and enterprise integration.</p>
+                                    <div class="flex flex-wrap gap-2 mb-8">
+                                          <span class="tag-pill bg-gray-50 text-gray-700 text-[13px] font-medium px-4 py-2 rounded-full border border-gray-200">OpenAI Agents SDK</span>
+                                          <span class="tag-pill bg-gray-50 text-gray-700 text-[13px] font-medium px-4 py-2 rounded-full border border-gray-200">Multi-Agent</span>
+                                          <span class="tag-pill bg-gray-50 text-gray-700 text-[13px] font-medium px-4 py-2 rounded-full border border-gray-200">Prompt Library</span>
+                                          <span class="tag-pill bg-gray-50 text-gray-700 text-[13px] font-medium px-4 py-2 rounded-full border border-gray-200">Session Management</span>
+                                          <span class="tag-pill bg-gray-50 text-gray-700 text-[13px] font-medium px-4 py-2 rounded-full border border-gray-200">Image Generation</span>
+                                          <span class="tag-pill bg-gray-50 text-gray-700 text-[13px] font-medium px-4 py-2 rounded-full border border-gray-200">Email Automation</span>
+                                          <span class="tag-pill bg-gray-50 text-gray-700 text-[13px] font-medium px-4 py-2 rounded-full border border-gray-200">Microsoft Search</span>
+                                          <span class="tag-pill bg-gray-50 text-gray-700 text-[13px] font-medium px-4 py-2 rounded-full border border-gray-200">File Analysis</span>
+                                    </div>
+                                    <a href="https://chatgptclone1.azurewebsites.net/" target="_blank" class="btn-primary inline-flex items-center justify-center gap-2 text-white text-[15px] font-semibold px-8 py-3.5 rounded-xl shadow-button no-underline tracking-wide">
+                                          View Live Project
+                                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                          </svg>
+                                    </a>
+                              </div>
+                              <div class="w-full lg:w-[48%] order-1 lg:order-2">
+                                    <div class="relative rounded-2xl overflow-hidden shadow-premium bg-white">
+                                          <div class="aspect-[4/3] relative">
+                                                <img src="https://iamsairamsa.blob.core.windows.net/static/images/webpage/smartest-thing.webp" alt="AI ChatGPT Clone Interface" class="absolute inset-0 w-full h-full object-cover" draggable="false" />
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+            </section>
+            <!-- Projects Section -->
+            <section class="rounded-[40px] w-full bg-[#f4f6f8] border-b border-gray-100 py-[80px]">
+                  <div class="w-full mb-16">
+                        <div class="w-full max-w-[1200px] mx-auto flex items-center justify-start">
+                              <h2 class="text-3xl sm:text-[40px] font-black italic text-gray-900 leading-none mr-4 sm:mr-6" style="font-family: serif">My projects</h2>
+                              <div class="hidden sm:block h-[3.5px] w-full max-w-[60%] bg-gradient-to-r from-[#2267af] to-[#2267af]/0 rounded-full"></div>
+                        </div>
+                  </div>
+                  <div class="w-full max-w-[1200px] mx-auto sm:px-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
+                              <div class="card-hover bg-white h-full rounded-2xl overflow-hidden shadow-card border border-gray-100">
+                                    <div class="aspect-[16/10] relative overflow-hidden bg-gray-100">
+                                          <img src="https://iamsairamsa.blob.core.windows.net/static/images/webpage/home-proj-1.jpg" alt="AI Minutes of Meeting Generator" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105" draggable="false" />
+                                    </div>
+                                    <div class="p-7 lg:p-8">
+                                          <h3 class="text-[22px] lg:text-[24px] font-semibold text-gray-900 leading-tight mb-3 tracking-tight">AI Minutes of Meeting Generator</h3>
+                                          <p class="text-[15px] text-gray-600 leading-[1.7] font-normal">Automatically capture, summarize, and organize meeting discussions into structured minutes. Save time and never miss an action item.</p>
+                                    </div>
+                              </div>
+                              <div class="card-hover bg-white h-full rounded-2xl overflow-hidden shadow-card border border-gray-100">
+                                    <div class="aspect-[16/10] relative overflow-hidden bg-gray-100">
+                                          <img src="https://iamsairamsa.blob.core.windows.net/static/images/webpage/home-proj-2.jpg" alt="AI RAG Virtual Assistant" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105" draggable="false" />
+                                    </div>
+                                    <div class="p-7 lg:p-8">
+                                          <h3 class="text-[22px] lg:text-[24px] font-semibold text-gray-900 leading-tight mb-3 tracking-tight">AI RAG Virtual Assistant</h3>
+                                          <p class="text-[15px] text-gray-600 leading-[1.7] font-normal">A Retrieval-Augmented Generation assistant that connects to your enterprise knowledge base with context-aware intelligence.</p>
+                                    </div>
+                              </div>
+                              <div class="card-hover bg-white h-full rounded-2xl overflow-hidden shadow-card border border-gray-100">
+                                    <div class="aspect-[16/10] relative overflow-hidden bg-gray-100">
+                                          <img src="https://iamsairamsa.blob.core.windows.net/static/images/webpage/home-proj-3.jpg" alt="AI PPT Generator" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105" draggable="false" />
+                                    </div>
+                                    <div class="p-7 lg:p-8">
+                                          <h3 class="text-[22px] lg:text-[24px] font-semibold text-gray-900 leading-tight mb-3 tracking-tight">AI PowerPoint Generator</h3>
+                                          <p class="text-[15px] text-gray-600 leading-[1.7] font-normal">Create professional presentations in minutes. Provide your ideas and let AI generate slides, layouts, and design themes.</p>
+                                    </div>
+                              </div>
+                        </div>
+                        <div class="flex justify-center">
+                              <a href="/projects" target="_blank" class="btn-secondary inline-flex items-center justify-center gap-2 bg-gray-900 hover:bg-gray-800 text-white text-[15px] font-semibold px-8 py-3.5 rounded-xl shadow-card" type="button">
+                                    View All Projects
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                              </a>
+                        </div>
+                  </div>
+            </section>
+            <!-- Carousel Section -->
+            <section class="rounded-[40px] w-full bg-white border-b border-gray-100 py-[80px]">
+                  <style>
+                        body {
+                              font-family: Arial, sans-serif;
+                        }
+                        #carousel {
+                              -ms-overflow-style: none;
+                              scrollbar-width: none;
+                              scroll-snap-type: x mandatory;
+                        }
+                        #carousel::-webkit-scrollbar {
+                              display: none;
+                        }
+                        .carousel-item {
+                              scroll-snap-align: start;
+                        }
+                  </style>
+                  <div class="w-full mb-16">
+                        <div class="w-full max-w-[1200px] mx-auto flex items-center justify-start">
+                              <h2 class="text-3xl sm:text-[40px] font-black italic text-gray-900 leading-none mr-4 sm:mr-6" style="font-family: serif">Expertise Across Emerging AI Paradigms</h2>
+                              <div class="hidden sm:block h-[3.5px] w-full max-w-[60%] bg-gradient-to-r from-[#2267af] to-[#2267af]/0 rounded-full"></div>
+                        </div>
+                  </div>
+                  <div class="w-full flex justify-center items-center px-4 sm:px-6">
+                        <div class="relative w-full max-w-[1500px] overflow-hidden">
+                              <div id="carousel" class="flex overflow-x-scroll scroll-smooth pb-4 gap-5">
+                                    <!-- Card 1 -->
+                                    <a href="/error" target="_blank" class="carousel-item w-full md:w-[calc(50%-0.625rem)] lg:w-[400px] h-[400px] bg-white rounded-[24px] lg:rounded-[48px] flex-shrink-0 relative shadow-none transition duration-300 ease-out block hover:opacity-95">
+                                          <img src="https://iamsairamsa.blob.core.windows.net/static/images/webpage/g1.JPG" alt="Model Context Protocol (MCP)" class="w-full h-full object-cover rounded-[24px] lg:rounded-[48px]" draggable="false" />
+                                          <div class="absolute inset-0 bg-black/20 rounded-[24px] lg:rounded-[48px] flex items-center justify-center">
+                                                <span class="text-white text-2xl font-thin leading-tight drop-shadow-lg text-center">Model Context Protocol (MCP)</span>
+                                          </div>
+                                    </a>
+                                    <!-- Card 2 -->
+                                    <a href="https://youtube.com/playlist?list=PL9wcLF5LwK5DgqkRrRQOrPH0N1tLgo0gM&si=wnLO_PMa8sapRCe6" target="_blank" class="carousel-item w-full md:w-[calc(50%-0.625rem)] lg:w-[400px] h-[400px] bg-white rounded-[24px] lg:rounded-[48px] flex-shrink-0 relative shadow-none transition duration-300 ease-out block hover:opacity-95">
+                                          <img src="https://iamsairamsa.blob.core.windows.net/static/images/webpage/g4.JPG" alt="Retrieval-Augmented Generation (RAG)" class="w-full h-full object-cover rounded-[24px] lg:rounded-[48px]" draggable="false" />
+                                          <div class="absolute inset-0 bg-black/20 rounded-[24px] lg:rounded-[48px] flex items-center justify-center">
+                                                <span class="text-white text-2xl font-thin leading-tight drop-shadow-lg text-center">Retrieval-Augmented Generation (RAG)</span>
+                                          </div>
+                                    </a>
+                                    <!-- Card 3 -->
+                                    <a href="https://youtube.com/playlist?list=PL9wcLF5LwK5AMuWHVS5qZSeGomWx1E5SO&si=gpa9ed_PXHXLQK8y" target="_blank" class="carousel-item w-full md:w-[calc(50%-0.625rem)] lg:w-[400px] h-[400px] bg-white rounded-[24px] lg:rounded-[48px] flex-shrink-0 relative shadow-none transition duration-300 ease-out block hover:opacity-95">
+                                          <img src="https://iamsairamsa.blob.core.windows.net/static/images/webpage/g2.JPG" alt="Agentic AI" class="w-full h-full object-cover rounded-[24px] lg:rounded-[48px]" draggable="false" />
+                                          <div class="absolute inset-0 bg-black/20 rounded-[24px] lg:rounded-[48px] flex items-center justify-center">
+                                                <span class="text-white text-2xl font-thin leading-tight drop-shadow-lg text-center">Agentic AI</span>
+                                          </div>
+                                    </a>
+                                    <!-- Card 4 -->
+                                    <a href="https://www.youtube.com/playlist?list=PL9wcLF5LwK5Cht1Ttqq8Y1ZntD-inIJEM" target="_blank" class="carousel-item w-full md:w-[calc(50%-0.625rem)] lg:w-[400px] h-[400px] bg-white rounded-[24px] lg:rounded-[48px] flex-shrink-0 relative shadow-none transition duration-300 ease-out block hover:opacity-95">
+                                          <img src="https://iamsairamsa.blob.core.windows.net/static/images/webpage/g5.JPG" alt="AI Workflows" class="w-full h-full object-cover rounded-[24px] lg:rounded-[48px]" draggable="false" />
+                                          <div class="absolute inset-0 bg-black/20 rounded-[24px] lg:rounded-[48px] flex items-center justify-center">
+                                                <span class="text-white text-2xl font-thin leading-tight drop-shadow-lg text-center">AI Workflows</span>
+                                          </div>
+                                    </a>
+                                    <!-- Card 5 -->
+                                    <a href="https://youtu.be/N_VNhscF1o8?si=9mFcYxhuULtaQTIS" target="_blank" class="carousel-item w-full md:w-[calc(50%-0.625rem)] lg:w-[400px] h-[400px] bg-white rounded-[24px] lg:rounded-[48px] flex-shrink-0 relative shadow-none transition duration-300 ease-out block hover:opacity-95">
+                                          <img src="https://iamsairamsa.blob.core.windows.net/static/images/webpage/g3.JPG" alt="Agent Orchestration" class="w-full h-full object-cover rounded-[24px] lg:rounded-[48px]" draggable="false" />
+                                          <div class="absolute inset-0 bg-black/20 rounded-[24px] lg:rounded-[48px] flex items-center justify-center">
+                                                <span class="text-white text-2xl font-thin leading-tight drop-shadow-lg text-center">Agent Orchestration</span>
+                                          </div>
+                                    </a>
+                                    <!-- Card 6 -->
+                                    <a href="https://youtu.be/DlefbfnEMkM?si=w5VRLE6llXtmMy7v" target="_blank" class="carousel-item w-full md:w-[calc(50%-0.625rem)] lg:w-[400px] h-[400px] bg-white rounded-[24px] lg:rounded-[48px] flex-shrink-0 relative shadow-none transition duration-300 ease-out block hover:opacity-95">
+                                          <img src="https://iamsairamsa.blob.core.windows.net/static/images/webpage/g6.JPG" alt="Multimodal AI" class="w-full h-full object-cover rounded-[24px] lg:rounded-[48px]" draggable="false" />
+                                          <div class="absolute inset-0 bg-black/20 rounded-[24px] lg:rounded-[48px] flex items-center justify-center">
+                                                <span class="text-white text-2xl font-thin leading-tight drop-shadow-lg text-center">Multimodal AI</span>
+                                          </div>
+                                    </a>
+                                    <!-- Card 7 -->
+                                    <a href="https://youtu.be/cnww-CvDoRk?si=vJwoYFtS-jMxZdTL" target="_blank" class="carousel-item w-full md:w-[calc(50%-0.625rem)] lg:w-[400px] h-[400px] bg-white rounded-[24px] lg:rounded-[48px] flex-shrink-0 relative shadow-none transition duration-300 ease-out block hover:opacity-95">
+                                          <img src="https://iamsairamsa.blob.core.windows.net/static/images/webpage/g7.JPG" alt="Prompt Engineering" class="w-full h-full object-cover rounded-[24px] lg:rounded-[48px]" draggable="false" />
+                                          <div class="absolute inset-0 bg-black/20 rounded-[24px] lg:rounded-[48px] flex items-center justify-center">
+                                                <span class="text-white text-2xl font-thin leading-tight drop-shadow-lg text-center">Prompt Engineering</span>
+                                          </div>
+                                    </a>
+                                    <!-- Card 8 -->
+                                    <a href="https://youtu.be/x9gbquAfQmg?si=cCtbjIXMYVF5JH1v" target="_blank" class="carousel-item w-full md:w-[calc(50%-0.625rem)] lg:w-[400px] h-[400px] bg-white rounded-[24px] lg:rounded-[48px] flex-shrink-0 relative shadow-none transition duration-300 ease-out block hover:opacity-95">
+                                          <img src="https://iamsairamsa.blob.core.windows.net/static/images/webpage/g8.JPG" alt="Reasoning-Centric Models" class="w-full h-full object-cover rounded-[24px] lg:rounded-[48px]" draggable="false" />
+                                          <div class="absolute inset-0 bg-black/20 rounded-[24px] lg:rounded-[48px] flex items-center justify-center">
+                                                <span class="text-white text-2xl font-thin leading-tight drop-shadow-lg text-center">Reasoning-Centric Models</span>
+                                          </div>
+                                    </a>
+                              </div>
+                              <div class="flex items-center justify-center text-gray-700 text-sm font-medium mt-6 mb-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-blue-600">
+                                          <circle cx="12" cy="12" r="10" />
+                                          <path d="M12 16v-4" />
+                                          <path d="M12 8h.01" />
+                                    </svg>
+                                    <span>Click on any card to explore and read more about each topic.</span>
+                              </div>
+                              <div class="flex justify-center mt-8">
+                                    <div class="flex space-x-4">
+                                          <button id="prevBtn" class="bg-gray-800 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-600 transition duration-300 focus:outline-none" aria-label="Previous Slide">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+                                                      <path d="m15 18-6-6 6-6" />
+                                                </svg>
+                                          </button>
+                                          <button id="nextBtn" class="bg-gray-800 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-600 transition duration-300 focus:outline-none" aria-label="Next Slide">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+                                                      <path d="m9 18 6-6-6-6" />
+                                                </svg>
+                                          </button>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <script>
+                        const carousel = document.getElementById("carousel");
+                        const nextBtn = document.getElementById("nextBtn");
+                        const prevBtn = document.getElementById("prevBtn");
+
+                        nextBtn.addEventListener("click", () => {
+                              carousel.scrollBy({ left: 420, behavior: "smooth" });
+                        });
+
+                        prevBtn.addEventListener("click", () => {
+                              carousel.scrollBy({ left: -420, behavior: "smooth" });
+                        });
+                  </script>
+            </section>
+            <!-- Process Section -->
+            <section class="rounded-[40px] w-full bg-[#f4f6f8] border-b border-gray-100 py-[80px]">
+                  <style>
+                        .timeline-line {
+                              left: 20px;
+                        }
+                        .timeline-icon-container {
+                        }
+                        @media (min-width: 1024px) {
+                              .action-buttons-wrapper {
+                                    border-top: none;
+                                    margin-top: 0;
+                                    padding-top: 0;
+                              }
+                        }
+                  </style>
+                  <div class="w-full mb-16">
+                        <div class="w-full max-w-[1200px] mx-auto flex items-center justify-start">
+                              <h2 class="text-3xl sm:text-[40px] font-black italic text-gray-900 leading-none mr-4 sm:mr-6" style="font-family: serif">My process of working on projects</h2>
+                              <div class="hidden sm:block h-[3.5px] w-full max-w-[60%] bg-gradient-to-r from-[#2267af] to-[#2267af]/0 rounded-full"></div>
+                        </div>
+                  </div>
+                  <div class="w-full flex justify-center px-4">
+                        <!-- Main Flex Container: Wide screen (lg) displays side-by-side (flex-row) -->
+                        <div class="w-full max-w-[1200px] flex flex-col lg:flex-row lg:gap-16">
+                              <!-- 1. Timeline Section (Left) -->
+                              <!-- Restricting the max-width on large screens ensures the timeline path stays clean and narrow -->
+                              <div class="relative">
+                                    <!-- Vertical Line - Darker and thicker for visibility, centered at 20px -->
+                                    <div class="absolute top-8 bottom-8 timeline-line w-[3px] bg-gray-400 z-0"></div>
+                                    <!-- Timeline Items - Increased gap to gap-10 (40px) -->
+                                    <div class="relative flex flex-col gap-10">
+                                          <!-- Timeline Item Template -->
+                                          <!-- 1. Scoping -->
+                                          <div class="flex items-start gap-4 relative z-10">
+                                                <!-- Icon Container: Centered, colored background, shadow -->
+                                                <div class="w-10 h-10 rounded-full bg-[#f4f6f8] flex items-center justify-center shrink-0 timeline-icon-container">
+                                                      <img src="https://iamsairamsa.blob.core.windows.net/static/icons/search.svg" alt="Scoping" class="w-6 h-6 text-[#1457a1]" />
+                                                </div>
+                                                <!-- Text Content: Boxed for separation -->
+                                                <div class="p-3 rounded-xl -mt-2 w-full">
+                                                      <div class="text-[1.45rem] font-medium leading-tight mb-1">Scoping</div>
+                                                      <div class="text-[1.07rem] text-gray-700 font-normal leading-snug">Define project goals, objectives, and success metrics.</div>
+                                                </div>
+                                          </div>
+                                          <!-- 2. Solution Architecture -->
+                                          <div class="flex items-start gap-4 relative z-10">
+                                                <div class="w-10 h-10 rounded-full bg-[#f4f6f8] flex items-center justify-center shrink-0 timeline-icon-container">
+                                                      <img src="https://iamsairamsa.blob.core.windows.net/static/icons/globe.svg" alt="Solution Architecture" class="w-6 h-6 text-[#1457a1]" />
+                                                </div>
+                                                <div class="p-3 rounded-xl -mt-2 w-full">
+                                                      <div class="text-[1.45rem] font-medium leading-tight mb-1">Solution Architecture</div>
+                                                      <div class="text-[1.07rem] text-gray-700 font-normal leading-snug">Design the system architecture, including data pipelines and model deployment.</div>
+                                                </div>
+                                          </div>
+                                          <!-- 3. Initial POC -->
+                                          <div class="flex items-start gap-4 relative z-10">
+                                                <div class="w-10 h-10 rounded-full bg-[#f4f6f8] flex items-center justify-center shrink-0 timeline-icon-container">
+                                                      <img src="https://iamsairamsa.blob.core.windows.net/static/icons/brain.svg" alt="Initial POC" class="w-6 h-6 text-[#1457a1]" />
+                                                </div>
+                                                <div class="p-3 rounded-xl -mt-2 w-full">
+                                                      <div class="text-[1.45rem] font-medium leading-tight mb-1">Initial POC</div>
+                                                      <div class="text-[1.07rem] text-gray-700 font-normal leading-snug">Develop a minimal viable product to validate the core concept.</div>
+                                                </div>
+                                          </div>
+                                          <!-- 4. Refinement -->
+                                          <div class="flex items-start gap-4 relative z-10">
+                                                <div class="w-10 h-10 rounded-full bg-[#f4f6f8] flex items-center justify-center shrink-0 timeline-icon-container">
+                                                      <img src="https://iamsairamsa.blob.core.windows.net/static/icons/code.svg" alt="Refinement" class="w-6 h-6 text-[#1457a1]" />
+                                                </div>
+                                                <div class="p-3 rounded-xl -mt-2 w-full">
+                                                      <div class="text-[1.45rem] font-medium leading-tight mb-1">Refinement</div>
+                                                      <div class="text-[1.07rem] text-gray-700 font-normal leading-snug">Iterate on the POC based on feedback and performance metrics.</div>
+                                                </div>
+                                          </div>
+                                          <!-- 5. Productionizing -->
+                                          <div class="flex items-start gap-4 relative z-10">
+                                                <div class="w-10 h-10 rounded-full bg-[#f4f6f8] flex items-center justify-center shrink-0 timeline-icon-container">
+                                                      <img src="https://iamsairamsa.blob.core.windows.net/static/icons/rocket.svg" alt="Productionizing" class="w-6 h-6 text-[#1457a1]" />
+                                                </div>
+                                                <div class="p-3 rounded-xl -mt-2 w-full">
+                                                      <div class="text-[1.45rem] font-medium leading-tight mb-1">Productionizing</div>
+                                                      <div class="text-[1.07rem] text-gray-700 font-normal leading-snug">Prepare the solution for production, ensuring scalability and reliability.</div>
+                                                </div>
+                                          </div>
+                                          <!-- 6. Maintenance -->
+                                          <div class="flex items-start gap-4 relative z-10">
+                                                <div class="w-10 h-10 rounded-full bg-[#f4f6f8] flex items-center justify-center shrink-0 timeline-icon-container">
+                                                      <img src="https://iamsairamsa.blob.core.windows.net/static/icons/settings.svg" alt="Maintenance" class="w-6 h-6 text-[#1457a1]" />
+                                                </div>
+                                                <div class="p-3 rounded-xl -mt-2 w-full">
+                                                      <div class="text-[1.45rem] font-medium leading-tight mb-1">Maintenance</div>
+                                                      <div class="text-[1.07rem] text-gray-700 font-normal leading-snug">Monitor performance, address issues, and plan for updates and improvements.</div>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+                              <!-- 2. Action Buttons/Links Section (Right) -->
+                              <div class="lg:w-1/2">
+                                    <!-- Wrapper for the buttons section, which maintains vertical separation on mobile but removes the border/margin on desktop (lg) -->
+                                    <div class="mt-12 pt-6 border-t border-gray-300 action-buttons-wrapper lg:mt-0 lg:pt-0 lg:border-t-0">
+                                          <p class="text-lg font-semibold text-gray-800 mb-4">Engineering Best Practices</p>
+                                          <!-- Primary Blue Button (Sample Architectures) -->
+                                          <a href="/blogs/Best%20Practices/arch" class="w-full inline-flex justify-center items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-2xl text-gray-700 bg-[#f4f6f8] hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mb-3 transition duration-150 ease-in-out">
+                                                <!-- Sample Architectures -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1457a1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mr-3">
+                                                      <path d="M19.5 7a24 24 0 0 1 0 10" />
+                                                      <path d="M4.5 7a24 24 0 0 0 0 10" />
+                                                      <path d="M7 19.5a24 24 0 0 0 10 0" />
+                                                      <path d="M7 4.5a24 24 0 0 1 10 0" />
+                                                      <rect x="17" y="17" width="5" height="5" rx="1" />
+                                                      <rect x="17" y="2" width="5" height="5" rx="1" />
+                                                      <rect x="2" y="17" width="5" height="5" rx="1" />
+                                                      <rect x="2" y="2" width="5" height="5" rx="1" />
+                                                </svg>
+                                                Sample Architectures
+                                          </a>
+
+                                          <a href="/blogs/Best%20Practices/logger" class="w-full inline-flex justify-center items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-2xl text-gray-700 bg-[#f4f6f8] hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mb-3 transition duration-150 ease-in-out">
+                                                <!-- Robust Logging Mechanism -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1457a1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mr-3">
+                                                      <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                                                      <path d="M16 22h2a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v3" />
+                                                      <path d="M8 14v2.2l1.6 1" />
+                                                      <circle cx="8" cy="16" r="6" />
+                                                </svg>
+                                                Robust Logging Mechanism
+                                          </a>
+
+                                          <a href="/blogs/Best%20Practices/cost" class="w-full inline-flex justify-center items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-2xl text-gray-700 bg-[#f4f6f8] hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mb-3 transition duration-150 ease-in-out">
+                                                <!-- Cost Monitoring -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1457a1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mr-3">
+                                                      <line x1="12" x2="12" y1="2" y2="22" />
+                                                      <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                                                </svg>
+                                                Cost Monitoring
+                                          </a>
+
+                                          <a href="/blogs/Best%20Practices/env" class="w-full inline-flex justify-center items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-2xl text-gray-700 bg-[#f4f6f8] hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mb-3 transition duration-150 ease-in-out">
+                                                <!-- DevOps Automation -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1457a1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mr-3">
+                                                      <rect width="8" height="8" x="3" y="3" rx="2" />
+                                                      <path d="M7 11v4a2 2 0 0 0 2 2h4" />
+                                                      <rect width="8" height="8" x="13" y="13" rx="2" />
+                                                </svg>
+                                                DevOps Automation
+                                          </a>
+
+                                          <a href="/blogs/Learning/pen_test" class="w-full inline-flex justify-center items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-2xl text-gray-700 bg-[#f4f6f8] hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mb-3 transition duration-150 ease-in-out">
+                                                <!-- Jailbreaking Using Prompt Engineering -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1457a1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mr-3">
+                                                      <path d="M7 18v-6a5 5 0 1 1 10 0v6" />
+                                                      <path d="M5 21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2z" />
+                                                      <path d="M21 12h1" />
+                                                      <path d="M18.5 4.5 18 5" />
+                                                      <path d="M2 12h1" />
+                                                      <path d="M12 2v1" />
+                                                      <path d="m4.929 4.929.707.707" />
+                                                      <path d="M12 12v6" />
+                                                </svg>
+                                                Jailbreaking Using Prompt Engineering
+                                          </a>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+            </section>
+            <!-- Standout section -->
+            <section class="rounded-[40px] w-full bg-white border-b border-gray-100 py-[80px]">
+                  <style>
+                        .gradient-card {
+                              background-size: cover;
+                              background-position: center;
+                              position: relative;
+                              overflow: hidden;
+                              min-height: 300px;
+                              cursor: pointer;
+                              display: flex;
+                              align-items: center;
+                              justify-content: center;
+                              transition: transform 0.25s ease;
+                        }
+                        .gradient-card:hover {
+                              transform: scale(1.015);
+                        }
+                        .card-text {
+                              text-shadow: 0 2px 18px rgba(0, 0, 0, 0.13);
+                              z-index: 2;
+                        }
+                        /* Make link fill the entire card */
+                        .card-link {
+                              position: absolute;
+                              inset: 0;
+                              display: block;
+                              text-decoration: none;
+                              color: inherit;
+                              border-radius: inherit;
+                        }
+                        /* Arrow styling */
+                        .card-icon {
+                              position: absolute;
+                              top: 20px;
+                              right: 20px;
+                              background: rgb(255, 255, 255);
+                              border-radius: 9999px;
+                              padding: 0.75rem;
+                              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                              transition: background 0.3s, transform 0.3s;
+                              z-index: 3;
+                        }
+                        .gradient-card:hover .card-icon {
+                              background: rgba(255, 255, 255, 0.9);
+                              transform: rotate(0deg);
+                        }
+                        .card-icon svg {
+                              width: 24px;
+                              height: 24px;
+                              stroke-width: 1.25;
+                              stroke: #000;
+                              transform: rotate(-45deg);
+                              transition: transform 0.3s;
+                        }
+                        .gradient-card:hover .card-icon svg {
+                              transform: rotate(0deg);
+                        }
+                        /* Responsive layout helpers */
+                        .card-row {
+                              display: flex;
+                              flex-wrap: wrap;
+                              gap: 16px;
+                        }
+                        .card-w-100 {
+                              width: 100%;
+                        }
+                        .card-w-50 {
+                              width: calc(50% - 8px);
+                        }
+                        @media (min-width: 1024px) {
+                              .card-row {
+                                    flex-wrap: nowrap;
+                              }
+                              .lg-w-70 {
+                                    width: 70%;
+                              }
+                              .lg-w-30 {
+                                    width: 30%;
+                              }
+                        }
+                  </style>
+                  <div class="w-full mb-16">
+                        <div class="w-full max-w-[1200px] mx-auto flex items-center justify-start">
+                              <h2 class="text-3xl sm:text-[40px] font-black italic text-gray-900 leading-none mr-4 sm:mr-6" style="font-family: serif">What makes me stand out</h2>
+                              <div class="hidden sm:block h-[3.5px] w-full max-w-[60%] bg-gradient-to-r from-[#2267af] to-[#2267af]/0 rounded-full"></div>
+                        </div>
+                  </div>
+                  <div class="w-full max-w-[1200px] mx-auto flex flex-col items-center justify-center gap-4 px-4">
+                        <!-- Row 1 -->
+                        <div class="w-full card-row">
+                              <a href="/blogs/Learning/solving_ambiguous_problems" class="gradient-card rounded-[32px] card-w-100 sm:card-w-50 lg-w-70" style="aspect-ratio: 2.7/1; background-image: url('https://iamsairamsa.blob.core.windows.net/static/images/webpage/grd-clr-1.JPG')">
+                                    <span class="card-text text-white text-[1.25rem] sm:text-[1.6rem] font-normal text-center px-5 leading-tight"> Solving Ambiguous Problems That Make Us Ask, “Where Do We Even Begin?” </span>
+                                    <div class="card-icon">
+                                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M5 12h14" />
+                                                <path d="m12 5 7 7-7 7" />
+                                          </svg>
+                                    </div>
+                              </a>
+                              <a href="/blogs/Learning/building_tank_grade_data_pipelines_that_dont_break_at_3am" class="gradient-card rounded-[32px] card-w-100 sm:card-w-50 lg-w-30" style="aspect-ratio: 2.7/1; background-image: url('https://iamsairamsa.blob.core.windows.net/static/images/webpage/grd-clr-2.JPG')">
+                                    <span class="card-text text-white text-[1.25rem] sm:text-[1.45rem] font-normal text-center px-5 leading-tight"> Designing AI Systems That Don’t Break in Demos </span>
+                                    <div class="card-icon">
+                                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M5 12h14" />
+                                                <path d="m12 5 7 7-7 7" />
+                                          </svg>
+                                    </div>
+                              </a>
+                        </div>
+                        <!-- Row 2 -->
+                        <div class="w-full card-row">
+                              <a href="/blogs/Best%20Practices/arch" class="gradient-card rounded-[32px] card-w-100 sm:card-w-50 lg-w-30" style="aspect-ratio: 2.7/1; background-image: url('https://iamsairamsa.blob.core.windows.net/static/images/webpage/grd-clr-3.JPG')">
+                                    <span class="card-text text-white text-[1.25rem] sm:text-[1.3rem] font-normal text-center px-5 leading-tight"> Diagrams and Communication<br />for Those Who Still Think Python is a Snake </span>
+                                    <div class="card-icon">
+                                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M5 12h14" />
+                                                <path d="m12 5 7 7-7 7" />
+                                          </svg>
+                                    </div>
+                              </a>
+                              <a href="/blogs/Learning/designing_ui_ux_that_doesnt_suck_and_doesnt_make_users_rage_click" class="gradient-card rounded-[32px] card-w-100 sm:card-w-50 lg-w-70" style="aspect-ratio: 2.7/1; background-image: url('https://iamsairamsa.blob.core.windows.net/static/images/webpage/grd-clr-4.JPG')">
+                                    <span class="card-text text-white text-[1.25rem] sm:text-[1.43rem] font-normal text-center px-5 leading-tight"> UI UX That Doesn’t Suck and Make Users Rage Click </span>
+                                    <div class="card-icon">
+                                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M5 12h14" />
+                                                <path d="m12 5 7 7-7 7" />
+                                          </svg>
+                                    </div>
+                              </a>
+                        </div>
+                        <!-- Row 3 -->
+                        <div class="w-full card-row">
+                              <a href="/blogs/Learning/building_tank_grade_data_pipelines_that_dont_break_at_3am" class="gradient-card rounded-[32px] card-w-100 sm:card-w-50 lg-w-70" style="aspect-ratio: 2.7/1; background-image: url('https://iamsairamsa.blob.core.windows.net/static/images/webpage/grd-clr-5.JPG')">
+                                    <span class="card-text text-white text-[1.25rem] sm:text-[1.32rem] font-normal text-center px-5 leading-tight"> Handling Large Scale Data with Pipelines Built Like Tanks </span>
+                                    <div class="card-icon">
+                                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M5 12h14" />
+                                                <path d="m12 5 7 7-7 7" />
+                                          </svg>
+                                    </div>
+                              </a>
+                              <a href="/blogs/Learning/demystifying_data_security_gdpr_hipaa_soc_2_and_the_acronym_army" class="gradient-card rounded-[32px] card-w-100 sm:card-w-50 lg-w-30" style="aspect-ratio: 2.7/1; background-image: url('https://iamsairamsa.blob.core.windows.net/static/images/webpage/grd-clr-6.JPG')">
+                                    <span class="card-text text-white text-[1.25rem] sm:text-[1.12rem] font-normal text-center px-5 leading-tight"> Governance & Security Simplified: From GDPR to SOC 2 </span>
+                                    <div class="card-icon">
+                                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M5 12h14" />
+                                                <path d="m12 5 7 7-7 7" />
+                                          </svg>
+                                    </div>
+                              </a>
+                        </div>
+                  </div>
+            </section>
+            <!-- Testimonial Section -->
+            <section class="rounded-[40px] w-full bg-[#f4f6f8] border-b border-gray-100 py-16 sm:py-20 lg:py-24">
+                  <style>
+                        /* Custom styles for the blob background effect */
+                        .blob-yellow {
+                              background: linear-gradient(180deg, rgba(255, 255, 255, 0.85) 70%, rgba(252, 238, 120, 0.15) 90%, rgba(239, 219, 73, 0.25) 100%);
+                        }
+                        .blob-blue {
+                              background: linear-gradient(180deg, rgba(255, 255, 255, 0.85) 70%, rgba(188, 219, 255, 0.17) 90%, rgba(93, 151, 255, 0.22) 100%);
+                        }
+                        .blob-pink {
+                              background: linear-gradient(180deg, rgba(255, 255, 255, 0.85) 70%, rgba(248, 153, 163, 0.13) 90%, rgba(255, 78, 92, 0.21) 100%);
+                        }
+                        /* Essential Scroll and Scrollbar styles */
+                        #testimonial-carousel {
+                              -ms-overflow-style: none; /* IE and Edge */
+                              scrollbar-width: none; /* Firefox */
+                              scroll-snap-type: x mandatory;
+                              scroll-behavior: smooth;
+                              /* Scroll padding must match the container's horizontal padding (px-4 = 1rem/16px on mobile)
+            This ensures the first card snaps flush with the left edge. */
+                              scroll-padding-left: 1rem;
+                              scroll-padding-right: 1rem;
+                        }
+                        /* Adjust scroll padding for larger screens to align with container padding */
+                        @media (min-width: 640px) {
+                              /* sm */
+                              #testimonial-carousel {
+                                    scroll-padding-left: 2rem; /* sm:px-8 = 2rem/32px */
+                                    scroll-padding-right: 2rem;
+                              }
+                        }
+                        @media (min-width: 1024px) {
+                              /* lg */
+                              #testimonial-carousel {
+                                    scroll-padding-left: 3rem; /* lg:px-12 = 3rem/48px */
+                                    scroll-padding-right: 3rem;
+                              }
+                        }
+                        #testimonial-carousel::-webkit-scrollbar {
+                              display: none;
+                        }
+                        .carousel-card {
+                              flex: 0 0 auto;
+                              scroll-snap-align: start;
+                              margin-right: 32px; /* Fixed spacing between cards */
+                              display: flex;
+                              flex-direction: column;
+                        }
+                        /* Remove margin from the very last card */
+                        .carousel-card:last-child {
+                              margin-right: 0;
+                        }
+                        .quote-content {
+                              line-height: 1.5;
+                              flex-grow: 1;
+                              display: flex;
+                              align-items: flex-start;
+                        }
+                        .nav-button-disabled {
+                              opacity: 0.3;
+                              cursor: not-allowed;
+                              pointer-events: none;
+                        }
+                        /* Apply Inter font family */
+                        body {
+                              font-family: "Inter", sans-serif;
+                        }
+                  </style>
+                  <!-- Section Header - Responsive Padding Applied Here -->
+                  <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 mb-12 sm:mb-16">
+                        <div class="flex items-center justify-start">
+                              <h2 class="text-3xl sm:text-4xl lg:text-[42px] font-black italic text-gray-900 leading-tight mr-4 sm:mr-6" style="font-family: serif">Collaborative Team Member and Proven Team Leader (7+ Members)</h2>
+                              <!-- The horizontal line is hidden on mobile (md:block) -->
+                              <div class="hidden md:block h-1 w-full max-w-[50%] bg-gradient-to-r from-[#2267af] to-[#2267af]/0 rounded-full shrink-0"></div>
+                        </div>
+                  </div>
+                  <!-- CAROUSEL TRACK AND CONTENT -->
+                  <!-- The padding is applied to this outer div to create a consistent margin for the entire section -->
+                  <div class="w-full max-w-[1500px] mx-auto relative px-4 sm:px-8 lg:px-12">
+                        <!-- The track itself has no horizontal padding, allowing the scroll-padding CSS to handle alignment -->
+                        <div id="testimonial-carousel" class="flex overflow-x-scroll pb-4"></div>
+                        <!-- Navigation Buttons -->
+                        <div class="flex justify-center mt-12">
+                              <div class="flex space-x-4">
+                                    <button id="t_prevBtn" class="bg-gray-800 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-600 transition duration-300 focus:outline-none" aria-label="Previous Slide">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="m15 18-6-6 6-6" />
+                                          </svg>
+                                    </button>
+                                    <button id="t_nextBtn" class="bg-gray-800 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-600 transition duration-300 focus:outline-none" aria-label="Next Slide">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="m9 18 6-6-6-6" />
+                                          </svg>
+                                    </button>
+                              </div>
+                        </div>
+                  </div>
+                  <script>
+                        // --- Data ---
+                        const cardData = [
+                              {
+                                    quote: "Working with Sai this past year has been genuinely great. He's reliable, proactive, and always gets things done while everyone else is still talking about it. You never have to chase him — he just handles it. Sai's got that rare mix of strong technical skill and real business sense, and he makes even complex ideas sound simple and engaging. Reliable, sharp, and genuinely easy to work with — he's the kind of professional everyone wants in the project.",
+                                    name: "Bohdan Yeromenko",
+                                    title: "Intelligent Automation Analyst",
+                                    company: "Etex",
+                                    img: "https://media.licdn.com/dms/image/v2/D4E03AQHYO-jt0a-LUg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1732139837341?e=1762387200&v=beta&t=ITHG0rkbkqaxW6m4BoPeW-D7uQ45Z6fxy-aQw-kbPdA",
+                                    color: "blue",
+                                    linkedinLink: "https://www.linkedin.com/in/bohdan-yeromenko/",
+                              },
+                              {
+                                    quote: "Working with Sai has always been great! He’s knowledgeable, versatile, and always open to looking at problems from different angles. Sai adapts to new technologies incredibly fast and applies them effectively in his work. I’ve learned a lot from him, and as a fellow Data Scientist, I can honestly say he’s an exceptionally talented and inspiring professional.",
+                                    name: "Arda Bıçakçı",
+                                    title: "Data Scientist",
+                                    company: "Etex",
+                                    img: "https://media.licdn.com/dms/image/v2/C4D03AQF8fays_yCxAA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1654516896750?e=1762387200&v=beta&t=XTSef2aTEMI2zvjfsQ8-I7mNtcLCnKHCFWPeZDSk-40",
+                                    color: "blue",
+                                    linkedinLink: "https://www.linkedin.com/in/arda-bicakci/",
+                              },
+                              {
+                                    quote: "Sai Ram was my very first colleague in the data science field  the person who helped me take my first real steps into this journey. Beyond the technical side of things, he taught me something far more valuable: how to navigate and grow in the corporate world. From handling projects to managing people and pressure, Sai Ram’s guidance shaped not just my skills, but my mindset. A great colleague, mentor, and friend  someone who made the early days of my career both insightful and memorable.",
+                                    name: "Harshith R",
+                                    title: "Data Scientist",
+                                    company: "Diggibyte",
+                                    img: "https://media.licdn.com/dms/image/v2/D5603AQHoBYgHnwkeAA/profile-displayphoto-scale_400_400/B56ZhuLC6vHcAg-/0/1754195047005?e=1762387200&v=beta&t=mKdE1bi-BRWjtElALvgkOtA8B9oHjS8phQi3hFJWcF4",
+                                    color: "blue",
+                                    linkedinLink: "https://www.linkedin.com/in/harshith-r-982a551b9/",
+                              },
+                              {
+                                    quote: "I've been using the resources from this website, and they’ve been incredibly helpful in deepening my understanding of various concepts. The way everything is structured makes learning smooth and practical. I’d also like to appreciate Sai Ram for the amazing YouTube videos , He explains each topic so clearly and conceptually that even complex subjects starts to make sense instantly. The combination of the website and YouTube content truly made my learning journey enjoyable and impactful!",
+                                    name: "Jhanvi Reddy",
+                                    title: "Data Science trainee engineer",
+                                    company: "Diggibyte",
+                                    img: "https://media.licdn.com/dms/image/v2/D5603AQGrSY3i9kG3KQ/profile-displayphoto-scale_400_400/B56ZnPFAY4JYAg-/0/1760115821954?e=1762387200&v=beta&t=rSbJ03Ny8g88Qfmkpnld-NEHC9tHgcspj0SdImJV340",
+                                    color: "blue",
+                                    linkedinLink: "https://www.linkedin.com/in/jhanvi-reddy/",
+                              },
+                        ];
+
+                        let cardWidth = 0; // Stores the calculated width of a single card + margin for scrolling
+
+                        const t_carousel = document.getElementById("testimonial-carousel");
+                        const t_nextBtn = document.getElementById("t_nextBtn");
+                        const t_prevBtn = document.getElementById("t_prevBtn");
+
+                        // Helper function to convert base64 image URL to a placeholder if it fails
+                        function getSafeImgSrc(url) {
+                              // Placeholder: https://placehold.co/{width}x{height}/{background color in hex}/{text color in hex}?text={text}
+                              return url.startsWith("http") ? url : "https://placehold.co/48x48/CCCCCC/333333?text=P";
+                        }
+
+                        function createCardHTML(data) {
+                              const safeImg = getSafeImgSrc(data.img);
+
+                              // NOTE: The responsive classes below define the card width based on viewport size:
+                              // Mobile (default): w-full (1 card per screen)
+                              // Tablet (sm): w-[calc(50%-16px)] (2 cards per screen, with spacing)
+                              // Desktop (lg): w-[calc(33.333%-21.333px)] (3 cards per screen, with spacing)
+                              return `
+                <div class="carousel-card w-full sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-21.333px)] bg-white rounded-[28px] blob-${data.color} shadow-lg ring-1 ring-gray-200 p-6 sm:p-8">
+                    <div class="quote-content mb-4">
+                        <div class="text-lg sm:text-xl leading-relaxed text-gray-800 font-medium tracking-tight">
+                            "${data.quote}"
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-end mt-auto pt-4 border-t border-gray-100 justify-between shrink-0">
+                        <a href="${data.linkedinLink}" target="_blank" rel="noopener noreferrer" class="flex items-start group">
+                            <img src="${safeImg}" alt="${data.name}" 
+                                 class="rounded-full w-12 h-12 object-cover mr-4 shrink-0 border-2 border-gray-300 group-hover:ring-2 group-hover:ring-blue-500 transition duration-300" 
+                                 onerror="this.onerror=null; this.src='https://placehold.co/48x48/CCCCCC/333333?text=P'">
+                            <div>
+                                <div class="text-lg font-bold text-gray-900 leading-snug group-hover:text-blue-600 transition duration-150">${data.name}</div>
+                                <div class="text-sm font-medium text-[#777] leading-snug">${data.title}</div>
+                                <div class="text-sm font-normal text-[#555] leading-snug">${data.company}</div>
+                            </div>
+                        </a>
+                        
+                        <!-- LinkedIn Icon - Removed share link functionality for simplicity in this file -->
+                        <a href="${data.linkedinLink}" target="_blank" rel="noopener noreferrer" 
+                            class="bg-[#0077B5] hover:bg-[#005582] text-white p-2 rounded-full transition duration-150 ease-in-out shadow-lg shrink-0"
+                            aria-label="View profile on LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.352-.027-3.097-1.884-3.097-1.889 0-2.175 1.477-2.175 3.006v5.66h-3.554V9h3.414v1.561h.047c.446-.867 1.63-1.889 3.385-1.889 3.642 0 4.35 2.448 4.35 5.61v6.236zM3.882 7.027c-1.12 0-2.03-.91-2.03-2.03s.91-2.03 2.03-2.03 2.03.91 2.03 2.03c0 1.12-.91 2.03-2.03 2.03zm1.781 13.425H2.09V9.102h3.573v11.35z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                `;
+                        }
+
+                        function renderSlides() {
+                              t_carousel.innerHTML = cardData.map(createCardHTML).join("");
+                        }
+
+                        // Calculates the scroll amount (card width + margin) dynamically
+                        function updateCardWidth() {
+                              const cardElement = t_carousel.querySelector(".carousel-card");
+                              if (cardElement) {
+                                    // Card width (offsetWidth) + Margin (32px)
+                                    cardWidth = cardElement.offsetWidth + 32;
+                              } else {
+                                    cardWidth = window.innerWidth;
+                              }
+                        }
+
+                        // Updates the disabled state of navigation buttons
+                        function updateNavigationState() {
+                              const scrollLeft = t_carousel.scrollLeft;
+                              // The max scrollable distance
+                              const maxScroll = t_carousel.scrollWidth - t_carousel.clientWidth;
+
+                              // Use a small tolerance (10px) for float comparisons
+                              if (scrollLeft <= 10) {
+                                    t_prevBtn.classList.add("nav-button-disabled");
+                              } else {
+                                    t_prevBtn.classList.remove("nav-button-disabled");
+                              }
+
+                              if (scrollLeft >= maxScroll - 10) {
+                                    t_nextBtn.classList.add("nav-button-disabled");
+                              } else {
+                                    t_nextBtn.classList.remove("nav-button-disabled");
+                              }
+                        }
+
+                        function init() {
+                              renderSlides();
+
+                              // Recalculate width and update state on resize
+                              window.addEventListener("resize", () => {
+                                    updateCardWidth();
+                                    updateNavigationState();
+                              });
+
+                              // Initial setup after content renders
+                              setTimeout(() => {
+                                    updateCardWidth();
+                                    updateNavigationState();
+                              }, 150);
+
+                              // Navigation logic
+                              t_nextBtn.addEventListener("click", () => {
+                                    t_carousel.scrollBy({ left: cardWidth, behavior: "smooth" });
+                                    // Update state after the scroll animation has a chance to complete
+                                    setTimeout(updateNavigationState, 400);
+                              });
+
+                              t_prevBtn.addEventListener("click", () => {
+                                    t_carousel.scrollBy({ left: -cardWidth, behavior: "smooth" });
+                                    // Update state after the scroll animation has a chance to complete
+                                    setTimeout(updateNavigationState, 400);
+                              });
+
+                              t_carousel.addEventListener("scroll", updateNavigationState);
+                        }
+
+                        init();
+                  </script>
+            </section>
+            <!-- technical skill section -->
+            <section class="rounded-[40px] w-full bg-[#f4f6f8] border-b border-gray-100 py-[80px]">
+                  <style>
+                        .shadow-premium {
+                              box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 0 1px rgba(0, 0, 0, 0.04);
+                        }
+                        .shadow-card {
+                              box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04), 0 0 1px rgba(0, 0, 0, 0.02);
+                        }
+                        /* The rest of the utility styles are kept for future use, though not all are used in this specific grid */
+                        .logo-card {
+                              transition: box-shadow 0.22s cubic-bezier(0.4, 0, 0.2, 1), transform 0.23s cubic-bezier(0.4, 0, 0.2, 1);
+                              will-change: box-shadow, transform;
+                              /* Added default shadow */
+                              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 4px rgba(0, 0, 0, 0.01);
+                        }
+                        .logo-card:hover {
+                              transform: translateY(-8px);
+                              box-shadow: 0 0px 20px rgba(0, 0, 0, 0.1);
+                        }
+                        .logo-card .logo-title {
+                              transition: color 0.23s;
+                        }
+                        .logo-card:hover .logo-title {
+                              color: var(--brand-primary);
+                        }
+                  </style>
+                  <div class="w-full mb-16">
+                        <div class="w-full max-w-[1200px] mx-auto flex items-center justify-start">
+                              <h2 class="text-3xl sm:text-[40px] font-black italic text-gray-900 leading-none mr-4 sm:mr-6" style="font-family: serif">Technologies & Skills</h2>
+                              <div class="hidden sm:block h-[3.5px] w-full max-w-[60%] bg-gradient-to-r from-[#2267af] to-[#2267af]/0 rounded-full"></div>
+                        </div>
+                  </div>
+                  <div class="w-full">
+                        <div class="w-full max-w-[1000px] mx-auto px-4">
+                              <!-- This is the container where JavaScript will render the entire grid -->
+                              <div id="logo-grid-container">
+                                    <p class="text-center text-gray-500">Loading logos...</p>
+                              </div>
+                        </div>
+                  </div>
+                  <script>
+                        // --- JSON Data Structure for the Logo Grid ---
+                        const logoData = [
+                              {
+                                    title: "Large Language Models (LLMs)",
+                                    color: "#000000",
+                                    logos: [
+                                          { name: "GPT", url: "https://iamsairamsa.blob.core.windows.net/static/logos/openai.png" },
+                                          { name: "Claude", url: "https://iamsairamsa.blob.core.windows.net/static/logos/calude.png" },
+                                          { name: "Mistral", url: "https://iamsairamsa.blob.core.windows.net/static/logos/msitral.png" },
+                                          { name: "Llama", url: "https://iamsairamsa.blob.core.windows.net/static/logos/llama.png" },
+                                          { name: "Gemini", url: "https://iamsairamsa.blob.core.windows.net/static/logos/gemini.png" },
+                                          { name: "DBRX", url: "https://iamsairamsa.blob.core.windows.net/static/logos/dbrx.png" },
+                                    ],
+                              },
+                              {
+                                    title: "AI Frameworks",
+                                    color: "#000000",
+                                    logos: [
+                                          { name: "OpenAI Agents", url: "https://iamsairamsa.blob.core.windows.net/static/logos/openai.png" },
+                                          { name: "LangGraph", url: "https://iamsairamsa.blob.core.windows.net/static/logos/langgraph.png" },
+                                          { name: "LangChain", url: "https://iamsairamsa.blob.core.windows.net/static/logos/langchain.png" },
+                                          { name: "LangSmith", url: "https://iamsairamsa.blob.core.windows.net/static/logos/langsmith.png" },
+                                          { name: "LlamaIndex", url: "https://iamsairamsa.blob.core.windows.net/static/logos/llamaindex.png" },
+                                          { name: "LlamaParse", url: "https://iamsairamsa.blob.core.windows.net/static/logos/llamaparse.png" },
+                                          { name: "Crew AI", url: "https://iamsairamsa.blob.core.windows.net/static/logos/crewai.png" },
+                                          { name: "Groq", url: "https://iamsairamsa.blob.core.windows.net/static/logos/groq.png" },
+                                    ],
+                              },
+                              {
+                                    title: "Vector Databases",
+                                    color: "#000000",
+                                    logos: [
+                                          { name: "ChromaDB", url: "https://iamsairamsa.blob.core.windows.net/static/logos/chromadb.png" },
+                                          { name: "Pinecone", url: "https://iamsairamsa.blob.core.windows.net/static/logos/pinecone.png" },
+                                          { name: "Azure AI Search", url: "https://iamsairamsa.blob.core.windows.net/static/logos/azure%20ai%20search.png" },
+                                    ],
+                              },
+                              {
+                                    title: "Machine Learning & Deep Learning",
+                                    color: "#000000",
+                                    logos: [
+                                          { name: "TensorFlow", url: "https://iamsairamsa.blob.core.windows.net/static/logos/tensorflow.png" },
+                                          { name: "PyTorch", url: "https://iamsairamsa.blob.core.windows.net/static/logos/pytorch.png" },
+                                          { name: "Keras", url: "https://iamsairamsa.blob.core.windows.net/static/logos/keras.png" },
+                                          { name: "Scikit-learn", url: "https://iamsairamsa.blob.core.windows.net/static/logos/sklearn.png" },
+                                          { name: "Huggingface", url: "https://iamsairamsa.blob.core.windows.net/static/logos/huggingface.png" },
+                                          { name: "OpenCV", url: "https://iamsairamsa.blob.core.windows.net/static/logos/opencv.png" },
+                                          { name: "spaCy", url: "https://iamsairamsa.blob.core.windows.net/static/logos/spacy.png" },
+                                          { name: "NLTK", url: "https://iamsairamsa.blob.core.windows.net/static/logos/nltk.png" },
+                                          { name: "Weights & Bias", url: "https://iamsairamsa.blob.core.windows.net/static/logos/wandb.png" },
+                                    ],
+                              },
+                              {
+                                    title: "Azure Cloud Services",
+                                    color: "#000000",
+                                    logos: [
+                                          { name: "Azure OpenAI", url: "https://iamsairamsa.blob.core.windows.net/static/logos/Azure%20Open%20AI.png" },
+                                          { name: "ML Studio", url: "https://iamsairamsa.blob.core.windows.net/static/logos/Azure%20ML%20Studio.png" },
+                                          { name: "AI Foundry", url: "https://iamsairamsa.blob.core.windows.net/static/logos/Azure%20ai%20fouondry.png" },
+                                          { name: "AI Search", url: "https://iamsairamsa.blob.core.windows.net/static/logos/azure%20ai%20search.png" },
+                                          { name: "AI Speech", url: "https://iamsairamsa.blob.core.windows.net/static/logos/azure%20ai%20speech.png" },
+                                          { name: "Document Intelligence", url: "https://iamsairamsa.blob.core.windows.net/static/logos/Azurre%20Doc%20int.png" },
+                                          { name: "SQL Server", url: "https://iamsairamsa.blob.core.windows.net/static/logos/Azure%20sql.png" },
+                                          { name: "Virtual Machine", url: "https://iamsairamsa.blob.core.windows.net/static/logos/azure%20vm.png" },
+                                          { name: "Functions", url: "https://iamsairamsa.blob.core.windows.net/static/logos/azure%20functions.png" },
+                                          { name: "Entra ID", url: "https://iamsairamsa.blob.core.windows.net/static/logos/Microsoft%20entra%20ID.png" },
+                                          { name: "App Service", url: "https://iamsairamsa.blob.core.windows.net/static/logos/Azure%20app%20services.png" },
+                                          { name: "VNet", url: "https://iamsairamsa.blob.core.windows.net/static/logos/azure%20Vnet.png" },
+                                          { name: "Python SDK", url: "https://iamsairamsa.blob.core.windows.net/static/logos/azure%20python%20sdk.png" },
+                                    ],
+                              },
+                              {
+                                    title: "Databricks",
+                                    color: "#000000",
+                                    logos: [
+                                          { name: "Databricks", url: "https://iamsairamsa.blob.core.windows.net/static/logos/databricks.png" },
+                                          { name: "MLflow", url: "https://iamsairamsa.blob.core.windows.net/static/logos/databricks.png" },
+                                          { name: "Delta Lake", url: "https://iamsairamsa.blob.core.windows.net/static/logos/databricks.png" },
+                                          { name: "Model Registry", url: "https://iamsairamsa.blob.core.windows.net/static/logos/databricks.png" },
+                                          { name: "Unity Catalog", url: "https://iamsairamsa.blob.core.windows.net/static/logos/databricks.png" },
+                                          { name: "AI/BI Genie", url: "https://iamsairamsa.blob.core.windows.net/static/logos/databricks.png" },
+                                          { name: "Notebooks", url: "https://iamsairamsa.blob.core.windows.net/static/logos/databricks.png" },
+                                    ],
+                              },
+                              {
+                                    title: "DevOps & Version Control",
+                                    color: "#000000",
+                                    logos: [
+                                          { name: "Git", url: "https://iamsairamsa.blob.core.windows.net/static/logos/git.png" },
+                                          { name: "DevOps", url: "https://iamsairamsa.blob.core.windows.net/static/logos/devops.png" },
+                                    ],
+                              },
+                              {
+                                    title: "Web Development",
+                                    color: "#000000",
+                                    logos: [
+                                          { name: "Flask", url: "https://iamsairamsa.blob.core.windows.net/static/logos/flask.png" },
+                                          { name: "Django", url: "https://iamsairamsa.blob.core.windows.net/static/logos/django.png" },
+                                          { name: "Streamlit", url: "https://iamsairamsa.blob.core.windows.net/static/logos/streamlit.png" },
+                                          { name: "HTML/CSS/JS", url: "https://iamsairamsa.blob.core.windows.net/static/logos/html_css_js.png" },
+                                    ],
+                              },
+                        ];
+
+                        // --- Rendering Function ---
+                        function renderLogoGrid() {
+                              const container = document.getElementById("logo-grid-container");
+                              if (!container) return;
+
+                              let htmlContent = "";
+
+                              logoData.forEach((section, index) => {
+                                    // 1. Render Section Header
+                                    htmlContent += `
+                        <div class="flex items-center mb-5 ${index > 0 ? "mt-12" : "mt-1"}">
+                              <span class="inline-block w-3 h-3 rounded-full mr-3" style="background-color: ${section.color};"></span>
+                              <span class="font-semibold text-[1.27rem] text-[#171818] mr-3">${section.title}</span>
+                              <!-- Gradient divider line for desktop/larger screens -->
+                              <div class="hidden sm:block h-[3.5px] w-full max-w-[60%] bg-gradient-to-r from-[${section.color}] to-[${section.color}00] rounded-full" style="--tw-gradient-from: ${section.color}; --tw-gradient-to: ${section.color}00; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);"></div>
+                        </div>
+                  `;
+
+                                    // 2. Render Logo Cards Grid
+                                    htmlContent += `
+                        <div class="flex flex-wrap gap-7 mb-12 justify-start">
+                  `;
+                                    section.logos.forEach((logo) => {
+                                          htmlContent += `
+                              <div class="logo-card bg-white rounded-[28px] flex flex-col items-center justify-center 
+                                    w-[calc(50%-14px)] sm:w-[calc(33.33%-18.66px)] md:w-[calc(25%-21px)] lg:w-[155px] h-[155px] p-4">
+                                    <img src="${logo.url}" alt="${logo.name} Logo" class="w-14 mb-3" />
+                                    <span class="logo-title text-[17px] font-normal mt-1 text-black text-center leading-tight">${logo.name}</span>
+                              </div>
+                        `;
+                                    });
+                                    htmlContent += `
+                        </div>
+                  `;
+                              });
+
+                              // Insert the generated content into the container
+                              container.innerHTML = htmlContent;
+                        }
+
+                        // Execute the rendering function when the window loads
+                        window.onload = renderLogoGrid;
+                  </script>
+            </section>
+            <!-- internet section -->
+            <section class="rounded-[40px] w-full bg-white border-b border-gray-100 py-[80px]">
+                  <div class="w-full mb-16">
+                        <div class="w-full max-w-[1200px] mx-auto flex items-center justify-start">
+                              <h2 class="text-3xl sm:text-[40px] font-black italic text-gray-900 leading-none mr-4 sm:mr-6" style="font-family: serif">Find me on the internet</h2>
+                              <div class="hidden sm:block h-[3.5px] w-full max-w-[60%] bg-gradient-to-r from-[#2267af] to-[#2267af]/0 rounded-full"></div>
+                        </div>
+                  </div>
+                  <!-- Section 1: YouTube (Image Left / Text Right) -->
+                  <section class="w-full flex items-center justify-center py-8 sm:py-12">
+                        <div class="w-full max-w-[1200px] flex flex-col lg:flex-row items-center justify-center px-6 sm:px-4 gap-4 lg:gap-2">
+                              <!-- Text Content (Order 1 on Mobile, Order 2 on Desktop) -->
+                              <div class="flex-1 flex flex-col justify-center items-start order-1 lg:order-2 w-full lg:w-auto lg:pl-12">
+                                    <h2 class="text-2xl sm:text-[2.25rem] font-black italic text-gray-900 leading-tight mb-2" style="font-family: serif">Step-by-Step Tutorials on YouTube</h2>
+                                    <p class="text-base sm:text-[1.08rem] text-[#818181] mb-6 sm:mb-9 leading-[1.6] font-normal">Discover detailed tutorials and step-by-step guides on my YouTube channel, perfect for enhancing your skills and learning new concepts in Python and data science.</p>
+                                    <a href="http://youtube.com/@sairampenjarla" target="_blank" class="inline-flex items-center bg-[#1457a1] hover:bg-[#133d6b] text-white text-lg font-medium px-7 py-2.5 rounded-full transition mb-2 group">
+                                          <span class="mr-2">
+                                                <!-- Lucide YouTube SVG -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dce0e5" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube-icon lucide-youtube">
+                                                      <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
+                                                      <path d="m10 15 5-3-5-3z" />
+                                                </svg>
+                                          </span>
+                                          YouTube
+                                    </a>
+                              </div>
+                              <!-- Image Container (Order 2 on Mobile, Order 1 on Desktop) -->
+                              <div class="flex-1 flex justify-center order-2 lg:order-1 w-full lg:w-auto mt-4 lg:mt-0">
+                                    <img src="https://iamsairamsa.blob.core.windows.net/static/images/webpage/youtube-laptop.webp" alt="YouTube Laptop Screenshot" class="w-[510px] max-w-full object-contain rounded-xl" draggable="false" />
+                              </div>
+                        </div>
+                  </section>
+                  <!-- Section 2: GitHub (Text Left / Image Right) -->
+                  <section class="w-full flex items-center justify-center py-8 sm:py-12">
+                        <!-- Note the use of lg:flex-row-reverse to swap on desktop while maintaining mobile stacking (text on top) -->
+                        <div class="w-full max-w-[1200px] flex flex-col lg:flex-row-reverse items-center justify-center px-6 sm:px-4 gap-4 lg:gap-2">
+                              <!-- Text Content (Order 1 on Mobile, Order 2 on Desktop) -->
+                              <div class="flex-1 flex flex-col justify-center items-start order-1 lg:order-2 w-full lg:w-auto lg:pr-12">
+                                    <h2 class="text-2xl sm:text-[2.25rem] font-black italic text-gray-900 leading-tight mb-2" style="font-family: serif">Projects and Tutorial Notebooks on<br />GitHub</h2>
+                                    <p class="text-base sm:text-[1.08rem] text-[#818181] mb-6 sm:mb-9 leading-[1.6] font-normal">Visit my GitHub page to find a variety of projects and code samples that showcase practical applications and provide valuable learning resources.</p>
+                                    <a href="https://github.com/sairam-penjarla" target="_blank" class="inline-flex items-center bg-[#1457a1] hover:bg-[#133d6b] text-white text-lg font-medium px-7 py-2.5 rounded-full transition mb-2 group">
+                                          <span class="mr-2">
+                                                <!-- Lucide GitHub SVG -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dce0e5" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github-icon lucide-github">
+                                                      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                                                      <path d="M9 18c-4.51 2-5-2-7-2" />
+                                                </svg>
+                                          </span>
+                                          GitHub
+                                    </a>
+                              </div>
+                              <!-- Image Container (Order 2 on Mobile, Order 1 on Desktop) -->
+                              <div class="flex-1 flex justify-center order-2 lg:order-1 w-full lg:w-auto mt-4 lg:mt-0">
+                                    <img src="https://iamsairamsa.blob.core.windows.net/static/images/webpage/github-laptop.webp" alt="GitHub Laptop Screenshot" class="w-[510px] max-w-full object-contain rounded-xl" draggable="false" />
+                              </div>
+                        </div>
+                  </section>
+                  <!-- Section 3: LinkedIn & Instagram (Image Left / Text Right) -->
+                  <section class="w-full flex items-center justify-center py-8 sm:py-12">
+                        <div class="w-full max-w-[1200px] flex flex-col lg:flex-row items-center justify-center px-6 sm:px-4 gap-4 lg:gap-2">
+                              <!-- Text Content (Order 1 on Mobile, Order 2 on Desktop) -->
+                              <div class="flex-1 flex flex-col justify-center items-start order-1 lg:order-2 w-full lg:w-auto lg:pl-12">
+                                    <h2 class="text-2xl sm:text-[2.25rem] font-black italic text-gray-900 leading-tight mb-2" style="font-family: serif">Stay Updated and Connected</h2>
+                                    <p class="text-base sm:text-[1.08rem] text-[#818181] mb-6 sm:mb-9 leading-[1.6] font-normal">Follow me on Instagram and LinkedIn for regular updates, insightful tips, and professional connections that can help you stay informed and inspired in your data science journey.</p>
+                                    <div class="flex flex-col sm:flex-row gap-4">
+                                          <a href="https://www.linkedin.com/in/sairam-penjarla-b5041b121/" target="_blank" class="inline-flex items-center bg-[#1457a1] hover:bg-[#133d6b] text-white text-lg font-medium px-6 py-2.5 rounded-full transition group">
+                                                <span class="mr-2">
+                                                      <!-- Lucide LinkedIn SVG -->
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dce0e5" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin-icon lucide-linkedin">
+                                                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                                            <rect width="4" height="12" x="2" y="9" />
+                                                            <circle cx="4" cy="4" r="2" />
+                                                      </svg>
+                                                </span>
+                                                LinkedIn
+                                          </a>
+                                          <a href="https://www.instagram.com/sairam.ipynb" target="_blank" class="inline-flex items-center bg-[#1457a1] hover:bg-[#133d6b] text-white text-lg font-medium px-6 py-2.5 rounded-full transition group">
+                                                <span class="mr-2">
+                                                      <!-- Lucide Instagram SVG -->
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dce0e5" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram-icon lucide-instagram">
+                                                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                                                      </svg>
+                                                </span>
+                                                Instagram
+                                          </a>
+                                    </div>
+                              </div>
+                              <!-- Image Container (Order 2 on Mobile, Order 1 on Desktop) -->
+                              <div class="flex-1 flex justify-center order-2 lg:order-1 w-full lg:w-auto mt-4 lg:mt-0">
+                                    <img src="https://iamsairamsa.blob.core.windows.net/static/images/webpage/phones.webp" alt="Phones Screenshot" class="w-[380px] max-w-full object-contain rounded-xl" draggable="false" />
+                              </div>
+                        </div>
+                  </section>
+            </section>
+            <!-- Footer -->
+            {% include 'common/footer.html' %}
+      </body>
+</html>

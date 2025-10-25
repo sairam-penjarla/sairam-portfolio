@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Courses</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 text-gray-800">
+    <section class="py-16 px-6 md:px-12">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-4xl italic font-sans text-[#069871] mb-8 text-center italic" style="font-family: serif">
+          All Courses
+        </h2>
+
+        <div id="coursesContainer" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+      </div>
+    </section>
+
+    <script>
+      const courses = [
+        {
+          name: "Data Science Foundations",
+          thumbnail: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+          description: "Learn data analysis, visualization, and statistics with Python. Perfect for beginners.",
+          lessons: 12,
+          url: "#"
+        },
+        {
+          name: "Machine Learning Mastery",
+          thumbnail: "https://images.unsplash.com/photo-1581093588401-22d94fd1d3a5",
+          description: "Master ML algorithms and practical applications through hands-on projects.",
+          lessons: 18,
+          url: "#"
+        },
+        {
+          name: "AI Engineering Essentials",
+          thumbnail: "https://images.unsplash.com/photo-1555066931-4365d14bab8c",
+          description: "Understand how to design, deploy, and scale AI systems effectively.",
+          lessons: 15,
+          url: "#"
+        }
+      ];
+
+      const container = document.getElementById('coursesContainer');
+
+      courses.forEach(course => {
+        const card = document.createElement('div');
+        card.className = 'bg-white rounded-2xl overflow-hidden';
+        card.innerHTML = `
+          <img src="${course.thumbnail}" alt="${course.name}" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h3 class="text-2xl font-semibold mb-2">${course.name}</h3>
+            <p class="text-gray-600 mb-4">${course.description}</p>
+            <div class="flex justify-between items-center">
+              <span class="text-[#069871] font-semibold">${course.lessons} Lessons</span>
+              <a href="${course.url}" class="bg-[#069871] text-white px-4 py-2 rounded-xl text-sm">View Course</a>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    </script>
+  </body>
+</html>

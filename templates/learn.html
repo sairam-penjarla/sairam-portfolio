@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Hub</title>
+    <!-- Load Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom configuration for Tailwind colors and font */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'text-primary': '#1e1e1e',
+                        'filter-active': '#000000', /* Pure Black for active filter */
+                        'filter-bg': '#ffffff', /* White for inactive filter background */
+                        'body-bg': '#f4f6f8', /* Light grey body background */
+                        'primary': '#2267af',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'card': '0 10px 15px -3px rgba(0, 0, 0, 0.03), 0 4px 6px -2px rgba(0, 0, 0, 0.01)',
+                    }
+                }
+            }
+        }
+        
+        /* Utility classes for filter buttons (now category filters within the Courses tab) */
+        .category-filter-button {
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+        }
+
+        /* Classes for the tab buttons */
+        .tab-button.active {
+            color: #1e1e1e; /* text-primary */
+            border-bottom-color: #1e1e1e;
+        }
+
+        .tab-button:not(.active) {
+            color: #6b7280; /* text-gray-500 */
+            border-bottom-color: transparent;
+        }
+
+        .tab-button:not(.active):hover {
+            color: #000000;
+        }
+    </style>
+    <!-- Load Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<!-- Apply the new light grey background -->
+<body class="bg-[#f4f6f8] min-h-screen font-sans antialiased flex flex-col">
+    <!-- Headeer -->
+    {% include 'common/header.html' %}
+    <main class="w-full max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 flex-grow">
+        
+        <!-- NEW: Main Heading -->
+        <h3 class="text-9xl font-bold leading-snug text-gray-900 mb-8 mt-6 md:mt-10 text-primary italic" style="font-family: serif">
+            Learn
+        </h1>
+
+        <!-- NEW: Tab Navigation (Courses and Roadmap) -->
+        <div id="tab-navigation" class="border-b border-gray-300 mb-10">
+            <div class="flex space-x-8">
+                <button data-tab="courses" id="tab-courses" class="tab-button py-3 text-lg font-semibold border-b-2 transition duration-200">Courses</button>
+                <button data-tab="roadmap" id="tab-roadmap" class="tab-button py-3 text-lg font-semibold border-b-2 transition duration-200">Roadmap</button>
+            </div>
+        </div>
+
+        <!-- Courses View (Contains search, category filters, and course cards) -->
+        <div id="courses-view" style="display: block;">
+            
+            <!-- Search Bar Area -->
+            <div class="max-w-4xl mx-auto mb-16 pt-0 px-4 sm:px-0">
+                <div class="relative">
+                    <input type="text" id="search-input" placeholder="Search courses by title or category..." 
+                           class="w-full h-12 py-3 pl-4 pr-12 text-base rounded-lg border-2 border-transparent focus:outline-none focus:ring-2 focus:ring-primary/50 transition duration-150" 
+                           style="background-color: #ffffff; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
+                    <!-- Search Icon -->
+                    <svg class="w-6 h-6 absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+            </div>
+
+            <!-- Category Filter Bar for Courses -->
+            <div id="category-filter-container" class="mb-10 flex flex-wrap gap-3 overflow-x-auto pb-2">
+                <!-- Category filter buttons will be dynamically injected here by JavaScript -->
+            </div>
+
+            <!-- Card Grid Container: Renamed to courses-container -->
+            <div id="courses-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Course cards will be dynamically injected here by JavaScript -->
+            </div>
+        </div>
+        
+        <!-- Roadmap View (Uses the same card rendering logic) -->
+        <div id="roadmap-view" style="display: none;">
+            <!-- Roadmap container uses the same grid layout as courses -->
+            <div id="roadmap-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
+                <!-- Roadmap cards will be dynamically injected here by JavaScript -->
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    {% include 'common/footer.html' %}
+    <script>
+    // DUMMY DATA (Course Data)
+    const courseData = {{ all_courses | safe }};
+
+    // DUMMY DATA (Roadmap Data)
+    const roadmapData = [
+        {
+            title: "3-Months: Core Proficiency",
+            category: "Foundational Path",
+            url: "#roadmap-3m",
+            imageUrl: "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_10.jpg",
+            date: "Goal: Basics Completion"
+        },
+        {
+            title: "6-Months: Specialization Track",
+            category: "Data Science Focus",
+            url: "#roadmap-6m",
+            imageUrl: "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_11.jpg",
+            date: "Goal: 2 Portfolio Projects"
+        },
+        {
+            title: "12-Months: Mastery & Deployment",
+            category: "AI Readiness",
+            url: "#roadmap-12m",
+            imageUrl: "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_12.jpg",
+            date: "Goal: Job Ready"
+        }
+    ];
+
+    let activeTab = "{{ var0 | default('') }}";
+    let activeCategoryFilter = "{{ var1 | default('') }}";
+
+    // --- Utility: Convert string to lowercase snake_case ---
+    function toSnakeCase(str) {
+        return str
+            ? str.toLowerCase()
+                .replace(/[^a-z0-9]+/g, '_')
+                .replace(/^_+|_+$/g, '')
+            : '';
+    }
+
+    // Base classes
+    const BASE_FILTER_CLASSES = 'category-filter-button px-6 py-1 text-base font-medium rounded-full whitespace-nowrap transition-all duration-200 ease-in-out cursor-pointer';
+    const INACTIVE_FILTER_CLASSES = 'bg-white text-gray-900 border-[1.5px] border-[#a0a0a0] hover:border-[#6b7280] hover:shadow-sm';
+    const ACTIVE_FILTER_CLASSES = 'bg-black text-white border-2 border-black shadow-md';
+
+    const coursesView = document.getElementById('courses-view');
+    const roadmapView = document.getElementById('roadmap-view');
+
+    function renderCards(data, containerId, filter = '', currentCategory = 'All') {
+        const container = document.getElementById(containerId);
+        const query = filter.toLowerCase().trim();
+
+        const filteredPosts = data.filter(post => {
+            const searchMatch = post.category.toLowerCase().includes(query);
+            if (containerId === 'courses-container') {
+                const catMatch =
+                    currentCategory === 'All' ||
+                    toSnakeCase(post.category) === toSnakeCase(currentCategory);
+                return searchMatch && catMatch;
+            }
+            return searchMatch;
+        });
+
+        const postsHtml = filteredPosts.map(post => `
+            <a href="${post.url}" class="bg-white rounded-2xl overflow-hidden shadow-card border border-gray-100 transition-shadow duration-300 hover:shadow-lg flex flex-col">
+                <div class="aspect-[16/10] w-full relative overflow-hidden bg-gray-200">
+                    <img src="${post.imageUrl}" alt="${post.course_title}" 
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                        onerror="this.onerror=null;this.src='https://placehold.co/400x250/a0a0a0/ffffff?text=Image+Error';">
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">${post.category}</p>
+                    <h2 class="text-xl font-extrabold leading-snug text-text-primary mb-4">${post.course_title}</h2>
+                    <p class="text-sm text-gray-400 mt-auto">${post.date}</p>
+                </div>
+            </a>
+        `).join('');
+
+        container.innerHTML = postsHtml || 
+            (containerId === 'courses-container'
+                ? '<p class="text-center text-xl text-gray-500 my-16">No results found.</p>'
+                : '');
+    }
+
+    function renderCategoryFilters() {
+        const filterContainer = document.getElementById('category-filter-container');
+        const categories = new Set(['All']);
+        courseData.forEach(p => categories.add(p.category));
+
+        const filterHtml = Array.from(categories).map(cat => {
+            const dynamicClasses = toSnakeCase(cat) === toSnakeCase(activeCategoryFilter)
+                ? ACTIVE_FILTER_CLASSES
+                : INACTIVE_FILTER_CLASSES;
+            return `<button class="${BASE_FILTER_CLASSES} ${dynamicClasses}" data-category="${cat}">${cat}</button>`;
+        }).join('');
+        filterContainer.innerHTML = filterHtml;
+
+        // Click listeners
+        filterContainer.querySelectorAll('.category-filter-button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const cat = btn.getAttribute('data-category');
+                activeCategoryFilter = cat;
+
+                // Update browser URL
+                const newUrl = `/learn/${activeTab}/${toSnakeCase(activeCategoryFilter)}`;
+                window.history.pushState({}, '', newUrl);
+
+                renderCategoryFilters();
+                renderCards(courseData, 'courses-container', '', activeCategoryFilter);
+            });
+        });
+    }
+
+    function renderContent() {
+        document.querySelectorAll('.tab-button').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.tab === activeTab);
+        });
+
+        if (activeTab === 'courses') {
+            coursesView.style.display = 'block';
+            roadmapView.style.display = 'none';
+            renderCategoryFilters();
+            renderCards(courseData, 'courses-container', '', activeCategoryFilter);
+        } else {
+            coursesView.style.display = 'none';
+            roadmapView.style.display = 'block';
+            renderCards(roadmapData, 'roadmap-container', '', 'All');
+        }
+
+        // Always sync URL with state
+        const newUrl = `/learn/${activeTab}/${toSnakeCase(activeCategoryFilter)}`;
+        window.history.replaceState({}, '', newUrl);
+    }
+
+    function setupTabListeners() {
+        document.querySelectorAll('.tab-button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                activeTab = btn.dataset.tab;
+                activeCategoryFilter = 'All';
+                renderContent();
+            });
+        });
+    }
+
+    function setupSearchListener() {
+        const input = document.getElementById('search-input');
+        if (!input) return;
+        input.addEventListener('input', e => {
+            if (activeTab !== 'courses') return;
+            activeCategoryFilter = 'All';
+            renderCategoryFilters();
+            renderCards(courseData, 'courses-container', e.target.value, activeCategoryFilter);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Normalize category filter from URL
+        if (activeCategoryFilter) {
+            const match = courseData.find(c =>
+                toSnakeCase(c.category) === toSnakeCase(activeCategoryFilter)
+            );
+            if (match) activeCategoryFilter = match.category;
+        }
+
+        setupTabListeners();
+        setupSearchListener();
+        renderContent();
+    });
+</script>
+
+</body>
+</html>

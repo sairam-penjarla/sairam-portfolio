@@ -1,138 +1,205 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Sai Ram Penjarla</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/blogs_styles.css') }}" />
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/markdown_styles.css') }}" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-    </head>
-    <body>
-        {% include 'header.html' %}
-        <div class="page-layout">
-            <aside class="sidebar">
-                <div class="sidebar-menu">
-                    {% for folder in sidebar %}
-                    <div class="folder">
-                        <button class="folder-toggle" data-folder="{{ folder.name }}">
-                            <img src="{{ url_for('static', filename='images/lucidev-icons/chevron-right.svg') }}"
-                                 class="arrow-icon {% if folder.expanded %}rotated{% endif %}"
-                                 alt="arrow" />
-                            {{ folder.name.replace('-', ' ').title() }}
-                        </button>
-                        
-                        <ul class="blog-list {% if not folder.expanded %}collapsed{% endif %}" data-folder="{{ folder.name }}">
-                            {% for blog in folder.blogs %}
-                            <li>
-                                <a href="/projects/{{ folder.name }}/{{ blog.slug }}"
-                                   class="{% if blog.active %}active{% endif %}">
-                                    {{ blog.title }}
-                                </a>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    {% endfor %}
-                </div>
-            </aside>
-            
-    
-            <!-- Blog content -->
-            <main class="main-content">
-                <div class="breadcrumb">
-                    <a href="/projects/{{ category }}">← Back to {{ category.replace('-', ' ').title() }}</a>
-                </div>
-                <div class="blog-content" id="BlogContentPreview"></div>
-            </main>
-    
-            
-        </div>
-    
-        <!-- Highlight.js -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-        <!-- Additional languages -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/javascript.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/bash.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/sql.min.js"></script>
-        
-        <!-- Markdown rendering -->
-        <script id="rawMarkdown" type="text/markdown">{{ content }}</script>
-        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-        <script>
-            // Configure marked to use highlight.js
-            marked.setOptions({
-                highlight: function(code, lang) {
-                    // Decode HTML entities in code
-                    code = code.replace(/&amp;/g, '&')
-                         .replace(/&lt;/g, '<')
-                         .replace(/&gt;/g, '>')
-                         .replace(/&#34;/g, '"')
-                         .replace(/&#39;/g, "'")
-                         .replace(/&quot;/g, '"');
-                    
-                    if (lang && hljs.getLanguage(lang)) {
-                        return hljs.highlight(code, { language: lang }).value;
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ category or "All Blogs" }}</title>
+    <!-- Load Tailwind CSS via CDN --><script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom configuration for Tailwind colors and font */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'text-primary': '#1e1e1e',
+                        'filter-active': '#000000', /* Pure Black for active filter */
+                        'filter-bg': '#ffffff', /* White for inactive filter background */
+                        'body-bg': '#f4f6f8', /* Light grey body background */
+                        'primary': '#2267af',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'card': '0 10px 15px -3px rgba(0, 0, 0, 0.03), 0 4px 6px -2px rgba(0, 0, 0, 0.01)',
                     }
-                    return hljs.highlightAuto(code).value;
-                },
-                headerIds: false,
-                mangle: false,
-                pedantic: false,
-                gfm: true,
-                breaks: false,
-                sanitize: false, // Prevent sanitization to avoid encoding quotes
-                smartLists: true,
-                smartypants: false // Disable smartypants to prevent quote conversion
-            });
-            
-            const rawMarkdown = document.getElementById('rawMarkdown').textContent;
-            document.getElementById('BlogContentPreview').innerHTML = marked.parse(rawMarkdown);
-            
-            // Apply highlighting to any code blocks that might have been missed
-            // and fix any remaining encoded quotes in code blocks
-            document.querySelectorAll('pre code').forEach((block) => {
-                // Replace encoded quotes with actual quotes
-                block.innerHTML = block.innerHTML
-                    .replace(/&#34;/g, '"')
-                    .replace(/&#39;/g, "'")
-                    .replace(/&quot;/g, '"');
-                hljs.highlightElement(block);
-            });
-            
-            // Additional cleanup script for any remaining encoded quotes
-            window.addEventListener('DOMContentLoaded', (event) => {
-                setTimeout(() => {
-                    document.querySelectorAll('pre code').forEach((block) => {
-                        const cleanedHtml = block.innerHTML
-                            .replace(/&#34;/g, '"')
-                            .replace(/&#39;/g, "'")
-                            .replace(/&quot;/g, '"');
-                        if (cleanedHtml !== block.innerHTML) {
-                            block.innerHTML = cleanedHtml;
-                            hljs.highlightElement(block);
-                        }
-                    });
-                }, 100); // Small delay to ensure DOM is fully processed
-            });
-        </script>
-        <script>
-            document.querySelectorAll('.folder-toggle').forEach(btn => {
-            btn.addEventListener('click', (event) => {
-                console.log('Button clicked');
-                const folder = btn.dataset.folder;
-                const list = document.querySelector(`.blog-list[data-folder="${folder}"]`);
-                console.log('List before:', list.classList.contains('collapsed'));
-                list.classList.toggle('collapsed');
-                console.log('List after:', list.classList.contains('collapsed'));
-                const arrow = btn.querySelector('.arrow-icon');
-                arrow.classList.toggle('rotated');
-            });
-            });
-        </script>
+                }
+            }
+        }
+        
+        /* Only utility classes remain here. The button specific styles are moved to JS. */
+        .filter-button {
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            /* Using a generic class here to apply the transition and cursor */
+        }
+    </style>
+    <!-- Load Inter font --><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<!-- Apply the new light grey background -->
+<body class="bg-[#f4f6f8] min-h-screen font-sans antialiased">
+    <!-- Headeer -->
+    {% include 'common/header.html' %}
+    <main class="max-w-7xl w-full  mx-auto p-4 sm:p-6 lg:p-8">
+        
+        <!-- NEW: Main Heading -->
+        <h3 class="text-5xl md:text-9xl font-bold leading-snug text-gray-900 mb-8 mt-6 md:mt-10 text-primary italic" style="font-family: serif">
 
-        {% include 'footer.html' %}
-    </body>
-    
+            {{ page_heading | safe }}
+        </h3>
+
+        <!-- NEW: Category Filter Bar -->
+        <div id="filter-container" class="mb-10 flex flex-wrap gap-3 overflow-x-auto pb-2">
+            <!-- Filter buttons will be dynamically injected here by JavaScript -->
+        </div>
+
+        <!-- Search Bar Area --><div class="max-w-4xl mx-auto mb-16 pt-0 px-4 sm:px-0">
+            <div class="relative">
+                <input type="text" id="search-input" placeholder="Search articles by title or category..." 
+                       class="w-full h-12 py-3 pl-4 pr-12 text-base rounded-lg border-2 border-transparent focus:outline-none focus:ring-1 focus:ring-gray-300 transition duration-150" 
+                       style="background-color: #ffffff; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
+                <!-- Search Icon --><svg class="w-6 h-6 absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </div>
+        </div>
+
+        <!-- Card Grid Container: Standard CSS Grid (Left-to-Right order) -->
+        <div id="posts-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Blog posts will be dynamically injected here by JavaScript -->
+        </div>
+    </main>
+    <!-- Footer -->
+    {% include 'common/footer.html' %}
+
+    <script>
+        // Data for the blog posts
+        const blogPosts = {{ articles_list | safe }};
+        console.log(blogPosts)
+
+        let activeCategoryFilter = 'All'; // State to track the currently active category
+
+        // Base classes for all filter buttons (padding, font, rounding, transition)
+        const BASE_FILTER_CLASSES = 'filter-button px-6 py-1 text-base font-medium rounded-full whitespace-nowrap transition-all duration-200 ease-in-out cursor-pointer';
+
+        // Classes for the inactive (default) filter button
+        // Used custom values for exact border color and hover effect
+        const INACTIVE_FILTER_CLASSES = 'bg-white text-gray-900 border-[1.5px] border-[#a0a0a0] hover:border-[#6b7280] hover:shadow-sm';
+
+        // Classes for the active filter button
+        const ACTIVE_FILTER_CLASSES = 'bg-black text-white border-2 border-black shadow-md';
+
+
+        /**
+         * Renders the blog posts, filtering by search query and active category.
+         * @param {string} filter - The search query to filter by title/category.
+         */
+        function renderPosts(filter = '') {
+            const container = document.getElementById('posts-container');
+            const query = filter.toLowerCase().trim();
+            
+            // Filter by search query AND active category
+            const filteredPosts = blogPosts.filter(post => {
+                const searchMatch = post.title.toLowerCase().includes(query) || post.category.toLowerCase().includes(query);
+                const categoryMatch = activeCategoryFilter === 'All' || post.category === activeCategoryFilter;
+                return searchMatch && categoryMatch;
+            });
+
+            // Generate HTML for filtered posts
+            const postsHtml = filteredPosts.map(post => `
+                <!-- Each card is wrapped in an anchor tag -->
+                <a href="${post.url}" class="bg-white h-full rounded-2xl overflow-hidden shadow-card border border-gray-100 transition-shadow duration-300 hover:shadow-lg flex flex-col">
+                    <!-- Card Header: Image Container with Aspect Ratio and Hover Effect -->
+                    <div class="aspect-[16/10] w-full relative overflow-hidden bg-gray-200">
+                        <img src="${post.imageUrl}" 
+                             alt="${post.title}" 
+                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                             onerror="this.onerror=null;this.src='https://placehold.co/400x250/a0a0a0/ffffff?text=Image+Load+Error';"
+                        >
+                    </div>
+                    
+                    <!-- Card Body (Text Content) -->
+                    <div class="p-6 flex flex-col flex-grow">
+                        <!-- Category -->
+                        <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">${post.category}</p>
+                        
+                        <!-- Title -->
+                        <h2 class="text-xl font-thin leading-snug text-text-primary mb-4" >
+                            ${post.title}
+                        </h2>
+
+                        <!-- Date -->
+                        <p class="text-sm text-gray-400 mt-auto">${post.date}</p>
+                    </div>
+                </a>
+            `).join('');
+
+            container.innerHTML = postsHtml;
+
+            // Show message if no results found
+            if (filteredPosts.length === 0) {
+                // Use lg:col-span-3 (for 3-column layout) and sm:col-span-2 (for 2-column layout) to center the message across the grid
+                container.innerHTML = '<p class="text-center text-xl text-gray-500 my-16 lg:col-span-3 sm:col-span-2">No results found matching your search query.</p>';
+            }
+        }
+
+        /**
+         * Generates and renders the category filter buttons.
+         */
+        function renderFilters() {
+            const filterContainer = document.getElementById('filter-container');
+            const categories = new Set(['All']); // Start with 'All' filter
+            blogPosts.forEach(post => categories.add(post.category));
+
+            const filterHtml = Array.from(categories).map(category => {
+                // Select the appropriate set of classes based on the active state
+                const dynamicClasses = category === activeCategoryFilter 
+                    ? ACTIVE_FILTER_CLASSES 
+                    : INACTIVE_FILTER_CLASSES;
+                
+                return `<button class="${BASE_FILTER_CLASSES} ${dynamicClasses}" data-category="${category}">${category}</button>`;
+            }).join('');
+
+            filterContainer.innerHTML = filterHtml;
+
+            // Add click listeners to buttons
+            filterContainer.querySelectorAll('.filter-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const category = button.getAttribute('data-category');
+                    activeCategoryFilter = category;
+                    
+                    // Reset search input when filtering by category
+                    document.getElementById('search-input').value = '';
+                    
+                    // Re-render both filters (to update active state) and posts
+                    renderFilters();
+                    renderPosts();
+                });
+            });
+        }
+
+        // --- Event Listeners and Initial Setup ---
+        
+        // Function to set up event listener for the search input
+        function setupSearchListener() {
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    // When searching, reset the category filter to 'All'
+                    activeCategoryFilter = 'All'; 
+                    renderFilters(); // Update button to reflect 'All' is active
+                    renderPosts(e.target.value);
+                });
+            } else {
+                console.error("Search input element not found.");
+            }
+        }
+
+        // Initial setup on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderFilters(); // First, generate the filter buttons
+            setupSearchListener(); // Set up the search input listener
+            renderPosts(); // Then, render all posts initially
+        });
+
+    </script>
+</body>
 </html>

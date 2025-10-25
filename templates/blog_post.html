@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sai Ram Penjarla</title>
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load marked.js for Markdown parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.17/marked.min.js"></script>
+    <!-- Configure Tailwind for Inter font and new colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#2267af',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Apply Inter font universally and set background to pure white */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: white; 
+            color: #374151;
+        }
+        
+        
+        /* TOC Link styles - No bolding to prevent CLS */
+        #toc-nav li {
+            display: flex;
+            align-items: flex-start;
+            transition: color 150ms;
+        }
+        #toc-nav a {
+            display: block;
+            flex-grow: 1;
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+            color: #4b5563; /* text-gray-700 */
+            text-decoration: none;
+            transition: color 150ms;
+            font-size: 0.875rem; /* text-sm */
+            line-height: 1.25; /* Prevents text jump */
+        }
+
+        /* Indicator Dot Style */
+        .toc-indicator {
+            width: 8px; /* w-2 */
+            height: 8px; /* h-2 */
+            margin-right: 8px; /* mr-2 */
+            margin-top: 6px; 
+            border-radius: 9999px; /* rounded-full */
+            background-color: transparent;
+            transition: background-color 200ms;
+            flex-shrink: 0; /* Important: prevents dot from squishing */
+        }
+        
+        /* Active TOC Link Styling */
+        .toc-active-link {
+            color: #2267af; /* primary color */
+            font-weight: 600; /* slightly bolder, but keep font stable */
+        }
+        /* Active TOC Indicator Styling */
+        .toc-active-indicator {
+            background-color: #2267af; /* primary color */
+        }
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/markdown_styles.css') }}" />
+    
+    <!-- Firebase Imports (Mandatory for the environment) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        window.db = null;
+        window.auth = null;
+        window.userId = null;
+        
+        // Use global variables provided by the environment
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        /** Initializes Firebase and signs in the user. */
+        async function initializeFirebase() {
+            if (!firebaseConfig) {
+                console.error("Firebase config not available.");
+                return;
+            }
+
+            try {
+                const app = initializeApp(firebaseConfig);
+                window.db = getFirestore(app);
+                window.auth = getAuth(app);
+                
+                if (initialAuthToken) {
+                    await signInWithCustomToken(window.auth, initialAuthToken);
+                } else {
+                    await signInAnonymously(window.auth);
+                }
+
+                onAuthStateChanged(window.auth, (user) => {
+                    window.userId = user ? user.uid : crypto.randomUUID();
+                    // console.log(`User ID initialized: ${window.userId}`); // Keep logging minimal
+                });
+
+            } catch (error) {
+                console.error("Firebase Initialization or Sign-in Failed:", error);
+            }
+        }
+
+        // initializeFirebase();
+    </script>
+    
+    <script>
+        let isMenuOpen = false;
+        let currentActiveTocId = null; 
+        
+        // --- PLACEHOLDER JSON DATA STRUCTURES ---
+        
+        const mainArticleData = {{ blog_data | safe }};
+
+        const sidebarData = {{ categories_dict | safe }};
+
+
+        /**
+         * Renders the main article content and calls TOC generation.
+         */
+        function renderArticle() {
+            const article = mainArticleData.article;
+            
+            // Render Header
+            document.getElementById('article-category-pill').textContent = article.category;
+            document.getElementById('article-title').textContent = article.title;
+            document.getElementById('article-metadata').textContent = `${article.date} \u2022 ${article.readTime}`;
+            
+            // Render Image
+            const imgElement = document.getElementById('article-image');
+            imgElement.src = article.imageUrl;
+            imgElement.alt = article.title;
+
+            // Render Body
+            const bodyContainer = document.getElementById('article-body');
+            bodyContainer.innerHTML = '';
+            
+            // 1. Use marked.js to convert Markdown string to HTML
+            const htmlContent = marked.parse(article.body);
+            bodyContainer.innerHTML = htmlContent;
+
+            // 2. Generate and setup the Table of Contents after HTML rendering
+            generateTableOfContents();
+        }
+
+        /**
+         * Generates the Table of Contents (TOC) from H2 headings and sets up scroll highlighting.
+         */
+        function generateTableOfContents() {
+            const bodyContainer = document.getElementById('article-body');
+            const tocContainer = document.getElementById('toc-nav');
+            tocContainer.innerHTML = '';
+            
+            const headings = bodyContainer.querySelectorAll('h2');
+            const scrollableHeadings = [];
+
+            headings.forEach((heading, index) => {
+                // 1. Assign unique ID
+                let id = heading.id || heading.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+                if (!id) id = `section-${index}`;
+                heading.id = id;
+
+                scrollableHeadings.push(heading);
+
+                // 2. Create TOC Link structure with dot indicator
+                const link = document.createElement('a');
+                link.href = `#${id}`;
+                link.textContent = heading.textContent;
+                link.classList.add('hover:text-primary'); 
+                
+                const indicator = document.createElement('span');
+                indicator.classList.add('toc-indicator');
+                
+                // 3. Smooth scroll handler
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // Scroll slightly above the target for context
+                    const targetPosition = heading.offsetTop - 50; 
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                });
+
+                // 4. Add to TOC list
+                const li = document.createElement('li');
+                li.id = `toc-li-${id}`;
+                li.appendChild(indicator);
+                li.appendChild(link);
+                tocContainer.appendChild(li);
+            });
+            
+            // 5. Setup Scroll Listener for Highlighting
+            
+            let scrollTimeout;
+            const handleScroll = () => {
+                // Throttle scroll events using requestAnimationFrame for performance
+                if (scrollTimeout) {
+                    window.cancelAnimationFrame(scrollTimeout);
+                }
+                scrollTimeout = window.requestAnimationFrame(() => {
+                    let current = null;
+                    const offset = window.scrollY + 100; // 100px from top as the "active" line
+
+                    // Iterate backwards to find the last heading that has passed the offset
+                    for (let i = scrollableHeadings.length - 1; i >= 0; i--) {
+                        if (scrollableHeadings[i].offsetTop <= offset) {
+                            current = scrollableHeadings[i];
+                            break;
+                        }
+                    }
+
+                    const newActiveId = current ? current.id : null;
+                    
+                    if (currentActiveTocId !== newActiveId) {
+                        currentActiveTocId = newActiveId;
+
+                        // Deactivate all
+                        tocContainer.querySelectorAll('li').forEach(li => {
+                            const link = li.querySelector('a');
+                            const indicator = li.querySelector('.toc-indicator');
+
+                            link.classList.remove('toc-active-link');
+                            indicator.classList.remove('toc-active-indicator');
+                        });
+                        
+                        // Activate current
+                        if (newActiveId) {
+                            const activeLi = document.getElementById(`toc-li-${newActiveId}`);
+                            const activeLink = activeLi?.querySelector('a');
+                            const activeIndicator = activeLi?.querySelector('.toc-indicator');
+
+                            activeLink?.classList.add('toc-active-link');
+                            activeIndicator?.classList.add('toc-active-indicator');
+                        }
+                    } 
+                });
+            };
+
+            // Attach scroll listener once
+            window.removeEventListener('scroll', handleScroll); 
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            
+            // Run initial check
+            handleScroll();
+        }
+
+
+        /** Renders the related posts section */
+        function renderRelatedPosts() {
+            const container = document.getElementById('related-posts-container');
+            container.innerHTML = '';
+
+            mainArticleData.relatedPosts.forEach(post => {
+                const card = `
+                    <a href="/${post.url}" class="block w-full border-2 border-gray-100 p-6 rounded-2xl bg-white shadow-md transition duration-300 group">
+                        <p class="text-xs font-medium text-gray-500 mb-2">${post.category}</p>
+                        <h3 class="text-xl font-semibold leading-snug text-gray-900 mb-10 group-hover:text-primary transition duration-300">
+                            ${post.title}
+                        </h3>
+                        <p class="text-sm text-gray-500">${post.date}</p>
+                    </a>
+                `;
+                container.insertAdjacentHTML('beforeend', card);
+            });
+        }
+
+
+        /** Renders the navigation links for both desktop and mobile menu */
+        function renderNavigation(containerId, isMobile) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            if (!sidebarData?.categories || sidebarData.categories.length === 0) {
+                console.warn('No categories available in sidebarData.');
+                return;
+            }
+            
+            sidebarData.categories.forEach(category => {
+                let listItems = category.links.map(link => `
+                    <li>
+                        <a href="${link.url}" 
+                           onclick="${isMobile ? 'toggleMenu()' : ''}"
+                           class="block text-gray-900 font-medium hover:text-primary hover:opacity-80 transition duration-150 ${isMobile ? 'text-base text-gray-700' : ''}">
+                            ${link.text}
+                        </a>
+                    </li>
+                `).join('');
+
+                const categoryBlock = `
+                    <div class="space-y-4">
+                        <h4 class="${isMobile ? 'text-lg border-b text-primary pb-2 border-gray-100' : 'text-sm'} 
+                                   font-semibold uppercase tracking-wider mb-4">
+                            ${category.name}
+                        </h4>
+                        <ul class="space-y-4">
+                            ${listItems}
+                        </ul>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', categoryBlock);
+            });
+        }
+        
+        /** Toggles the visibility of the full-screen mobile menu. */
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            const menu = document.getElementById('mobile-menu');
+            const button = document.getElementById('menu-toggle');
+            
+            if (isMenuOpen) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+                // X Icon
+                button.innerHTML = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+                document.body.style.overflow = '';
+                // Hamburger Icon
+                button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>';
+            }
+        }
+        
+        /** Main function to render all dynamic content */
+        function renderApp() {
+            renderArticle(); // Calls generateTableOfContents internally
+            renderRelatedPosts();
+            renderNavigation('desktop-sidebar-content', false); // Desktop view
+            renderNavigation('mobile-menu-content', true);    // Mobile view
+            highlightCodeBlocks();
+        }
+
+        // Wait for the DOM to be fully loaded before rendering content
+        window.onload = renderApp;
+    </script>
+    {% include 'highlightJs/highlight_js.html' %}
+</head>
+<body class="min-h-screen bg-white">
+    {% include 'common/header.html' %}
+    <!-- Mobile Header with Menu Button (Visible < md) -->
+    <!-- The mt-[40px] compensates for the canvas header height -->
+    <header class="md:hidden fixed top-0 left-0 right-0 z-50 bg-white mt-[40px] shadow-md pl-[25px] pr-[4px] py-4 flex justify-between items-center border-b border-gray-100">
+        <span class="text-xl font-bold text-gray-900">{{ page_heading | safe }}</span>
+        <button id="menu-toggle" onclick="toggleMenu()" class="p-2 text-gray-700 hover:text-primary transition duration-150 rounded-lg">
+            <!-- Hamburger Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+    </header>
+
+    <!-- Full-Screen Mobile Menu Overlay -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-40 bg-white overflow-y-auto pt-40 pb-8 px-4 sm:px-8 flex flex-col">
+        <div id="mobile-menu-content" class="space-y-12">
+            <!-- Mobile Menu Content is rendered here by JavaScript -->
+        </div>
+    </div>
+    
+    <!-- Main Outer Container - Centered and max width -->
+    <div class="pt-20 pb-20 mt-[40px] sm:mt-0">
+
+
+        <!-- SECTION 1: MAIN ARTICLE, SIDEBAR, and TOC LAYOUT -->
+        <!-- The max-w-7xl mx-auto ensures equal distance from left and right edges -->
+        <section class="grid px-8 grid-cols-1 md:grid-cols-12 md:gap-10 lg:gap-12 max-w-7xl">
+
+            <!-- 1A: LEFT COLUMN - DESKTOP SIDEBAR + RIGHT BORDER (Hidden on mobile) -->
+            <div class="hidden md:block md:col-span-3 mt-20 md:mt-0 order-2 md:order-1 border-r border-gray-200">
+                <!-- Inner content with right padding adjusted to 4 units for tighter spacing -->
+                <div class="md:sticky md:top-8 md:overflow-y-auto pr-4">
+                    <div id="desktop-sidebar-content" class="space-y-12 pb-8">
+                        <!-- Desktop Sidebar Content is rendered here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 1B: CENTER COLUMN - MAIN ARTICLE -->
+            <!-- The md:col-span-7 combined with mx-auto on the parent container ensures centering of the entire block -->
+            <div class="md:col-span-7 flex flex-col items-center md:items-start md:text-left order-1 md:order-2">
+                
+                <!-- ARTICLE HEADER CONTENT -->
+                <div class="flex flex-col items-center text-center w-full px-4 sm:px-0">
+                    <!-- Announcements Pill -->
+                    <div class="mb-4">
+                        <span class="inline-flex items-center px-3 py-1 text-xs font-medium bg-white text-gray-800 border border-gray-300 rounded-full shadow-sm" id="article-category-pill">
+                            <!-- Category loaded here -->
+                        </span>
+                    </div>
+
+                    <!-- Title -->
+                    <h1 class="text-3xl sm:text-5xl lg:text-[4rem] font-extrabold leading-tight tracking-tighter max-w-3xl mb-4 text-primary italic" style="font-family: serif" id="article-title">
+                        <!-- Title loaded here -->
+                    </h1>
+
+                    <!-- Metadata -->
+                    <p class="text-base text-gray-500 mb-12" id="article-metadata">
+                        <!-- Date and read time loaded here -->
+                    </p>
+                </div>
+
+                <!-- Image Block (Full width of the column) -->
+                <div class="w-full mx-auto rounded-2xl overflow-hidden mb-16 px-4 sm:px-0">
+                    <img 
+                        src=""
+                        alt=""
+                        class="w-full h-auto object-cover"
+                        onerror="this.onerror=null;"
+                        loading="lazy"
+                        id="article-image"
+                    >
+                </div>
+
+                <!-- Placeholder for article text -->
+                <div id="article-body" class="text-left w-full max-w-3xl mx-auto text-lg text-gray-700 px-4 sm:px-0">
+                    <!-- Article Body HTML is now generated by marked.js and loaded here -->
+                </div>
+
+            </div>
+            
+            <!-- 1C: RIGHT COLUMN - TABLE OF CONTENTS (Hidden below large screens) -->
+            <div class="hidden lg:block lg:col-span-2 mt-20 md:mt-0 order-3 pl-4" style="
+    position: sticky;
+    top: 50px;
+">
+                <div class="sticky top-8 pt-10">
+                    <h4 class="text-xs font-semibold uppercase tracking-wider text-primary mb-4 border-b border-primary/20 pb-2">On this page</h4>
+                    <nav>
+                        <!-- Space-y-2 used here to match the dot height and margin -->
+                        <ul id="toc-nav" class="space-y-3 w-[200px]">
+                            <!-- TOC links generated here by JavaScript -->
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+        </section>
+        <!-- END SECTION 1 -->
+
+
+        <!-- SECTION 2: RELATED POSTS -->
+        <section class="mt-24 w-full text-left p-4 max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 px-4 sm:px-0">More from the Blog</h2>
+            
+            <!-- Related Posts Container -->
+            <div id="related-posts-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 sm:px-0">
+                <!-- Related Posts Cards are rendered here by JavaScript -->
+            </div>
+        </section>
+        <!-- END SECTION 2 -->
+
+    </div>
+    
+    {% include 'common/footer.html' %}
+</body>
+</html>
