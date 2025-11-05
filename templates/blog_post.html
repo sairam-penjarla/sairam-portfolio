@@ -158,6 +158,53 @@
             // 2. Generate and setup the Table of Contents after HTML rendering
             generateTableOfContents();
         }
+        function groupConsecutiveImages(container) {
+    const children = Array.from(container.children);
+    let imageGroup = [];
+    
+    children.forEach((child, index) => {
+        const isImage = child.tagName === 'P' && child.querySelector('img');
+        
+        if (isImage) {
+            imageGroup.push(child);
+        } else {
+            // Process accumulated images before this element
+            if (imageGroup.length > 1) {
+                createImageGrid(imageGroup);
+            }
+            imageGroup = [];
+        }
+        
+        // Process any remaining images at the end
+        if (index === children.length - 1 && imageGroup.length > 1) {
+            createImageGrid(imageGroup);
+        }
+    });
+}
+        function createImageGrid(imageElements) {
+    if (imageElements.length === 0) return;
+    
+    // Create grid wrapper
+    const gridWrapper = document.createElement('div');
+    gridWrapper.className = 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-8';
+    
+    // Move each image into the grid
+    imageElements.forEach(imgParagraph => {
+        const img = imgParagraph.querySelector('img');
+        if (img) {
+            const gridItem = document.createElement('div');
+            gridItem.className = 'rounded-lg overflow-hidden';
+            gridItem.appendChild(img.cloneNode(true));
+            gridWrapper.appendChild(gridItem);
+        }
+    });
+    
+    // Replace the first image element with the grid
+    imageElements[0].parentNode.replaceChild(gridWrapper, imageElements[0]);
+    
+    // Remove the other image elements
+    imageElements.slice(1).forEach(elem => elem.remove());
+}
 
         /**
          * Generates the Table of Contents (TOC) from H2 headings and sets up scroll highlighting.

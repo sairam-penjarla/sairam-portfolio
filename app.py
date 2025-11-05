@@ -51,6 +51,67 @@ def load_course_data(py_file_path):
 @app.route('/learn/<var0>/<var1>/<var2>/<var3>')
 def learn(var0='courses', var1='All', var2=None, var3=None):
     if not var2:
+        if var0 == "roadmap" and var1 != "all":
+            ROADMAP_FILE = "roadmap.json"
+            COURSES_FOLDER = "courses"  # update path if needed
+
+
+            def enrich_all_roadmaps(roadmap_items):
+                for entry in roadmap_items:
+                    course_title = entry.get("course_title")
+                    module_title = entry.get("module_title")
+
+                    found = False
+
+                    # Search Python files
+                    for root, _, files in os.walk(COURSES_FOLDER):
+                        for file in files:
+                            if file.endswith(".py"):
+                                py_file_path = os.path.join(root, file)
+
+                                try:
+                                    course_data = load_course_data(py_file_path)
+                                    course_data.setdefault("resources", [])
+                                    course_data.setdefault("type", "Video")
+                                    course_data['module'] = "_".join(course_data['module_title'].lower().split(" "))
+                                    course_data["name"] = course_data.get("module_title", "")
+                                except:
+                                    continue
+
+                                # Match course and module
+                                if (
+                                    course_data.get("course_title") == course_title and
+                                    course_data.get("module_title") == module_title
+                                ):
+                                    entry.update(course_data)
+                                    found = True
+                                    break
+                        if found:
+                            break
+
+                return roadmap_items
+
+            with open(ROADMAP_FILE, "r", encoding="utf-8") as f:
+                roadmaps = json.load(f)
+
+            roadmap_items = []
+
+            for r in roadmaps:
+                if r['url'] == f'/learn/{var0}/{var1}':
+                    roadmap_items = r['modules']
+                    break
+
+            enriched_data = enrich_all_roadmaps(roadmap_items)
+            course = {
+                r['course_title'] : {
+                    "modules" : enriched_data
+                }
+            }
+
+            var1 = r['course_title']
+
+            course_url = "/learn/roadmap/all"
+            return render_template('courses.html', var0=var0, var1=var1, var2=var2, course=course, course_url=course_url)
         
         root = "courses"
         all_courses = []
@@ -83,7 +144,9 @@ def learn(var0='courses', var1='All', var2=None, var3=None):
         filters = list(set(["_".join(x['category'].lower().split(" ")) for x in all_courses]))
         if var1 not in filters:
             var1 = "All"
-        return render_template('learn.html', var0=var0, var1=var1, var2=var2, all_courses=all_courses)
+        with open("roadmap.json", "r", encoding="utf-8") as f:
+            roadmaps = json.load(f)
+        return render_template('learn.html', var0=var0, var1=var1, var2=var2, all_courses=all_courses, roadmaps=roadmaps)
     else:
         if var3:
             result = None
@@ -145,7 +208,7 @@ def learn(var0='courses', var1='All', var2=None, var3=None):
                             all_courses.append(course_data)
         def reform(element):
             element["name"] = element['module_title']
-            element["resources"] = []
+            element["resources"] = element.get("resources",[])
             return element
 
 
@@ -157,8 +220,8 @@ def learn(var0='courses', var1='All', var2=None, var3=None):
             all_courses[0]['course_title'] : {
                 "modules" : [
                     reform(x) for x in all_courses
-                ] # add resoources to the .py files
-                }
+                ]
+            }
         }
         
         
@@ -188,53 +251,10 @@ def resources():
     return render_template('resources.html')
 
 
-@app.route('/cheatsheets')
-@app.route('/cheatsheets/')
-@app.route('/cheatsheets/<category>')
-def cheatsheets(category=None):
-        
-    BASE_DIR = "cheatsheets"
-
-    def load_py_course_data(py_path):
-        """Dynamically load a .py file and return its course_data dictionary"""
-        spec = importlib.util.spec_from_file_location("course_module", py_path)
-        module = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(module)
-        return module.course_data
-
-    def get_all_courses(base_dir=BASE_DIR):
-        """Read all .py files in cheatsheets and return a list of dictionaries"""
-        courses_list = []
-
-        for root, dirs, files in os.walk(base_dir):
-            py_files = [f for f in files if f.endswith(".py")]
-            py_files = sorted(py_files, key=natural_sort_key)
-            for py_file in py_files:
-                py_path = os.path.join(root, py_file)
-                try:
-                    course_data = load_py_course_data(py_path)
-                    course_dict = {
-                        "category": course_data["category"],
-                        "title": course_data["module_title"],
-                        "date": course_data["date"],
-                        "imageUrl": course_data["imageUrl"],
-                        "url": course_data["url"].replace("/learn/courses/", "/cheatsheets/")
-                    }
-                    courses_list.append(course_dict)
-                except Exception as e:
-                    print(f"Error loading {py_path}: {e}")
-
-        return courses_list
-
-    articles_list = get_all_courses()
-    page_heading = "Cheatsheets"
-    # Render the same template for /blogs and /blogs/<category>
-    return render_template('blog.html', page_heading=page_heading, articles_list=articles_list, category=category)
-
 @app.route('/blogs')
 @app.route('/blogs/')
-@app.route('/blogs/<category>')
-def blogs(category=None):
+@app.route('/blogs/<blog_category>')
+def blogs(blog_category="All"):
     base_dir = "blogs"
     articles_list = []
 
@@ -265,7 +285,7 @@ def blogs(category=None):
     )
     # Render the same template for /blogs and /blogs/<category>
     page_heading="Blogs"
-    return render_template('blog.html', page_heading=page_heading, articles_list=articles_list, category=category)
+    return render_template('blog.html', page_heading=page_heading, articles_list=articles_list, blog_category=blog_category)
 
 @app.route('/blogs/<category>/<blog>')
 def blog_post(category, blog):
@@ -360,6 +380,49 @@ def blog_post(category, blog):
     page_heading = "blogs"
     return render_template('blog_post.html', page_heading=page_heading, category=category, blog=blog, blog_data=blog_data, categories_dict=categories_dict)
 
+
+@app.route('/cheatsheets')
+@app.route('/cheatsheets/')
+@app.route('/cheatsheets/<blog_category>')
+def cheatsheets(blog_category="All"):
+        
+    BASE_DIR = "cheatsheets"
+
+    def load_py_course_data(py_path):
+        """Dynamically load a .py file and return its course_data dictionary"""
+        spec = importlib.util.spec_from_file_location("course_module", py_path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.course_data
+
+    def get_all_courses(base_dir=BASE_DIR):
+        """Read all .py files in cheatsheets and return a list of dictionaries"""
+        courses_list = []
+
+        for root, dirs, files in os.walk(base_dir):
+            py_files = [f for f in files if f.endswith(".py")]
+            py_files = sorted(py_files, key=natural_sort_key)
+            for py_file in py_files:
+                py_path = os.path.join(root, py_file)
+                try:
+                    course_data = load_py_course_data(py_path)
+                    course_dict = {
+                        "category": course_data["category"],
+                        "title": course_data["module_title"],
+                        "date": course_data["date"],
+                        "imageUrl": course_data["imageUrl"],
+                        "url": course_data["url"].replace("/learn/courses/", "/cheatsheets/")
+                    }
+                    courses_list.append(course_dict)
+                except Exception as e:
+                    print(f"Error loading {py_path}: {e}")
+
+        return courses_list
+
+    articles_list = get_all_courses()
+    page_heading = "Cheatsheets"
+    # Render the same template for /blogs and /blogs/<category>
+    return render_template('blog.html', page_heading=page_heading, articles_list=articles_list, blog_category=blog_category)
 
 @app.route('/cheatsheets/<category>/<blog>')
 def cheatsheets_post(category, blog):
@@ -486,6 +549,159 @@ def cheatsheets_post(category, blog):
 
     return render_template('blog_post.html', page_heading=page_heading, category=category, blog=blog, blog_data=blog_data, categories_dict=categories_dict)
 
+
+@app.route('/prompts')
+@app.route('/prompts/')
+@app.route('/prompts/<blog_category>')
+def prompts(blog_category="All"):
+        
+    BASE_DIR = "prompts"
+
+    def load_py_course_data(py_path):
+        """Dynamically load a .py file and return its course_data dictionary"""
+        spec = importlib.util.spec_from_file_location("course_module", py_path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.course_data
+
+    def get_all_courses(base_dir=BASE_DIR):
+        """Read all .py files in prompts and return a list of dictionaries"""
+        courses_list = []
+
+        for root, dirs, files in os.walk(base_dir):
+            py_files = [f for f in files if f.endswith(".py")]
+            py_files = sorted(py_files, key=natural_sort_key)
+            for py_file in py_files:
+                py_path = os.path.join(root, py_file)
+                try:
+                    course_data = load_py_course_data(py_path)
+                    course_dict = {
+                        "category": course_data["category"],
+                        "title": course_data["module_title"],
+                        "date": course_data["date"],
+                        "imageUrl": course_data["imageUrl"],
+                        "url": course_data["url"]
+                    }
+                    courses_list.append(course_dict)
+                except Exception as e:
+                    print(f"Error loading {py_path}: {e}")
+
+        return courses_list
+
+    articles_list = get_all_courses()
+    page_heading = "prompts"
+    # Render the same template for /blogs and /blogs/<category>
+    return render_template('blog.html', page_heading=page_heading, articles_list=articles_list, blog_category=blog_category)
+
+@app.route('/prompts/<category>/<blog>')
+def prompts_post(category, blog):
+    import os
+    import importlib.util
+    import random
+
+    BASE_DIR = "prompts"
+
+    def load_py_course_data(py_path):
+        """Dynamically load a .py file and return its course_data dictionary"""
+        spec = importlib.util.spec_from_file_location("course_module", py_path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.course_data
+
+    def build_categories_dict(base_dir=BASE_DIR):
+        categories = []
+
+        for folder in os.listdir(base_dir):
+            folder_path = os.path.join(base_dir, folder)
+            if os.path.isdir(folder_path):
+                links = []
+                py_files = [f for f in os.listdir(folder_path) if f.endswith(".py")]
+                py_files = sorted(py_files, key=natural_sort_key)
+                for py_file in py_files:
+                    py_path = os.path.join(folder_path, py_file)
+                    try:
+                        course_data = load_py_course_data(py_path)
+                        links.append({
+                            "text": course_data.get("module_title", ""),
+                            "url": course_data.get("url", "")
+                        })
+                    except Exception as e:
+                        print(f"Error loading {py_path}: {e}")
+
+                categories.append({
+                    "name": folder.replace("_", " ").title(),
+                    "links": links
+                })
+
+        return {"categories": categories}
+
+
+    def get_article_with_related(category, blog, base_dir=BASE_DIR):
+        """
+        Returns both:
+        - res: a dictionary containing the article and related posts
+        - categories_dict: dictionary containing all categories and their links
+        """
+        categories_dict = build_categories_dict(base_dir)
+
+        folder_path = os.path.join(base_dir, category)
+        if not os.path.exists(folder_path):
+            print(f"Category folder '{category}' does not exist.")
+            return None, categories_dict
+
+        constructed_url = f"/prompts/{category}/{blog}"
+
+        article_data = None
+        all_courses = []
+
+        # Load all .py files in the folder
+        py_files = [f for f in os.listdir(folder_path) if f.endswith(".py")]
+        for py_file in py_files:
+            py_path = os.path.join(folder_path, py_file)
+            try:
+                course_data = load_py_course_data(py_path)
+                all_courses.append(course_data)
+                if course_data.get("url") == constructed_url:
+                    article_data = course_data
+            except Exception as e:
+                print(f"Error loading {py_path}: {e}")
+
+        if not article_data:
+            print(f"No article found for URL: {constructed_url}")
+            return None, categories_dict
+
+        # Prepare related posts (randomly pick 3 different from main article)
+        other_courses = [c for c in all_courses if c.get("url") != constructed_url]
+        related_posts = []
+        sample_count = min(3, len(other_courses))
+        if sample_count > 0:
+            for c in random.sample(other_courses, sample_count):
+                related_posts.append({
+                    "title": c.get("module_title", ""),
+                    "category": c.get("category", ""),
+                    "date": c.get("date", ""),
+                    "url": c.get("url", "")
+                })
+
+        # Build result dictionary
+        res = {
+            "article": {
+                "title": article_data.get("module_title", ""),
+                "category": article_data.get("category", ""),
+                "date": article_data.get("date", ""),
+                "readTime": article_data.get("readTime", ""),  # optional field
+                "imageUrl": article_data.get("imageUrl", ""),
+                "body": article_data.get("body", "")
+            },
+            "relatedPosts": related_posts
+        }
+
+        return res, categories_dict
+
+    blog_data, categories_dict = get_article_with_related(category, blog)
+    page_heading = "prompts"
+
+    return render_template('blog_post.html', page_heading=page_heading, category=category, blog=blog, blog_data=blog_data, categories_dict=categories_dict)
 
 # @app.route('/blogs', defaults={'path': ''})
 # @app.route('/blogs/', defaults={'path': ''})
@@ -623,95 +839,95 @@ def get_projects_from_database(file_path="projects/projects.json"):
 
     return projects
 
-@app.route('/prompts', defaults={'subsection': None, 'blog_slug': None})
-@app.route('/prompts/<subsection>', defaults={'blog_slug': None})
-@app.route('/prompts/<subsection>/<blog_slug>')
-def prompts(subsection, blog_slug):
-    base_path = 'prompts'
-    print(subsection, blog_slug)
+# @app.route('/prompts', defaults={'subsection': None, 'blog_slug': None})
+# @app.route('/prompts/<subsection>', defaults={'blog_slug': None})
+# @app.route('/prompts/<subsection>/<blog_slug>')
+# def prompts(subsection, blog_slug):
+#     base_path = 'prompts'
+#     print(subsection, blog_slug)
 
-    # Load all prompt sections (e.g., ['Image Generation', 'Novel Writing', ...])
-    prompt_sections = [
-        name for name in os.listdir(base_path)
-        if os.path.isdir(os.path.join(base_path, name)) and name != '.DS_Store'
-    ]
+#     # Load all prompt sections (e.g., ['Image Generation', 'Novel Writing', ...])
+#     prompt_sections = [
+#         name for name in os.listdir(base_path)
+#         if os.path.isdir(os.path.join(base_path, name)) and name != '.DS_Store'
+#     ]
 
-    section_blogs = []
-    blog_details = None
-    latest_blogs_per_section = {}
+#     section_blogs = []
+#     blog_details = None
+#     latest_blogs_per_section = {}
 
-    if subsection:
-        subsection_path = os.path.join(base_path, subsection)
+#     if subsection:
+#         subsection_path = os.path.join(base_path, subsection)
 
-        if not os.path.exists(subsection_path):
-            abort(404)
+#         if not os.path.exists(subsection_path):
+#             abort(404)
 
-        # Load all blogs in that subsection
-        for blog_dir in os.listdir(subsection_path):
-            if blog_dir == '.DS_Store':
-                continue
-            blog_folder = os.path.join(subsection_path, blog_dir)
-            meta_path = os.path.join(blog_folder, 'blog_meta.json')
-            if os.path.exists(meta_path):
-                with open(meta_path, 'r') as f:
-                    meta = json.load(f)[0]
-                    meta['slug'] = subsection
-                    section_blogs.append(meta)
+#         # Load all blogs in that subsection
+#         for blog_dir in os.listdir(subsection_path):
+#             if blog_dir == '.DS_Store':
+#                 continue
+#             blog_folder = os.path.join(subsection_path, blog_dir)
+#             meta_path = os.path.join(blog_folder, 'blog_meta.json')
+#             if os.path.exists(meta_path):
+#                 with open(meta_path, 'r') as f:
+#                     meta = json.load(f)[0]
+#                     meta['slug'] = subsection
+#                     section_blogs.append(meta)
 
-        # If a specific blog is selected
-        if blog_slug:
-            blog_folder = os.path.join(subsection_path, blog_slug)
-            content_path = os.path.join(blog_folder, 'blog_content.md')
-            meta_path = os.path.join(blog_folder, 'blog_meta.json')
+#         # If a specific blog is selected
+#         if blog_slug:
+#             blog_folder = os.path.join(subsection_path, blog_slug)
+#             content_path = os.path.join(blog_folder, 'blog_content.md')
+#             meta_path = os.path.join(blog_folder, 'blog_meta.json')
 
-            if not os.path.exists(content_path) or not os.path.exists(meta_path):
-                abort(404)
+#             if not os.path.exists(content_path) or not os.path.exists(meta_path):
+#                 abort(404)
 
-            with open(content_path, 'r', encoding='utf-8') as f:
-                blog_content = f.read()
-            with open(meta_path, 'r') as f:
-                blog_meta = json.load(f)
+#             with open(content_path, 'r', encoding='utf-8') as f:
+#                 blog_content = f.read()
+#             with open(meta_path, 'r') as f:
+#                 blog_meta = json.load(f)
 
-            blog_details = {
-                'blog_content': blog_content,
-                'blog_meta': blog_meta,
-                'blog_slug': blog_slug,
-                'subsection': subsection
-            }
+#             blog_details = {
+#                 'blog_content': blog_content,
+#                 'blog_meta': blog_meta,
+#                 'blog_slug': blog_slug,
+#                 'subsection': subsection
+#             }
 
-    else:
+#     else:
 
-        section_blogs = []  # clear or build fresh list per section
+#         section_blogs = []  # clear or build fresh list per section
 
-        for section in prompt_sections:
-            subsection_path = os.path.join(base_path, section)
-            blogs = []
-            # Load all blogs in section
-            for blog_dir in os.listdir(subsection_path):
-                if blog_dir == '.DS_Store':
-                    continue
-                blog_folder = os.path.join(subsection_path, blog_dir)
-                meta_path = os.path.join(blog_folder, 'blog_meta.json')
-                if os.path.exists(meta_path):
-                    with open(meta_path, 'r') as f:
-                        meta = json.load(f)[0]
-                        meta['slug'] = blog_dir
-                        blogs.append(meta)
+#         for section in prompt_sections:
+#             subsection_path = os.path.join(base_path, section)
+#             blogs = []
+#             # Load all blogs in section
+#             for blog_dir in os.listdir(subsection_path):
+#                 if blog_dir == '.DS_Store':
+#                     continue
+#                 blog_folder = os.path.join(subsection_path, blog_dir)
+#                 meta_path = os.path.join(blog_folder, 'blog_meta.json')
+#                 if os.path.exists(meta_path):
+#                     with open(meta_path, 'r') as f:
+#                         meta = json.load(f)[0]
+#                         meta['slug'] = blog_dir
+#                         blogs.append(meta)
 
-            # Sort blogs by date (assuming 'date' key exists in meta)
-            blogs_sorted = sorted(blogs, key=lambda x: x.get('date', ''), reverse=True)
+#             # Sort blogs by date (assuming 'date' key exists in meta)
+#             blogs_sorted = sorted(blogs, key=lambda x: x.get('date', ''), reverse=True)
 
-            # Store top 3 latest blogs per section in the dictionary
-            latest_blogs_per_section[section] = blogs_sorted[:3]
+#             # Store top 3 latest blogs per section in the dictionary
+#             latest_blogs_per_section[section] = blogs_sorted[:3]
 
 
-    return render_template(
-        'prompts/prompts.html',
-        all_section_names=prompt_sections,
-        all_blogs_of_particular_section=section_blogs,
-        latest_blogs_per_section=latest_blogs_per_section,
-        blog_details=blog_details
-    )
+#     return render_template(
+#         'prompts/prompts.html',
+#         all_section_names=prompt_sections,
+#         all_blogs_of_particular_section=section_blogs,
+#         latest_blogs_per_section=latest_blogs_per_section,
+#         blog_details=blog_details
+#     )
 
 
 

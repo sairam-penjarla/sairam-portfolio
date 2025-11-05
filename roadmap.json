@@ -1,97 +1,136 @@
+[
+      {
+            "course_title": "3-Months: Core Proficiency",
+            "category": "Foundational Path",
+            "url": "/learn/roadmap/3_months",
+            "imageUrl": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_31.jpg",
+            "date": "Goal: Basics Completion",
+            "modules": [
+                  { "course_title": "Python", "module_title": "Basics of Python" },
+                  { "course_title": "Python", "module_title": "Intermediate Python" },
+                  { "course_title": "Python", "module_title": "Advance Python" },
+                  { "course_title": "Python", "module_title": "Numpy" },
+                  { "course_title": "Python", "module_title": "Pandas" },
+                  { "course_title": "Python", "module_title": "Python Project Repo Structure" },
+                  { "course_title": "Data Preprocessing", "module_title": "Basics of Data Preprocessing" },
+                  { "course_title": "SQL", "module_title": "Basics of SQL" },
+                  { "course_title": "SQL", "module_title": "Intermediate SQL" },
+                  { "course_title": "Machine Learning", "module_title": "Linear Regression" },
+                  { "course_title": "Machine Learning", "module_title": "Logistic Regression" },
+                  { "course_title": "Machine Learning", "module_title": "Decision Trees" },
+                  { "course_title": "Machine Learning", "module_title": "Random Forests" },
+                  { "course_title": "Machine Learning", "module_title": "Support Vector Machines (SVM)" },
+                  { "course_title": "Machine Learning", "module_title": "Cross-validation and Model Evaluation Metrics" },
+                  { "course_title": "Machine Learning", "module_title": "Clustering Algorithms" },
+                  { "course_title": "Machine Learning", "module_title": "Regularization Techniques" },
+                  { "course_title": "Machine Learning", "module_title": "Optimization Algorithms" },
+                  { "course_title": "Machine Learning", "module_title": "Natural Language Processing (NLP) - Text Preprocessing" },
+                  { "course_title": "Machine Learning", "module_title": "Natural Language Processing (NLP) - Word Embeddings" },
+                  { "course_title": "Machine Learning", "module_title": "Natural Language Processing (NLP) - Sentiment Analysis" },
+                  { "course_title": "Machine Learning", "module_title": "Time Series Analysis - Time Series Preprocessing" },
+                  { "course_title": "Machine Learning", "module_title": "Time Series Analysis - Seasonality and Trend Analysis" },
+                  { "course_title": "Deep Learning", "module_title": "Basics of Convolution Neural Network" },
+                  { "course_title": "Deep Learning", "module_title": "Basics of Tensoflow" },
+                  { "course_title": "Deep Learning", "module_title": "Basics of HuggingFace" },
+                  { "course_title": "AI Basics", "module_title": "Getting Your OpenAI Key in Azure AI Foundry" },
+                  { "course_title": "AI Basics", "module_title": "Introduction to the OpenAI Library" },
+                  { "course_title": "AI Basics", "module_title": "How Chat Completions Work" },
+                  { "course_title": "AI Basics", "module_title": "Advanced Prompt Engineering Techniques" },
+                  { "course_title": "AI Basics", "module_title": "Understanding Multi-Modal AI" },
+                  { "course_title": "AI Basics", "module_title": "Understanding Hallucinations in AI" },
+                  { "course_title": "Agentic AI", "module_title": "Introduction to AI Agents" },
+                  { "course_title": "Retrieval Augmented Generation", "module_title": "Basics of Retrieval Augmented Generation" }
+            ]
+      },
+      {
+            "course_title": "6-Months: Specialization Track",
+            "category": "Data Science Focus",
+            "url": "/learn/roadmap/6_months",
+            "imageUrl": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_32.jpg",
+            "date": "Goal: 2 Portfolio Projects",
+            "modules": [
+                  { "course_title": "Python", "module_title": "Basics of Python" },
+                  { "course_title": "Python", "module_title": "Intermediate Python" },
+                  { "course_title": "Python", "module_title": "Advance Python" },
+                  { "course_title": "Python", "module_title": "Numpy" },
+                  { "course_title": "Python", "module_title": "Pandas" },
+                  { "course_title": "Python", "module_title": "Flask Framework in python" },
+                  { "course_title": "Python", "module_title": "Python Project Repo Structure" },
 
- {
-    "topLevel": [
-      {
-        "id": "python",
-        "title": "Python",
-        "description": "Explore Python projects that are beginner-friendly and cover important OOPS concepts.",
-        "subCards": [
-          {
-            "id": "py-01",
-            "title": "Web Scraper",
-            "description": "Scraper using requests + BeautifulSoup for data extraction.",
-            "urls": [
-              { "title": "GitHub Repository", "href": "https://github.com/example/web-scraper" },
-              { "title": "Live Demo", "href": "https://example.com/web-scraper-demo" },
-              { "title": "Documentation", "href": "https://example.com/docs" }
+                  { "course_title": "Data Preprocessing", "module_title": "Basics of Data Preprocessing" },
+
+                  { "course_title": "SQL", "module_title": "Basics of SQL" },
+                  { "course_title": "SQL", "module_title": "Intermediate SQL" },
+                  { "course_title": "SQL", "module_title": "Advanced SQL" },
+
+                  { "course_title": "Machine Learning", "module_title": "Linear Regression" },
+                  { "course_title": "Machine Learning", "module_title": "Logistic Regression" },
+                  { "course_title": "Machine Learning", "module_title": "Regularization Techniques" },
+                  { "course_title": "Machine Learning", "module_title": "Optimization Algorithms" },
+                  { "course_title": "Machine Learning", "module_title": "Decision Trees" },
+                  { "course_title": "Machine Learning", "module_title": "Random Forests" },
+                  { "course_title": "Machine Learning", "module_title": "Support Vector Machines (SVM)" },
+                  { "course_title": "Machine Learning", "module_title": "k-Nearest Neighbors (kNN)" },
+                  { "course_title": "Machine Learning", "module_title": "Naive Bayes" },
+                  { "course_title": "Machine Learning", "module_title": "Ensemble Methods" },
+                  { "course_title": "Machine Learning", "module_title": "Clustering Algorithms" },
+                  { "course_title": "Machine Learning", "module_title": "Cross-validation and Model Evaluation Metrics" },
+                  { "course_title": "Machine Learning", "module_title": "Model Interpretability and Explainability" },
+
+                  { "course_title": "Machine Learning", "module_title": "Natural Language Processing (NLP) - Text Preprocessing" },
+                  { "course_title": "Machine Learning", "module_title": "Natural Language Processing (NLP) - Word Embeddings" },
+                  { "course_title": "Machine Learning", "module_title": "Natural Language Processing (NLP) - Named Entity Recognition (NER)" },
+                  { "course_title": "Machine Learning", "module_title": "Natural Language Processing (NLP) - Sentiment Analysis" },
+                  { "course_title": "Machine Learning", "module_title": "Natural Language Processing (NLP) - Text Classification" },
+
+                  { "course_title": "Machine Learning", "module_title": "Time Series Analysis - Time Series Preprocessing" },
+                  { "course_title": "Machine Learning", "module_title": "Time Series Analysis - Seasonality and Trend Analysis" },
+                  { "course_title": "Machine Learning", "module_title": "Time Series Analysis - ARIMA Models" },
+                  { "course_title": "Machine Learning", "module_title": "Time Series Analysis - Exponential Smoothing Methods" },
+
+                  { "course_title": "Deep Learning", "module_title": "Basics of Convolution Neural Network" },
+                  { "course_title": "Deep Learning", "module_title": "Basics of Tensoflow" },
+                  { "course_title": "Deep Learning", "module_title": "Basics of HuggingFace" },
+
+                  { "course_title": "AI Basics", "module_title": "Getting Your OpenAI Key in Azure AI Foundry" },
+                  { "course_title": "AI Basics", "module_title": "Introduction to the OpenAI Library" },
+                  { "course_title": "AI Basics", "module_title": "Generating Structured Outputs with OpenAI" },
+                  { "course_title": "AI Basics", "module_title": "How Chat Completions Work" },
+                  { "course_title": "AI Basics", "module_title": "Chat Models vs. Reasoning Models" },
+                  { "course_title": "AI Basics", "module_title": "Advanced Prompt Engineering Techniques" },
+                  { "course_title": "AI Basics", "module_title": "Understanding Multi-Modal AI" },
+                  { "course_title": "AI Basics", "module_title": "Explaining Token Consumption in OpenAI" },
+                  { "course_title": "AI Basics", "module_title": "Understanding Hallucinations in AI" },
+                  { "course_title": "AI Basics", "module_title": "Choosing Between Azure AI, Direct OpenAI, and Self-Hosted Models" },
+
+                  { "course_title": "Retrieval Augmented Generation", "module_title": "Basics of Retrieval Augmented Generation" },
+                  { "course_title": "Retrieval Augmented Generation", "module_title": "Document Parsing using PyPDF" },
+                  { "course_title": "Retrieval Augmented Generation", "module_title": "Semantic Parsing" },
+                  { "course_title": "Retrieval Augmented Generation", "module_title": "Document Parsing Using Azure Document Intelligence" },
+                  { "course_title": "Retrieval Augmented Generation", "module_title": "How to build a RAG Backend" },
+                  { "course_title": "Retrieval Augmented Generation", "module_title": "Common Problems When Building a RAG System" },
+
+                  { "course_title": "Agentic AI", "module_title": "Introduction to AI Agents" },
+                  { "course_title": "Agentic AI", "module_title": "Building Your First AI Agent" },
+                  { "course_title": "Agentic AI", "module_title": "Memory in AI Agents" },
+                  { "course_title": "Agentic AI", "module_title": "Building Tools for AI Agents" },
+                  { "course_title": "Agentic AI", "module_title": "Connecting Tools to Your Agent" },
+                  { "course_title": "Agentic AI", "module_title": "Context Wrapper in Agent Tools" },
+                  { "course_title": "Agentic AI", "module_title": "Building Multiple Agents" },
+                  { "course_title": "Agentic AI", "module_title": "Building an Entire Agentic AI Backend" },
+                  { "course_title": "Agentic AI", "module_title": "Common Problems in AI Agent Development" },
+
+                  { "course_title": "LangGraph", "module_title": "A Sentiment Classifier" },
+                  { "course_title": "LangGraph", "module_title": "Introducing Tool-Calling LLMs" },
+                  { "course_title": "LangGraph", "module_title": "Building a Restaurant & Weather Recommendation System" },
+                  { "course_title": "LangGraph", "module_title": "Decision-Making with Routers" },
+                  { "course_title": "LangGraph", "module_title": "Dynamic Routers with Tool Integration" },
+                  { "course_title": "LangGraph", "module_title": "Adding Memory to the Agent" },
+                  { "course_title": "LangGraph", "module_title": "Using Multiple Schemas for Enhanced State Management" },
+                  { "course_title": "LangGraph", "module_title": "Handling Dynamic Inputs and Human Interrupts" },
+                  { "course_title": "LangGraph", "module_title": "Implementing Parallel Node Execution for Efficient Context Gathering" },
+                  { "course_title": "LangGraph", "module_title": "Integrating Web and API Data for Enhanced Context" },
+                  { "course_title": "LangGraph", "module_title": "Leveraging Subgraphs for Multi-Agent Systems" }
             ]
-          },
-          {
-            "id": "py-02",
-            "title": "CLI Tool",
-            "description": "A terminal-based productivity tool with rich features.",
-            "urls": [
-              { "title": "GitHub Repository", "href": "https://github.com/example/cli" },
-              { "title": "PyPI Package", "href": "https://pypi.org/project/example-cli" }
-            ]
-          },
-          {
-            "id": "py-03",
-            "title": "REST API",
-            "description": "FastAPI-based REST service with authentication.",
-            "urls": [
-              { "title": "Source Code", "href": "https://github.com/example/rest-api" },
-              { "title": "API Docs", "href": "https://example.com/api/docs" }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "ml",
-        "title": "Machine Learning",
-        "description": "Modeling & analysis examples with real-world datasets.",
-        "subCards": [
-          {
-            "id": "ml-01",
-            "title": "Sentiment Analysis",
-            "description": "NLP model for analyzing text sentiment using transformers.",
-            "urls": [
-              { "title": "Jupyter Notebook", "href": "https://github.com/example/sentiment-analysis" },
-              { "title": "Model on HuggingFace", "href": "https://huggingface.co/example/sentiment" }
-            ]
-          },
-          {
-            "id": "ml-02",
-            "title": "Image Classifier",
-            "description": "CNN model for image classification with PyTorch.",
-            "urls": [
-              { "title": "Training Code", "href": "https://github.com/example/image-classifier" },
-              { "title": "Pre-trained Model", "href": "https://example.com/models" }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "cv",
-        "title": "Computer Vision",
-        "description": "Vision projects and notebooks for image processing tasks.",
-        "subCards": [
-          {
-            "id": "cv-01",
-            "title": "Object Detection",
-            "description": "YOLO-based object detection system.",
-            "urls": [
-              { "title": "Implementation", "href": "https://github.com/example/object-detection" },
-              { "title": "Dataset", "href": "https://example.com/dataset" }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "nlp",
-        "title": "NLP",
-        "description": "Transformer-based models and natural language processing tasks.",
-        "subCards": [
-          {
-            "id": "nlp-01",
-            "title": "Text Summarizer",
-            "description": "Automatic text summarization using BERT.",
-            "urls": [
-              { "title": "Code Repository", "href": "https://github.com/example/text-summarizer" },
-              { "title": "Web Interface", "href": "https://example.com/summarize" }
-            ]
-          }
-        ]
       }
-    ]
-  }
+]

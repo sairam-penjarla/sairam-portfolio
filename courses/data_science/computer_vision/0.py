@@ -13,5 +13,7 @@ course_data = {
     "url": "/learn/courses/data_science/computer_vision",
     "imageUrl": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_13.jpg",
     "date": "Duration: 4 Weeks",
-    "body": get_markdown_content()
+    "body": get_markdown_content(),
+  
+
 }

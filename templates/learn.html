@@ -110,30 +110,7 @@
     // DUMMY DATA (Course Data)
     const courseData = {{ all_courses | safe }};
 
-    // DUMMY DATA (Roadmap Data)
-    const roadmapData = [
-        {
-            title: "3-Months: Core Proficiency",
-            category: "Foundational Path",
-            url: "#roadmap-3m",
-            imageUrl: "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_10.jpg",
-            date: "Goal: Basics Completion"
-        },
-        {
-            title: "6-Months: Specialization Track",
-            category: "Data Science Focus",
-            url: "#roadmap-6m",
-            imageUrl: "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_11.jpg",
-            date: "Goal: 2 Portfolio Projects"
-        },
-        {
-            title: "12-Months: Mastery & Deployment",
-            category: "AI Readiness",
-            url: "#roadmap-12m",
-            imageUrl: "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_12.jpg",
-            date: "Goal: Job Ready"
-        }
-    ];
+    const roadmapData = {{ roadmaps | safe }};
 
     let activeTab = "{{ var0 | default('') }}";
     let activeCategoryFilter = "{{ var1 | default('') }}";

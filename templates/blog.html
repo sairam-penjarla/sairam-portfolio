@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ category or "All Blogs" }}</title>
+    <title>{{ category }}</title>
     <!-- Load Tailwind CSS via CDN --><script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom configuration for Tailwind colors and font */
@@ -73,9 +73,8 @@
     <script>
         // Data for the blog posts
         const blogPosts = {{ articles_list | safe }};
-        console.log(blogPosts)
 
-        let activeCategoryFilter = 'All'; // State to track the currently active category
+        let activeCategoryFilter = "{{ blog_category | default('') }}";
 
         // Base classes for all filter buttons (padding, font, rounding, transition)
         const BASE_FILTER_CLASSES = 'filter-button px-6 py-1 text-base font-medium rounded-full whitespace-nowrap transition-all duration-200 ease-in-out cursor-pointer';
@@ -168,6 +167,10 @@
                     
                     // Reset search input when filtering by category
                     document.getElementById('search-input').value = '';
+                    const route = "{{ page_heading | safe}}".toLowerCase();
+
+                    const newUrl = `/${route}/${activeCategoryFilter}`;
+                    window.history.pushState({}, '', newUrl);
                     
                     // Re-render both filters (to update active state) and posts
                     renderFilters();

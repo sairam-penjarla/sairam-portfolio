@@ -13,5 +13,13 @@ course_data = {
     "url": "/learn/courses/basics/python",
     "imageUrl": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_9.jpg",
     "date": "Duration: 4 Weeks",
-    "body": get_markdown_content()
+    "body": get_markdown_content(),
+    "resources": [
+  {
+    "name": "Python Repo Basics",
+    "url": "https://youtube.com/playlist?list=PL9wcLF5LwK5BKbEUNtbaCDyob9x0Ktui4&si=UEMpD-kOVLfAm5Z",
+    "type": "video"
+  }
+]
+
 }

@@ -64,12 +64,7 @@
         
         console.log(courseDetails)
         
-        // SVG icon for all video resources (YouTube)
-        const playIconSvg = `
-            <svg class="w-5 h-5 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path>
-            </svg>
-        `;
+        
 
         // --- GLOBAL ELEMENTS & CONSTANTS ---
         const mainTitleElement = document.getElementById('main-title');
@@ -109,45 +104,56 @@
 
             // 3. Render Modules and Resources
             const modulesHtml = detailData.modules.map((module, index) => `
-                <!-- Removed shadow and top border for a cleaner look -->
-                <div class="bg-white p-6 sm:p-8 rounded-xl transition-all duration-300 border border-gray-200">
-                    
-                    <!-- Module Title and Learn Button Row -->
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 border-b pb-4">
-                        <h3 class="text-2xl font-extrabold text-text-primary">
-                            ${module.name}
-                        </h3>
-                        <!-- Hardcoded the 'Learn' button link to '#' -->
-                        <a href="${module.url}/${module.module}" 
-                           class="mt-3 sm:mt-0 bg-[#2267af] hover:bg-primary/90 text-white font-bold py-2 px-6 rounded-lg transition duration-300 shadow-lg hover:shadow-xl text-sm"
-                           >
-                            Learn
-                        </a>
+                    <div class="bg-white p-6 sm:p-8 rounded-xl transition-all duration-300 border border-gray-200">
+                        
+                        <!-- Module Title and Learn Button Row -->
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 border-b pb-4">
+                            <h3 class="text-2xl font-extrabold text-text-primary">
+                                ${module.name}
+                            </h3>
+                            <a href="${module.url}/${module.module}" 
+                            class="mt-3 sm:mt-0 bg-[#2267af] hover:bg-primary/90 text-white font-bold py-2 px-6 rounded-lg transition duration-300 shadow-lg hover:shadow-xl text-sm">
+                                Learn
+                            </a>
+                        </div>
+                        
+                        <!-- Resources List -->
+                        <div class="space-y-4">
+                            <p class="text-base font-semibold text-gray-700">Available Resources:</p>
+                            <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                ${module.resources.map(resource => `
+                                    <li class="w-full">
+                                        <a href="${resource.url}" target="_blank" 
+                                        class="flex items-center space-x-3 p-3 w-full h-full bg-[#f8f8fa] rounded-lg border border-gray-100 hover:border-primary/50 transition duration-150 group"
+                                        >
+                                            ${resource.type === "video" 
+                                                ? `
+                                                <!-- YouTube Icon -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-red-500 flex-shrink-0">
+                                                    <path d="M2.5 17a24.12 24.12 0 0 1 0-10A2 2 0 0 1 3.9 5.6a49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
+                                                    <path d="m10 15 5-3-5-3z" />
+                                                </svg>
+                                                `
+                                                : `
+                                                <!-- Web Icon -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-primary flex-shrink-0">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                                                    <path d="M2 12h20"/>
+                                                </svg>
+                                                `
+                                            }
+                                            <span class="text-gray-700 group-hover:text-primary transition duration-150 text-base font-medium truncate">
+                                                ${resource.name}
+                                            </span>
+                                        </a>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
                     </div>
-                    
-                    <!-- Resources List -->
-                    <div class="space-y-4">
-                        <p class="text-base font-semibold text-gray-700">Available Resources (YouTube Links):</p>
-                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            ${module.resources.map(resource => `
-                                <li class="w-full">
-                                    <!-- Anchor tag now wraps the entire list item content and holds the styling -->
-                                    <a href="${resource.url}" target="_blank" 
-                                       class="flex items-center space-x-3 p-3 w-full h-full bg-[#f8f8fa] rounded-lg border border-gray-100 hover:border-primary/50 transition duration-150 group"
-                                    >
-                                        <!-- SVG icon injected here -->
-                                        ${playIconSvg}
-                                        <!-- Text is now a span, using group-hover to change color on hover -->
-                                        <span class="text-gray-700 group-hover:text-primary transition duration-150 text-base font-medium truncate">
-                                            ${resource.title}
-                                        </span>
-                                    </a>
-                                </li>
-                            `).join('')}
-                        </ul>
-                    </div>
-                </div>
-            `).join('');
+                `).join('');
+
 
             modulesContainer.innerHTML = modulesHtml;
         }
