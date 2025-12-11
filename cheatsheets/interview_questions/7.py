@@ -11,7 +11,7 @@ course_data = {
     "module_title": "Generative AI Interview Questions",
     "category": "Interview Questions",
     "url": "/learn/courses/interview_questions/generrative_ai",
-    "imageUrl": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_47.JPG",
+    "imageUrl": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_47.JPG",
     "date": "Duration: 4 Weeks",
     "body": get_markdown_content()
 }

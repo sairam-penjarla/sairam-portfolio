@@ -11,7 +11,7 @@ course_data = {
     "module_title": "Python Basic Cheatsheet",
     "category": "Python",
     "url": "/learn/courses/python/Basic",
-    "imageUrl": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_48.JPG",
+    "imageUrl": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_48.JPG",
     "date": "Duration: 4 Weeks",
     "body": get_markdown_content()
 }

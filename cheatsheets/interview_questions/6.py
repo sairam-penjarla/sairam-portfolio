@@ -11,7 +11,7 @@ course_data = {
     "module_title": "Computer Vision Interview Questions",
     "category": "Interview Questions",
     "url": "/learn/courses/interview_questions/computer_vision",
-    "imageUrl": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_46.JPG",
+    "imageUrl": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_46.JPG",
     "date": "Duration: 4 Weeks",
     "body": get_markdown_content()
 }

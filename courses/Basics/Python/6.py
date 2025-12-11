@@ -11,7 +11,7 @@ course_data = {
     "module_title": "Pandas",
     "category": "Basics",
     "url": "/learn/courses/basics/python",
-    "imageUrl": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_9.jpg",
+    "imageUrl": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_9.jpg",
     "date": "Duration: 4 Weeks",
     "body": get_markdown_content(),
     "resources": [

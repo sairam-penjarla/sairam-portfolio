@@ -11,7 +11,7 @@ course_data = {
     "module_title": "Anaconda Cheatsheet",
     "category": "Environments",
     "url": "/learn/courses/environments/Anaconda",
-    "imageUrl": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_18.jpg",
+    "imageUrl": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_18.jpg",
     "date": "Duration: 4 Weeks",
     "body": get_markdown_content()
 }

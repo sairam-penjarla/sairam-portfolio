@@ -11,7 +11,7 @@ course_data = {
     "module_title": "pip Cheatsheet",
     "category": "Environments",
     "url": "/learn/courses/environments/PIP",
-    "imageUrl": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_16.jpg",
+    "imageUrl": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_16.jpg",
     "date": "Duration: 4 Weeks",
     "body": get_markdown_content()
 }

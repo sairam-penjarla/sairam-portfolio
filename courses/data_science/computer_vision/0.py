@@ -11,7 +11,7 @@ course_data = {
     "course_title": "Computer Vision",
     "module_title": "Basics of computer vision",
     "url": "/learn/courses/data_science/computer_vision",
-    "imageUrl": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_13.jpg",
+    "imageUrl": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_13.jpg",
     "date": "Duration: 4 Weeks",
     "body": get_markdown_content(),
   

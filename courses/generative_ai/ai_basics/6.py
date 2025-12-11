@@ -11,7 +11,7 @@ course_data = {
     "course_title": "AI Basics",
     "module_title": "Understanding Multi-Modal AI",
     "url": "/learn/courses/generative_ai/ai_basics",
-    "imageUrl": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_23.jpg",
+    "imageUrl": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_23.jpg",
     "date": "Duration: 4 Weeks",
     "body": get_markdown_content()
 }

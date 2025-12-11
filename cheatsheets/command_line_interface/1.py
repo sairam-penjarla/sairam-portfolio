@@ -11,7 +11,7 @@ course_data = {
     "module_title": "SSH Cheatsheet",
     "category": "Command Line Interface",
     "url": "/learn/courses/command_line_interface/SSH",
-    "imageUrl": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_12.jpg",
+    "imageUrl": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_12.jpg",
     "date": "Duration: 4 Weeks",
     "body": get_markdown_content()
 }

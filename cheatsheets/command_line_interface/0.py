@@ -11,7 +11,7 @@ course_data = {
     "module_title": "Command Line Interface Cheatsheet",
     "category": "Command Line Interface",
     "url": "/learn/courses/command_line_interface/Cli",
-    "imageUrl": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_11.jpg",
+    "imageUrl": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_11.jpg",
     "date": "Duration: 4 Weeks",
     "body": get_markdown_content()
 }

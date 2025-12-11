@@ -11,7 +11,7 @@ course_data = {
     "course_title": "Retrieval Augmented Generation",
     "module_title": "Document Parsing using PyPDF",
     "url": "/learn/courses/generative_ai/rag",
-    "imageUrl": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_21.jpg",
+    "imageUrl": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_21.jpg",
     "date": "Duration: 4 Weeks",
     "body": get_markdown_content()
 }

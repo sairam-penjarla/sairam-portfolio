@@ -6,7 +6,7 @@
             "domain": "Artificial Intelligence",
             "platform": "Platform Independent",
             "demo": "true",
-            "image": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_54.JPG",
+            "image": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_54.JPG",
             "tech_stack": ["Python", "Pandas", "OpenAI Agents", "ChromaDB", "GPT-4", "GPT"],
             "demo_url": "https://demo.example.com/data-cleaning",
             "md_file": "projects/data_cleaning_enrichment_agent.md"
@@ -18,7 +18,7 @@
             "domain": "Artificial Intelligence",
             "platform": "Azure",
             "demo": "true",
-            "image": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_2.jpg",
+            "image": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_2.jpg",
             "tech_stack": ["Python", "Pandas", "OpenAI GPT-4", "Anthropic Claude", "Azure OpenAI Service", "Natural Language Processing", "Document Parsing"],
             "demo_url": "https://demo.example.com/financial-analyst-agent",
             "md_file": "projects/financial_analyst_agent.md"
@@ -30,7 +30,7 @@
             "domain": "Artificial Intelligence",
             "platform": "Copilot Studio",
             "demo": "true",
-            "image": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_3.jpg",
+            "image": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_3.jpg",
             "tech_stack": ["Python", "Pandas", "LangChain", "OpenAI GPT-4", "Claude AI", "Mistral AI", "ML Studio", "AI Foundry"],
             "demo_url": "https://demo.example.com/multi-agent-sales-assistant",
             "md_file": "projects/multi_agent_sales_assistant.md"
@@ -42,7 +42,7 @@
             "domain": "Artificial Intelligence",
             "platform": "Azure",
             "demo": "true",
-            "image": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_4.jpg",
+            "image": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_4.jpg",
             "tech_stack": ["Python", "OpenAI GPT-4", "LangChain / Llama", "Pandas", "Azure AI Search", "OCR Libraries (Tesseract / Azure Cognitive Services)", "Streamlit / Flask"],
             "demo_url": "https://demo.example.com/ai-whiteboard-reader",
             "md_file": "projects/ai_whiteboard_reader.md"
@@ -54,7 +54,7 @@
             "domain": "Artificial Intelligence",
             "platform": "Azure",
             "demo": "true",
-            "image": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_5.jpg",
+            "image": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_5.jpg",
             "tech_stack": ["Python", "Pandas", "OpenAI GPT-4", "Claude", "Huggingface"],
             "demo_url": "https://demo.example.com/ai-code-reviewer",
             "md_file": "projects/ai_code_reviewer_assistant.md"
@@ -66,7 +66,7 @@
             "domain": "Computer Vision",
             "platform": "Platform Independent",
             "demo": "true",
-            "image": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_6.jpg",
+            "image": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_6.jpg",
             "tech_stack": ["Python", "OpenCV", "PyTorch", "TensorFlow", "Keras", "Weights & Biases"],
             "demo_url": "https://demo.example.com/video-action-recognition",
             "md_file": "projects/video_action_recognition.md"
@@ -78,7 +78,7 @@
             "domain": "Artificial Intelligence",
             "platform": "Azure",
             "demo": "true",
-            "image": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_7.jpg",
+            "image": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_7.jpg",
             "tech_stack": ["Python", "OpenAI Agents", "Azure OpenAI", "Azure Cognitive Search", "ChromaDB", "GPT-4"],
             "demo_url": "https://demo.example.com/domain-qa",
             "md_file": "projects/domain_specific_q_a_knowledge_base.md"
@@ -90,7 +90,7 @@
             "domain": "Artificial Intelligence",
             "platform": "Azure",
             "demo": "true",
-            "image": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_8.jpg",
+            "image": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_8.jpg",
             "tech_stack": ["Python", "OpenAI GPT-4", "Anthropic Claude", "spaCy", "NLTK", "LangChain", "Streamlit"],
             "demo_url": "https://demo.example.com/meeting-notes-extractor",
             "md_file": "projects/automated_meeting_notes_and_action_items_extractor.md"
@@ -102,7 +102,7 @@
             "domain": "Artificial Intelligence",
             "platform": "Databricks",
             "demo": "true",
-            "image": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_9.jpg",
+            "image": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_9.jpg",
             "tech_stack": ["Python", "Databricks Notebooks", "Databricks MLflow", "Databricks Unity Catalog", "Databricks Model Registry", "SQL Server", "GPT-4 API", "spaCy", "NLTK", "pandas", "Plotly / Dash"],
             "demo_url": "https://demo.example.com/nlp-sql-report",
             "md_file": "projects/nlp_to_sql_report_generator.md"
@@ -114,7 +114,7 @@
             "domain": "Artificial Intelligence",
             "platform": "Azure",
             "demo": "true",
-            "image": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_10.jpg",
+            "image": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_10.jpg",
             "tech_stack": ["Python", "OpenCV", "TensorFlow", "Keras", "Azure Document Intelligence", "spaCy", "NLTK", "Pandas", "Plotly"],
             "demo_url": "https://demo.example.com/data-cleaning",
             "md_file": "projects/ocr_nlp_hybrid.md"
@@ -126,7 +126,7 @@
             "domain": "Computer Vision",
             "platform": "Platform Independent",
             "demo": "true",
-            "image": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_11.jpg",
+            "image": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_11.jpg",
             "tech_stack": ["Python", "OpenCV", "TensorFlow", "PyTorch", "Weights & Biases"],
             "demo_url": "https://demo.example.com/license-plate-recognition",
             "md_file": "projects/license_plate_recognition_with_context.md"
@@ -138,7 +138,7 @@
             "domain": "Computer Vision",
             "platform": "Azure",
             "demo": "true",
-            "image": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_12.jpg",
+            "image": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_12.jpg",
             "tech_stack": ["Python", "OpenCV", "PyTorch", "TensorFlow", "Azure Cognitive Services", "Azure ML Studio"],
             "demo_url": "https://demo.example.com/quality-control",
             "md_file": "projects/quality_control_system.md"
@@ -150,7 +150,7 @@
             "domain": "Deep Learning",
             "platform": "Azure",
             "demo": "true",
-            "image": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_13.jpg",
+            "image": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_13.jpg",
             "tech_stack": ["Python", "TensorFlow", "Keras", "PyTorch", "Azure Machine Learning", "ML Studio", "Weights & Biases", "OpenCV", "scikit-learn"],
             "demo_url": "https://demo.example.com/medical-image-analysis",
             "md_file": "projects/medical_image_analysis.md"
@@ -162,7 +162,7 @@
             "domain": "Computer Vision",
             "platform": "Azure",
             "demo": "true",
-            "image": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_14.jpg",
+            "image": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_14.jpg",
             "tech_stack": ["Python", "OpenCV", "PyTorch", "TensorFlow", "Azure Computer Vision", "Azure ML Studio", "Weights & Biases"],
             "demo_url": "https://demo.example.com/retail-shelf-monitoring",
             "md_file": "projects/retail_shelf_monitoring.md"
@@ -174,7 +174,7 @@
             "domain": "Deep Learning",
             "platform": "Platform Independent",
             "demo": "true",
-            "image": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_15.jpg",
+            "image": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_15.jpg",
             "tech_stack": ["Python", "TensorFlow", "Keras", "OpenCV", "Tesseract OCR", "Document Intelligence", "Weights & Biases"],
             "demo_url": "https://demo.example.com/handwritten-form-reader",
             "md_file": "projects/handwritten_form_reader.md"
@@ -186,7 +186,7 @@
             "domain": "Deep Learning",
             "platform": "Azure",
             "demo": "true",
-            "image": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_16.jpg",
+            "image": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_16.jpg",
             "tech_stack": ["Python", "TensorFlow", "Keras", "PyTorch", "OpenCV", "Azure Cognitive Services", "Weights & Biases"],
             "demo_url": "https://demo.example.com/satellite-analysis",
             "md_file": "projects/satellite_image_analysis.md"
@@ -198,7 +198,7 @@
             "domain": "Machine Learning",
             "platform": "Platform Independent",
             "demo": "true",
-            "image": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_17.jpg",
+            "image": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_17.jpg",
             "tech_stack": ["Python", "Scikit-learn", "XGBoost", "TensorFlow", "Keras", "Weights & Biases", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
             "demo_url": "https://demo.example.com/healthcare-readmission",
             "md_file": "projects/healthcare_readmission_prediction.md"
@@ -210,7 +210,7 @@
             "domain": "Machine Learning",
             "platform": "Platform Independent",
             "demo": "true",
-            "image": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_18.jpg",
+            "image": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_18.jpg",
             "tech_stack": ["Python", "Pandas", "NumPy", "Scikit-learn", "PyTorch", "TensorFlow", "Weights & Biases", "Matplotlib / Seaborn"],
             "demo_url": "https://demo.example.com/predictive-maintenance",
             "md_file": "projects/predictive_maintenance.md"
@@ -222,7 +222,7 @@
             "domain": "Machine Learning",
             "platform": "Platform Independent",
             "demo": "true",
-            "image": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_19.jpg",
+            "image": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_19.jpg",
             "tech_stack": ["Python", "Pandas", "NumPy", "Scikit-learn", "Keras", "TensorFlow", "Matplotlib", "Seaborn", "Weights & Biases"],
             "demo_url": "https://demo.example.com/customer-segmentation",
             "md_file": "projects/customer_segmentation_lifetime_value_prediction.md"
@@ -234,7 +234,7 @@
             "domain": "Machine Learning",
             "platform": "Databricks",
             "demo": "true",
-            "image": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_20.jpg",
+            "image": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_20.jpg",
             "tech_stack": ["Python", "Databricks MLflow", "Databricks Delta Lake", "Databricks Model Registry", "Scikit-learn", "Keras", "Weights & Biases"],
             "demo_url": "https://demo.example.com/dynamic-pricing",
             "md_file": "projects/dynamic_pricing_engine.md"
@@ -246,7 +246,7 @@
             "domain": "Machine Learning",
             "platform": "Databricks",
             "demo": "true",
-            "image": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_21.jpg",
+            "image": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_21.jpg",
             "tech_stack": ["Python", "Scikit-learn", "Databricks MLflow", "Databricks Model Registry", "Databricks Delta Lake", "Weights & Biases", "Pandas", "SHAP (Explainable AI)"],
             "demo_url": "https://demo.example.com/credit-risk",
             "md_file": "projects/credit_risk_scoring_system.md"

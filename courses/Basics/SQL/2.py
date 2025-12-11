@@ -11,7 +11,7 @@ course_data = {
     "module_title": "Intermediate SQL",
     "category": "Basics",
     "url": "/learn/courses/basics/sql",
-    "imageUrl": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_10.jpg",
+    "imageUrl": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_10.jpg",
     "date": "Duration: 4 Weeks",
     "body": get_markdown_content(),
     "resources": [

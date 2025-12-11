@@ -11,7 +11,7 @@ course_data = {
     "module_title": "Deep Learning Interview Questions",
     "category": "Interview Questions",
     "url": "/learn/courses/interview_questions/deep_learning",
-    "imageUrl": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_44.JPG",
+    "imageUrl": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_44.JPG",
     "date": "Duration: 4 Weeks",
     "body": get_markdown_content()
 }

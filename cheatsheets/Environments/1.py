@@ -11,7 +11,7 @@ course_data = {
     "module_title": "Virtual environment Cheatsheet",
     "category": "Environments",
     "url": "/learn/courses/environments/Virtual Environment",
-    "imageUrl": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_17.jpg",
+    "imageUrl": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_17.jpg",
     "date": "Duration: 4 Weeks",
     "body": get_markdown_content()
 }

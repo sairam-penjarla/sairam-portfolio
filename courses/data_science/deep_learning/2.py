@@ -11,7 +11,7 @@ course_data = {
     "course_title": "Deep Learning",
     "module_title": "Basics of Tensoflow",
     "url": "/learn/courses/data_science/deep_learning",
-    "imageUrl": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_14.jpg",
+    "imageUrl": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_14.jpg",
     "date": "Duration: 4 Weeks",
     "body": get_markdown_content(),
     "resources": [

@@ -11,7 +11,7 @@ course_data = {
     "course_title": "Machine Learning",
     "module_title": "Natural Language Processing (NLP) - Named Entity Recognition (NER)",
     "url": "/learn/courses/data_science/machine_learning",
-    "imageUrl": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_15.jpg",
+    "imageUrl": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_15.jpg",
     "date": "Duration: 4 Weeks",
     "body": get_markdown_content()
 }

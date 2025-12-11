@@ -11,7 +11,7 @@ course_data = {
     "course_title": "LangGraph",
     "module_title": "Introducing Tool-Calling LLMs",
     "url": "/learn/courses/generative_ai/langgraph",
-    "imageUrl": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_24.jpg",
+    "imageUrl": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_24.jpg",
     "date": "Duration: 4 Weeks",
     "body": get_markdown_content()
 }

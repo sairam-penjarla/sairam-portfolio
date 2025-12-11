@@ -3,7 +3,7 @@
             "course_title": "3-Months: Core Proficiency",
             "category": "Foundational Path",
             "url": "/learn/roadmap/3_months",
-            "imageUrl": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_31.jpg",
+            "imageUrl": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_31.jpg",
             "date": "Goal: Basics Completion",
             "modules": [
                   { "course_title": "Python", "module_title": "Basics of Python" },
@@ -46,7 +46,7 @@
             "course_title": "6-Months: Specialization Track",
             "category": "Data Science Focus",
             "url": "/learn/roadmap/6_months",
-            "imageUrl": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_32.jpg",
+            "imageUrl": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_32.jpg",
             "date": "Goal: 2 Portfolio Projects",
             "modules": [
                   { "course_title": "Python", "module_title": "Basics of Python" },

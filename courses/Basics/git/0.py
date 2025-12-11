@@ -11,7 +11,7 @@ course_data = {
     "module_title": "Basics of Git",
     "category": "Basics",
     "url": "/learn/courses/basics/git",
-    "imageUrl": "https://iamsairamsa.blob.core.windows.net/static/images/thumbnails/img_8.jpg",
+    "imageUrl": "https://iamsairamstrprd.blob.core.windows.net/static/images/thumbnails/img_8.jpg",
     "date": "Duration: 4 Weeks",
     "body": get_markdown_content(),
     "resources" : [
