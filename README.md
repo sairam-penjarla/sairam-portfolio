@@ -119,4 +119,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📬 Contact
 
-For any questions or feedback, please reach out through any of the channels in the badges at the top of this README. 
+For any questions or feedback, please reach out through any of the channels in the badges at the top of this README
+
+
+  git config --global user.email "psairam9301@gmail.com"
+  git config --global user.name "saiam-penjarla"
